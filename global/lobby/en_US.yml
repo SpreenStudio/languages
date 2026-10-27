@@ -1,5 +1,5 @@
 scoreboard:
-  title: '%core_fading_StatsPvP_55FFFF_FFFFFF% &8(&7%bungee_total%&8)'
+  title: '%core_fading_SpreenStudios_AAAAAA_FFFFFF% &8(&7%bungee_total%&8)'
   lines: |-
       &a
       &e ● &f%player_name%
@@ -11,7 +11,7 @@ scoreboard:
       &a
       &f Lobby: &a#%core_server-id%
       &a
-      &estatspvp.gg
+      &7spreen.studio
       
 npcs:
   skywars:
@@ -39,13 +39,13 @@ general:
 tab:
   header: |-
     &7                                                                                  &a
-    &c&lStats&f&lPvP
+    &7&lSpreen&f&lStudios
     &81.7.10 - 1.20.X
     &7
   footer: |-
     
-    &9&lWeb:&f statspvp.gg
-    &b&lTwitter:&f @StatsPvP_
+    &7&lWeb:&f spreen.studio
+    &7&lX:&f x.com/spreenstudios
     
     &7Play with &f%bungee_total% &7more players in our gamemodes.
 
@@ -95,7 +95,7 @@ menus:
         &f Closes the current menu.
         &f
   selector:
-    title: '&c&lS&f&lP&0 » Game Modes'
+    title: '&8&lS&7&lS&0 » Game Modes'
     items:
       #otheritems
       info:
@@ -106,17 +106,19 @@ menus:
           &7 information about the network.
           &f
         message: |-
-          &f                 &c&lStats&f&lPvP
+          &7                 &7&lSpreen&f&lStudios
           &7
-          &7     StatsPvP is a server dedicated to
-          &7  the PvP community of all time, here you can
-          &7  meet people and enjoy the various
-          &7    game modes we've created with much
-          &7               love just for you <3.
+          &7  SpreenStudios is a server dedicated to
+          &7  the classic PvP community, here you can
+          &7     meet people and enjoy the various
+          &7     game modes we've created with lots
+          &7            of love just for you <3.
           &7
-          &7          Here are our social media links:
-          &7        &bTwitter&7: &ftwitter.com/spreenstudios
-          &7           &9Web&7: &fstatspvp.gg
+          &7        Here are our social media links:
+          &7                Web&8: &fspreen.studio
+          &7             X&8: &fx.com/spreenstudios
+          &7          Discord&8: &fdiscord.gg/spreen
+          &7                 IP&8: &fspreen.studio
           &7
       lobby:
         name: '&7» &aGo to Lobby'
@@ -186,7 +188,7 @@ menus:
           &fPlayers Online: &5%core_online_death-run,death-run-game%
           &8[%core_bar_death-run,death-run-game%&8]
   profile:
-    title: '&c&lS&f&lP&0 » User Profile'
+    title: '&8&lS&7&lS&0 » User Profile'
     items:
       #otheritems
       player:
@@ -237,7 +239,7 @@ menus:
       next:
         name: '&9Lobbies &b»' 
   settings:
-    title: '&c&lS&f&lP&0 » Your Settings'
+    title: '&8&lS&7&lS&0 » Your Settings'
     items:
       #otheritems
       visibility:
@@ -394,7 +396,7 @@ menus:
       prev:
         name: '&b« &cProfile'        
   lobbies:
-    title: '&c&lS&f&lP&0 » Lobbies'
+    title: '&8&lS&7&lS&0 » Lobbies'
     items:
       prevPage: 
         name: '&7Previous Page &f({actualPage}/{maxPages})'

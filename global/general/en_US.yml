@@ -5,18 +5,22 @@ commands:
     {commands}
     &7
   setlobby:
-    help: '&7/core setlobby - &eSet lobby spawnpoint.'
-    success: '{prefix}&aLobby spawnpoint setted!'
+    help: '&7 /core setlobby - &eSet the lobby spawnpoint.'
+    success: '{prefix}&aLobby spawnpoint set!'
   lang:
     help: |-
       &7 /core lang get <player> - &eGet the language.
       &7 /core lang set [lang] <player> - &eSet the language.
-      &7 /core lang reset <player> - &eReset to default language.
+      &7 /core lang reset <player> - &eReset to the default language.
+      &7 /core lang reload <local> - &eReload the language files.
+    reload: '{prefix}&aLanguage files have been reloaded!'
+    reloadLocal: '{prefix}&aLocal language files have been reloaded!'
     get: '{prefix}&fYour language is &e{lang}&f.'
     get_other: '{prefix}&b{player}&f''s language is &e{lang}&f.'
-    set: '{prefix}&fYour language now is &e{lang}&a!'
+    set: '{prefix}&fYour language is now &e{lang}&f!'
     reset: '{prefix}&fYour language has been restored to &e{lang}&f!'
-    set_other: '{prefix}&fLanguage of &b{player} &frestored to &e{lang}&f.'
+    reset_other: '{prefix}&fThe language of &b{player} &fhas been restored to &e{lang}&f!'
+    set_other: '{prefix}&fThe language of &b{player} &fhas been changed to &e{lang}&f!'
   reload:
     help: |-
       &7 /core reload - &eReload all files.
@@ -25,22 +29,56 @@ commands:
     local: '{prefix}&aLocal files have been reloaded!'
   jumppads:
     help: |-
-      &7 /core jumppads <material> <id>
-      &7 /core jumppads <height> <multiplier>
-      &7 /core jumppads <length> <multiplier>
-      &7 /core jumppads <sound> <id>
-  worlds: 
+      &7 /core jumppads material [material] - &eSet the jumppad material.
+      &7 /core jumppads height [multiplier] - &eSet the jumppad height.
+      &7 /core jumppads length [multiplier] - &eSet the jumppad length.
+      &7 /core jumppads sound [sound] - &eSet the jumppad sound.
+    invalidMaterial: '{prefix}&cThat material doesn''t exist.'
+    invalidNumber: '{prefix}&cThat isn''t a valid number for the settings!'
+    invalidSound: '{prefix}&cThat isn''t a valid sound for the settings!'
+    material: '{prefix}&aJumppad material set to &e%s&a.'
+    height: '{prefix}&aJumppad height set to &e%s&a.'
+    length: '{prefix}&aJumppad length set to &e%s&a.'
+    sound: '{prefix}&aJumppad sound set to &e%s&a.'
+  worlds:
     help: |-
-      &7 /core worlds add <world>.
-      &7 /core worlds remove <world>.
-      &7 /core worlds toggle <world> <module>.
-      &7 /core worlds reset <world>.
+      &7 /core worlds add [world] - &eAdd a world to the list.
+      &7 /core worlds remove [world] - &eRemove a world from the list.
+      &7 /core worlds toggle [world] [module] - &eToggle a module in a world.
+      &7 /core worlds reset [world] - &eEnable every module in a world.
+    modes:
+      whitelist: 'protected'
+      blacklist: 'blocked'
+    notExist: '{prefix}&cThat world doesn''t exist!'
+    alreadyAdded: '{prefix}&cThat world is already on the list.'
+    notAdded: '{prefix}&cThat world isn''t on the list.'
+    added: '{prefix}&aYou''ve added the world &e%s&a to the %s worlds.'
+    removed: '{prefix}&aYou''ve removed the world &e%s&a from the %s worlds.'
+    reset: '{prefix}&aYou''ve reset the modules of the world &e%s&a.'
+    noModule: '{prefix}&cYou must specify the module to toggle. Press Tab to see the available modules.'
+    invalidModule: '{prefix}&cThat module doesn''t exist!'
+    moduleEnabled: '{prefix}&aYou''ve &eenabled&a the module &b%s&a.'
+    moduleDisabled: '{prefix}&aYou''ve &edisabled&a the module &b%s&a.'
+  easterEggs:
+    help: |-
+      &7 /core easterEggs addEasterEgg - &eAdd an easter egg at your location.
+      &7 /core easterEggs removeEasterEgg - &eRemove the easter egg at your location.
+      &7 /core easterEggs clear [player] - &eReset the easter eggs found by a player.
+    disabled: '{prefix}&cEaster eggs are disabled.'
+    clearUsage: '{prefix}&cUsage: &e/core easterEggs clear [player]'
+    offline: '{prefix}&cThe player &e%s &cis offline.'
   open:
-    help: '&7/core open <menu> - &eOpen core menu.'
+    help: '&7 /core open [menu] <player> - &eOpen a core menu.'
   fly:
     activated: '{prefix}&7Your flight mode has been &aactivated&7.'
-    deactivated: '{prefix}&7Your flight mode has been &cdeactivated&7.'    
+    deactivated: '{prefix}&7Your flight mode has been &cdeactivated&7.'
+    notAllowed: '{prefix}&cYou can''t use that command in this world.'
+    all: '{prefix}&7You''ve toggled the flight mode of &eeveryone&7.'
+    other:
+      activated: '{prefix}&7You''ve &aactivated&7 the flight mode of &e%s&7.'
+      deactivated: '{prefix}&7You''ve &cdeactivated&7 the flight mode of &e%s&7.'
   gamemode:
+    usage: '{prefix}&7Usage: &e/gamemode [mode] <player|all>'
     modes:
       CREATIVE: 'Creative'
       SURVIVAL: 'Survival'
@@ -48,29 +86,29 @@ commands:
       SPECTATOR: 'Spectator'
     success:
       self: '{prefix}&7Your gamemode has been updated to &a{mode}&7.'
-      other: '{prefix}&7You has been update the gamemode of &e{player}&7 to &a{mode}&7.'
-      all: '{prefix}&7You has been update the gamemode of &eall&7 to &a{mode}&7.'
+      other: '{prefix}&7You''ve updated the gamemode of &e{player}&7 to &a{mode}&7.'
+      all: '{prefix}&7You''ve updated the gamemode of &eeveryone&7 to &a{mode}&7.'
   coins:
     help: |-
-      &7 /core money add <player> <amount>.
-      &7 /core money remove <player> <amount>.
-      &7 /core money set <player> <amount>.
+      &7 /core money add <player> [amount] - &eAdd coins.
+      &7 /core money remove <player> [amount] - &eRemove coins.
+      &7 /core money set <player> [amount] - &eSet the balance.
     give:
       self: '{prefix}&e%s &7coins added to your balance!'
-      other: '{prefix}&7You''ve added &e%s&7 coins to &b%s&7'' balance.'
+      other: '{prefix}&7You''ve added &e%s&7 coins to &b%s&7''s balance.'
     get:
       self: '{prefix}&7Your balance is &e%s &7coins.'
-      other: '{prefix}&b%s&7'' balance is &e%s&7.'
+      other: '{prefix}&b%s&7''s balance is &e%s &7coins.'
     remove:
       self: '{prefix}&e%s &7coins taken from your balance!'
-      other: '{prefix}&7You''ve taken &e%s&7 coins from &b%s&7'' balance.'    
+      other: '{prefix}&7You''ve taken &e%s&7 coins from &b%s&7''s balance.'
     set:
-      self: '{prefix}&e%s &7coins setted into your balance!'
-      other: '{prefix}&7You''ve set &e%s&7 coins into &b%s&7'' balance.'      
+      self: '{prefix}&7Your balance has been set to &e%s &7coins!'
+      other: '{prefix}&7You''ve set &e%s&7 coins as &b%s&7''s balance.'
   nick:
     help: |-
       &c /nick &8- &7Opens the menu to change your nickname.
-      &c /nick <name> &8- &7Sets your nickname to a specific name.
+      &c /nick [name] &8- &7Sets your nickname to a specific name.
       &c /nick clear &8- &7Removes your current nickname and reverts to your original name.
     notNicked: '{prefix}&cYou are not using a nickname at the moment.'
     setNick: '{prefix}&7Your nickname has been set to: &e%s&7.'
@@ -80,32 +118,32 @@ commands:
   speed:
     help: |-
       &7 /speed help &8- &7Shows this help message.
-      &7 /speed reset &8- &7Resets all speeds at your default speed.
-      &7 /speed <0-10> [player] &8- &7Change your speed or others.
-    reset: '{prefix}&aYour speed has been resetted.'
-    resetOther: '{prefix}&7You''ve back to normal speed of &b%s&7.'
+      &7 /speed reset <player> &8- &7Resets your speed (or another player's) to default.
+      &7 /speed [0-10] <player> &8- &7Changes your speed (or another player's).
+    reset: '{prefix}&aYour speed has been reset.'
+    resetOther: '{prefix}&7You''ve reset the speed of &b%s&7.'
     invalidSpeed: '{prefix}&cPlease, provide a valid speed amount.'
-    setSpeedOther: '{prefix}&7You''ve changed speed to &e%s&7 for &b%s&7.'
+    setSpeedOther: '{prefix}&7You''ve changed the speed to &e%s&7 for &b%s&7.'
     setFlySpeed: '{prefix}&7Your &eflying &7speed has been changed to &b%s&7.'
     setWalkSpeed: '{prefix}&7Your &ewalking &7speed has been changed to &b%s&7.'
   warp:
-    notFound: '{prefix}&cThat warp not exists.'
+    notFound: '{prefix}&cThat warp doesn''t exist.'
     help: |-
-      &7 /warp - &eGet a warp list to tp.
-      &7 /warp <warp> - &eTeleport to warp location.
+      &7 /warp - &eShow the list of warps.
+      &7 /warp [warp] - &eTeleport to a warp.
     tp: '{prefix}&7You''ve been teleported to &e{warp}&7.'
   setwarp:
-    help: '&7 /setwarp <warp> - &eSave a new warp location.'
+    help: '&7 /setwarp [warp] - &eSave a new warp location.'
     alreadyExists: '{prefix}&cThat warp already exists.'
-    success: '{prefix}&7Warp {warp} successfully saved.'
+    success: '{prefix}&7Warp &e{warp}&7 successfully saved.'
   delwarp:
-    help: '&7 /delwarp <warp> - &eRemove an existing warp location.'    
-    success: '{prefix}&7Warp {warp} was successfully deleted.'
+    help: '&7 /delwarp [warp] - &eRemove an existing warp.'
+    success: '{prefix}&7Warp &e{warp}&7 successfully deleted.'
 
 economy:
   add: '{prefix}&a&l+&b %s &fCoins'
-  remove: '{prefix}&c&l-&b %s &fCoins'     
-  set: '{prefix}&6&l=&b %s &fCoins'        
+  remove: '{prefix}&c&l-&b %s &fCoins'
+  set: '{prefix}&6&l=&b %s &fCoins'
 
 language:
   changed: '{prefix}&fYour language has been changed to &e%s&f.'
@@ -113,21 +151,22 @@ language:
 items:
   cooldown: '{prefix}&cYou need to wait <time> seconds!'
 
-noPermission: '&cYou do not have permissions to do that!'
-sectionNotFound: '&f{section}&cdoesn''t exist!'
-languageNotFound: '{prefix}&cThat language not exist!'
-keyNotFound: '&cNeed translation: &f{key}'
+noPermission: '&cYou do not have permission to do that!'
+sectionNotFound: '&f{section} &cdoesn''t exist!'
+languageNotFound: '{prefix}&cThat language doesn''t exist!'
+keyNotFound: '&cMissing translation: &f{key}'
 onlyPlayers: '&cThat option is only for players!'
-onlyConsole: '&cThat option is only for players!'
+onlyConsole: '&cThat option is only for the console!'
 commandNotExist: '&cThat command doesn''t exist!'
-playerNotExist: '{prefix}&cThat player does''nt exist!'
+playerNotExist: '{prefix}&cThat player doesn''t exist!'
 onlyIntegers: '{prefix}&cYou need to write an integer to execute this command.'
+maintenance: '{prefix}&cIn development or under maintenance.'
 
 menus:
-  not-exist: '{prefix}&cThat menu doesn''t exists!'
+  not-exist: '{prefix}&cThat menu doesn''t exist!'
 
 messages:
-  alreadyConnected: '{prefix}&cYou''re already connected to that server!'  
+  alreadyConnected: '{prefix}&cYou''re already connected to that server!'
   alreadySelected: '{prefix}&cYou''ve already selected that!'
 
 error: '&4Error!'
@@ -143,8 +182,8 @@ visibility:
 core:
   cloud:
     group:
-      none: '&cThere is no servers available.'
+      none: '&cThere are no servers available.'
     status:
       available: '&eClick to join'
       maintenance: '&cServer in maintenance'
-      unavailable: '&cNo available servers at moment.'
+      unavailable: '&cNo servers available at the moment.'

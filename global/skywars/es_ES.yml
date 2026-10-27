@@ -1,0 +1,424 @@
+# ------------------------------------------------------------------
+#  SkyWars · Español (sección 'skywars' de FurryCore)
+#  Colores con '&'. {prefix} se sustituye por 'prefix'.
+#  Los '%s' son valores que pone el plugin, en orden; no los quites.
+#  En menús, ítems y marcador se usan como %core_skywars_<clave>%.
+#  Un valor 'null' desactiva el mensaje.
+# ------------------------------------------------------------------
+prefix: '&8[&e&lSkyWars&8] &7'
+
+general:
+  loading: '&7Por favor, entra cuando los datos hayan cargado.'
+  kit-contents: '&7● &eContenido'
+  dialog-how-to-close: '&7Usa &aclick izquierdo &7para cerrar el diálogo.'
+  dialog-closed: '&7Has &ccerrado &7este diálogo.'
+  hologram-changed: '&aAhora has cambiado a: %holo%'
+
+commands:
+  unknown: '{prefix}&cEse comando no existe. Usa &e/sw help&c.'
+  only-players: '{prefix}&cEste comando solo lo puede usar un jugador.'
+  no-permission: '{prefix}&cNo tienes permiso para hacer eso.'
+  error: '{prefix}&cOcurrió un error al ejecutar el comando. Revisa la consola.'
+  # %s: versión, modo
+  about: '&f&lSkyWars v%s &f(%s). Creado por '
+  author-hover: "&7Click para abrir el canal de &cY&fT\n&7de TheJokerDev."
+  modes:
+    lobby: 'lobby'
+    arena: 'servidor de partidas'
+    multi_arena: 'multiarena'
+
+game:
+  full:
+    message: '&cLa partida está llena.'
+  ingame:
+    message: '&cLa partida ya ha empezado.'
+  loading: '&cLa partida se está cargando.'
+  restart: '&cLa partida se está reiniciando.'
+  disabled: '&cEsta arena está en edición.'
+  no-games: '{prefix}&cNo hay partidas disponibles ahora mismo.'
+  queued: '{prefix}&eNo hay partidas disponibles: te hemos puesto en la cola.'
+  already-in-game: '{prefix}&cYa estás en una partida.'
+  not-found: '{prefix}&cNo existe la partida &e%s&c.'
+  sending: '{prefix}&fTe estamos enviando a &b%s&f...'
+  spawn:
+    used: '&cNo quedan puntos de aparición libres.'
+  finish:
+    broadcast:
+      winner: "&7-------------------------------\n&e%s &aganó la partida en &e%s&a!\n&7-------------------------------"
+  time:
+    limit: '&c¡La partida terminó porque se acabó el tiempo!'
+    left:
+      minutes: '&cLa partida termina en %s minuto(s).'
+      seconds: '&cLa partida termina en %s segundo(s).'
+  start:
+    nowfull: '&6¡Servidor &lLLENO&6! La partida empieza en &e%s segundos&6.'
+    countdown: '&9SkyWars empieza en &e%s segundos&9.'
+    countdown-alert: "&a%s\n&e⚠ &c&lHacer equipos en Solo está prohibido &e⚠"
+    countdown-one: '&9SkyWars empieza en &e%s segundo&9.'
+    countdown-minutes: '&9SkyWars empieza en &e%s minuto(s)&9.'
+    countdown-minutes-seconds: '&9SkyWars empieza en &e%s minuto(s) y %s segundos&9.'
+    norequiredplayers: '&4La cuenta atrás se detuvo: no hay suficientes jugadores.'
+    done: '&9La partida está empezando...'
+    released: '&cSerás liberado en %s segundos.'
+    go: '&9¡Que empiece la partida!'
+    go-alert: "&a¡VAMOS!\n"
+    go-alert-chat: '&4¡Hacer equipos en Solo está prohibido!'
+  forcestart: '&aSe ha forzado el inicio de la partida.'
+  players:
+    remain: '&c¡Quedan %s jugadores vivos!'
+  player:
+    death:
+      player: '&6%s &efue asesinado por &6%s'
+      other: '&6%s &emurió.'
+    join: '&7[&a+&7] &8%s &7entró a la partida (%s/%s).'
+    quit: '&7[&c-&7] &8%s &7salió de la partida (%s/%s).'
+    talk: '&cNo puedes hablar hasta que empiece la partida.'
+    blockedcommands: '&cNo puedes usar ese comando en partida.'
+    vote:
+      time: '&5%s &6votó por &a%s&6. &e¡%s votos!'
+      chests: '&5%s &6votó por cofres &a%s&6. &e¡%s votos!'
+  event:
+    refill: "\n&a¡Los cofres se han rellenado!"
+  arrow-hit:
+    - '&e%s ahora tiene &c%s &ede vida.'
+  # %s: víctima, recompensa
+  kill-actionbar: '&e⚔ Mataste a %s · +%s puntos ⚔'
+  # %s: segundos
+  pearl-cooldown: '&cPodrás usar otra perla en &f%s &csegundos.'
+  stats:
+    separator: '&7--------------------------------'
+    position: '&8 ● &7Quedaste en el puesto: &e#%s'
+    duration: '&8 ● &7Duración de la partida: &e%s'
+    kills: '&8 ● &7Bajas: &e%s'
+    accuracy: '&8 ● &7Precisión con el arco: &e%s'
+
+team:
+  # %s: equipo
+  joined: '{prefix}&7Estás en el equipo %s&7.'
+  eliminated: '&7¡El equipo %s &7ha sido eliminado!'
+  # %s: equipo, jugadores
+  win-broadcast: "&7-------------------------------\n&a¡Gana el equipo %s&a!\n&7%s\n&7-------------------------------"
+  colors:
+    red: 'Rojo'
+    blue: 'Azul'
+    green: 'Verde'
+    yellow: 'Amarillo'
+    aqua: 'Celeste'
+    white: 'Blanco'
+    pink: 'Rosa'
+    gray: 'Gris'
+    gold: 'Dorado'
+    purple: 'Morado'
+    cyan: 'Turquesa'
+    dark_green: 'Verde oscuro'
+
+titles:
+  join:
+    title: '&c&l%arena%'
+    subtitle: '&f¡Suerte!'
+  border:
+    title: '&4Cerrando el borde...'
+    subtitle: '&7¡Corre por tu vida!'
+  draw:
+    title: '&e&l¡Fin de la partida!'
+    subtitle: '&7¡Hubo un empate!'
+  win:
+    title: '&e&l¡Fin de la partida!'
+    # %s: ganador(es)
+    subtitle: '&b%s &7ganó la partida.'
+    # %s: equipo
+    team-subtitle: '&7¡Ganó el equipo %s&7!'
+  death:
+    titles:
+      - '&c&l¡BAM!'
+      - '&c&lF :C'
+      - '&c&lTake the L'
+      - '&c&l¡Has muerto!'
+    subtitles:
+      - '&7¡Mejor suerte la próxima!'
+      - '&7¡Ahora eres espectador!'
+      - '&7F amigo'
+
+death:
+  self:
+    void:
+      - '&6%s &epensó que sobreviviría al vacío.'
+      - '&6%s &epensó que la partida seguía en el vacío.'
+    fall:
+      - '&6%s &epensó que podía volar.'
+      - '&6%s &ese rompió las piernas y murió.'
+    lava:
+      - '&6%s &epensó que nadar en lava era buena idea.'
+      - '&6%s &epensó que la lava era su amiga.'
+      - '&6%s &ecreyó que hacía un waterdrop. Psst: era lava.'
+    drowned:
+      - '&6%s &eno pudo aguantar la respiración.'
+      - '&6%s &ecreyó que era Aquaman.'
+      - '&6%s &ese ahogó.'
+    general:
+      - '&6%s &emurió.'
+      - '&6%s &epasó a mejor vida. RIP'
+  killed:
+    void:
+      - '&6%s &efue arrojado al vacío por &c%s&e.'
+      - '&6%s &emurió en el vacío gracias a &c%s&e.'
+    fall:
+      - '&6%s &ese rompió las piernas huyendo de &c%s&e.'
+      - '&6%s &emurió intentando escapar de &c%s&e.'
+    lava:
+      - '&6%s &emurió quemado escapando de &c%s&e.'
+    projectile:
+      - '&6%s &emurió por un proyectil de &c%s&e.'
+    general:
+      - '&6%s &emurió a manos de &c%s&e.'
+
+play-again:
+  header:
+    - ''
+    - '&eHas terminado, ¿qué quieres hacer?'
+  footer:
+    - ''
+  separator: '&8&l • '
+  again:
+    text: '&a&lVolver a jugar'
+    hover: "&aVolver a jugar\n&7Entra a una partida nueva\n&7sin volver al lobby."
+  auto:
+    text: '&6&lModo automático'
+    hover: "&6Modo automático\n&7Al terminar cada partida\n&7entrarás a otra sola."
+  leave:
+    text: '&c&lSalir'
+    hover: "&cSalir\n&7Vuelve al lobby."
+  auto-cancel:
+    text: '&c&l[CANCELAR]'
+    hover: '&cClick para desactivar el modo automático'
+  auto-searching: '&e&l¡Te buscamos otra partida en 5 segundos!'
+  auto-disabled: '&c¡El modo automático fue desactivado!'
+  auto-on: '&a¡Modo automático activado!'
+  auto-off: '&cModo automático desactivado: no entrarás solo a nuevas partidas.'
+  only-in-game: '&c¡Este comando solo se puede usar en partida!'
+  not-now: '&cNo puedes volver a jugar ahora, inténtalo cuando termines.'
+  help-now: '&a/playagain now &6Busca otra partida al instante.'
+  help-auto: '&a/playagain automode &6Activa o desactiva el modo automático.'
+
+ranks:
+  # %s: rango
+  need-rank: '&cPara hacer esto necesitas al menos &r%s&c.'
+  store-button: '&4&l¡Consíguelo AQUÍ!'
+  store-hover: '&a¡Click para ir a nuestra &d&ltienda&a!'
+  vote-events: '&6Héroe'
+  vote-projectiles: '&aVIP'
+  vote-scenarios: '&aVIP'
+  vote-time: '&aVIP'
+  vote-chest: '&aVIP'
+  games-selector: '&6Héroe'
+
+variable:
+  time-played: '{DAYS}{HOURS}{MINUTES}{SECONDS}'
+  time-played-second: '%s segundo'
+  time-played-seconds: '%s segundos'
+  time-played-minute: '%s minuto, '
+  time-played-minutes: '%s minutos, '
+  time-played-hour: '%s hora, '
+  time-played-hours: '%s horas, '
+  time-played-day: '%s día, '
+  time-played-days: '%s días, '
+
+vote:
+  menu:
+    title: '&aVotar'
+  only1: '&cSolo puedes votar una vez.'
+  votes: '&4%s votos'
+  chests:
+    title: '&7&lCofres'
+    name: '&7&lCofres'
+    lore: '&3¡Vota qué ítems quieres encontrar en los cofres!'
+    successful: '&aVotaste por %s'
+  time:
+    title: '&7&lHora'
+    name: '&6&lHora'
+    lore: '&6¡Vota a qué hora del día se jugará!'
+    successful: '&aVotaste por %s'
+    day:
+      name: '&e&lDe día'
+      lore1: '&7Vota por de día'
+      lore2: '&4%s votos'
+    night:
+      name: '&8&lDe noche'
+      lore1: '&7Vota por de noche'
+      lore2: '&4%s votos'
+    sunset:
+      name: '&4&lAtardecer'
+      lore1: '&7Vota por atardecer'
+      lore2: '&4%s votos'
+  projectiles:
+    selected: '&6Proyectiles: &a%s'
+    player-vote: '&6¡&5%s &6votó proyectiles &a%s&6! &e¡%s votos!'
+    names:
+      none: 'Sin proyectiles'
+      normal: 'Normales'
+      block_breaker: 'Rompe bloques'
+  events:
+    none-selected: '&6Nadie votó eventos adicionales: solo habrá el evento &eRelleno&6.'
+    selected: '&6Evento seleccionado: &a%s'
+    player-vote: '&6¡&5%s &6votó el evento &a%s&6! &e¡%s votos!'
+    names:
+      none: 'Ninguno'
+      dragon: 'Dragón bombardero'
+      tnt_rain: 'Lluvia de TNT'
+      wither: 'Wither'
+      border: 'Borde'
+      zombies: 'Zombis'
+  scenarios:
+    none-selected: '&6Nadie votó escenario: será una partida normal.'
+    selected: '&6Escenario seleccionado: &a%s'
+    anticlean-heal: '&a¡Te curaste gracias al escenario AntiClean!'
+    player-vote: '&6¡&5%s &6votó el escenario &a%s&6! &e¡%s votos!'
+    names:
+      speed: 'Velocidad'
+      strength: 'Fuerza'
+      nofall: 'Pies de pluma'
+
+item:
+  kits:
+    name: '&aSelector de kits'
+    lore: '&7Click para abrir el selector de kits'
+  settings:
+    name: '&aOpciones de SkyWars'
+    lore: '&7¡Personaliza tu SkyWars!'
+  vote:
+    name: '&aVotar'
+    lore: '&7Vota cómo se jugará.'
+  spectator:
+    tracker:
+      name: '&aRastreador de jugadores'
+    exit:
+      name: '&aSalir al lobby'
+
+selected:
+  chest-default: '&6Cofres &aNormales&6: nadie votó.'
+  chest: '&6Cofres seleccionados: &a%s'
+  chest-basic: 'Básicos'
+  chest-normal: 'Normales'
+  chest-overpowered: 'Sobrecargados'
+  time-default: '&6Hora &ade día&6: nadie votó.'
+  time: '&6Hora seleccionada: &a%s'
+  time-day: 'De día'
+  time-night: 'De noche'
+  time-sunset: 'Atardecer'
+
+kit:
+  name:
+    purchased: '&a%s'
+    free: '&a%s - Kit gratis'
+    notpurchased: '&c%s'
+  cost: '&6Precio: &a%s puntos'
+  contents: '&eContenido:'
+  contents-format: '&7- &a%s'
+  # %s: kit
+  selected-actionbar: '&fKit seleccionado: &b%s'
+
+kits:
+  menu:
+    title: 'Selección de kit'
+  none: '&cAquí no hay kits.'
+
+settings:
+  menu:
+    title: '&aOpciones de SkyWars'
+    boxes:
+      title: '&aColores del cristal'
+      name: '&7&lColor del cristal'
+      lore: '&3¡Cambia el color del cristal en el que apareces!'
+    trails:
+      title: '&aRastros de flechas'
+      name: '&6&lRastro de flecha'
+      lore: '&5Cambia el rastro de tus flechas'
+  trails:
+    default:
+      name: '&3Por defecto'
+    slime:
+      name: '&3Slime'
+      lore: '&7Solo rango'
+    flame:
+      name: '&3Fuego'
+      lore: '&7Solo rango'
+    water:
+      name: '&3Agua'
+      lore: '&7Solo rango'
+    lava:
+      name: '&3Lava'
+      lore: '&7Solo rango'
+    potion:
+      name: '&3Poción'
+      lore: '&7Solo rango'
+    notes:
+      name: '&3Notas'
+      lore: '&7Solo rango'
+
+tracker:
+  menu:
+    title: '&7Rastreador de jugadores'
+
+player:
+  select:
+    trail: '&a¡Seleccionaste el rastro %s!'
+    wineffect: '&a¡Seleccionaste el efecto de victoria %s!'
+    wineffect-default: '&a¡Restauraste el efecto de victoria por defecto!'
+    killsound: '&a¡Seleccionaste el sonido de baja %s!'
+    killsound-default: '&a¡Restauraste el sonido por defecto!'
+    colour-default: '&a¡Restauraste el cristal por defecto!'
+    colour: '&a¡Seleccionaste el cristal %s!'
+    kit: '&aSeleccionaste el kit %s'
+    balloon: '&aSeleccionaste el globo: %s'
+  needpermissions:
+    settings:
+      colour: '&c¡No tienes permiso para este color!'
+      trail: '&c¡No tienes permiso para este rastro!'
+      wineffect: '&c¡No tienes permiso para este efecto de victoria!'
+      killsound: '&c¡No tienes permiso para este sonido de baja!'
+      balloon: '&c¡No tienes permiso para este globo!'
+    vote:
+      time: '&c¡No tienes permiso para votar la hora!'
+      chest: '&c¡No tienes permiso para votar los cofres!'
+    kit: '&c¡No tienes permiso para usar este kit!'
+  needmoney:
+    box: '&c¡No te alcanza para esta caja!'
+    winEffect: '&c¡No te alcanza para este efecto de victoria!'
+    trail: '&c¡No te alcanza para este rastro!'
+    killSound: '&c¡No te alcanza para este sonido de baja!'
+    balloon: '&c¡No te alcanza para este globo!'
+    kit: '&c¡No te alcanza para este kit!'
+  already:
+    kit: '&c¡Ya tienes %s!'
+  purchase:
+    kit: '&aCompra realizada.'
+  coins:
+    add: '&6+%s puntos'
+    less: '&6-%s puntos'
+  teleport:
+    lobby: '&aVolviendo al lobby...'
+  death: '&c¡Estás fuera de la partida! Escribe &6/salir &cpara salir.'
+  ability:
+    purchase: '&aCompraste: %ability%'
+    afford: '&c¡No te alcanza para esto!'
+    purchased: '&c¡Ya tienes esta habilidad!'
+    unavailable: '&cNo puedes comprar esto hasta desbloquear los niveles anteriores.'
+    disabled: '&cNo puedes comprar mejoras de una habilidad desactivada.'
+
+motd:
+  waiting: '&2Esperando'
+  starting: '&6Empezando'
+  ingame: '&4En juego'
+  ending: '&4Terminando'
+  loading: '&cCargando'
+  full: '&5Lleno'
+
+dialogs:
+  report:
+    title: '&c&lReportes'
+    subtitle: '&7Escribe el motivo del reporte'
+    action-bar: '&7Estás reportando a &c%player_name%'
+
+tab:
+  prefix: '&e'
+  suffix: '%s'
