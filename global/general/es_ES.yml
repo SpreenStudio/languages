@@ -1,0 +1,152 @@
+commands:
+  help: |-
+    {center}{prefix}&fHelp &7● &e<opcional> / [requerido]
+    &7
+    {commands}
+    &7
+  setlobby:
+    help: '&7/core setlobby - &eEstablece el spawnpoint.'
+    success: '{prefix}&aLobby spawnpoint establecido!'
+  lang:
+    help: |-
+      &7 /core lang get <player> - &eObtén el lenguaje.
+      &7 /core lang set [lang] <player> - &eEstablece el lenguaje.
+      &7 /core lang reset <player> - &eReestablece el lenguaje.
+    get: '{prefix}&fTu lenguaje es &e{lang}&f.'
+    get_other: '{prefix}&fEl lenguaje de &b{player} &fes &e{lang}&f.'    
+    set: '{prefix}&f¡Tu lenguaje cambió a &e{lang}&f!'
+    reset: '{prefix}&f¡Tu lenguaje fue reestablecido a &e{lang}&f!'
+    reset_other: '{prefix}&f¡El lenguaje de &b{player} &ffue reestablecido a &e{lang}&f!'
+    set_other: '{prefix}&f¡Lenguaje de &b{player} &fha sido cambiado a &e{lang}&f!'    
+  reload:
+    help: |-
+      &7 /core reload - &eRecarga todos los archivos.
+      &7 /core reload local - &eRecarga solamente archivos locales.
+    success: '{prefix}&aTodos los archivos han sido reiniciados!'
+    local: '{prefix}&aLos archivos locales han sido reiniciados!'
+  fly:
+    activated: '{prefix}&7Tu modo de vuelo ha sido &aactivado&7.'
+    deactivated: '{prefix}&7Tu modo de vuelo ha sido &cdesactivado&7.'
+  jumppads:
+    help: |-
+      &7 /core jumppads <material> <id>
+      &7 /core jumppads <altura> <multiplicador>
+      &7 /core jumppads <fuerza> <multiplicador>
+      &7 /core jumppads <sonido> <id>
+  worlds: 
+    help: |-
+      &7 /core worlds add <mundo>.
+      &7 /core worlds remove <mundo>.
+      &7 /core worlds toggle <mundo> <módulo>.
+      &7 /core worlds reset <mundo>.
+  open:
+    help: '&7/core open <menu> - &eAbre menú del core.'
+  gamemode:
+    modes:
+      CREATIVE: 'Creativo'
+      SURVIVAL: 'Supervivencia'
+      ADVENTURE: 'Aventura'
+      SPECTATOR: 'Espectador'
+    success:
+      self: '{prefix}&7Tu modo de juego ha cambiado a &a{mode}&7.'
+      other: '{prefix}&7Has cambiado el modo de juego de &e{player}&7 a &a{mode}&7.'    
+      all: '{prefix}&7Has cambiado el modo de juego de &etodos&7 a &a{mode}&7.'    
+  coins:
+    help: |-
+      &7 /core money add <jugador> <cantidad>.
+      &7 /core money remove <jugador> <cantidad>.
+      &7 /core money set <jugador> <cantidad>.    
+    give:
+      self: '{prefix}&7¡&e%s &7monedas agregadas a tu balance!'
+      other: '{prefix}&7Añadiste &e%s&7 monedas al balance de &b%s&7.'
+    get:
+      self: '{prefix}&7Tu balance es de &e%s &7monedas.'
+      other: '{prefix}&7El balance de &b%s&7 es de &e%s&7.'
+    remove:
+      self: '{prefix}&7¡&e%s &7monedas han sido removidas de tu balance!'
+      other: '{prefix}&7Se han removido &e%s&7 monedas del balance de &b%s&7.'    
+    set:
+      self: '{prefix}&7¡&e%s &7monedas han sido establecidas como tu balance!'
+      other: '{prefix}&7Estableciste en &e%s&7 monedas el balance de &b%s&7.'  
+  nick:
+    help: |-
+      &c /nick &8- &7Abre el menú para cambiar de nick.
+      &c /nick <nombre> &8- &7Cambia a un nick específico.
+      &c /nick clear &8- &7Remueve tu nick actual.
+    notNicked: '{prefix}&cNo estás usando un nick en este momento.'
+    setNick: '{prefix}&7Tu nick ha sido establecido en: &e%s&7.'
+    clear: '{prefix}&cHas removido tu nick y vuelves a ser tu.'
+    isNicked: '{prefix}&cYa estás disfrazado actualmente.'
+    invalidNick: '{prefix}&cEl nick proporcionado no cumple con los requisitos. (Entre 3 y 16 caracteres, letras, números o guiones)'
+  speed:
+    help: |-
+      &7 /speed help &8- &7Muestra esta ayuda.
+      &7 /speed reset &8- &7Regresa todas las velocidades a las predeterminadas.
+      &7 /speed <0-10> [player] &8- &7Cambia tu velocidad o la de otro.
+    reset: '{prefix}&aTu velocidad ha sido restaurada a la predeterminada.'
+    resetOther: '{prefix}&7Regresaste a la normalidad las velocidades de &b%s&7.'
+    invalidSpeed: '{prefix}&cPor favor, ingresa una cantidad de velocidad válida.'
+    setSpeedOther: '{prefix}&7Cambiaste la velocidad a &e%s&7 de &b%s&7.'
+    setFlySpeed: '{prefix}&7Tu velocidad de &evuelo &7ha sido cambiada a &b%s&7.'
+    setWalkSpeed: '{prefix}&7Tu velocidad de &ecaminado &7ha sido cambiado a &b%s&7.'    
+  warp:
+    notFound: '{prefix}&cEse warp no existe.'
+    help: |-
+      &7 /warp - &eMuestra una lista de los warps disponibles.
+      &7 /warp <warp> - &eTeletransportate a un warp.
+    tp: '{prefix}&7Has sido teletransportado a &e{warp}&7.' 
+  setwarp:
+    help: '&7 /setwarp <warp> - &eGuarda un nuevo warp.'
+    alreadyExists: '{prefix}&cEse warp ya existe'
+    success: '{prefix}&7Warp {warp} guardado correctamente.'
+  delwarp:
+    help: '&7 /delwarp <warp> - &eElimina un warp existente.'
+    success: '{prefix}&7Warp {warp} eliminado correctamente.'
+
+economy:
+  add: '{prefix}&a&l+&b %s &fCoins'
+  remove: '{prefix}&c&l-&b %s &fCoins'   
+  set: '{prefix}&6&l=&b %s &fCoins'     
+
+language:
+  changed: '{prefix}&fTu idioma ha cambiado a &e%s&f.'  
+
+items:
+  cooldown: '{prefix}&c¡Debes esperar <time> segundos!'    
+
+noPermission: '&c¡No tienes permiso para hacer eso!'
+languageNotFound: '{prefix}&cEse lenguaje no existe.'
+sectionNotFound: '&c¡&f{section} &cno existe!'
+keyNotFound: '&cSin traducción: &f{key}'
+onlyPlayers: '&c¡Esta opción es solo para jugadores!'
+onlyConsole: '&c¡Esta opción es solo para consola!'
+commandNotExist: '&c¡Ese comando no existe!'
+playerNotExist: '{prefix}&c¡Ese jugador no existe!'
+onlyIntegers: '{prefix}&cDebes escribir un número para ejecutar este comando.'
+maintenance: '{prefix}&cEn desarrollo o mantenimiento.'
+
+messages:
+  alreadyConnected: '{prefix}&c¡Ya estás conectado a ese servidor!'
+  alreadySelected: '{prefix}&c¡Ya tienes seleccionado ese mismo!'
+
+menus:
+  not-exist: '{prefix}&cEse menú no existe!'
+
+error: '&4¡Error!'
+
+nicked:
+  actionbar: '&fActualmente estás &cDISFRAZADO&f.'
+
+visibility:
+  ALL: "&aTodos"
+  RANKS: "&6Solo rangos"
+  NOBODY: "&cNadie"
+
+core:
+  cloud:
+    group:
+      none: '&c¡No hay servidores disponibles en este momento!'
+    status:
+      available: '&eClick para conectar'
+      maintenance: '&cServidor en mantenimiento'
+      unavailable: '&cNo hay servidores disponibles'  

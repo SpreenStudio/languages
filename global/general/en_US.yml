@@ -1,0 +1,150 @@
+commands:
+  help: |-
+    {center}{prefix}&fHelp &7● &e<optional> / [required]
+    &7
+    {commands}
+    &7
+  setlobby:
+    help: '&7/core setlobby - &eSet lobby spawnpoint.'
+    success: '{prefix}&aLobby spawnpoint setted!'
+  lang:
+    help: |-
+      &7 /core lang get <player> - &eGet the language.
+      &7 /core lang set [lang] <player> - &eSet the language.
+      &7 /core lang reset <player> - &eReset to default language.
+    get: '{prefix}&fYour language is &e{lang}&f.'
+    get_other: '{prefix}&b{player}&f''s language is &e{lang}&f.'
+    set: '{prefix}&fYour language now is &e{lang}&a!'
+    reset: '{prefix}&fYour language has been restored to &e{lang}&f!'
+    set_other: '{prefix}&fLanguage of &b{player} &frestored to &e{lang}&f.'
+  reload:
+    help: |-
+      &7 /core reload - &eReload all files.
+      &7 /core reload local - &eReload only local files.
+    success: '{prefix}&aAll files have been reloaded!'
+    local: '{prefix}&aLocal files have been reloaded!'
+  jumppads:
+    help: |-
+      &7 /core jumppads <material> <id>
+      &7 /core jumppads <height> <multiplier>
+      &7 /core jumppads <length> <multiplier>
+      &7 /core jumppads <sound> <id>
+  worlds: 
+    help: |-
+      &7 /core worlds add <world>.
+      &7 /core worlds remove <world>.
+      &7 /core worlds toggle <world> <module>.
+      &7 /core worlds reset <world>.
+  open:
+    help: '&7/core open <menu> - &eOpen core menu.'
+  fly:
+    activated: '{prefix}&7Your flight mode has been &aactivated&7.'
+    deactivated: '{prefix}&7Your flight mode has been &cdeactivated&7.'    
+  gamemode:
+    modes:
+      CREATIVE: 'Creative'
+      SURVIVAL: 'Survival'
+      ADVENTURE: 'Adventure'
+      SPECTATOR: 'Spectator'
+    success:
+      self: '{prefix}&7Your gamemode has been updated to &a{mode}&7.'
+      other: '{prefix}&7You has been update the gamemode of &e{player}&7 to &a{mode}&7.'
+      all: '{prefix}&7You has been update the gamemode of &eall&7 to &a{mode}&7.'
+  coins:
+    help: |-
+      &7 /core money add <player> <amount>.
+      &7 /core money remove <player> <amount>.
+      &7 /core money set <player> <amount>.
+    give:
+      self: '{prefix}&e%s &7coins added to your balance!'
+      other: '{prefix}&7You''ve added &e%s&7 coins to &b%s&7'' balance.'
+    get:
+      self: '{prefix}&7Your balance is &e%s &7coins.'
+      other: '{prefix}&b%s&7'' balance is &e%s&7.'
+    remove:
+      self: '{prefix}&e%s &7coins taken from your balance!'
+      other: '{prefix}&7You''ve taken &e%s&7 coins from &b%s&7'' balance.'    
+    set:
+      self: '{prefix}&e%s &7coins setted into your balance!'
+      other: '{prefix}&7You''ve set &e%s&7 coins into &b%s&7'' balance.'      
+  nick:
+    help: |-
+      &c /nick &8- &7Opens the menu to change your nickname.
+      &c /nick <name> &8- &7Sets your nickname to a specific name.
+      &c /nick clear &8- &7Removes your current nickname and reverts to your original name.
+    notNicked: '{prefix}&cYou are not using a nickname at the moment.'
+    setNick: '{prefix}&7Your nickname has been set to: &e%s&7.'
+    clear: '{prefix}&cYou have removed your nickname and reverted to your original name.'
+    isNicked: '{prefix}&cYou are already nicked at the moment.'
+    invalidNick: '{prefix}&cThe provided nickname does not meet the requirements. (Between 3 and 16 characters, letters, numbers, or hyphens)'
+  speed:
+    help: |-
+      &7 /speed help &8- &7Shows this help message.
+      &7 /speed reset &8- &7Resets all speeds at your default speed.
+      &7 /speed <0-10> [player] &8- &7Change your speed or others.
+    reset: '{prefix}&aYour speed has been resetted.'
+    resetOther: '{prefix}&7You''ve back to normal speed of &b%s&7.'
+    invalidSpeed: '{prefix}&cPlease, provide a valid speed amount.'
+    setSpeedOther: '{prefix}&7You''ve changed speed to &e%s&7 for &b%s&7.'
+    setFlySpeed: '{prefix}&7Your &eflying &7speed has been changed to &b%s&7.'
+    setWalkSpeed: '{prefix}&7Your &ewalking &7speed has been changed to &b%s&7.'
+  warp:
+    notFound: '{prefix}&cThat warp not exists.'
+    help: |-
+      &7 /warp - &eGet a warp list to tp.
+      &7 /warp <warp> - &eTeleport to warp location.
+    tp: '{prefix}&7You''ve been teleported to &e{warp}&7.'
+  setwarp:
+    help: '&7 /setwarp <warp> - &eSave a new warp location.'
+    alreadyExists: '{prefix}&cThat warp already exists.'
+    success: '{prefix}&7Warp {warp} successfully saved.'
+  delwarp:
+    help: '&7 /delwarp <warp> - &eRemove an existing warp location.'    
+    success: '{prefix}&7Warp {warp} was successfully deleted.'
+
+economy:
+  add: '{prefix}&a&l+&b %s &fCoins'
+  remove: '{prefix}&c&l-&b %s &fCoins'     
+  set: '{prefix}&6&l=&b %s &fCoins'        
+
+language:
+  changed: '{prefix}&fYour language has been changed to &e%s&f.'
+
+items:
+  cooldown: '{prefix}&cYou need to wait <time> seconds!'
+
+noPermission: '&cYou do not have permissions to do that!'
+sectionNotFound: '&f{section}&cdoesn''t exist!'
+languageNotFound: '{prefix}&cThat language not exist!'
+keyNotFound: '&cNeed translation: &f{key}'
+onlyPlayers: '&cThat option is only for players!'
+onlyConsole: '&cThat option is only for players!'
+commandNotExist: '&cThat command doesn''t exist!'
+playerNotExist: '{prefix}&cThat player does''nt exist!'
+onlyIntegers: '{prefix}&cYou need to write an integer to execute this command.'
+
+menus:
+  not-exist: '{prefix}&cThat menu doesn''t exists!'
+
+messages:
+  alreadyConnected: '{prefix}&cYou''re already connected to that server!'  
+  alreadySelected: '{prefix}&cYou''ve already selected that!'
+
+error: '&4Error!'
+
+nicked:
+  actionbar: '&fYou are currently &cNICKED&f.'
+
+visibility:
+  ALL: "&aAll"
+  RANKS: "&6Only ranks"
+  NOBODY: "&cNobody"
+
+core:
+  cloud:
+    group:
+      none: '&cThere is no servers available.'
+    status:
+      available: '&eClick to join'
+      maintenance: '&cServer in maintenance'
+      unavailable: '&cNo available servers at moment.'
