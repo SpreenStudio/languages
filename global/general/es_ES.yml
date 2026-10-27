@@ -109,12 +109,15 @@ commands:
     help: |-
       &c /nick &8- &7Abre el menú para cambiar de nick.
       &c /nick [nombre] &8- &7Cambia a un nick específico.
+      &c /nick [nombre] [rango] &8- &7Cambia a un nick específico mostrando otro rango.
       &c /nick clear &8- &7Quita tu nick actual.
     notNicked: '{prefix}&cNo estás usando un nick en este momento.'
     setNick: '{prefix}&7Tu nick ha sido establecido en: &e%s&7.'
     clear: '{prefix}&cHas quitado tu nick y vuelves a ser tú.'
     isNicked: '{prefix}&cYa estás disfrazado actualmente.'
     invalidNick: '{prefix}&cEl nick proporcionado no cumple con los requisitos. (Entre 3 y 16 caracteres, letras, números o guiones)'
+    invalidRank: '{prefix}&cEl rango &e%s &cno existe.'
+    noRankPermission: '{prefix}&cNo tienes permiso para usar el rango &e%s &cen tu nick.'
   speed:
     help: |-
       &7 /speed help &8- &7Muestra esta ayuda.

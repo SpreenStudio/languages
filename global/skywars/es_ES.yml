@@ -1,8 +1,9 @@
 # ------------------------------------------------------------------
-#  SkyWars · Español (sección 'skywars' de FurryCore)
+#  SkyWars · Español (sección 'skywars' de los idiomas de FurryCore)
 #  Colores con '&'. {prefix} se sustituye por 'prefix'.
 #  Los '%s' son valores que pone el plugin, en orden; no los quites.
-#  En menús, ítems y marcador se usan como %core_skywars_<clave>%.
+#  En los YAML del plugin (menús, ítems, marcador...) se usan como
+#  %core_skywars_<clave>%. Una lista ocupa varias líneas en un ítem.
 #  Un valor 'null' desactiva el mensaje.
 # ------------------------------------------------------------------
 prefix: '&8[&e&lSkyWars&8] &7'
@@ -12,7 +13,9 @@ general:
   kit-contents: '&7● &eContenido'
   dialog-how-to-close: '&7Usa &aclick izquierdo &7para cerrar el diálogo.'
   dialog-closed: '&7Has &ccerrado &7este diálogo.'
-  hologram-changed: '&aAhora has cambiado a: %holo%'
+  default: '&cPor defecto'
+  in-development: '&c¡En desarrollo!'
+  no-kit: 'Sin kit'
 
 commands:
   unknown: '{prefix}&cEse comando no existe. Usa &e/sw help&c.'
@@ -26,6 +29,32 @@ commands:
     lobby: 'lobby'
     arena: 'servidor de partidas'
     multi_arena: 'multiarena'
+  only-lobby: '{prefix}&c¡Este comando solo se puede usar en el lobby!'
+  player-not-found: '{prefix}&c%s no está conectado o no existe.'
+  forcestart:
+    not-enough: '{prefix}&cHacen falta al menos 2 jugadores en la partida para empezarla.'
+  open:
+    no-menu: '{prefix}&cDebes indicar un menú.'
+  help:
+    header: '&8---------- &7[&eSkyWars&7] &a%s &8----------'
+    footer: '&8-----------------------------------'
+    arena: '&a/sw arena &a- &bAyuda de los comandos de arenas'
+    coins: '&a/sw coins &a- &bVer tus monedas'
+    coins-admin: "&a/sw coins &eadd <cantidad> [jugador] &a- &bDar monedas\n&a/sw coins &eremove <cantidad> [jugador] &a- &bQuitar monedas"
+    forcestart: '&a/sw &eforcestart &a- &bForzar el inicio de la partida'
+    games: '&a/sw &egames &a- &bAbrir el menú de partidas'
+    hologram: '&a/sw hologram &eadd|remove [#] &a| &etop <id> add|remove [#] &a- &bHologramas del lobby'
+    join: '&a/sw join &e[arena] &a- &bEntrar a una partida (o a la mejor disponible)'
+    lobbyspawn: '&a/sw lobbyspawn &a- &bFijar el spawn del lobby'
+    open: '&a/sw &eopen lshop &a- &bAbrir la tienda de kits del lobby'
+    reload: '&a/sw reload &a- &bAyuda para recargar archivos'
+    tp: '&a/sw tp &e<mundo> &a- &bTeletransportarse a otro mundo'
+
+coins:
+  # %s: monedas
+  balance: '{prefix}&aMonedas: &e%s'
+  usage-add: '{prefix}&cUso: /sw coins add <cantidad> [jugador]'
+  usage-remove: '{prefix}&cUso: /sw coins remove <cantidad> [jugador]'
 
 game:
   full:
@@ -139,6 +168,23 @@ titles:
       - '&7¡Ahora eres espectador!'
       - '&7F amigo'
 
+events:
+  # Títulos de eventos de las arenas (games/<mapa>.yml → events) y del marcador.
+  refill: 'Relleno'
+  draw: 'Empate'
+  dragon:
+    title: '&5Dragón'
+    subtitle: '&7¡Liberado!'
+  tnt-rain:
+    title: '&cLluvia de TNT'
+    subtitle: '&7¡Se aproxima!'
+  wither:
+    title: '&4Wither'
+    subtitle: '&7¡Ha aparecido!'
+  zombies:
+    title: '&2Zombis'
+    subtitle: '&7¡Huye de los zombis!'
+
 death:
   self:
     void:
@@ -199,6 +245,8 @@ play-again:
   not-now: '&cNo puedes volver a jugar ahora, inténtalo cuando termines.'
   help-now: '&a/playagain now &6Busca otra partida al instante.'
   help-auto: '&a/playagain automode &6Activa o desactiva el modo automático.'
+  unknown: '{prefix}&cEse comando no existe. Usa &e/playagain&c.'
+  help-header: '&9---------- &e&lplayagain&9 ----------'
 
 ranks:
   # %s: rango
@@ -257,6 +305,7 @@ vote:
       none: 'Sin proyectiles'
       normal: 'Normales'
       block_breaker: 'Rompe bloques'
+    already-chosen: '&cYa se eligieron los proyectiles de esta partida.'
   events:
     none-selected: '&6Nadie votó eventos adicionales: solo habrá el evento &eRelleno&6.'
     selected: '&6Evento seleccionado: &a%s'
@@ -294,6 +343,186 @@ item:
     exit:
       name: '&aSalir al lobby'
 
+items:
+  spectator:
+    tracker:
+      name: '&e&lRastreador'
+      lore:
+        - ''
+        - '&f Abre y selecciona a un jugador'
+        - '&f para observar su partida.'
+        - ''
+      item:
+        lore:
+          - '&7¡Haz click derecho para observar a otros jugadores!'
+        name: '&a&lTeletransportador&r &7(Click derecho)'
+      players-head:
+        lore:
+          - '&7Salud: &f%player_health_rounded%%'
+          - '&7Comida: &f%player_food_level%'
+          - ''
+          - '&f¡Click izquierdo para observar!'
+          - '&f¡Click derecho para reportar!'
+    settings:
+      name: '&6&lAjustes'
+      lore:
+        - ''
+        - '&f Abre y selecciona tus ajustes'
+        - '&f del modo espectador.'
+        - ''
+    play-again:
+      name: '&b&lJugar de nuevo'
+      lore:
+        - ''
+        - '&f Haz clic para ir a'
+        - '&f jugar otra partida.'
+        - ''
+    leave:
+      name: '&c&lSalir'
+      lore:
+        - ''
+        - '&f Haz clic para volver'
+        - '&f al lobby de SkyWars.'
+        - ''
+  settings-items:
+    current-balloon:
+      name: '&aGlobo seleccionado: &e<balloonName>'
+    clear-balloon:
+      lore:
+        - '&7Click para quitar'
+        - '&7tu globo.'
+    boxes-menu:
+      lore:
+        - '&7Cambia tu caja al'
+        - '&7entrar en partida.'
+    clear-box:
+      lore:
+        - '&7Click para restablecer'
+        - '&7tu caja en partida.'
+    reset: '&cRestablecer'
+    clear-kill-sounds:
+      lore:
+        - '&7Click para restablecer'
+        - '&7tu sonido de muerte.'
+    clear-trail:
+      lore:
+        - '&7Click para restablecer'
+        - '&7tus partículas de flecha.'
+    clear-win-effect:
+      lore:
+        - '&7Click para restablecer'
+        - '&7tu efecto al ganar.'
+    current-box:
+      lore:
+        - '&7Tienes seleccionada la Caja:'
+        - ' '
+        - '&e<boxName>'
+      name: '&aCaja Seleccionada: &e<boxName>'
+    kill-sound:
+      name: '&7Seleccionado: &e<killSound>'
+    settings-menu:
+      lore:
+        - '&7Click para abrir'
+      name: '&6Ajustes de SkyWars'
+    trail:
+      name: '&7Seleccionado: &e<trail>'
+    trails-menu:
+      lore:
+        - '&7Cambia la partícula'
+        - '&7al tirar flechas.'
+      name: '&bPartículas de Flechas'
+    win-effect:
+      name: '&7Seleccionado: &e<winEffect>'
+    win-effects-menu:
+      lore:
+        - '&7Cambia tu efecto al'
+        - '&7ganar una partida'
+  general-items:
+    back:
+      lore:
+        - '&7Regresar al menú anterior'
+      name: '&9Regresar'
+    close:
+      lore:
+        - '&7Cierra el menú'
+        - '&7actual.'
+    coins:
+      lore:
+        - '&7Gana puntos al'
+        - '&7jugar partidas'
+      name: '&aPuntos: &e<money>'
+    leave:
+      lore:
+        - '&7Click para regresar'
+        - '&7a la lobby.'
+      name: '&cSalir'
+    random-map:
+      lore:
+        - '&7Click para entrar a un'
+        - '&7mapa aleatorio.'
+      name: '&aMapa Aleatorio'
+  shop-items:
+    abilities:
+      lore:
+        - '&7Compra habilidades'
+        - '&7en SkyWars.'
+      name: '&eHabilidades de SkyWars'
+    clear-kit:
+      lore:
+        - '&7Click para borrar el'
+        - '&7kit seleccionado.'
+    current-kit:
+      name: '&aKit Seleccionado: &e<kit>'
+    exclusive-kits:
+      lore:
+        - '&7Click para abrir el selector'
+        - '&7de kits Exclusivos para'
+        - '&7quienes tienen rango.'
+      name: '&b&nKits Exclusivos'
+    kits:
+      lore:
+        - '&7Compra los kits'
+        - '&7de SkyWars.'
+      name: '&eKits de SkyWars'
+  vote-items:
+    anti-clean-scenario:
+      name: '&aAntiClean'
+    border-event:
+      name: '&fBorde'
+    dragon-event:
+      name: '&2Dragón Bombardero'
+    events:
+      lore:
+        - '&7Vota por eventos'
+      name: '&6Eventos'
+    no-fall-scenario:
+      name: '&9Pies de pluma'
+    no-projectiles:
+      name: '&7Sin Proyectiles'
+    votes-lore:
+      - ' '
+      - '&e<votes> votos'
+    normal-projectiles:
+      name: '&aProyectiles Normales'
+    projectiles:
+      lore:
+        - '&7Vota por proyectiles'
+      name: '&2Proyectiles'
+    scenarios:
+      lore:
+        - '&7Vota por escenarios'
+      name: '&eEscenarios'
+    soft-blocks-projectiles:
+      name: '&cDestructor de Bloques'
+    strength-scenario:
+      name: '&cFuerza'
+    tnt-rain-event:
+      name: '&cLluvia de TNT'
+    wither-event:
+      name: '&6Wither de la Muerte'
+    zombies-event:
+      name: '&2Zombies Asesinos'
+
 selected:
   chest-default: '&6Cofres &aNormales&6: nadie votó.'
   chest: '&6Cofres seleccionados: &a%s'
@@ -321,6 +550,169 @@ kits:
   menu:
     title: 'Selección de kit'
   none: '&cAquí no hay kits.'
+  cleared: '&c¡Has quitado tu kit!'
+  none-selected: '&c¡No tienes ningún kit seleccionado!'
+  already-selected: '&c¡Ya tienes este kit seleccionado!'
+  lore:
+    click-select: '&6Click para seleccionar el kit'
+    shift-preview: '&6Shift+Click para ver su contenido'
+  preview:
+    # %s: kit (el título no puede pasar de 32 caracteres)
+    title: '&8Kit: %s'
+  purchase:
+    # %s: kit (el título no puede pasar de 32 caracteres)
+    title: '&8Comprando: %s'
+    confirm:
+      name: '&aCOMPRAR'
+      # {kit}: kit, {price}: precio
+      lore:
+        - '&7Estás comprando el kit: &f{kit}&7.'
+        - '&7Te costará:'
+        - '&7- &b{price} puntos'
+        - ' '
+        - '&8&oEsta acción no se puede deshacer.'
+        - ' '
+        - '&6Click para comprar.'
+    cancel:
+      name: '&cCANCELAR'
+      lore:
+        - ' '
+        - '&6Click para cancelar.'
+  archer:
+    contents:
+      - 'Arco'
+      - '10 flechas'
+      - 'Pechera de cota de malla'
+    name: 'Arquero'
+  blacksmith:
+    contents:
+      - 'Yunque'
+      - 'Casco de diamante'
+      - 'Libro encantado &7(Protección I)'
+      - '32 frascos de experiencia'
+    name: 'Herrero'
+  bomber:
+    contents:
+      - 'Botas de oro &7(Protección contra explosiones II, Caída de pluma I)'
+      - '14 TNT'
+      - '2 ganchos de cuerda'
+      - '5 hilos'
+      - '10 polvos de redstone'
+    name: 'Bombardero'
+  builder:
+    contents:
+      - '20 ladrillos'
+      - 'Espada de madera'
+    name: 'Constructor'
+  chicken:
+    contents:
+      - '32 huevos'
+      - 'Pantalones de hierro'
+    name: 'Gallina'
+  digger:
+    contents:
+      - 'Pico de hierro &7(Irrompibilidad III, Eficiencia II)'
+      - '1 mena de diamante'
+      - '8 menas de hierro'
+      - '5 menas de carbón'
+    name: 'Excavador'
+  enchanter:
+    contents:
+      - 'Mesa de encantamientos'
+      - '32 frascos de experiencia'
+      - '16 lapislázuli'
+    name: 'Encantador'
+  enderman:
+    contents:
+      - '20 piedras del End'
+      - 'Casco de cuero &7(&8Negro&7)'
+      - 'Túnica de cuero &7(&8Negra&7)'
+      - 'Pantalones de cuero &7(&8Negros&7)'
+      - 'Botas de cuero &7(&8Negras&7)'
+      - '2 perlas de ender'
+    name: 'Enderman'
+  farmer:
+    contents:
+      - 'Azada de oro &7(Aspecto ígneo I)'
+      - 'Pantalones de oro &7(Protección I)'
+      - '3 zanahorias doradas'
+      - '5 generadores de gallinas'
+    name: 'Granjero'
+  fisherman:
+    contents:
+      - 'Caña de pescar &7(Suerte marina III, Irrompibilidad III)'
+      - '5 pescados cocinados'
+      - 'Cubo de agua'
+    name: 'Pescador'
+  healer:
+    contents:
+      - 'Poción de curación II'
+      - 'Poción arrojadiza de curación I'
+      - 'Poción arrojadiza de regeneración'
+    name: 'Sanador'
+  iron-golem:
+    contents:
+      - 'Casco de hierro'
+      - 'Pantalones de hierro'
+    name: 'Gólem de hierro'
+  joker:
+    contents:
+      - '8 TNT'
+      - '3 antorchas de redstone'
+      - 'Poción de daño instantáneo'
+      - 'Espada de madera'
+      - 'Bloque de redstone'
+      - '3 placas de presión'
+    name: 'Joker'
+  lumberjack:
+    contents:
+      - 'Hacha de piedra &7(Filo II, Eficiencia III)'
+      - '10 troncos'
+    name: 'Leñador'
+  noobly:
+    contents:
+      - 'Túnica de cuero'
+      - 'Pantalones de cuero'
+      - 'Pico de madera'
+      - 'Pala de madera'
+      - 'Hacha de madera'
+      - 'Espada de madera'
+      - 'Azada de madera'
+    name: 'Novato'
+  pyromaniac:
+    contents:
+      - 'Mechero'
+      - 'Cubo de lava'
+      - 'Pechera de cota de malla &7(Protección contra el fuego V)'
+      - 'Poción de resistencia al fuego'
+    name: 'Pirómano'
+  redstone-master:
+    contents:
+      - '3 repetidores de redstone'
+      - '20 polvos de redstone'
+      - '1 pistón pegajoso'
+      - '1 tolva'
+      - '1 palanca'
+      - '1 pistón'
+      - '1 comparador de redstone'
+    name: 'Maestro de redstone'
+  scout:
+    contents:
+      - '3 pociones arrojadizas de velocidad II &7(30 segundos)'
+      - 'Espada de piedra'
+    name: 'Explorador'
+  spiderman:
+    contents:
+      - '15 telarañas'
+      - 'Casco de cuero &7(&cRojo&7)'
+      - 'Túnica de cuero &7(&9Azul&7)'
+      - 'Pantalones de cuero &7(&cRojos&7)'
+      - 'Botas de cuero &7(&9Azules&7)'
+      - 'Poción de salto'
+    name: 'Spiderman'
+  swordsman:
+    contents: 'Espada de piedra &7(Filo II)'
+    name: 'Espadachín'
 
 settings:
   menu:
@@ -355,9 +747,22 @@ settings:
       name: '&3Notas'
       lore: '&7Solo rango'
 
+cosmetics:
+  already-selected:
+    box: '&c¡Ya tienes esta caja seleccionada!'
+    balloon: '&c¡Ya tienes este globo seleccionado!'
+    killsound: '&c¡Ya tienes este sonido seleccionado!'
+    trail: '&c¡Ya tienes este rastro seleccionado!'
+
 tracker:
   menu:
     title: '&7Rastreador de jugadores'
+  inventory:
+    # %s: jugador (el título no puede pasar de 32 caracteres)
+    title: '&8Inventario de %s'
+
+spectator:
+  first-person-exit: '&ePulsa &bshift &epara salir de la primera persona'
 
 player:
   select:
@@ -418,7 +823,846 @@ dialogs:
     title: '&c&lReportes'
     subtitle: '&7Escribe el motivo del reporte'
     action-bar: '&7Estás reportando a &c%player_name%'
+    # %s: jugador
+    sent: '&a¡Has reportado a %s correctamente!'
 
-tab:
-  prefix: '&e'
-  suffix: '%s'
+# Marcador (scoreboard.yml).
+scoreboard:
+  coins: '&5Monedas:'
+  next-event: '&5%a-event-title% en:'
+  map: '&5Mapa:'
+  players: '&5Jugadores:'
+  footer: '&estatspvp.gg'
+
+hologram:
+  # Los hologramas los traduce FurryCore por PlaceholderAPI: una línea por clave.
+  stats:
+    title: 'estadísticas'
+    wins: '&aVictorias'
+    kills: '&aBajas'
+    deaths: '&aMuertes'
+    played: '&aPartidas jugadas'
+    arrow-shot: '&aFlechas disparadas'
+    arrow-hit: '&aFlechas acertadas'
+    blocks-broken: '&aBloques rotos'
+    blocks-placed: '&aBloques puestos'
+    distance-walked: '&aDistancia recorrida'
+    time-played: '&aTiempo jugado'
+  top:
+    wins: '&e&lTOP VICTORIAS'
+    kills: '&c&lTOP BAJAS'
+    refresh: '&7Se actualiza cada 5 minutos'
+
+signs:
+  # Los carteles se ven en el idioma por defecto de FurryCore.
+  map: '&nMapa: %map%'
+  searching-1: 'BUSCANDO'
+  searching-2: 'PARTIDAS'
+  error:
+    - '&lSkyWars'
+    - '&cERROR'
+    - '&cArena no'
+    - '&cdisponible'
+
+# Textos de los menús (plugins/SkyWars/menus/*.yml).
+menus:
+  abilities:
+    close:
+      name: '&bCerrar'
+    next:
+      lore:
+        - '&7Click para la próxima página'
+      name: '&bSiguiente'
+    title: '&bSkyWars &7» &fHabilidades 1'
+    title-2: '&bSkyWars &7» &fHabilidades 2'
+  common:
+    stats:
+      lore:
+        - '&b● &7Ganadas&7: &b%skywars_stats_wins%'
+        - '&b● &7Bajas&7: &b%skywars_stats_kills%'
+        - '&b● &7Muertes&7: &b%skywars_stats_deaths%'
+        - '&b● &7Jugadas&7: &b%skywars_stats_played%'
+        - '&b● &7Flechas arrojadas&7: &b%skywars_stats_arrow_shot%'
+        - '&b● &7Flechas acertadas&7: &b%skywars_stats_arrow_hit%'
+        - '&b● &7Bloques rotos&7: &b%skywars_stats_blocks_broken%'
+        - '&b● &7Bloques puestos&7: &b%skywars_stats_blocks_placed%'
+        - '&b● &7Distancia caminada&7: &b%skywars_stats_distance_walked%'
+        - '&b● &7Tiempo jugado&7: &b%skywars_stats_time_played%'
+        - ''
+        - '&b● &7Tus puntos: &b%skywars_coins%'
+      name: '&bTus estadísticas'
+    back:
+      lore:
+        - '&7Click para regresar'
+      name: '&bRegresar'
+    close:
+      lore:
+        - '&7Click para cerrar'
+      name: '&cCerrar'
+    next-page: '&fPágina siguiente &b->'
+    no-kit:
+      lore:
+        - '&7No tienes ningún'
+        - '&7kit seleccionado'
+      name: '&cSin Kit'
+    previous-page: '&b<- &fPágina anterior'
+  balloons:
+    no-balloons:
+      name: '&cNo hay globos disponibles'
+    title: '&8Tienda SW » Globos'
+  boxes:
+    no-boxes:
+      name: '&cNo hay cajas disponibles'
+    title: '&b&l・&8SkyWars » Cajas'
+  game-selector:
+    full:
+      lore:
+        - '&7Click para entrar al'
+        - '&7mapa &a%arena%'
+        - ''
+        - '&7Jugadores:'
+        - '&7%p-alive%/%p-max%'
+        - ''
+        - '&7Estado: &5Lleno'
+    ingame:
+      lore:
+        - '&7Click para entrar al'
+        - '&7mapa &a%arena%'
+        - ''
+        - '&7Jugadores:'
+        - '&7%p-alive%/%p-max%'
+        - ''
+        - '&7Estado: &cEn juego'
+    no-arenas:
+      name: '&cNo hay arenas disponibles'
+    randomjoin:
+      name: '&aPartida aleatoria'
+    starting:
+      lore:
+        - '&7Click para entrar al'
+        - '&7mapa &a%arena%'
+        - ''
+        - '&7Jugadores:'
+        - '&7%p-alive%/%p-max%'
+        - ''
+        - '&7Estado: &6Iniciando'
+    title: '&8Selector de mapas'
+    waiting:
+      lore:
+        - '&7Click para entrar al'
+        - '&7mapa &a%arena%'
+        - ''
+        - '&7Jugadores:'
+        - '&7%p-alive%/%p-max%'
+        - ''
+        - '&7Estado: &aEsperando'
+  games:
+    map-selector:
+      lore:
+        - '&7Abre el selector con esto'
+        - '&7para seleccionar el mapa'
+      name: '&e&lSelector de Mapas'
+    solo-sky-wars:
+      lore:
+        - '&7Pelea con otros jugadores en el'
+        - '&7cielo, ¡solo no mires abajo! Para ganar'
+        - '&7debes ser el último jugador en pie.'
+        - '&7Simple, ¿cierto?'
+        - '&1 '
+        - '&bJugadores: &a<players>'
+        - '&bJugadores esperando: &a<wplayers>'
+        - '&bClick: &aEntra a un mapa aleatorio'
+        - '&bClick derecho: &aSelecciona un mapa'
+      name: '&e&lSkyWars Solo'
+    title: '&b&l・&8Selector de Partidas'
+  kill-sounds:
+    no-sound-effects:
+      name: '&cNo hay efectos disponibles'
+    title: '&8Tienda SW » Sonidos'
+  kits:
+    title: '&b&l・&8Selector de kits'
+  shop-kits:
+    title: '&b&l・&8SkyWars » Kits'
+  shop:
+    abilities:
+      lore:
+        - '&7Abre el menú de habilidades'
+      name: '&bHabilidades'
+    arrow-particles:
+      lore:
+        - '&7Abre el menú de partículas'
+      name: '&bPartículas de Flecha'
+    boxes:
+      lore:
+        - '&7Abre el menú de cajas'
+      name: '&bCajas'
+    kill-sounds:
+      lore:
+        - '&7Abre el menú de sonidos de muerte'
+      name: '&bSonidos de Muerte'
+    kits:
+      lore:
+        - '&7Abre el menú de kits'
+      name: '&bKits'
+    title: '&b&l・&8Menú de SkyWars'
+    win-effects:
+      lore:
+        - '&7Abre el menú de efectos de victoria'
+      name: '&bEfectos de Victoria'
+  trails:
+    no-trails:
+      name: '&cNo hay rastros disponibles'
+    sintrail:
+      lore:
+        - '&7No tienes ningún'
+        - '&7rastro seleccionado'
+      name: '&cSin rastro'
+    title: '&b&l・&8SkyWars » Rastros'
+  win-effects:
+    title: '&b&l・&8SkyWars » Victorias'
+
+# Cajas (boxes.yml → icon).
+boxes:
+  paracaidas:
+    name: '&aParacaídas'
+    lore:
+      - '&7Usa esta caja para tener'
+      - '&7paracaídas contigo.'
+  amarilla:
+    lore:
+      - '&7Pues es una caja amarilla.'
+      - '&7Y ya...'
+    name: '&eAmarilla'
+  campo:
+    lore:
+      - '&7Disfruta un rato en el campo'
+      - '&7antes de jugar una partida'
+    name: '&aCampo'
+  champinon:
+    lore:
+      - '&7Disfruta de una casa con estilo'
+      - '&7de champiñones en partida.'
+    name: '&aChampiñon'
+  default:
+    name: '&cPor defecto'
+  dj:
+    lore:
+      - '&7Haz como si estuvieras en'
+      - '&7una discoteca pasándotela'
+      - '&7bien con todos.'
+    name: '&aDJ'
+  feria:
+    lore:
+      - '&7Contagia el ambiente de feria'
+      - '&7con esta estupenda caja.'
+    name: '&aFeria'
+  halloween:
+    lore:
+      - '&7Esta caja la puedes encontrar'
+      - '&7en la época de Halloween.'
+    name: '&aHalloween'
+  havana:
+    lore:
+      - '&7Siénte como si estuvieras en'
+      - '&7la havana de paseo.'
+    name: '&aHavana'
+  hielo:
+    lore:
+      - '&7Ten cuidado con esta caja'
+      - '&7ya que tiene temperaturas bajas'
+    name: '&aHielo'
+  hongo:
+    lore:
+      - '&7Presume de una caja decorada'
+      - '&7con hongos.'
+    name: '&aHongo'
+  melon:
+    lore:
+      - '&7Obtén esta caja para no'
+      - '&7pasar hambre con melones'
+    name: '&aMelón'
+  pistones:
+    lore:
+      - '&7Demuestra que eres un experto'
+      - '&7en pistones con esta caja.'
+    name: '&aPistones'
+  redstone:
+    lore:
+      - '&7Demuestra que eres un experto en'
+      - '&7redstone con esta caja.'
+    name: '&aRedstone'
+  suite:
+    lore:
+      - '&7Disfruta de una moderna casa'
+      - '&7y presúmela a todos.'
+    name: '&aSuite'
+  tnt:
+    lore:
+      - '&7Ten cuidado con esta caja'
+      - '&7puede llegar a ser explosiva.'
+    name: '&aTNT'
+  tolvas:
+    lore:
+      - '&7Caja con temática de tolvas'
+    name: '&aTolvas'
+
+# Rastros de flecha (trails.yml → icon).
+trails:
+  cloud:
+    lore:
+      - '&7Nube'
+    name: '&aNube'
+  enchant:
+    lore:
+      - '&7Encantamiento'
+    name: '&aEncantamiento'
+  fireworks:
+    lore:
+      - '&7Fuegos artificiales'
+    name: '&aFuegos artificiales'
+  flame:
+    lore:
+      - '&7Fuego'
+    name: '&aFuego'
+  heart:
+    lore:
+      - '&7Corazón'
+    name: '&aCorazón'
+  lava:
+    lore:
+      - '&7Lava'
+    name: '&aLava'
+  magic:
+    lore: '&7Magia'
+    name: '&aMagia'
+  note:
+    lore:
+      - '&7Notas'
+    name: '&aNotas'
+  portal:
+    lore:
+      - '&7Portal'
+    name: '&aPortal'
+  reddust:
+    lore: '&7Rastro rojo'
+    name: '&aRastro rojo'
+  slime:
+    lore:
+      - '&7Slime'
+    name: '&aSlime'
+  spell:
+    lore:
+      - '&7Poción'
+    name: '&aPoción'
+  water:
+    lore:
+      - '&7Agua'
+    name: '&aAgua'
+
+# Sonidos de baja (killSounds.yml → icon).
+kill-sounds:
+  bat:
+    name: '&e&lMurciélago'
+  cat:
+    name: '&e&lGato'
+  chicken:
+    name: '&e&lPOP de Gallina'
+  default:
+    lore:
+      - '&7Por defecto.'
+    name: '&aMiau'
+  eat:
+    name: '&e&lComer'
+  enderdragon:
+    name: '&e&lDragón del End'
+  enderman:
+    name: '&e&lEnderman'
+  explode:
+    name: '&e&lExplosión'
+  ghast:
+    name: '&e&lGhast'
+  notebass:
+    name: '&e&lBajo de notas'
+  pig:
+    name: '&e&lCerdo'
+  skeleton:
+    name: '&e&lEsqueleto'
+  slimewalk:
+    name: '&e&lSlime caminando'
+  spider:
+    name: '&e&lAraña'
+  splash:
+    name: '&e&lSalpicadura'
+  successful-hit:
+    name: '&e&lUn Golpe Exitoso'
+  thor:
+    lore:
+      - '&7¿Quieres ser el Dios del Trueno?'
+      - '&7Bueno, pues, ya sabes que hacer.'
+    name: '&aThor'
+  thunder:
+    name: '&e&lTrueno'
+  villager:
+    name: '&e&lAldeano'
+  wither:
+    name: '&e&lWither'
+  wolf:
+    name: '&e&lLobo'
+  wolfwhine:
+    name: '&e&lLadrido de perro'
+  zombie:
+    name: '&e&lZombie'
+
+# Efectos de victoria.
+wineffects:
+  fireworks:
+    name: '&eFuegos artificiales'
+    lore:
+      - ''
+      - '&f Lanza cohetes para demostrar'
+      - '&f que fuiste el mejor de la'
+      - '&f partida.'
+      - ''
+  vulcan-wool:
+    name: '&eVolcán de lana'
+    lore:
+      - ''
+      - '&f Crea un volcán de lana'
+      - '&f cuando ganes una'
+      - '&f partida.'
+      - ''
+  vulcan:
+    name: '&eVolcán'
+    lore:
+      - ''
+      - '&f Un volcán de fuego'
+      - '&f allá donde vayas.'
+      - ''
+  shield:
+    name: '&eEscudo'
+    lore:
+      - ''
+      - '&f Crea un escudo a tu alrededor'
+      - '&f de diferentes colores.'
+      - ''
+  notes:
+    name: '&eNotas'
+    lore:
+      - ''
+      - '&f Crea discos voladores'
+      - '&f con efectos de notas.'
+      - ''
+  chickens:
+    name: '&eGallinas'
+    lore:
+      - ''
+      - '&f Aparecen gallinas voladoras que'
+      - '&f explotan a los pocos segundos.'
+      - ''
+  dragon:
+    name: '&eDragón volador'
+    lore:
+      - ''
+      - '&f Móntate en un dragón del End'
+      - '&f al terminar la partida.'
+      - ''
+  ice-walker:
+    name: '&eCaminante de hielo'
+    lore:
+      - ''
+      - '&f Deja un rastro de hielo'
+      - '&f al caminar sobre el suelo.'
+      - ''
+
+# Habilidades (abilities.yml).
+abilities:
+  adrenaline-boost:
+    desc:
+      - '&7Cuando te hieren puedes recibir'
+      - '&7un impulso de velocidad'
+    levels-desc:
+      - '&7Tienes un %chance%% de probabilidad de'
+      - '&7ganar velocidad cuando te hieren'
+    name: '&aSubidón de adrenalina'
+  aggressive-mode:
+    desc:
+      - '&7Haz más daño cuando te quedan'
+      - '&7menos de 5 corazones'
+    levels-desc:
+      - '&7Con menos de 5 corazones'
+      - '&7haces un %value%% más de daño el %chance%% de las veces'
+    name: '&aModo agresivo'
+  arrow-tank:
+    desc: '&7Recibe menos daño de las flechas'
+    levels-desc:
+      - '&7Tienes un %chance%% de probabilidad de recibir'
+      - '&7un %value%% menos de daño de proyectiles'
+    name: '&aPiel antiflechas'
+  feather-weight:
+    desc: '&7Recibe menos daño por caída'
+    levels-desc:
+      - '&7Recibe un %value%% menos de daño por caída'
+      - '&7el %chance%% de las veces'
+    name: '&aPeso pluma'
+  fire-resistance:
+    desc: '&7Recibe menos daño del fuego'
+    levels-desc:
+      - '&7Recibe un %value%% menos de daño de fuego y lava'
+      - '&7el %chance%% de las veces'
+    name: '&aResistencia al fuego'
+  menu:
+    item:
+      level: 'nivel %number%'
+    lore:
+      clickto:
+        disable: '&6Click para desactivar'
+        enable: '&6Click para activar'
+      disabled: '&8&lDESACTIVADA'
+      price: '&6Precio: %price% puntos'
+      status:
+        afford: '&c¡No te alcanza para esta habilidad!'
+        disabled: '&6Haz click en el icono de la izquierda para activarla'
+        purchase: '&6¡Click para comprar esta mejora!'
+        purchased: '&c¡Ya la tienes!'
+        unavailable: '&c¡Todavía no puedes comprar esto!'
+  mining-luck:
+    desc:
+      - '&7Mejora tu habilidad minera para'
+      - '&7sacar más de cada mineral'
+    levels-desc:
+      - '&7Tienes un %chance%% de probabilidad de conseguir %value%'
+      - '&7recursos al minar un mineral'
+    name: '&aSuerte minera'
+  pirate:
+    desc: '&7Encuentra tesoros escondidos en la tierra'
+    levels-desc: '&7Encuentra tesoros en el %chance%% de la tierra'
+    name: '&aPirata'
+  triple-arrow:
+    desc: '&7Dispara 3 flechas a la vez'
+    levels-desc:
+      - '&7Tienes un %chance%% de probabilidad de disparar'
+      - '&73 flechas a la vez'
+    name: '&aTriple flecha'
+  woodchopping-luck:
+    desc:
+      - '&7Mejora tu habilidad de leñador para'
+      - '&7sacar más troncos de cada uno'
+    levels-desc: '&7Tienes un %chance%% de probabilidad de conseguir %value% troncos'
+    name: '&aSuerte de leñador'
+
+# Tipos de cofre (chests/*.yml).
+chests:
+  basic:
+    description:
+      - '&7El cofre tendrá:'
+      - '&7Armadura débil'
+      - '&7Espadas poco potentes'
+      - '&7Comida básica'
+      - '&7Y otras cosas'
+    name: '&e&lCofres básicos'
+  normal:
+    description:
+      - '&7El cofre tendrá:'
+      - '&7Armadura al azar'
+      - '&7Cualquier espada'
+      - '&7Comida y algunas manzanas de oro'
+      - '&7Y otras cosas'
+    name: '&6Cofres normales'
+  overpowered:
+    description:
+      - '&7El cofre tendrá:'
+      - '&7Armadura brutal'
+      - '&7Espadas dominantes'
+      - '&7Montones de manzanas de oro'
+      - '&7Y otras cosas'
+    name: '&4&lCofres sobrecargados'
+
+# Ítem de la tienda del lobby (shop.yml → item).
+shop:
+  item:
+    lore:
+      - '&7Haz click para abrir la tienda'
+      - '&7y comprar cosas para SkyWars'
+    name: '&e&lTienda'
+
+# Comandos y editores de administración.
+admin:
+  boxes:
+    wand:
+      name: '&6&lVara de cajas'
+      lore:
+        - '&7Click izquierdo y derecho en las'
+        - '&7dos esquinas de la caja.'
+    need-name: '{prefix}&c¡Debes indicar un nombre para la nueva caja!'
+    save-hint: '{prefix}&aCuando termines la caja, usa &7/boxes save&a.'
+    # %s: x, y, z
+    first-position: '{prefix}&aPrimera esquina: &7(%s, %s, %s)&a.'
+    second-position: '{prefix}&aSegunda esquina: &7(%s, %s, %s)&a.'
+    help:
+      - '&7---- &aCajas de SkyWars por &b&nTheJokerDev &7----'
+      - '&a- /boxes menu'
+      - '&a- /boxes create <nombre>'
+      - '&a- /boxes save'
+      - '&a- /boxes edit <nombre>'
+      - '&7--------------------------------------------'
+  editor:
+    # %s: arena (el título no puede pasar de 32 caracteres)
+    title: '&8Editor | %s'
+    spawns-title: '&8Editor » Spawns'
+    balloon-spawns-title: '&8Editor » Spawns de globos'
+    no-spawns: '&c¡No hay spawns registrados!'
+    no-balloon-spawns: '&c¡No hay spawns de globos registrados!'
+    click-block: '{prefix}&c¡Debes hacer click en un bloque!'
+    not-editing: '{prefix}&c¡Debes estar editando una arena!'
+    # %s: número de spawn
+    spawn-added: '{prefix}&aSpawn añadido &7(#%s)'
+    spectator-spawn: '{prefix}&a¡Spawn de espectadores establecido!'
+    balloon-added: '{prefix}&aSpawn de globo añadido &7(#%s)'
+    balloon-removed: '{prefix}&cSpawn de globo quitado &7(#%s)'
+    # %s: arena
+    enabled: '{prefix}&a%s se ha recargado y ya se puede jugar.'
+    disabled: '{prefix}&a%s está desactivada: ya puedes editarla.'
+    disable-first: '{prefix}&c¡Primero debes desactivar la arena!'
+    negative-players: '{prefix}&c¡No puedes poner jugadores negativos!'
+    min-team-size: '{prefix}&cEl tamaño mínimo de equipo es 1 (SOLO).'
+    # %s: modo, tamaño de equipo, máximo de jugadores
+    team-size: '{prefix}&aModo &e%s&a, equipos de &e%s&a. Máximo: &e%s &ajugadores.'
+    map-saved: '{prefix}&aEl mapa de &e%s &ase guardó en la carpeta maps.'
+    rename:
+      title: '&aNombre de la arena'
+      subtitle: '&7Escribe el nuevo nombre en el chat'
+      actionbar: '&7Actual: &r%s'
+      # %s: arena, nombre nuevo
+      done: '{prefix}&7Nombre visible de &e%s&7: &r%s'
+    spawn-tool:
+      name: '&aHerramienta de spawns'
+      lore:
+        - '&eClick izquierdo &7en un bloque: añadir spawn'
+        - '&eClick derecho &7en un bloque: spawn de espectadores'
+    balloon-tool:
+      name: '&aSpawns de globos'
+      lore:
+        - '&eClick izquierdo &7para añadir'
+        - '&cClick derecho &7para quitar'
+    # Botones del editor (/sw arena edit). En listas con varios valores: %1$s, %2$s...
+    items:
+      back:
+        name: '&6Regresar'
+        lore:
+          - '&7Click para regresar.'
+      spawn-point:
+        lore:
+          - '&7Arena: &r%s'
+          - ''
+          - '&eClick izquierdo para eliminar'
+          - '&eClick derecho para ir'
+      display-name:
+        name: '&aNombre visible'
+        lore:
+          - '&7Cambia el nombre que'
+          - '&7verán los jugadores.'
+          - ''
+          - '&7Actual: &r%s'
+          - ''
+          - '&eClick para cambiarlo'
+      save-map:
+        name: '&aGuardar el mapa'
+        lore:
+          - '&7Guarda y reemplaza el'
+          - '&7mapa de la arena.'
+          - ''
+      enable:
+        name: '&aActivar arena'
+        lore:
+          - '&7Cambia el modo de la arena'
+          - '&7para poder jugarla.'
+          - ''
+          - '&7Actual: &7Desactivada'
+          - ''
+          - '&eClick para cambiar'
+      disable:
+        name: '&cDesactivar arena'
+        lore:
+          - '&7Cambia el modo de la arena'
+          - '&7para poder editarla.'
+          - ''
+          - '&7Actual: &aActivada'
+          - ''
+          - '&eClick para cambiar'
+      min-players:
+        name: '&aMínimo de jugadores'
+        lore:
+          - '&7Cambia el número mínimo'
+          - '&7de jugadores.'
+          - ''
+          - '&7Actual: &r%s'
+          - ''
+          - '&eClick izquierdo para aumentar'
+          - '&eClick derecho para disminuir'
+      team-size:
+        name: '&aModo y tamaño de equipo'
+        lore:
+          - '&7Cada punto de aparición es un equipo.'
+          - '&7Tamaño 1 = SOLO, 2 o más = TEAM.'
+          - ''
+          - '&7Modo: &r%1$s'
+          - '&7Tamaño de equipo: &r%2$s'
+          - '&7Máximo de jugadores: &r%3$s'
+          - ''
+          - '&eClick izquierdo para aumentar'
+          - '&eClick derecho para disminuir'
+      give-spawn-tool:
+        name: '&aHerramienta de spawns'
+        lore:
+          - '&7Te da la herramienta para'
+          - '&7poner los spawns de jugadores.'
+          - ''
+          - '&eClick para obtenerla'
+      wand:
+        name: '&aHerramienta de esquemáticas'
+        lore:
+          - '&7Crea la esquemática para'
+          - '&7guardarla en la carpeta.'
+          - ''
+          - '&eSelecciona el punto más alto/bajo'
+          - '&epara guardarlo como esquemática'
+      spawns:
+        name: '&aPuntos de aparición'
+        lore:
+          - '&7Modifica los puntos de'
+          - '&7aparición de la arena.'
+          - ''
+          - '&7Spawns: &e%s'
+          - ''
+          - '&eClick para verlos'
+      balloon-spawns:
+        name: '&aPuntos de aparición de globos'
+        lore:
+          - '&7Modifica los puntos de'
+          - '&7aparición de los globos.'
+          - ''
+          - '&7Spawns de globos: &e%s'
+          - ''
+          - '&eClick para verlos'
+      give-balloon-tool:
+        name: '&aSpawns de globos'
+        lore:
+          - '&7Te da la herramienta para'
+          - '&7poner los spawns de globos.'
+  select:
+    title: '&8Editor de arenas'
+    next-page: '&aSiguiente página »'
+    previous-page: '&c« Página anterior'
+    maps: '&b■ &7Mapas'
+    worlds: '&b■ &7Mundos'
+    map-lore:
+      - ''
+      - '&b» &7Click &eizquierdo&7 para cargar este mapa.'
+      - '&b» &7Click &aderecho&7 para eliminar este mapa.'
+      - ''
+    map-loaded-lore:
+      - '&c¡Este mapa ya está cargado en los mundos!'
+      - ''
+    world-lore:
+      - ''
+      - '&b» &7Click &eizquierdo&7 para ir a este mundo.'
+      - '&b» &7Click &aderecho&7 para eliminar este mundo.'
+      - ''
+    # %s: mapa
+    map-loaded: '{prefix}&a¡Has cargado el mapa &e%s&a!'
+  arena:
+    exists: '{prefix}&cEsa arena ya existe.'
+    creating: '{prefix}&eCreando arena...'
+    # %s: error
+    create-error: '{prefix}&cAlgo salió mal al crear la arena: %s'
+    created: '{prefix}&aArena creada. Usa &e/sw arena edit <arena> &apara editarla.'
+    usage-create: '{prefix}&cUso: /sw arena create <nombre>'
+    not-found: '{prefix}&cEsa arena no existe.'
+    # %s: arena
+    stop-editing: '{prefix}&7Ya no estás editando &e%s&7.'
+    opening-menus: '{prefix}&eAbriendo el editor...'
+    menu-error: '{prefix}&cAlgo salió mal al abrir el editor: %s'
+    menu-error-plain: '{prefix}&cAlgo salió mal al abrir el editor.'
+    world-exists: '{prefix}&cEse mundo ya existe.'
+    creating-world: '{prefix}&eCreando mundo...'
+    world-create-error: '{prefix}&cAlgo salió mal al crear el mundo: %s'
+    usage-createworld: '{prefix}&cUso: /sw arena createworld <nombre>'
+    world-not-found: '{prefix}&cEse mundo no existe.'
+    saving-world: '{prefix}&eGuardando mundo...'
+    world-save-error: '{prefix}&cAlgo salió mal al guardar el mundo: %s'
+    usage-saveworld: '{prefix}&cUso: /sw arena saveworld <nombre>'
+    not-editing: '{prefix}&c¡No estás editando ninguna arena!'
+    usage-editor: '{prefix}&cUso: /sw arena editor'
+    # %s: arenas
+    list: '{prefix}&7Arenas disponibles: %s'
+    editing-actionbar: '&7Estás editando la arena &a&l%s'
+    help:
+      header: '&8------------ &a[Arenas de SkyWars] &8------------'
+      create: '&a/sw arena &ecreate <nombre> &a- &bCrear una arena nueva'
+      edit: '&a/sw arena &eedit [nombre] &a- &bEditar una arena (sin nombre: mapas y mundos)'
+      createworld: '&a/sw arena &ecreateworld <nombre> &a- &bCrear un mundo para una arena nueva'
+      saveworld: '&a/sw arena &esaveworld <nombre> &a- &bGuardar un mundo en la carpeta de mapas'
+      editor: '&a/sw arena &eeditor &a- &bAbrir el editor de la arena'
+      list: '&a/sw arena &elist &a- &bLista de arenas disponibles'
+  reload:
+    # %s: qué se recarga (admin.reload.targets)
+    start: '{prefix}&eRecargando %s...'
+    done: '{prefix}&aSe recargó %s.'
+    error: '{prefix}&cNo se pudo recargar %s; revisa la consola.'
+    targets:
+      all: 'todos los archivos'
+      config: 'config.yml'
+      messages: 'el prefijo (las traducciones se recargan con /core reload)'
+      scoreboard: 'el marcador y los hologramas'
+      chests: 'los cofres'
+      trails: 'trails.yml'
+      killsounds: 'killSounds.yml'
+      boxes: 'boxes.yml'
+      balloons: 'balloons.yml'
+      menus: 'los menús'
+      shop: 'shop.yml'
+      abilities: 'abilities.yml'
+    help:
+      header: '&8------------ &a[Recargar SkyWars] &8------------'
+      all: '&a/sw reload &call &a- &bTodo lo de abajo'
+      config: '&a/sw reload &econfig &a- &bRecargar config.yml'
+      messages: '&a/sw reload &emessages &a- &bRefrescar el prefijo (traducciones: /core reload)'
+      score: '&a/sw reload &escore &a- &bRecargar el marcador y los hologramas'
+      chests: '&a/sw reload &echests &a- &bRecargar los cofres'
+      shops: '&a/sw reload &eshops &a- &bRecargar la tienda y las habilidades'
+      trails: '&a/sw reload &etrails &a- &bRecargar los rastros'
+      boxes: '&a/sw reload &eboxes &a- &bRecargar las cajas'
+      balloons: '&a/sw reload &eballoons &a- &bRecargar los globos'
+      menus: '&a/sw reload &emenus &a- &bRecargar los menús'
+  revive:
+    not-partner: '&c¡No eres un miembro partner!'
+    not-in-arena: '&c¡Debes estar en una arena para hacer esto!'
+    # %s: comando
+    usage: '{prefix}&7Usa /%s &e<nick>&7.'
+    not-ingame: '{prefix}&c¡Este comando solo funciona en una partida en juego!'
+    not-found: '{prefix}&c¡Ese jugador no está en la partida!'
+    not-dead: '{prefix}&c¡Ese jugador no está muerto!'
+    # %s: jugador
+    done: '{prefix}&a¡Reviviste a %s!'
+  hologram:
+    usage-top: '{prefix}&cUso: /sw hologram top <id> add|remove [#]'
+    # %s: id
+    no-leaderboard: '{prefix}&cNo existe la clasificación &e%s&c en holograms.yml'
+    added: '{prefix}&aHolograma añadido (&e#%s&a).'
+    none: '{prefix}&cNo hay hologramas que quitar.'
+    invalid-number: '{prefix}&cNúmero inválido: %s'
+    not-found: '{prefix}&cNo existe el holograma #%s'
+    removed: '{prefix}&aHolograma #%s quitado.'
+    usage: '{prefix}&cUso: /sw hologram add | remove [#]'
+  lobby-spawn:
+    set: '{prefix}&aSpawn del lobby establecido.'
+  signs:
+    already-exists: '{prefix}&cYa hay un cartel en esa posición.'
+    added: '{prefix}&aCartel añadido.'
+    wall-only: '{prefix}&cEl cartel debe estar en una pared.'
+    deleted: '{prefix}&cCartel eliminado.'
+  tp:
+    usage: '{prefix}&cUso: /sw tp <mundo>'
+    # %s: mundos
+    worlds: '{prefix}&7Mundos cargados: &f%s'
+    not-found: '{prefix}&c¡Ese mundo no existe!'
