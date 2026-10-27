@@ -1,5 +1,5 @@
 scoreboard:
-  title: '%core_fading_SpreenStudios_AAAAAA_FFFFFF% &8(&7%bungee_total%&8)'
+  title: '%core_fading_SpreenStudios_AAAAAA_FFFFFF% &8(&7%cloud_online%&8)'
   lines: |-
       &a
       &e ● &f%player_name%
@@ -47,7 +47,7 @@ tab:
     &7&lWeb:&f spreen.studio
     &7&lX:&f x.com/spreenstudios
     
-    &7Juega con &f%bungee_total% &7jugadores más en nuestros modos de juego.
+    &7Juega con &f%cloud_online% &7jugadores más en nuestros modos de juego.
 
 items:
   selector:
