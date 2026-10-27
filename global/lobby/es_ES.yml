@@ -435,4 +435,34 @@ menus:
       prev:
         name: '&b« &ePerfil de usuario'
       next:
-        name: '&cModalidades &b»' 
+        name: '&cModalidades &b»'
+  languages:
+    title: '&8&lS&7&lS&0 » Idiomas'
+    items:
+      prevPage:
+        name: '&7Página anterior &f({actualPage}/{maxPages})'
+        lore: |-
+          &7
+          &f Ve a la anterior página del
+          &f selector de idiomas.
+          &7
+      nextPage:
+        name: '&7Página siguiente &f({actualPage}/{maxPages})'
+        lore: |-
+          &7
+          &f Ve a la siguiente página del
+          &f selector de idiomas.
+          &7
+      no-data:
+        name: '&cSin información de &f{lang}'
+        lore: |-
+          &7
+          &f Este idioma todavía no tiene
+          &f información que mostrar.
+          &7
+          &f Si eres administrador, añade
+          &f este idioma al menú.
+          &7
+      #otheritems
+      prev:
+        name: '&b« &ePerfil de usuario'

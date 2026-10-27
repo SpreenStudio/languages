@@ -434,4 +434,34 @@ menus:
       prev:
         name: '&b« &eUser Profile'
       next:
-        name: '&cGame Modes &b»' 
+        name: '&cGame Modes &b»'
+  languages:
+    title: '&8&lS&7&lS&0 » Languages'
+    items:
+      prevPage:
+        name: '&7Previous Page &f({actualPage}/{maxPages})'
+        lore: |-
+          &7
+          &f Go to the previous page of
+          &f the language selector.
+          &7
+      nextPage:
+        name: '&7Next Page &f({actualPage}/{maxPages})'
+        lore: |-
+          &7
+          &f Go to the next page of
+          &f the language selector.
+          &7
+      no-data:
+        name: '&cNo information for &f{lang}'
+        lore: |-
+          &7
+          &f This language has no
+          &f information to show yet.
+          &7
+          &f If you are an administrator,
+          &f add this language to the menu.
+          &7
+      #otheritems
+      prev:
+        name: '&b« &eUser Profile'
