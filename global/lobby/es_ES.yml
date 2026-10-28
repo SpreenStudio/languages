@@ -35,6 +35,7 @@ npcs:
 
 general:
   offline: '&cDesconectado'
+  noServers: '{prefix}&cNo hay servidores de &e%s&c disponibles ahora mismo.'
 
 tab:
   header: |-
