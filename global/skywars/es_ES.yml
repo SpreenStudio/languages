@@ -308,6 +308,13 @@ vote:
       normal: 'Normales'
       block_breaker: 'Rompe bloques'
     already-chosen: '&cYa se eligieron los proyectiles de esta partida.'
+    # Títulos de los submenús de votación (32 caracteres como mucho)
+    projectiles:
+      name: '&7&lProyectiles'
+    events:
+      name: '&7&lEventos'
+    scenarios:
+      name: '&7&lEscenarios'
   events:
     none-selected: '&6Nadie votó eventos adicionales: solo habrá el evento &eRelleno&6.'
     selected: '&6Evento seleccionado: &a%s'

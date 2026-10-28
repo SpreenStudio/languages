@@ -298,6 +298,13 @@ vote:
       normal: 'Normal'
       block_breaker: 'Block breaker'
     already-chosen: '&cThe projectiles of this game have already been chosen.'
+    # Vote submenu titles (max 32 characters)
+    projectiles:
+      name: '&7&lProjectiles'
+    events:
+      name: '&7&lEvents'
+    scenarios:
+      name: '&7&lScenarios'
   events:
     none-selected: '&6Nobody voted for extra events: there will only be &eRefill&6.'
     selected: '&6Selected event: &a%s'
