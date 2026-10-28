@@ -32,7 +32,9 @@ commands:
   only-lobby: '{prefix}&c¡Este comando solo se puede usar en el lobby!'
   player-not-found: '{prefix}&c%s no está conectado o no existe.'
   forcestart:
-    not-enough: '{prefix}&cHacen falta al menos 2 jugadores en la partida para empezarla.'
+    not-enough: '{prefix}&cHacen falta al menos 2 jugadores de equipos distintos para empezar la partida.'
+    not-in-arena: '{prefix}&cDebes estar en una partida para forzar su inicio.'
+    already-started: '{prefix}&cLa partida ya ha empezado.'
   open:
     no-menu: '{prefix}&cDebes indicar un menú.'
   help:

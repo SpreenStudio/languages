@@ -31,7 +31,9 @@ commands:
   only-lobby: '{prefix}&cThis command can only be used in the lobby!'
   player-not-found: '{prefix}&c%s is not online or does not exist.'
   forcestart:
-    not-enough: '{prefix}&cAt least 2 players are needed to start the game.'
+    not-enough: '{prefix}&cAt least 2 players from different teams are needed to start the game.'
+    not-in-arena: '{prefix}&cYou must be in a game to force it to start.'
+    already-started: '{prefix}&cThe game has already started.'
   open:
     no-menu: '{prefix}&cYou must provide a menu.'
   help:
