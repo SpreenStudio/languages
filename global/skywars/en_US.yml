@@ -1,129 +1,151 @@
-# ------------------------------------------------------------------
-#  SkyWars · English (FurryCore language section 'skywars')
-#  Colours with '&'. {prefix} is replaced by 'prefix'.
-#  '%s' are values filled in by the plugin, in order; keep them.
-#  The plugin's YAML files (menus, items, scoreboard...) use them as
-#  %core_skywars_<key>%. A list takes several lines in an item.
-#  A 'null' value disables the message.
-# ------------------------------------------------------------------
-prefix: '&8[&e&lSkyWars&8] &7'
+prefix: '&b&lSkyWars &8» '
 
 general:
-  loading: '&7Please join again once the data has loaded.'
-  kit-contents: '&7● &eContents'
-  dialog-how-to-close: '&7Use &aleft click &7to close the dialog.'
-  dialog-closed: '&7You &cclosed &7this dialog.'
+  loading: '&cYour data is still loading, join again in a few seconds.'
+  kit-contents: |-
+    &7
+    &f Contents:
+  dialog-how-to-close: '&7Use &eleft click &7to close the dialog.'
+  dialog-closed: '{prefix}&7You &cclosed &7this dialog.'
   default: '&cDefault'
-  in-development: '&cComing soon!'
+  in-development: '{prefix}&cIn development or under maintenance.'
   no-kit: 'No kit'
 
 commands:
-  unknown: '{prefix}&cThat command does not exist. Use &e/sw help&c.'
-  only-players: '{prefix}&cOnly players can use this command.'
-  no-permission: '{prefix}&cYou do not have permission to do that.'
-  error: '{prefix}&cSomething went wrong while running the command. Check the console.'
-  about: '&f&lSkyWars v%s &f(%s). Made by '
-  author-hover: "&7Click to open the &cY&fT &7channel\n&7of TheJokerDev."
+  unknown: '{prefix}&cThat command does not exist! Use &e/sw help&c.'
+  only-players: '{prefix}&cThis option is only for players!'
+  no-permission: '{prefix}&cYou do not have permission to do that!'
+  error: '{prefix}&cSomething went wrong running the command, check the console.'
+  # %s: version, mode
+  about: '{prefix}&fSkyWars &ev%s &7(%s)&f. Made by '
+  author-hover: |-
+    &7Click to open the &cY&fT
+    &7channel of &eTheJokerDev&7.
   modes:
     lobby: 'lobby'
     arena: 'game server'
     multi_arena: 'multi-arena'
   only-lobby: '{prefix}&cThis command can only be used in the lobby!'
-  player-not-found: '{prefix}&c%s is not online or does not exist.'
+  player-not-found: '{prefix}&cThe player &e%s &cis not online or does not exist.'
   forcestart:
-    not-enough: '{prefix}&cAt least 2 players from different teams are needed to start the game.'
+    not-enough: '{prefix}&cYou need at least &e2 players &cfrom different teams to start.'
     not-in-arena: '{prefix}&cYou must be in a game to force it to start.'
-    already-started: '{prefix}&cThe game has already started.'
+    already-started: '{prefix}&cThe game has already started!'
   open:
-    no-menu: '{prefix}&cYou must provide a menu.'
+    no-menu: '{prefix}&cYou must specify a menu.'
   help:
-    header: '&8---------- &7[&eSkyWars&7] &a%s &8----------'
-    footer: '&8-----------------------------------'
-    arena: '&a/sw arena &a- &bHelp about arena commands'
-    coins: '&a/sw coins &a- &bSee your coins'
-    coins-admin: "&a/sw coins &eadd <amount> [player] &a- &bGive coins\n&a/sw coins &eremove <amount> [player] &a- &bTake coins"
-    forcestart: '&a/sw &eforcestart &a- &bForce the game to start'
-    games: '&a/sw &egames &a- &bOpen the games menu'
-    hologram: '&a/sw hologram &eadd|remove [#] &a| &etop <id> add|remove [#] &a- &bLobby holograms'
-    join: '&a/sw join &e[arena] &a- &bJoin a game (or the best available one)'
-    lobbyspawn: '&a/sw lobbyspawn &a- &bSet the lobby spawn'
-    open: '&a/sw &eopen lshop &a- &bOpen the lobby kit shop'
-    reload: '&a/sw reload &a- &bHelp about reloading files'
-    tp: '&a/sw tp &e<world> &a- &bTeleport to another world'
+    # %s: version
+    header: |-
+      &7
+      {prefix}&fHelp &7● &e<optional> / [required] &8(v%s)
+      &7
+    footer: '&7'
+    arena: '&7 /sw arena - &eHelp for the arena commands.'
+    coins: '&7 /sw coins - &eShows your coins.'
+    coins-admin: |-
+      &7 /sw coins add [amount] <player> - &eAdds coins.
+      &7 /sw coins remove [amount] <player> - &eRemoves coins.
+    forcestart: '&7 /sw forcestart - &eForces the game to start.'
+    games: '&7 /sw games - &eOpens the games menu.'
+    hologram: '&7 /sw hologram add|remove <#> | top [id] add|remove <#> - &eLobby holograms.'
+    join: '&7 /sw join <arena> - &eJoins a game (or the best one available).'
+    lobbyspawn: '&7 /sw lobbyspawn - &eSets the lobby spawn.'
+    open: '&7 /sw open lshop - &eOpens the lobby shop.'
+    reload: '&7 /sw reload - &eHelp for reloading files.'
+    tp: '&7 /sw tp [world] - &eTeleports you to another world.'
 
 coins:
   # %s: coins
-  balance: '{prefix}&aCoins: &e%s'
-  usage-add: '{prefix}&cUsage: /sw coins add <amount> [player]'
-  usage-remove: '{prefix}&cUsage: /sw coins remove <amount> [player]'
+  balance: '{prefix}&7Your balance is &e%s &7coins.'
+  usage-add: '{prefix}&cUsage: &e/sw coins add [amount] <player>'
+  usage-remove: '{prefix}&cUsage: &e/sw coins remove [amount] <player>'
 
 game:
   full:
-    message: '&cThe game is full.'
+    message: '{prefix}&cThe game is full!'
   ingame:
-    message: '&cThe game has already started.'
-  loading: '&cThe game is loading.'
+    message: '{prefix}&cThe game has already started!'
+  loading: '{prefix}&cThe game is loading, try again in a few seconds.'
   restart: '&cThe game is restarting.'
-  disabled: '&cThis arena is being edited.'
+  disabled: '{prefix}&cThis arena is being edited.'
   no-games: '{prefix}&cThere are no games available right now.'
-  queued: '{prefix}&eNo games available: you have been added to the queue.'
-  already-in-game: '{prefix}&cYou are already in a game.'
+  queued: '{prefix}&eThere are no games available: you have been put in the queue.'
+  already-in-game: '{prefix}&cYou are already in a game!'
   not-found: '{prefix}&cThe game &e%s &cdoes not exist.'
-  sending: '{prefix}&fSending you to &b%s&f...'
+  sending: '{prefix}&7Sending you to &b%s&7...'
   spawn:
-    used: '&cThere are no free spawn points left.'
+    used: '{prefix}&cThere are no free spawn points left.'
   finish:
     broadcast:
-      winner: "&7-------------------------------\n&e%s &awon the game on &e%s&a!\n&7-------------------------------"
+      # %s: winner, map
+      winner: |-
+        &7
+        &e %s &fwon the game on &b%s&f.
+        &7
   time:
-    limit: '&cThe game ended because time ran out!'
+    limit: '{prefix}&cThe game ended because the time ran out!'
     left:
-      minutes: '&cThe game ends in %s minute(s).'
-      seconds: '&cThe game ends in %s second(s).'
+      minutes: '{prefix}&7The game ends in &e%s minute(s)&7.'
+      seconds: '{prefix}&7The game ends in &c%s second(s)&7.'
   start:
-    nowfull: '&6Server &lFULL&6! The game starts in &e%s seconds&6.'
-    countdown: '&9SkyWars starts in &e%s seconds&9.'
-    countdown-alert: "&a%s\n&e⚠ &c&lTeaming in Solo is not allowed &e⚠"
-    countdown-one: '&9SkyWars starts in &e%s second&9.'
-    countdown-minutes: '&9SkyWars starts in &e%s minute(s)&9.'
-    countdown-minutes-seconds: '&9SkyWars starts in &e%s minute(s) and %s seconds&9.'
-    norequiredplayers: '&4The countdown stopped: not enough players.'
-    done: '&9The game is starting...'
-    released: '&cYou will be released in %s seconds.'
-    go: '&9Let the game begin!'
-    go-alert: "&aGO!\n"
-    go-alert-chat: '&4Teaming in Solo is not allowed!'
-  forcestart: '&aThe game was force started.'
+    nowfull: '{prefix}&6Server full! &7The game starts in &e%s seconds&7.'
+    countdown: '{prefix}&7The game starts in &e%s seconds&7.'
+    countdown-alert: |-
+      &e%s
+      &c⚠ Teaming in Solo is not allowed ⚠
+    countdown-one: '{prefix}&7The game starts in &c%s second&7.'
+    countdown-minutes: '{prefix}&7The game starts in &e%s minute(s)&7.'
+    countdown-minutes-seconds: '{prefix}&7The game starts in &e%s minute(s) and %s seconds&7.'
+    norequiredplayers: '{prefix}&cThe countdown stopped: there are not enough players.'
+    done: '{prefix}&7The game is starting...'
+    released: '{prefix}&7You will be released in &e%s seconds&7.'
+    go: '{prefix}&aLet the game begin!'
+    go-alert: |-
+      &aFight!
+      &7
+    go-alert-chat: '{prefix}&cTeaming in Solo is not allowed!'
+  forcestart: '{prefix}&aThe game was forced to start.'
   players:
-    remain: '&c%s players left alive!'
+    remain: '{prefix}&c%s &7players left alive!'
   player:
     death:
-      player: '&6%s &ewas killed by &6%s'
-      other: '&6%s &edied.'
-    join: '&7[&a+&7] &8%s &7joined the game (%s/%s).'
-    quit: '&7[&c-&7] &8%s &7left the game (%s/%s).'
-    talk: '&cYou cannot talk until the game starts.'
-    blockedcommands: '&cYou cannot use that command in game.'
+      player: '&e%s &7was killed by &c%s&7.'
+      other: '&e%s &7died.'
+    join: '&8[&a+&8] &b%s &7joined the game &8(&e%s&8/&e%s&8)'
+    quit: '&8[&c-&8] &b%s &7left the game &8(&e%s&8/&e%s&8)'
+    talk: '{prefix}&cYou cannot talk until the game starts.'
+    blockedcommands: '{prefix}&cYou cannot use that command in a game.'
     vote:
-      time: '&5%s &6voted for &a%s&6. &e%s votes!'
-      chests: '&5%s &6voted for &a%s &6chests. &e%s votes!'
+      time: '{prefix}&b%s &7voted for &e%s&7. &8(&e%s votes&8)'
+      chests: '{prefix}&b%s &7voted for &e%s &7chests. &8(&e%s votes&8)'
   event:
-    refill: "\n&aThe chests have been refilled!"
+    # Sent to the chat and as a title (the first line is the title and the second the subtitle).
+    refill: |-
+      &7
+      &aThe chests have been refilled!
   arrow-hit:
-    - '&e%s is now on &c%s &ehealth.'
-  kill-actionbar: '&e⚔ You killed %s · +%s points ⚔'
-  pearl-cooldown: '&cYou can use another pearl in &f%s &cseconds.'
+    - '{prefix}&b%s &7now has &c%s &7health.'
+  # %s: victim, reward
+  kill-actionbar: '&e⚔ &fYou killed &b%s &8● &a+%s points &e⚔'
+  # %s: seconds
+  pearl-cooldown: '{prefix}&cYou can use another pearl in &e%s &cseconds.'
   stats:
-    separator: '&7--------------------------------'
-    position: '&8 ● &7You finished: &e#%s'
-    duration: '&8 ● &7Game length: &e%s'
-    kills: '&8 ● &7Kills: &e%s'
-    accuracy: '&8 ● &7Bow accuracy: &e%s'
+    separator: '&7'
+    position: '&f You finished in position: &e#%s'
+    duration: '&f Game duration: &e%s'
+    kills: '&f Kills: &e%s'
+    accuracy: '&f Bow accuracy: &e%s'
 
 team:
-  joined: '{prefix}&7You are on team %s&7.'
-  eliminated: '&7Team %s &7has been eliminated!'
-  win-broadcast: "&7-------------------------------\n&aTeam %s &awins!\n&7%s\n&7-------------------------------"
+  # %s: team
+  joined: '{prefix}&7You are in the %s &7team.'
+  eliminated: '{prefix}&7The %s &7team has been eliminated!'
+  # %s: team, players
+  win-broadcast: |-
+    &7
+    &a The %s &ateam wins!
+    &7 %s
+    &7
   colors:
     red: 'Red'
     blue: 'Blue'
@@ -140,18 +162,20 @@ team:
 
 titles:
   join:
-    title: '&c&l%arena%'
+    title: '&b&l%arena%'
     subtitle: '&fGood luck!'
   border:
-    title: '&4The border is closing...'
+    title: '&4&lThe border is closing'
     subtitle: '&7Run for your life!'
   draw:
     title: '&e&lGame over!'
-    subtitle: '&7It is a draw!'
+    subtitle: '&7It was a draw!'
   win:
     title: '&e&lGame over!'
+    # %s: winner(s)
     subtitle: '&b%s &7won the game.'
-    team-subtitle: '&7Team %s &7won!'
+    # %s: team
+    team-subtitle: '&7The %s &7team won!'
   death:
     titles:
       - '&c&lBAM!'
@@ -160,91 +184,107 @@ titles:
       - '&c&lYou died!'
     subtitles:
       - '&7Better luck next time!'
-      - '&7You are now a spectator!'
-      - '&7F, my friend'
+      - '&7You are a spectator now!'
+      - '&7F buddy'
 
 events:
-  # Arena event titles (games/<map>.yml → events) shown in the scoreboard.
+  # Titles of the arena events (games/<map>.yml → events) and of the scoreboard.
   refill: 'Refill'
   draw: 'Draw'
   dragon:
-    title: '&5Dragon'
-    subtitle: '&7Released!'
+    title: '&5&lDragon'
+    subtitle: '&7It has been released!'
   tnt-rain:
-    title: '&cTNT Rain'
-    subtitle: '&7Incoming!'
+    title: '&c&lTNT rain'
+    subtitle: '&7It is coming!'
   wither:
-    title: '&4Wither'
-    subtitle: '&7Has appeared!'
+    title: '&4&lWither'
+    subtitle: '&7It has appeared!'
   zombies:
-    title: '&2Zombies'
+    title: '&2&lZombies'
     subtitle: '&7Run from the zombies!'
 
 death:
   self:
     void:
-      - '&6%s &ethought they would survive the void.'
-      - '&6%s &ethought the game continued in the void.'
+      - '&e%s &7thought they would survive the void.'
+      - '&e%s &7thought the game went on in the void.'
     fall:
-      - '&6%s &ethought they could fly.'
-      - '&6%s &ebroke their legs and died.'
+      - '&e%s &7thought they could fly.'
+      - '&e%s &7broke their legs and died.'
     lava:
-      - '&6%s &ethought swimming in lava was a good idea.'
-      - '&6%s &ethought lava was their friend.'
+      - '&e%s &7thought swimming in lava was a good idea.'
+      - '&e%s &7thought lava was their friend.'
+      - '&e%s &7tried a waterdrop. Psst: it was lava.'
     drowned:
-      - '&6%s &ecould not hold their breath.'
-      - '&6%s &ethought they were Aquaman.'
+      - '&e%s &7could not hold their breath.'
+      - '&e%s &7thought they were Aquaman.'
+      - '&e%s &7drowned.'
     general:
-      - '&6%s &edied.'
-      - '&6%s &eis in a better place now. RIP'
+      - '&e%s &7died.'
+      - '&e%s &7passed away. RIP'
   killed:
     void:
-      - '&6%s &ewas thrown into the void by &c%s&e.'
-      - '&6%s &edied in the void thanks to &c%s&e.'
+      - '&e%s &7was thrown into the void by &c%s&7.'
+      - '&e%s &7died in the void thanks to &c%s&7.'
     fall:
-      - '&6%s &ebroke their legs running from &c%s&e.'
-      - '&6%s &edied trying to escape &c%s&e.'
+      - '&e%s &7broke their legs running from &c%s&7.'
+      - '&e%s &7died trying to escape from &c%s&7.'
     lava:
-      - '&6%s &eburned to death escaping &c%s&e.'
+      - '&e%s &7burned to death escaping from &c%s&7.'
     projectile:
-      - '&6%s &ewas shot by &c%s&e.'
+      - '&e%s &7was shot by &c%s&7.'
     general:
-      - '&6%s &ewas killed by &c%s&e.'
+      - '&e%s &7was killed by &c%s&7.'
 
 play-again:
-  header:
-    - ''
-    - '&eYour game is over, what do you want to do?'
-  footer:
-    - ''
-  separator: '&8&l • '
+  header: |-
+    &7
+    {prefix}&fWhat do you want to do now?
+  footer: '&7'
+  separator: '&8 ● '
   again:
     text: '&a&lPlay again'
-    hover: "&aPlay again\n&7Join a new game\n&7without going back to the lobby."
+    hover: |-
+      &aPlay again
+      &7
+      &f Join a new game without
+      &f going back to the lobby.
   auto:
     text: '&6&lAuto mode'
-    hover: "&6Auto mode\n&7After every game you will\n&7automatically join another one."
+    hover: |-
+      &6Auto mode
+      &7
+      &f After every game you will
+      &f join another one by yourself.
   leave:
     text: '&c&lLeave'
-    hover: "&cLeave\n&7Go back to the lobby."
+    hover: |-
+      &cLeave
+      &7
+      &f Go back to the lobby.
   auto-cancel:
     text: '&c&l[CANCEL]'
-    hover: '&cClick to turn auto mode off'
-  auto-searching: '&e&lFinding you another game in 5 seconds!'
-  auto-disabled: '&cAuto mode was turned off!'
-  auto-on: '&aAuto mode enabled!'
-  auto-off: '&cAuto mode disabled: you will not join new games automatically.'
-  only-in-game: '&cThis command can only be used in game!'
-  not-now: '&cYou cannot play again right now, try when your game is over.'
-  help-now: '&a/playagain now &6Find another game right away.'
-  help-auto: '&a/playagain automode &6Toggle auto mode.'
-  unknown: '{prefix}&cThat command does not exist. Use &e/playagain&c.'
-  help-header: '&9---------- &e&lplayagain&9 ----------'
+    hover: '&cClick to turn off the auto mode.'
+  auto-searching: '{prefix}&eLooking for another game in 5 seconds!'
+  auto-disabled: '{prefix}&cThe auto mode was turned off!'
+  auto-on: '{prefix}&7Auto mode &aenabled&7.'
+  auto-off: '{prefix}&7Auto mode &cdisabled&7: you will not join new games by yourself.'
+  only-in-game: '{prefix}&cThis command can only be used in a game!'
+  not-now: '{prefix}&cYou cannot play again now, try when you finish.'
+  help-now: '&7 /playagain now - &eLooks for another game right away.'
+  help-auto: '&7 /playagain automode - &eTurns the auto mode on or off.'
+  unknown: '{prefix}&cThat command does not exist! Use &e/playagain&c.'
+  help-header: |-
+    &7
+    {prefix}&fHelp &7● &eplayagain
+    &7
 
 ranks:
-  need-rank: '&cYou need at least &r%s &cto do this.'
-  store-button: '&4&lGet it HERE!'
-  store-hover: '&aClick to visit our &d&lstore&a!'
+  # %s: rank
+  need-rank: '{prefix}&cYou need at least the &r%s &crank to do this.'
+  store-button: '&e&lGet it HERE!'
+  store-hover: '&7Click to go to our &estore&7.'
   vote-events: '&6Hero'
   vote-projectiles: '&aVIP'
   vote-scenarios: '&aVIP'
@@ -265,50 +305,58 @@ variable:
 
 vote:
   menu:
-    title: '&aVote'
-  only1: '&cYou can only vote once.'
-  votes: '&4%s votes'
+    title: '&8&lS&7&lS&0 » Voting'
+  only1: '{prefix}&cYou can only vote once.'
+  votes: '&f Votes: &e%s'
   chests:
-    title: '&7&lChests'
-    name: '&7&lChests'
-    lore: '&3Vote for the items you want to find in chests!'
-    successful: '&aYou voted for %s'
+    title: '&8&lS&7&lS&0 » Chests'
+    name: '&7» &bChests'
+    lore: |-
+      &7
+      &f Vote which items you want
+      &f to find in the chests.
+      &7
+    successful: '{prefix}&7You voted for &e%s&7.'
   time:
-    title: '&7&lTime'
-    name: '&6&lTime'
-    lore: '&6Vote for the time of day!'
-    successful: '&aYou voted for %s'
+    title: '&8&lS&7&lS&0 » Time'
+    name: '&7» &bTime'
+    lore: |-
+      &7
+      &f Vote the time of day
+      &f for the game.
+      &7
+    successful: '{prefix}&7You voted for &e%s&7.'
     day:
-      name: '&e&lDay'
-      lore1: '&7Vote for day'
-      lore2: '&4%s votes'
+      name: '&eDay'
+      lore1: '&f Click to vote for day.'
+      lore2: '&f Votes: &e%s'
     night:
-      name: '&8&lNight'
-      lore1: '&7Vote for night'
-      lore2: '&4%s votes'
+      name: '&8Night'
+      lore1: '&f Click to vote for night.'
+      lore2: '&f Votes: &e%s'
     sunset:
-      name: '&4&lSunset'
-      lore1: '&7Vote for sunset'
-      lore2: '&4%s votes'
+      name: '&6Sunset'
+      lore1: '&f Click to vote for sunset.'
+      lore2: '&f Votes: &e%s'
   projectiles:
-    selected: '&6Projectiles: &a%s'
-    player-vote: '&5%s &6voted for &a%s &6projectiles! &e%s votes!'
+    selected: '{prefix}&7Projectiles: &e%s&7.'
+    player-vote: '{prefix}&b%s &7voted for &e%s &7projectiles. &8(&e%s votes&8)'
     names:
       none: 'No projectiles'
       normal: 'Normal'
       block_breaker: 'Block breaker'
-    already-chosen: '&cThe projectiles of this game have already been chosen.'
-    # Vote submenu titles (max 32 characters)
+    already-chosen: '{prefix}&cThe projectiles of this game have already been chosen.'
+    # Titles of the voting submenus (32 characters at most)
     projectiles:
-      name: '&7&lProjectiles'
+      name: '&8&lS&7&lS&0 » Projectiles'
     events:
-      name: '&7&lEvents'
+      name: '&8&lS&7&lS&0 » Events'
     scenarios:
-      name: '&7&lScenarios'
+      name: '&8&lS&7&lS&0 » Scenarios'
   events:
-    none-selected: '&6Nobody voted for extra events: there will only be &eRefill&6.'
-    selected: '&6Selected event: &a%s'
-    player-vote: '&5%s &6voted for the &a%s &6event! &e%s votes!'
+    none-selected: '{prefix}&7Nobody voted for events: there will only be the &eRefill &7event.'
+    selected: '{prefix}&7Selected event: &e%s&7.'
+    player-vote: '{prefix}&b%s &7voted for the &e%s &7event. &8(&e%s votes&8)'
     names:
       none: 'None'
       dragon: 'Bomber dragon'
@@ -317,194 +365,241 @@ vote:
       border: 'Border'
       zombies: 'Zombies'
   scenarios:
-    none-selected: '&6Nobody voted for a scenario: this will be a normal game.'
-    selected: '&6Selected scenario: &a%s'
-    anticlean-heal: '&aYou were healed thanks to AntiClean!'
-    player-vote: '&5%s &6voted for the &a%s &6scenario! &e%s votes!'
+    none-selected: '{prefix}&7Nobody voted for a scenario: it will be a normal game.'
+    selected: '{prefix}&7Selected scenario: &e%s&7.'
+    anticlean-heal: '{prefix}&aYou healed thanks to the AntiClean scenario!'
+    player-vote: '{prefix}&b%s &7voted for the &e%s &7scenario. &8(&e%s votes&8)'
     names:
       speed: 'Speed'
       strength: 'Strength'
-      nofall: 'Feather falling'
+      nofall: 'Feather feet'
 
 item:
   kits:
-    name: '&aKit selector'
-    lore: '&7Click to open the kit selector'
+    name: '&aKit selector &7(Right click)'
+    lore: '&f Choose the kit you will play with.'
   settings:
-    name: '&aSkyWars settings'
-    lore: '&7Customise your SkyWars!'
+    name: '&6SkyWars options &7(Right click)'
+    lore: '&f Customize your SkyWars.'
   vote:
-    name: '&aVote'
-    lore: '&7Vote how the game will be played.'
+    name: '&bVoting &7(Right click)'
+    lore: '&f Vote how the game will be played.'
   spectator:
     tracker:
-      name: '&aPlayer tracker'
+      name: '&eTracker &7(Right click)'
     exit:
-      name: '&aBack to lobby'
+      name: '&cBack to lobby &7(Right click)'
 
 items:
   spectator:
     tracker:
-      name: '&e&lTracker'
-      lore:
-        - ''
-        - '&f Open it and pick a player'
-        - '&f to watch their game.'
-        - ''
+      name: '&eTracker &7(Right click)'
+      lore: |-
+        &7
+        &f Open it and pick a player
+        &f to watch their game.
+        &7
       item:
-        lore: '&7Right click to watch other players!'
-        name: '&a&lTeleporter&r &7(Right click)'
+        name: '&eTeleporter &7(Right click)'
+        lore: |-
+          &7
+          &f Right click to watch
+          &f other players.
+          &7
       players-head:
-        lore:
-          - '&7Health: &f%player_health_rounded%%'
-          - '&7Food: &f%player_food_level%'
-          - ''
-          - '&fLeft click to watch!'
-          - '&fRight click to report!'
+        lore: |-
+          &7
+          &f Health: &c%player_health_rounded%%
+          &f Food: &6%player_food_level%
+          &7
+          &e Left click to spectate.
+          &e Right click to report.
+          &7
     settings:
-      name: '&6&lSettings'
-      lore:
-        - ''
-        - '&f Open it and choose your'
-        - '&f spectator settings.'
-        - ''
+      name: '&6Settings &7(Right click)'
+      lore: |-
+        &7
+        &f Open and choose your
+        &f spectator settings.
+        &7
     play-again:
-      name: '&b&lPlay again'
-      lore:
-        - ''
-        - '&f Click to go and'
-        - '&f play another game.'
-        - ''
+      name: '&bPlay again &7(Right click)'
+      lore: |-
+        &7
+        &f Click to play
+        &f another game.
+        &7
     leave:
-      name: '&c&lLeave'
-      lore:
-        - ''
-        - '&f Click to go back'
-        - '&f to the SkyWars lobby.'
-        - ''
+      name: '&cLeave &7(Right click)'
+      lore: |-
+        &7
+        &f Click to go back to
+        &f the SkyWars lobby.
+        &7
   settings-items:
     current-balloon:
-      name: '&aSelected balloon: &e<balloonName>'
+      name: '&7» &bBalloon: &e<balloonName>'
     clear-balloon:
-      lore:
-        - '&7Click to remove'
-        - '&7your balloon.'
+      lore: |-
+        &7
+        &f Click to remove
+        &f your balloon.
+        &7
     boxes-menu:
-      lore:
-        - '&7Change the cage you get'
-        - '&7when joining a game.'
+      lore: |-
+        &7
+        &f Change the box you
+        &f spawn in during games.
+        &7
     clear-box:
-      lore:
-        - '&7Click to reset'
-        - '&7your cage in game.'
-    reset: '&cReset'
+      lore: |-
+        &7
+        &f Click to reset
+        &f your game box.
+        &7
+    reset: '&7» &cReset'
     clear-kill-sounds:
-      lore:
-        - '&7Click to reset'
-        - '&7your kill sound.'
+      lore: |-
+        &7
+        &f Click to reset
+        &f your kill sound.
+        &7
     clear-trail:
-      lore:
-        - '&7Click to reset'
-        - '&7your arrow particles.'
+      lore: |-
+        &7
+        &f Click to reset
+        &f your arrow trail.
+        &7
     clear-win-effect:
-      lore:
-        - '&7Click to reset'
-        - '&7your victory effect.'
+      lore: |-
+        &7
+        &f Click to reset
+        &f your win effect.
+        &7
     current-box:
-      lore:
-        - '&7Your selected cage:'
-        - ' '
-        - '&e<boxName>'
-      name: '&aSelected cage: &e<boxName>'
+      name: '&7» &bBox: &e<boxName>'
+      lore: |-
+        &7
+        &f You have the box
+        &e <boxName> &fselected.
+        &7
     kill-sound:
-      name: '&7Selected: &e<killSound>'
+      name: '&7» &bSound: &e<killSound>'
     settings-menu:
-      lore: '&7Click to open'
-      name: '&6SkyWars settings'
+      name: '&7» &bSkyWars settings'
+      lore: |-
+        &7
+        &f Click to open
+        &f your settings.
+        &7
     trail:
-      name: '&7Selected: &e<trail>'
+      name: '&7» &bTrail: &e<trail>'
     trails-menu:
-      lore:
-        - '&7Change the particle'
-        - '&7of your arrows.'
-      name: '&bArrow particles'
+      name: '&7» &bArrow trails'
+      lore: |-
+        &7
+        &f Change the particle
+        &f your arrows leave.
+        &7
     win-effect:
-      name: '&7Selected: &e<winEffect>'
+      name: '&7» &bEffect: &e<winEffect>'
     win-effects-menu:
-      lore:
-        - '&7Change your effect'
-        - '&7when you win a game'
+      lore: |-
+        &7
+        &f Change your effect
+        &f when you win a game.
+        &7
   general-items:
-    back:
-      lore: '&7Back to the previous menu'
-      name: '&9Back'
-    close:
-      lore:
-        - '&7Closes the'
-        - '&7current menu.'
     coins:
-      lore:
-        - '&7Earn points by'
-        - '&7playing games'
-      name: '&aPoints: &e<money>'
+      name: '&7» &bPoints: &e<money>'
+      lore: |-
+        &7
+        &f Earn points by playing
+        &f SkyWars games.
+        &7
     leave:
-      lore:
-        - '&7Click to go back'
-        - '&7to the lobby.'
-      name: '&cLeave'
+      name: '&cLeave &7(Right click)'
+      lore: |-
+        &7
+        &f Click to go back
+        &f to the lobby.
+        &7
     random-map:
-      lore:
-        - '&7Click to join a'
-        - '&7random map.'
-      name: '&aRandom map'
+      name: '&7» &bRandom map'
+      lore: |-
+        &7
+        &f Click to join
+        &f a random map.
+        &7
   shop-items:
     abilities:
-      lore:
-        - '&7Buy SkyWars'
-        - '&7abilities.'
-      name: '&eSkyWars abilities'
+      name: '&7» &bAbilities'
+      lore: |-
+        &7
+        &f Buy abilities
+        &f for your games.
+        &7
     clear-kit:
-      lore:
-        - '&7Click to remove your'
-        - '&7selected kit.'
+      lore: |-
+        &7
+        &f Click to remove
+        &f the selected kit.
+        &7
     current-kit:
-      name: '&aSelected kit: &e<kit>'
+      name: '&7» &bKit: &e<kit>'
     exclusive-kits:
-      lore:
-        - '&7Click to open the selector'
-        - '&7of exclusive kits for'
-        - '&7ranked players.'
-      name: '&b&nExclusive kits'
+      name: '&7» &bExclusive kits'
+      lore: |-
+        &7
+        &f Exclusive kits for
+        &f players with a rank.
+        &7
     kits:
-      lore:
-        - '&7Buy SkyWars'
-        - '&7kits.'
-      name: '&eSkyWars kits'
+      name: '&7» &bKits'
+      lore: |-
+        &7
+        &f Buy the SkyWars
+        &f kits.
+        &7
   vote-items:
     anti-clean-scenario:
       name: '&aAntiClean'
     border-event:
       name: '&fBorder'
     dragon-event:
-      name: '&2Bomber dragon'
+      name: '&5Bomber dragon'
     events:
-      lore: '&7Vote for events'
-      name: '&6Events'
+      name: '&7» &bEvents'
+      lore: |-
+        &7
+        &f Vote the events
+        &f of the game.
+        &7
     no-fall-scenario:
       name: '&9Feather feet'
     no-projectiles:
       name: '&7No projectiles'
-    votes-lore:
-      - ' '
-      - '&e<votes> votes'
+    votes-lore: |-
+      &7
+      &f Votes: &e<votes>
+      &7
+      &e Click to vote.
     normal-projectiles:
       name: '&aNormal projectiles'
     projectiles:
-      lore: '&7Vote for projectiles'
-      name: '&2Projectiles'
+      name: '&7» &bProjectiles'
+      lore: |-
+        &7
+        &f Vote the projectiles
+        &f of the game.
+        &7
     scenarios:
-      lore: '&7Vote for scenarios'
-      name: '&eScenarios'
+      name: '&7» &bScenarios'
+      lore: |-
+        &7
+        &f Vote the scenario
+        &f of the game.
+        &7
     soft-blocks-projectiles:
       name: '&cBlock breaker'
     strength-scenario:
@@ -512,18 +607,18 @@ items:
     tnt-rain-event:
       name: '&cTNT rain'
     wither-event:
-      name: '&6Wither of death'
+      name: '&4Deadly Wither'
     zombies-event:
       name: '&2Killer zombies'
 
 selected:
-  chest-default: '&6&aNormal &6chests: nobody voted.'
-  chest: '&6Selected chests: &a%s'
+  chest-default: '{prefix}&7Nobody voted for chests: they will be &eNormal&7.'
+  chest: '{prefix}&7Selected chests: &e%s&7.'
   chest-basic: 'Basic'
   chest-normal: 'Normal'
   chest-overpowered: 'Overpowered'
-  time-default: '&6Time &aday&6: nobody voted.'
-  time: '&6Selected time: &a%s'
+  time-default: '{prefix}&7Nobody voted for the time: it will be &eday&7.'
+  time: '{prefix}&7Selected time: &e%s&7.'
   time-day: 'Day'
   time-night: 'Night'
   time-sunset: 'Sunset'
@@ -531,277 +626,277 @@ selected:
 kit:
   name:
     purchased: '&a%s'
-    free: '&a%s - Free kit'
+    free: '&a%s &7(Free)'
     notpurchased: '&c%s'
-  cost: '&6Price: &a%s points'
-  contents: '&eContents:'
-  contents-format: '&7- &a%s'
+  cost: '&f Price: &b%s points'
+  contents: '&f Contents:'
+  contents-format: '&7 - &f%s'
+  # %s: kit
   selected-actionbar: '&fSelected kit: &b%s'
 
 kits:
   menu:
-    title: 'Kit selection'
-  none: '&cThere are no kits here.'
-  cleared: '&cYou removed your kit!'
-  none-selected: '&cYou have no kit selected!'
-  already-selected: '&cYou already have this kit selected!'
+    title: '&8&lS&7&lS&0 » Kits'
+  none: '{prefix}&cThere are no kits here.'
+  cleared: '{prefix}&7You &cremoved &7your kit.'
+  none-selected: '{prefix}&cYou do not have a kit selected!'
+  already-selected: '{prefix}&cYou already have that one selected!'
   lore:
-    click-select: '&6Click to select the kit'
-    shift-preview: '&6Shift+Click to preview its contents'
+    click-select: '&e Click to select it.'
+    shift-preview: '&e Shift + click to see its contents.'
   preview:
     # %s: kit (the title cannot be longer than 32 characters)
-    title: '&8Kit: %s'
+    title: '&8&lS&7&lS&0 » %s'
   purchase:
     # %s: kit (the title cannot be longer than 32 characters)
-    title: '&8Buying: %s'
+    title: '&8&lS&7&lS&0 » Buy %s'
     confirm:
-      name: '&aBUY'
+      name: '&a&lBUY'
       # {kit}: kit, {price}: price
-      lore:
-        - '&7You are buying the kit: &f{kit}&7.'
-        - '&7It will cost you:'
-        - '&7- &b{price} points'
-        - ' '
-        - '&8&oThis action cannot be undone.'
-        - ' '
-        - '&6Click to buy.'
+      lore: |-
+        &7
+        &f You are buying the &e{kit} &fkit.
+        &f Price: &b{price} points
+        &7
+        &8 This action cannot be undone.
+        &7
+        &e Click to buy.
     cancel:
-      name: '&cCANCEL'
-      lore:
-        - ' '
-        - '&6Click to cancel.'
+      name: '&c&lCANCEL'
+      lore: |-
+        &7
+        &e Click to cancel.
   archer:
-    contents:
-      - 'Bow'
-      - '10 arrows'
-      - 'Chain chestplate'
+    contents: |-
+      Bow
+      10 arrows
+      Chainmail chestplate
     name: 'Archer'
   blacksmith:
-    contents:
-      - 'Anvil'
-      - 'Diamond helmet'
-      - 'Enchanted book &7(Protection I)'
-      - '32 bottle o'' enchanting'
+    contents: |-
+      Anvil
+      Diamond helmet
+      Enchanted book &7(Protection I)
+      32 bottles o' enchanting
     name: 'Blacksmith'
   bomber:
-    contents:
-      - 'Golden boots &7(Blast protection II Feather falling I)'
-      - '14 TNT'
-      - '2 tripwire hooks'
-      - '5 string'
-      - '10 redstone'
+    contents: |-
+      Golden boots &7(Blast Protection II, Feather Falling I)
+      14 TNT
+      2 tripwire hooks
+      5 strings
+      10 redstone dust
     name: 'Bomber'
   builder:
-    contents:
-      - '20 bricks'
-      - 'Wooden sword'
+    contents: |-
+      20 bricks
+      Wooden sword
     name: 'Builder'
   chicken:
-    contents:
-      - '32 eggs'
-      - 'Iron leggings'
+    contents: |-
+      32 eggs
+      Iron leggings
     name: 'Chicken'
   digger:
-    contents:
-      - 'Iron pickaxe &7(Unbreaking III Efficiency II)'
-      - '1 Diamond ore'
-      - '8 Iron ore'
-      - '5 Coal ore'
+    contents: |-
+      Iron pickaxe &7(Unbreaking III, Efficiency II)
+      1 diamond ore
+      8 iron ores
+      5 coal ores
     name: 'Digger'
   enchanter:
-    contents:
-      - 'Enchanting table'
-      - '32 bottle o'' enchanting'
-      - '16 lapis lazuli'
+    contents: |-
+      Enchanting table
+      32 bottles o' enchanting
+      16 lapis lazuli
     name: 'Enchanter'
   enderman:
-    contents:
-      - '20 End stone'
-      - 'Leather helmet &7(&8Black&7)'
-      - 'Leather tunic &7(&8Black&7)'
-      - 'Leather leggings &7(&8Black&7)'
-      - 'Leather boots &7(&8Black&7)'
-      - '2 ender pearls'
+    contents: |-
+      20 end stones
+      Leather cap &7(&8Black&7)
+      Leather tunic &7(&8Black&7)
+      Leather pants &7(&8Black&7)
+      Leather boots &7(&8Black&7)
+      2 ender pearls
     name: 'Enderman'
   farmer:
-    contents:
-      - 'Golden hoe &7(Fire aspect I)'
-      - 'Golden pants &7(Protection I)'
-      - '3 Golden carrots'
-      - '5 chicken spawners'
+    contents: |-
+      Golden hoe &7(Fire Aspect I)
+      Golden leggings &7(Protection I)
+      3 golden carrots
+      5 chicken spawn eggs
     name: 'Farmer'
   fisherman:
-    contents:
-      - 'Fishing rod &7(Luck of the sea III Unbreaking III)'
-      - '5 cooked fish'
-      - 'Water bucket'
+    contents: |-
+      Fishing rod &7(Luck of the Sea III, Unbreaking III)
+      5 cooked fish
+      Water bucket
     name: 'Fisherman'
   healer:
-    contents:
-      - 'Potion of Healing II'
-      - 'Splash Potion of Healing I'
-      - 'Splash Potion of regeneration'
+    contents: |-
+      Potion of Healing II
+      Splash potion of Healing I
+      Splash potion of Regeneration
     name: 'Healer'
   iron-golem:
-    contents:
-      - 'Iron helmet'
-      - 'Iron leggings'
+    contents: |-
+      Iron helmet
+      Iron leggings
     name: 'Iron golem'
   joker:
-    contents:
-      - '8 TNT'
-      - '3 redstone torches'
-      - 'Instant damage potion'
-      - 'Wood sword'
-      - 'Redstone block'
-      - '3 Pressure plates'
+    contents: |-
+      8 TNT
+      3 redstone torches
+      Splash potion of Harming
+      Wooden sword
+      Block of redstone
+      3 pressure plates
     name: 'Joker'
   lumberjack:
-    contents:
-      - 'Stone axe &7(Sharpness II Efficiency III)'
-      - '10 Logs'
+    contents: |-
+      Stone axe &7(Sharpness II, Efficiency III)
+      10 logs
     name: 'Lumberjack'
   noobly:
-    contents:
-      - 'Leather tunic'
-      - 'Leather pants'
-      - 'Wooden pickaxe'
-      - 'Wooden shovel'
-      - 'Wooden axe'
-      - 'Wooden sword'
-      - 'Wooden hoe'
+    contents: |-
+      Leather tunic
+      Leather pants
+      Wooden pickaxe
+      Wooden shovel
+      Wooden axe
+      Wooden sword
+      Wooden hoe
     name: 'Noobly'
   pyromaniac:
-    contents:
-      - 'Flint and steel'
-      - 'Lava bucket'
-      - 'Chainmail chestplate &7(Fire Protection V)'
-      - 'Potion of fire resistance'
+    contents: |-
+      Flint and steel
+      Lava bucket
+      Chainmail chestplate &7(Fire Protection V)
+      Potion of Fire Resistance
     name: 'Pyromaniac'
   redstone-master:
-    contents:
-      - '3 redstone repeaters'
-      - '20 redstone'
-      - '1 sticky piston'
-      - '1 hopper'
-      - '1 lever'
-      - '1 Piston'
-      - '1 Redstone Comparator'
+    contents: |-
+      3 redstone repeaters
+      20 redstone dust
+      1 sticky piston
+      1 hopper
+      1 lever
+      1 piston
+      1 redstone comparator
     name: 'Redstone master'
   scout:
-    contents:
-      - '3 Splash potions of speed II &7(30 seconds)'
-      - 'Stone sword'
+    contents: |-
+      3 splash potions of Swiftness II
+      Stone sword
     name: 'Scout'
   spiderman:
-    contents:
-      - '15 webs'
-      - 'Leather helmet &7(&cRed&7)'
-      - 'Leather tunic &7(&9Blue&7)'
-      - 'Leather leggings &7(&cRed&7)'
-      - 'Leather boots &7(&9Blue&7)'
-      - 'Jump boost potion'
+    contents: |-
+      15 cobwebs
+      Leather cap &7(&cRed&7)
+      Leather tunic &7(&9Blue&7)
+      Leather pants &7(&cRed&7)
+      Leather boots &7(&9Blue&7)
+      Potion of Leaping
     name: 'Spiderman'
   swordsman:
-    contents:
-      - 'Stone sword &7(Sharpness II)'
+    contents: 'Stone sword &7(Sharpness II)'
     name: 'Swordsman'
 
 settings:
   menu:
-    title: '&aSkyWars settings'
+    title: '&8&lS&7&lS&0 » Options'
     boxes:
-      title: '&aGlass colours'
-      name: '&7&lGlass colour'
-      lore: '&3Change the colour of your cage!'
+      title: '&8&lS&7&lS&0 » Glass'
+      name: '&7» &bGlass color'
+      lore: '&f Change the color of the glass you spawn in.'
     trails:
-      title: '&aArrow trails'
-      name: '&6&lArrow trail'
-      lore: '&5Change your arrow trail'
+      title: '&8&lS&7&lS&0 » Trails'
+      name: '&7» &bArrow trail'
+      lore: '&f Change the trail of your arrows.'
   trails:
     default:
-      name: '&3Default'
+      name: '&bDefault'
     slime:
-      name: '&3Slime'
-      lore: '&7Rank only'
+      name: '&bSlime'
+      lore: '&f Rank only'
     flame:
-      name: '&3Fire'
-      lore: '&7Rank only'
+      name: '&bFire'
+      lore: '&f Rank only'
     water:
-      name: '&3Water'
-      lore: '&7Rank only'
+      name: '&bWater'
+      lore: '&f Rank only'
     lava:
-      name: '&3Lava'
-      lore: '&7Rank only'
+      name: '&bLava'
+      lore: '&f Rank only'
     potion:
-      name: '&3Potion'
-      lore: '&7Rank only'
+      name: '&bPotion'
+      lore: '&f Rank only'
     notes:
-      name: '&3Notes'
-      lore: '&7Rank only'
+      name: '&bNotes'
+      lore: '&f Rank only'
 
 cosmetics:
   already-selected:
-    box: '&cYou already have this cage selected!'
-    balloon: '&cYou already have this balloon selected!'
-    killsound: '&cYou already have this sound selected!'
-    trail: '&cYou already have this trail selected!'
+    box: '{prefix}&cYou already have that box selected!'
+    balloon: '{prefix}&cYou already have that balloon selected!'
+    killsound: '{prefix}&cYou already have that sound selected!'
+    trail: '{prefix}&cYou already have that trail selected!'
 
 tracker:
   menu:
-    title: '&7Player tracker'
+    title: '&8&lS&7&lS&0 » Tracker'
   inventory:
     # %s: player (the title cannot be longer than 32 characters)
-    title: '&8Inventory of %s'
+    title: '&8&lS&7&lS&0 » %s'
 
 spectator:
-  first-person-exit: '&ePress &bshift &eto leave first person'
+  first-person-exit: '&fPress &eshift &fto leave first person.'
 
 player:
   select:
-    trail: '&aYou selected the %s trail!'
-    wineffect: '&aYou selected the %s victory effect!'
-    wineffect-default: '&aYou restored the default victory effect!'
-    killsound: '&aYou selected the %s kill sound!'
-    killsound-default: '&aYou restored the default kill sound!'
-    colour-default: '&aYou restored the default glass!'
-    colour: '&aYou selected the %s glass!'
-    kit: '&aYou selected the %s kit'
-    balloon: '&aYou selected the balloon: %s'
+    trail: '{prefix}&7You selected the &e%s &7trail.'
+    wineffect: '{prefix}&7You selected the &e%s &7win effect.'
+    wineffect-default: '{prefix}&7You reset your win effect to the &edefault &7one.'
+    killsound: '{prefix}&7You selected the &e%s &7kill sound.'
+    killsound-default: '{prefix}&7You reset your kill sound to the &edefault &7one.'
+    colour-default: '{prefix}&7You reset your glass to the &edefault &7one.'
+    colour: '{prefix}&7You selected the &e%s &7box.'
+    kit: '{prefix}&7You selected the &e%s &7kit.'
+    balloon: '{prefix}&7You selected the &e%s &7balloon.'
   needpermissions:
     settings:
-      colour: '&cYou do not have permission for this colour!'
-      trail: '&cYou do not have permission for this trail!'
-      wineffect: '&cYou do not have permission for this victory effect!'
-      killsound: '&cYou do not have permission for this kill sound!'
-      balloon: '&cYou do not have permission for this balloon!'
+      colour: '{prefix}&cYou do not have permission to use that box!'
+      trail: '{prefix}&cYou do not have permission to use that trail!'
+      wineffect: '{prefix}&cYou do not have permission to use that win effect!'
+      killsound: '{prefix}&cYou do not have permission to use that kill sound!'
+      balloon: '{prefix}&cYou do not have permission to use that balloon!'
     vote:
-      time: '&cYou do not have permission to vote for the time!'
-      chest: '&cYou do not have permission to vote for chests!'
-    kit: '&cYou do not have permission to use this kit!'
+      time: '{prefix}&cYou do not have permission to vote for the time!'
+      chest: '{prefix}&cYou do not have permission to vote for the chests!'
+    kit: '{prefix}&cYou do not have permission to use that kit!'
   needmoney:
-    box: '&cYou cannot afford this cage!'
-    winEffect: '&cYou cannot afford this victory effect!'
-    trail: '&cYou cannot afford this trail!'
-    killSound: '&cYou cannot afford this kill sound!'
-    balloon: '&cYou cannot afford this balloon!'
-    kit: '&cYou cannot afford this kit!'
+    box: '{prefix}&cYou do not have enough points for that box!'
+    winEffect: '{prefix}&cYou do not have enough points for that win effect!'
+    trail: '{prefix}&cYou do not have enough points for that trail!'
+    killSound: '{prefix}&cYou do not have enough points for that kill sound!'
+    balloon: '{prefix}&cYou do not have enough points for that balloon!'
+    kit: '{prefix}&cYou do not have enough points for that kit!'
   already:
-    kit: '&cYou already own %s!'
+    kit: '{prefix}&cYou already have the &e%s &ckit!'
   purchase:
-    kit: '&aPurchase complete.'
+    kit: '{prefix}&aPurchase completed!'
   coins:
-    add: '&6+%s points'
-    less: '&6-%s points'
+    add: '{prefix}&a&l+&b %s &fpoints'
+    less: '{prefix}&c&l-&b %s &fpoints'
   teleport:
-    lobby: '&aGoing back to the lobby...'
-  death: '&cYou are out of the game! Type &6/leave &cto leave.'
+    lobby: '{prefix}&7Going back to the lobby...'
+  death: '{prefix}&cYou are out of the game! &7Type &e/leave &7to leave.'
   ability:
-    purchase: '&aYou bought: %ability%'
-    afford: '&cYou cannot afford this!'
-    purchased: '&cYou already own this ability!'
-    unavailable: '&cUnlock the previous levels first.'
-    disabled: '&cYou cannot upgrade a disabled ability.'
+    purchase: '{prefix}&7You bought &e%ability%&7.'
+    afford: '{prefix}&cYou do not have enough points for this!'
+    purchased: '{prefix}&cYou already have that ability!'
+    unavailable: '{prefix}&cYou cannot buy this until you unlock the previous levels.'
+    disabled: '{prefix}&cYou cannot buy upgrades of a disabled ability.'
 
 motd:
   waiting: '&2Waiting'
@@ -814,843 +909,1081 @@ motd:
 dialogs:
   report:
     title: '&c&lReports'
-    subtitle: '&7Type the report reason'
-    action-bar: '&7You are reporting &c%player_name%'
+    subtitle: '&7Type the reason of the report'
+    action-bar: '&fYou are reporting &c%player_name%'
     # %s: player
-    sent: '&aYou reported %s successfully!'
+    sent: '{prefix}&aYou reported &e%s &asuccessfully!'
 
-# Scoreboard (scoreboard.yml).
+# Scoreboard (scoreboard.yml). The plugin variables (%coins%, %a-name%...) are set after translating.
 scoreboard:
-  coins: '&5Coins:'
-  next-event: '&5%a-event-title% in:'
-  map: '&5Map:'
-  players: '&5Players:'
-  footer: '&estatspvp.gg'
+  title: '&b&lSkyWars'
+  player: '&e ● &f%player%'
+  coins: '&f Coins: &b%coins%'
+  wins: '&f Wins: &a%sw-wins%'
+  kills: '&f Kills: &a%sw-kills%'
+  next-event: '&f %a-event-title%: &a%a-event-time%'
+  map: '&f Map: &a%a-name%'
+  players: '&f Players: &a%a-ingame-p%&7/&a%a-max-p%'
+  footer: '&7spreen.studio'
 
 hologram:
-  # Holograms are translated by FurryCore through PlaceholderAPI: one line per key.
+  # FurryCore translates the holograms through PlaceholderAPI: one line per key.
   stats:
-    title: 'stats'
-    wins: '&aWins'
-    kills: '&aKills'
-    deaths: '&aDeaths'
-    played: '&aGames played'
-    arrow-shot: '&aArrows shot'
-    arrow-hit: '&aArrows hit'
-    blocks-broken: '&aBlocks broken'
-    blocks-placed: '&aBlocks placed'
-    distance-walked: '&aDistance walked'
-    time-played: '&aTime played'
+    title: 'statistics'
+    wins: '&fWins'
+    kills: '&fKills'
+    deaths: '&fDeaths'
+    played: '&fGames played'
+    arrow-shot: '&fArrows shot'
+    arrow-hit: '&fArrows hit'
+    blocks-broken: '&fBlocks broken'
+    blocks-placed: '&fBlocks placed'
+    distance-walked: '&fDistance walked'
+    time-played: '&fTime played'
   top:
     wins: '&e&lTOP WINS'
     kills: '&c&lTOP KILLS'
-    refresh: '&7Updated every 5 minutes'
+    refresh: '&7Updates every 5 minutes'
 
 signs:
-  # Signs are shown in FurryCore's default language.
+  # The signs are shown in the default language of FurryCore.
   map: '&nMap: %map%'
   searching-1: 'SEARCHING'
   searching-2: 'GAMES'
   error:
-    - '&lSkyWars'
+    - '&b&lSkyWars'
     - '&cERROR'
     - '&cArena not'
     - '&cavailable'
 
 # Menu texts (plugins/SkyWars/menus/*.yml).
 menus:
-  abilities:
+  general-items:
     close:
-      name: '&bClose'
-    next:
-      lore: '&7Click for the next page'
-      name: '&bNext'
-    title: '&bSkyWars &7» &fAbilities 1'
-    title-2: '&bSkyWars &7» &fAbilities 2'
-  common:
-    stats:
-      lore:
-        - '&b● &7Wins&7: &b%skywars_stats_wins%'
-        - '&b● &7Kills&7: &b%skywars_stats_kills%'
-        - '&b● &7Deaths&7: &b%skywars_stats_deaths%'
-        - '&b● &7Played&7: &b%skywars_stats_played%'
-        - '&b● &7Arrows shot&7: &b%skywars_stats_arrow_shot%'
-        - '&b● &7Arrows hit&7: &b%skywars_stats_arrow_hit%'
-        - '&b● &7Blocks broken&7: &b%skywars_stats_blocks_broken%'
-        - '&b● &7Blocks placed&7: &b%skywars_stats_blocks_placed%'
-        - '&b● &7Distance walked&7: &b%skywars_stats_distance_walked%'
-        - '&b● &7Time played&7: &b%skywars_stats_time_played%'
-        - ''
-        - '&b● &7Your points: &b%skywars_coins%'
-      name: '&bYour stats'
-    back:
-      lore: '&7Click to go back'
-      name: '&bBack'
-    close:
-      lore: '&7Click to close'
       name: '&cClose'
-    next-page: '&fNext page &b->'
+      lore: |-
+        &f
+        &f Closes the current menu.
+        &f
+    back:
+      name: '&b« &eBack'
+      lore: |-
+        &f
+        &f Goes back to the previous menu.
+        &f
+    back-shop:
+      name: '&b« &eShop'
+    prevPage:
+      name: '&7Previous Page &f({actualPage}/{maxPages})'
+      lore: |-
+        &7
+        &f Go to the previous page.
+        &7
+    nextPage:
+      name: '&7Next Page &f({actualPage}/{maxPages})'
+      lore: |-
+        &7
+        &f Go to the next page.
+        &7
+    stats:
+      name: '&7» &bYour statistics'
+      lore: |-
+        &7
+        &8General:
+        &7 Wins: &a%skywars_stats_wins%
+        &7 Kills: &a%skywars_stats_kills%
+        &7 Deaths: &c%skywars_stats_deaths%
+        &7 Games: &e%skywars_stats_played%
+        &7
+        &8Combat:
+        &7 Arrows shot: &f%skywars_stats_arrow_shot%
+        &7 Arrows hit: &f%skywars_stats_arrow_hit%
+        &7
+        &8World:
+        &7 Blocks broken: &f%skywars_stats_blocks_broken%
+        &7 Blocks placed: &f%skywars_stats_blocks_placed%
+        &7 Distance walked: &f%skywars_stats_distance_walked%
+        &7 Time played: &f%skywars_stats_time_played%
+        &7
+        &7 Points: &b%skywars_coins%
+        &7
     no-kit:
-      lore:
-        - '&7You have no'
-        - '&7kit selected'
       name: '&cNo kit'
-    previous-page: '&b<- &fPrevious page'
-  balloons:
-    no-balloons:
-      name: '&cNo balloons available'
-    title: '&8SkyWars shop » Balloons'
-  boxes:
-    no-boxes:
-      name: '&cNo cages available'
-    title: '&b&l・&8SkyWars » Cages'
-  game-selector:
-    full:
-      lore:
-        - '&7Click to join the'
-        - '&7map &a%arena%'
-        - ''
-        - '&7Players:'
-        - '&7%p-alive%/%p-max%'
-        - ''
-        - '&7Status: &5Full'
-    ingame:
-      lore:
-        - '&7Click to join the'
-        - '&7map &a%arena%'
-        - ''
-        - '&7Players:'
-        - '&7%p-alive%/%p-max%'
-        - ''
-        - '&7Status: &cIn game'
-    no-arenas:
-      name: '&cNo arenas available'
-    randomjoin:
-      name: '&aRandom game'
-    starting:
-      lore:
-        - '&7Click to join the'
-        - '&7map &a%arena%'
-        - ''
-        - '&7Players:'
-        - '&7%p-alive%/%p-max%'
-        - ''
-        - '&7Status: &6Starting'
-    title: '&8Map selector'
-    waiting:
-      lore:
-        - '&7Click to join the'
-        - '&7map &a%arena%'
-        - ''
-        - '&7Players:'
-        - '&7%p-alive%/%p-max%'
-        - ''
-        - '&7Status: &aWaiting'
-  games:
-    map-selector:
-      lore:
-        - '&7Open the selector with this'
-        - '&7to choose the map'
-      name: '&e&lMap selector'
-    solo-sky-wars:
-      lore:
-        - '&7Fight other players in the'
-        - '&7sky, just do not look down! To win'
-        - '&7you must be the last one standing.'
-        - '&7Simple, right?'
-        - '&1 '
-        - '&bPlayers: &a<players>'
-        - '&bWaiting players: &a<wplayers>'
-        - '&bClick: &aJoin a random map'
-        - '&bRight click: &aChoose a map'
-      name: '&e&lSkyWars Solo'
-    title: '&b&l・&8Game selector'
-  kill-sounds:
-    no-sound-effects:
-      name: '&cNo effects available'
-    title: '&8SkyWars shop » Kill sounds'
-  kits:
-    title: '&b&l・&8Kit selector'
-  shop-kits:
-    title: '&b&l・&8SkyWars » Kits'
+      lore: |-
+        &7
+        &f You do not have
+        &f a kit selected.
+        &7
   shop:
-    abilities:
-      lore: '&7Opens the abilities menu'
-      name: '&bAbilities'
-    arrow-particles:
-      lore: '&7Opens the particles menu'
-      name: '&bArrow particles'
-    boxes:
-      lore: '&7Opens the cages menu'
-      name: '&bCages'
-    kill-sounds:
-      lore: '&7Opens the kill sounds menu'
-      name: '&bKill sounds'
-    kits:
-      lore: '&7Opens the kits menu'
-      name: '&bKits'
-    title: '&b&l・&8SkyWars menu'
-    win-effects:
-      lore: '&7Opens the victory effects menu'
-      name: '&bVictory effects'
+    title: '&8&lS&7&lS&0 » Shop'
+    items:
+      kits:
+        name: '&7» &bKits'
+        lore: |-
+          &7
+          &f Click to buy and choose
+          &f your game kit.
+          &7
+      abilities:
+        name: '&7» &bAbilities'
+        lore: |-
+          &7
+          &f Click to upgrade your
+          &f game abilities.
+          &7
+      boxes:
+        name: '&7» &bBoxes'
+        lore: |-
+          &7
+          &f Click to choose the box
+          &f you spawn in.
+          &7
+      win-effects:
+        name: '&7» &bWin effects'
+        lore: |-
+          &7
+          &f Click to choose your
+          &f effect when you win.
+          &7
+      trails:
+        name: '&7» &bArrow trails'
+        lore: |-
+          &7
+          &f Click to choose the
+          &f particle of your arrows.
+          &7
+      kill-sounds:
+        name: '&7» &bKill sounds'
+        lore: |-
+          &7
+          &f Click to choose the
+          &f sound of your kills.
+          &7
+  shop-kits:
+    title: '&8&lS&7&lS&0 » Kit Shop'
+  kits:
+    title: '&8&lS&7&lS&0 » Kits'
+  abilities:
+    title: '&8&lS&7&lS&0 » Abilities I'
+    title-2: '&8&lS&7&lS&0 » Abilities II'
+    items:
+      next:
+        name: '&eAbilities II &b»'
+      prev:
+        name: '&b« &eAbilities I'
+  balloons:
+    title: '&8&lS&7&lS&0 » Balloons'
+    items:
+      noBalloons:
+        name: '&cNo available balloons'
+        lore: |-
+          &7
+          &f There are no balloons
+          &f to show yet.
+          &7
+  boxes:
+    title: '&8&lS&7&lS&0 » Boxes'
+    items:
+      noBoxes:
+        name: '&cNo available boxes'
+        lore: |-
+          &7
+          &f There are no boxes
+          &f to show yet.
+          &7
+  kill-sounds:
+    title: '&8&lS&7&lS&0 » Kill Sounds'
+    items:
+      noSounds:
+        name: '&cNo available sounds'
+        lore: |-
+          &7
+          &f There are no sounds
+          &f to show yet.
+          &7
   trails:
-    no-trails:
-      name: '&cNo trails available'
-    sintrail:
-      lore:
-        - '&7You have no'
-        - '&7trail selected'
-      name: '&cNo trail'
-    title: '&b&l・&8SkyWars » Trails'
+    title: '&8&lS&7&lS&0 » Trails'
+    items:
+      noTrails:
+        name: '&cNo available trails'
+        lore: |-
+          &7
+          &f There are no trails
+          &f to show yet.
+          &7
+      noTrail:
+        name: '&cNo trail'
+        lore: |-
+          &7
+          &f You do not have
+          &f a trail selected.
+          &7
   win-effects:
-    title: '&b&l・&8SkyWars » Win effects'
+    title: '&8&lS&7&lS&0 » Win Effects'
+  games:
+    title: '&8&lS&7&lS&0 » SkyWars'
+    items:
+      solo:
+        name: '&b&lSkyWars Solo'
+        lore: |-
+          &8PvP
+          &f
+          &7Fight in the sky against others,
+          &7loot the chests and be the
+          &7last one standing to win.
+          &f
+          &fPlaying: &5<players>
+          &fWaiting: &5<wplayers>
+          &f
+          &e Click to join a game.
+      mapSelector:
+        name: '&7» &bMap selector'
+        lore: |-
+          &7
+          &f Choose the map you
+          &f want to play on.
+          &7
+          &e Click to open it.
+  game-selector:
+    title: '&8&lS&7&lS&0 » Maps'
+    items:
+      waiting:
+        name: '&a%arena%'
+        lore: |-
+          &7
+          &f Players: &7%p-alive%/%p-max%
+          &f Status: &aWaiting
+          &7
+          &e Click to join.
+      starting:
+        name: '&e%arena%'
+        lore: |-
+          &7
+          &f Players: &7%p-alive%/%p-max%
+          &f Status: &6Starting
+          &7
+          &e Click to join.
+      full:
+        name: '&5%arena%'
+        lore: |-
+          &7
+          &f Players: &7%p-alive%/%p-max%
+          &f Status: &5Full
+          &7
+      ingame:
+        name: '&c%arena%'
+        lore: |-
+          &7
+          &f Players: &7%p-alive%/%p-max%
+          &f Status: &cIn game
+          &7
+      noArenas:
+        name: '&cNo available maps'
+        lore: |-
+          &7
+          &f There are no games waiting
+          &f for players right now.
+          &7
+      random:
+        name: '&7» &bRandom game'
+        lore: |-
+          &7
+          &f Click to join the best
+          &f available game.
+          &7
+      prev:
+        name: '&b« &eGame Modes'
 
-# Cages (boxes.yml → icon).
+# Boxes (boxes.yml → icon).
 boxes:
   paracaidas:
     name: '&aParachute'
-    lore:
-      - '&7Use this cage to have'
-      - '&7a parachute with you.'
+    lore: |-
+      &7
+      &f Use this box to have a
+      &f parachute with you.
+      &7
   amarilla:
-    lore:
-      - '&7Well, it is a yellow cage.'
-      - '&7That is it...'
     name: '&eYellow'
+    lore: |-
+      &7
+      &f Well, it is a yellow box.
+      &f That is all...
+      &7
   campo:
-    lore:
-      - '&7Enjoy some time in the countryside'
-      - '&7before playing a game'
     name: '&aCountryside'
+    lore: |-
+      &7
+      &f Enjoy some time in the countryside
+      &f before playing a game.
+      &7
   champinon:
-    lore:
-      - '&7Enjoy a stylish house'
-      - '&7made of mushrooms in game.'
     name: '&aMushroom'
+    lore: |-
+      &7
+      &f Enjoy a mushroom style
+      &f house in your games.
+      &7
   default:
     name: '&cDefault'
   dj:
-    lore:
-      - '&7Feel like you are at'
-      - '&7a party having a great'
-      - '&7time with everyone.'
     name: '&aDJ'
+    lore: |-
+      &7
+      &f Act as if you were in a
+      &f club having a great time
+      &f with everybody.
+      &7
   feria:
-    lore:
-      - '&7Spread the fair vibes'
-      - '&7with this great cage.'
     name: '&aFair'
+    lore: |-
+      &7
+      &f Spread the fair atmosphere
+      &f with this great box.
+      &7
   halloween:
-    lore:
-      - '&7You can find this cage'
-      - '&7in the Halloween season.'
     name: '&aHalloween'
+    lore: |-
+      &7
+      &f You can find this box
+      &f around Halloween.
+      &7
   havana:
-    lore:
-      - '&7Feel like you are taking'
-      - '&7a walk around Havana.'
     name: '&aHavana'
+    lore: |-
+      &7
+      &f Feel like you are taking
+      &f a walk in Havana.
+      &7
   hielo:
-    lore:
-      - '&7Be careful with this cage'
-      - '&7since it is freezing'
     name: '&aIce'
+    lore: |-
+      &7
+      &f Be careful with this box,
+      &f it is really cold.
+      &7
   hongo:
-    lore:
-      - '&7Show off a cage decorated'
-      - '&7with fungi.'
     name: '&aFungus'
+    lore: |-
+      &7
+      &f Show off a box decorated
+      &f with fungi.
+      &7
   melon:
-    lore:
-      - '&7Get this cage so you never'
-      - '&7go hungry with melons'
     name: '&aMelon'
+    lore: |-
+      &7
+      &f Get this box so you never
+      &f go hungry with melons.
+      &7
   pistones:
-    lore:
-      - '&7Show that you are an expert'
-      - '&7in pistons with this cage.'
     name: '&aPistons'
+    lore: |-
+      &7
+      &f Show that you are a piston
+      &f expert with this box.
+      &7
   redstone:
-    lore:
-      - '&7Show that you are an expert in'
-      - '&7redstone with this cage.'
     name: '&aRedstone'
+    lore: |-
+      &7
+      &f Show that you are a redstone
+      &f expert with this box.
+      &7
   suite:
-    lore:
-      - '&7Enjoy a modern house'
-      - '&7and show it off to everyone.'
     name: '&aSuite'
+    lore: |-
+      &7
+      &f Enjoy a modern house
+      &f and show it off to everybody.
+      &7
   tnt:
-    lore:
-      - '&7Be careful with this cage'
-      - '&7it might be explosive.'
     name: '&aTNT'
+    lore: |-
+      &7
+      &f Be careful with this box,
+      &f it may be explosive.
+      &7
   tolvas:
-    lore: '&7A hopper themed cage'
     name: '&aHoppers'
+    lore: |-
+      &7
+      &f A hopper themed box.
+      &7
 
 # Arrow trails (trails.yml → icon).
 trails:
   cloud:
-    lore: '&7Cloud'
     name: '&aCloud'
+    lore: |-
+      &7
+      &f Your arrows leave clouds.
+      &7
   enchant:
-    lore: '&7Enchantment'
     name: '&aEnchantment'
+    lore: |-
+      &7
+      &f Your arrows leave
+      &f enchantment runes.
+      &7
   fireworks:
-    lore: '&7Fireworks'
     name: '&aFireworks'
+    lore: |-
+      &7
+      &f Your arrows leave
+      &f firework sparks.
+      &7
   flame:
-    lore: '&7Fire'
     name: '&aFire'
+    lore: |-
+      &7
+      &f Your arrows leave flames.
+      &7
   heart:
-    lore: '&7Heart'
     name: '&aHeart'
+    lore: |-
+      &7
+      &f Your arrows leave hearts.
+      &7
   lava:
-    lore: '&7Lava'
     name: '&aLava'
+    lore: |-
+      &7
+      &f Your arrows leave
+      &f drops of lava.
+      &7
   magic:
-    lore: '&7Magic'
     name: '&aMagic'
+    lore: |-
+      &7
+      &f Your arrows leave
+      &f magic particles.
+      &7
   note:
-    lore: '&7Notes'
     name: '&aNotes'
+    lore: |-
+      &7
+      &f Your arrows leave
+      &f music notes.
+      &7
   portal:
-    lore: '&7Portal'
     name: '&aPortal'
+    lore: |-
+      &7
+      &f Your arrows leave
+      &f portal particles.
+      &7
   reddust:
-    lore: '&7Red trail'
     name: '&aRed trail'
+    lore: |-
+      &7
+      &f Your arrows leave
+      &f a red trail.
+      &7
   slime:
-    lore: '&7Slime'
     name: '&aSlime'
+    lore: |-
+      &7
+      &f Your arrows leave slime.
+      &7
   spell:
-    lore: '&7Potion'
     name: '&aPotion'
+    lore: |-
+      &7
+      &f Your arrows leave
+      &f potion particles.
+      &7
   water:
-    lore: '&7Water'
     name: '&aWater'
+    lore: |-
+      &7
+      &f Your arrows leave
+      &f drops of water.
+      &7
 
 # Kill sounds (killSounds.yml → icon).
 kill-sounds:
   anvil:
-    lore:
-      - '&7A heavy metal clang.'
-    name: '&e&lAnvil'
+    name: '&eAnvil'
+    lore: |-
+      &7
+      &f A dry metallic hit.
+      &7
   bat:
-    name: '&e&lBat'
+    name: '&eBat'
   blaze:
-    lore:
-      - '&7The last breath of a Blaze.'
-    name: '&e&lBlaze'
+    name: '&eBlaze'
+    lore: |-
+      &7
+      &f The last breath of a Blaze.
+      &7
   burp:
-    lore:
-      - '&7Excuse me...'
-    name: '&e&lBurp'
+    name: '&eBurp'
+    lore: |-
+      &7
+      &f Excuse me...
+      &7
   cat:
-    name: '&e&lCat'
+    name: '&eCat'
   chicken:
-    name: '&e&lChicken pop'
+    name: '&eChicken pop'
   creeper:
-    lore:
-      - '&7Ssssss...'
-    name: '&e&lCreeper'
+    name: '&eCreeper'
+    lore: |-
+      &7
+      &f Ssssss...
+      &7
   default:
-    lore: '&7Default.'
     name: '&aMeow'
+    lore: |-
+      &7
+      &f The default sound.
+      &7
   donkey:
-    lore:
-      - '&7A most elegant bray.'
-    name: '&e&lDonkey'
+    name: '&eDonkey'
+    lore: |-
+      &7
+      &f A most elegant bray.
+      &7
   eat:
-    name: '&e&lEat'
+    name: '&eEat'
   enderdragon:
-    name: '&e&lEnder dragon'
+    name: '&eEnder dragon'
   enderman:
-    name: '&e&lEnderman'
+    name: '&eEnderman'
   explode:
-    name: '&e&lExplosion'
+    name: '&eExplosion'
   fireworks:
-    lore:
-      - '&7A rocket bang and crackle.'
-    name: '&e&lFireworks'
+    name: '&eFireworks'
+    lore: |-
+      &7
+      &f Rocket bursts and sparks.
+      &7
   ghast:
-    name: '&e&lGhast'
+    name: '&eGhast'
   glass:
-    lore:
-      - '&7Something just shattered.'
-    name: '&e&lShattered glass'
+    name: '&eShattered glass'
+    lore: |-
+      &7
+      &f Something just shattered.
+      &7
   golem:
-    lore:
-      - '&7The crunch of a falling golem.'
-    name: '&e&lIron golem'
+    name: '&eIron golem'
+    lore: |-
+      &7
+      &f The crack of a falling golem.
+      &7
   howl:
-    lore:
-      - '&7A wolf howling at the moon.'
-    name: '&e&lHowl'
+    name: '&eHowl'
+    lore: |-
+      &7
+      &f A wolf howling at the moon.
+      &7
   levelup:
-    lore:
-      - '&7The classic level-up sound.'
-    name: '&e&lLevel up'
+    name: '&eLevel up'
+    lore: |-
+      &7
+      &f The classic level up sound.
+      &7
   magma:
-    lore:
-      - '&7A sticky, scorching bounce.'
-    name: '&e&lMagma cube'
+    name: '&eMagma cube'
+    lore: |-
+      &7
+      &f A sticky and burning bounce.
+      &7
   notebass:
-    name: '&e&lNote bass'
+    name: '&eNote bass'
   pig:
-    name: '&e&lPig'
+    name: '&ePig'
   pling:
-    lore:
-      - '&7A clean, high-pitched chime.'
-    name: '&e&lPling'
+    name: '&ePling'
+    lore: |-
+      &7
+      &f A clean and sharp jingle.
+      &7
   roar:
-    lore:
-      - '&7The roar of the Ender Dragon.'
-    name: '&e&lDragon roar'
+    name: '&eDragon roar'
+    lore: |-
+      &7
+      &f The roar of the Ender Dragon.
+      &7
   skeleton:
-    name: '&e&lSkeleton'
+    name: '&eSkeleton'
   slimewalk:
-    name: '&e&lWalking slime'
+    name: '&eWalking slime'
   spider:
-    name: '&e&lSpider'
+    name: '&eSpider'
   splash:
-    name: '&e&lSplash'
+    name: '&eSplash'
   successful-hit:
-    name: '&e&lA successful hit'
+    name: '&eA successful hit'
   teleport:
-    lore:
-      - '&7Vanish like an Enderman.'
-    name: '&e&lTeleport'
+    name: '&eTeleport'
+    lore: |-
+      &7
+      &f Vanish like an Enderman.
+      &7
   thor:
-    lore:
-      - '&7Do you want to be the God of Thunder?'
-      - '&7Well then, you know what to do.'
     name: '&aThor'
+    lore: |-
+      &7
+      &f Do you want to be the God of Thunder?
+      &f Well, you know what to do.
+      &7
   thunder:
-    name: '&e&lThunder'
+    name: '&eThunder'
   tnt:
-    lore:
-      - '&7Tsss... better step back.'
-    name: '&e&lLit fuse'
+    name: '&eLit fuse'
+    lore: |-
+      &7
+      &f Tsss... better step back.
+      &7
   villager:
-    name: '&e&lVillager'
+    name: '&eVillager'
   wither:
-    name: '&e&lWither'
+    name: '&eWither'
   wolf:
-    name: '&e&lWolf'
+    name: '&eWolf'
   wolfwhine:
-    name: '&e&lDog bark'
+    name: '&eDog bark'
   zombie:
-    name: '&e&lZombie'
+    name: '&eZombie'
 
-# Victory effects.
+# Win effects.
 wineffects:
   fireworks:
     name: '&eFireworks'
-    lore:
-      - ''
-      - '&f Launch rockets to show'
-      - '&f that you were the best'
-      - '&f of the game.'
-      - ''
+    lore: |-
+      &7
+      &f Launch rockets to show
+      &f that you were the best
+      &f of the game.
+      &7
   vulcan-wool:
     name: '&eWool volcano'
-    lore:
-      - ''
-      - '&f Creates a wool volcano'
-      - '&f when you win'
-      - '&f a game.'
-      - ''
+    lore: |-
+      &7
+      &f Create a wool volcano
+      &f when you win a game.
+      &7
   vulcan:
     name: '&eVolcano'
-    lore:
-      - ''
-      - '&f A fire volcano'
-      - '&f wherever you go.'
-      - ''
+    lore: |-
+      &7
+      &f A fire volcano
+      &f wherever you go.
+      &7
   shield:
     name: '&eShield'
-    lore:
-      - ''
-      - '&f Creates a shield around you'
-      - '&f in different colours.'
-      - ''
+    lore: |-
+      &7
+      &f Create a shield around you
+      &f of different colors.
+      &7
   notes:
     name: '&eNotes'
-    lore:
-      - ''
-      - '&f Creates flying discs'
-      - '&f with note effects.'
-      - ''
+    lore: |-
+      &7
+      &f Create flying discs
+      &f with note effects.
+      &7
   chickens:
     name: '&eChickens'
-    lore:
-      - ''
-      - '&f Flying chickens appear and'
-      - '&f explode a few seconds later.'
-      - ''
+    lore: |-
+      &7
+      &f Flying chickens appear and
+      &f explode a few seconds later.
+      &7
   dragon:
     name: '&eFlying dragon'
-    lore:
-      - ''
-      - '&f Ride an Ender dragon'
-      - '&f when the game ends.'
-      - ''
+    lore: |-
+      &7
+      &f Ride an ender dragon
+      &f when the game ends.
+      &7
   ice-walker:
     name: '&eIce walker'
-    lore:
-      - ''
-      - '&f Leave a trail of ice'
-      - '&f when walking on the ground.'
-      - ''
+    lore: |-
+      &7
+      &f Leave a trail of ice
+      &f when you walk on the ground.
+      &7
 
 # Abilities (abilities.yml).
 abilities:
   adrenaline-boost:
-    desc:
-      - '&7When you get hurt have the chance to get a speed boost'
-    levels-desc:
-      - '&7Have a %chance%% chance of getting a speed'
-      - '&7boost when you get hurt'
     name: '&aAdrenaline boost'
+    desc: |-
+      &f When you get hurt you can
+      &f get a speed boost.
+    levels-desc: |-
+      &f You have a &e%chance%% &fchance to get
+      &f speed when you get hurt.
   aggressive-mode:
-    desc:
-      - '&7Do more damage when you have less'
-      - '&7than 5 hearts'
-    levels-desc:
-      - '&7When you have less than 5 hearts you'
-      - '&7inflict %value%% more damage %chance%% of the time'
     name: '&aAggressive mode'
+    desc: |-
+      &f Deal more damage when you have
+      &f less than 5 hearts left.
+    levels-desc: |-
+      &f With less than 5 hearts you deal
+      &e %value%% &fmore damage &e%chance%% &fof the time.
   arrow-tank:
-    desc:
-      - '&7Take less damage from arrows'
-    levels-desc:
-      - '&7Have a %chance%% chance of taking %value%%'
-      - '&7less projectile damage'
     name: '&aArrow tank skin'
+    desc: '&f Take less damage from arrows.'
+    levels-desc: |-
+      &f You have a &e%chance%% &fchance to take
+      &e %value%% &fless damage from projectiles.
   feather-weight:
-    desc:
-      - '&7Take less fall damage'
-    levels-desc:
-      - '&7Take %value%% less fall damage %chance%%'
-      - '&7of the time'
     name: '&aFeather weight'
+    desc: '&f Take less fall damage.'
+    levels-desc: |-
+      &f Take &e%value%% &fless fall damage
+      &e %chance%% &fof the time.
   fire-resistance:
-    desc:
-      - '&7Take less fire damage'
-    levels-desc:
-      - '&7Take %value%% less fire and lava damage'
-      - '&7%chance%% of the time'
     name: '&aFire resistance'
+    desc: '&f Take less damage from fire.'
+    levels-desc: |-
+      &f Take &e%value%% &fless damage from fire and lava
+      &e %chance%% &fof the time.
   menu:
     item:
       level: 'level %number%'
     lore:
       clickto:
-        disable: '&6Click to disable'
-        enable: '&6Click to enable'
+        disable: '&e Click to disable it.'
+        enable: '&e Click to enable it.'
       disabled: '&8&lDISABLED'
-      price: '&6Price: %price% points'
+      price: '&f Price: &b%price% points'
       status:
-        afford: '&cYou cannot afford this ability!'
-        disabled: '&6Click the icon to the left to enable'
-        purchase: '&6Click to purchase this ability upgrade!'
-        purchased: '&cAlready purchased!'
-        unavailable: '&cYou cannot purchase this item yet!'
+        afford: '&c You do not have enough points!'
+        disabled: '&e Click the icon on the left to enable it.'
+        purchase: '&e Click to buy this upgrade.'
+        purchased: '&a You already have it!'
+        unavailable: '&c You cannot buy this yet!'
   mining-luck:
-    desc:
-      - '&7Mining skill is increased so you can get'
-      - '&7more from each ore'
-    levels-desc:
-      - '&7Have a %chance%% chance of getting %value% of an'
-      - '&7resource wjem you mine and ore'
     name: '&aMining luck'
+    desc: |-
+      &f Improve your mining skill to
+      &f get more out of every ore.
+    levels-desc: |-
+      &f You have a &e%chance%% &fchance to get
+      &e %value% &fresources when mining an ore.
   pirate:
-    desc:
-      - '&7Find hidden treasures in dirt'
-    levels-desc:
-      - '&7Find treasure in %chance%% of dirt'
     name: '&aPirate'
+    desc: '&f Find treasures hidden in the dirt.'
+    levels-desc: '&f Find treasures in &e%chance%% &fof the dirt.'
   triple-arrow:
-    desc:
-      - '&7Shoot 3 arrows at the same time'
-    levels-desc:
-      - '&7Have a %chance%% chance of shooting 3 arrows'
-      - '&7at the same time'
     name: '&aTriple arrow shot'
+    desc: '&f Shoot 3 arrows at once.'
+    levels-desc: |-
+      &f You have a &e%chance%% &fchance to shoot
+      &f 3 arrows at once.
   woodchopping-luck:
-    desc:
-      - '&7Woodchopping skill is increased so you can get'
-      - '&7more from logs from a single piece'
-    levels-desc:
-      - '&7Have a %chance%% chance of getting %value% logs'
     name: '&aWoodchopping luck'
+    desc: |-
+      &f Improve your woodchopping skill to
+      &f get more logs out of every one.
+    levels-desc: '&f You have a &e%chance%% &fchance to get &e%value% &flogs.'
 
 # Chest types (chests/*.yml).
 chests:
   basic:
-    description:
-      - '&7Chest will contain:'
-      - '&7Weak armour'
-      - '&7Low power swords'
-      - '&7Basic Minecraft food'
-      - '&7And other stuff'
-    name: '&e&lBasic Chests'
+    name: '&e&lBasic chests'
+    description: |-
+      &7
+      &f The chest will have:
+      &7 - Weak armor
+      &7 - Not very strong swords
+      &7 - Basic food
+      &7 - And other things
+      &7
   normal:
-    description:
-      - '&7Chest will contain:'
-      - '&7Random armour'
-      - '&7Any swords'
-      - '&7Food and some golden apples'
-      - '&7And other stuff'
-    name: '&6Normal Chests'
+    name: '&6&lNormal chests'
+    description: |-
+      &7
+      &f The chest will have:
+      &7 - Random armor
+      &7 - Any sword
+      &7 - Food and some golden apples
+      &7 - And other things
+      &7
   overpowered:
-    description:
-      - '&7Chest will contain:'
-      - '&7Insane armour'
-      - '&7Dominating swords'
-      - '&7Huge amounts of golden apples'
-      - '&7And other stuff'
-    name: '&4&lOverpowered Chests'
+    name: '&4&lOverpowered chests'
+    description: |-
+      &7
+      &f The chest will have:
+      &7 - Brutal armor
+      &7 - Dominant swords
+      &7 - Loads of golden apples
+      &7 - And other things
+      &7
 
 # Lobby shop item (shop.yml → item).
 shop:
   item:
-    lore:
-      - '&7Click me to open the shop'
-      - '&7to buy lots of cool stuff for SkyWars'
-    name: '&e&lShop'
+    name: '&eSkyWars shop &7(Right click)'
+    lore: |-
+      &7
+      &f Click to open the shop
+      &f and buy things for SkyWars.
+      &7
 
 # Admin commands and editors.
 admin:
   boxes:
     wand:
-      name: '&6&lBox wand'
-      lore:
-        - '&7Left and right click the'
-        - '&7two corners of the cage.'
-    need-name: '{prefix}&cYou must provide a name for the new cage!'
-    save-hint: '{prefix}&aWhen you finish the cage, use &7/boxes save&a.'
+      name: '&6Box wand &7(Click)'
+      lore: |-
+        &7
+        &f Left and right click on the
+        &f two corners of the box.
+        &7
+    need-name: '{prefix}&cYou must give a name to the new box!'
+    save-hint: '{prefix}&7When you finish the box, use &e/boxes save&7.'
     # %s: x, y, z
-    first-position: '{prefix}&aFirst corner: &7(%s, %s, %s)&a.'
-    second-position: '{prefix}&aSecond corner: &7(%s, %s, %s)&a.'
-    help:
-      - '&7---- &aSkyWars cages by &b&nTheJokerDev &7----'
-      - '&a- /boxes menu'
-      - '&a- /boxes create <name>'
-      - '&a- /boxes save'
-      - '&a- /boxes edit <name>'
-      - '&7--------------------------------------------'
+    first-position: '{prefix}&7First corner: &e(%s, %s, %s)&7.'
+    second-position: '{prefix}&7Second corner: &e(%s, %s, %s)&7.'
+    help: |-
+      &7
+      {prefix}&fHelp &7● &eBoxes
+      &7
+      &7 /boxes menu - &eOpens the boxes menu.
+      &7 /boxes create [name] - &eCreates a new box.
+      &7 /boxes save - &eSaves the box you are creating.
+      &7 /boxes edit [name] - &eEdits a box.
+      &7
   editor:
     # %s: arena (the title cannot be longer than 32 characters)
-    title: '&8Editor | %s'
-    spawns-title: '&8Editor » Spawns'
-    balloon-spawns-title: '&8Editor » Balloon spawns'
-    no-spawns: '&cThere are no spawns yet!'
-    no-balloon-spawns: '&cThere are no balloon spawns yet!'
+    title: '&8&lS&7&lS&0 » %s'
+    spawns-title: '&8&lS&7&lS&0 » Spawns'
+    balloon-spawns-title: '&8&lS&7&lS&0 » Balloon Spawns'
+    no-spawns: '&cThere are no spawns registered!'
+    no-balloon-spawns: '&cThere are no balloon spawns registered!'
     click-block: '{prefix}&cYou must click a block!'
     not-editing: '{prefix}&cYou must be editing an arena!'
     # %s: spawn number
-    spawn-added: '{prefix}&aSpawn added &7(#%s)'
+    spawn-added: '{prefix}&7Spawn &aadded &8(#%s)'
     spectator-spawn: '{prefix}&aSpectator spawn set!'
-    balloon-added: '{prefix}&aBalloon spawn added &7(#%s)'
-    balloon-removed: '{prefix}&cBalloon spawn removed &7(#%s)'
+    balloon-added: '{prefix}&7Balloon spawn &aadded &8(#%s)'
+    balloon-removed: '{prefix}&7Balloon spawn &cremoved &8(#%s)'
     # %s: arena
-    enabled: '{prefix}&a%s has been reloaded and can be played now.'
-    disabled: '{prefix}&a%s is disabled: you can edit it now.'
+    enabled: '{prefix}&e%s &awas reloaded and can be played now.'
+    disabled: '{prefix}&e%s &7is disabled: you can edit it now.'
     disable-first: '{prefix}&cYou must disable the arena first!'
     negative-players: '{prefix}&cYou cannot set negative players!'
     min-team-size: '{prefix}&cThe minimum team size is 1 (SOLO).'
     # %s: mode, team size, max players
-    team-size: '{prefix}&aMode &e%s&a, teams of &e%s&a. Max: &e%s &aplayers.'
-    map-saved: '{prefix}&aThe map of &e%s &awas saved in the maps folder.'
+    team-size: '{prefix}&7Mode &e%s&7, teams of &e%s&7. Max: &e%s &7players.'
+    map-saved: '{prefix}&7The map of &e%s &7was saved in the &emaps &7folder.'
     rename:
-      title: '&aArena name'
-      subtitle: '&7Type the new name in chat'
-      actionbar: '&7Current: &r%s'
+      title: '&a&lArena name'
+      subtitle: '&7Type the new name in the chat'
+      actionbar: '&fCurrent: &r%s'
       # %s: arena, new name
       done: '{prefix}&7Display name of &e%s&7: &r%s'
     spawn-tool:
-      name: '&aSpawn tool'
-      lore:
-        - '&eLeft click &7a block: add a spawn'
-        - '&eRight click &7a block: spectator spawn'
+      name: '&aSpawn tool &7(Click)'
+      lore: |-
+        &7
+        &e Left click &fa block: add a spawn.
+        &e Right click &fa block: spectator spawn.
+        &7
     balloon-tool:
-      name: '&aBalloon spawns'
-      lore:
-        - '&eLeft click &7to add'
-        - '&cRight click &7to remove'
-    # Editor buttons (/sw arena edit). Lists with several values use %1$s, %2$s...
+      name: '&aBalloon spawns &7(Click)'
+      lore: |-
+        &7
+        &e Left click &fto add.
+        &e Right click &fto remove.
+        &7
+    # Editor buttons (/sw arena edit). In texts with several values: %1$s, %2$s...
     items:
       back:
-        name: '&6Back'
-        lore:
-          - '&7Click to go back.'
+        name: '&b« &eBack'
+        lore: |-
+          &7
+          &f Goes back to the previous menu.
+          &7
       spawn-point:
-        lore:
-          - '&7Arena: &r%s'
-          - ''
-          - '&eLeft click to remove'
-          - '&eRight click to go'
+        lore: |-
+          &7
+          &f Arena: &r%s
+          &7
+          &e Left click to delete.
+          &e Right click to go there.
+          &7
       display-name:
-        name: '&aDisplay name'
-        lore:
-          - '&7Change the name that'
-          - '&7players will see.'
-          - ''
-          - '&7Current: &r%s'
-          - ''
-          - '&eClick to change it'
+        name: '&7» &bDisplay name'
+        lore: |-
+          &7
+          &f Change the name the
+          &f players will see.
+          &7
+          &f Current: &r%s
+          &7
+          &e Click to change it.
       save-map:
-        name: '&aSave the map'
-        lore:
-          - '&7Saves and replaces the'
-          - '&7map of the arena.'
-          - ''
+        name: '&7» &bSave the map'
+        lore: |-
+          &7
+          &f Saves and replaces the
+          &f map of the arena.
+          &7
       enable:
-        name: '&aEnable arena'
-        lore:
-          - '&7Changes the arena mode'
-          - '&7so it can be played.'
-          - ''
-          - '&7Current: &7Disabled'
-          - ''
-          - '&eClick to change'
+        name: '&7» &aEnable arena'
+        lore: |-
+          &7
+          &f Changes the arena mode
+          &f so it can be played.
+          &7
+          &f Status: &cDisabled&f.
+          &7
+          &e Click to change it.
       disable:
-        name: '&cDisable arena'
-        lore:
-          - '&7Changes the arena mode'
-          - '&7so it can be edited.'
-          - ''
-          - '&7Current: &aEnabled'
-          - ''
-          - '&eClick to change'
+        name: '&7» &cDisable arena'
+        lore: |-
+          &7
+          &f Changes the arena mode
+          &f so it can be edited.
+          &7
+          &f Status: &aEnabled&f.
+          &7
+          &e Click to change it.
       min-players:
-        name: '&aMinimum players'
-        lore:
-          - '&7Change the minimum'
-          - '&7number of players.'
-          - ''
-          - '&7Current: &r%s'
-          - ''
-          - '&eLeft click to increase'
-          - '&eRight click to decrease'
+        name: '&7» &bMinimum players'
+        lore: |-
+          &7
+          &f Changes the minimum
+          &f number of players.
+          &7
+          &f Current: &e%s
+          &7
+          &e Left click to increase.
+          &e Right click to decrease.
       team-size:
-        name: '&aMode and team size'
-        lore:
-          - '&7Each spawn point is a team.'
-          - '&7Size 1 = SOLO, 2 or more = TEAM.'
-          - ''
-          - '&7Mode: &r%1$s'
-          - '&7Team size: &r%2$s'
-          - '&7Max players: &r%3$s'
-          - ''
-          - '&eLeft click to increase'
-          - '&eRight click to decrease'
+        name: '&7» &bMode and team size'
+        lore: |-
+          &7
+          &f Every spawn point is a team.
+          &f Size 1 = SOLO, 2 or more = TEAM.
+          &7
+          &f Mode: &e%1$s
+          &f Team size: &e%2$s
+          &f Max players: &e%3$s
+          &7
+          &e Left click to increase.
+          &e Right click to decrease.
       give-spawn-tool:
-        name: '&aSpawn tool'
-        lore:
-          - '&7Gives you the tool to'
-          - '&7set the player spawns.'
-          - ''
-          - '&eClick to get it'
+        name: '&7» &bSpawn tool'
+        lore: |-
+          &7
+          &f Gives you the tool to set
+          &f the player spawns.
+          &7
+          &e Click to get it.
       wand:
-        name: '&aSchematic tool'
-        lore:
-          - '&7Create the schematic to'
-          - '&7save it in the folder.'
-          - ''
-          - '&eSelect the highest/lowest point'
-          - '&eto save it as a schematic'
+        name: '&7» &bSchematic tool'
+        lore: |-
+          &7
+          &f Creates the schematic to
+          &f save it in the folder.
+          &7
+          &e Select the highest and the
+          &e lowest point to save it.
       spawns:
-        name: '&aSpawn points'
-        lore:
-          - '&7Edit the spawn points'
-          - '&7of the arena.'
-          - ''
-          - '&7Spawns: &e%s'
-          - ''
-          - '&eClick to see them'
+        name: '&7» &bSpawn points'
+        lore: |-
+          &7
+          &f Edit the spawn points
+          &f of the arena.
+          &7
+          &f Spawns: &e%s
+          &7
+          &e Click to see them.
       balloon-spawns:
-        name: '&aBalloon spawn points'
-        lore:
-          - '&7Edit the spawn points'
-          - '&7of the balloons.'
-          - ''
-          - '&7Balloon spawns: &e%s'
-          - ''
-          - '&eClick to see them'
+        name: '&7» &bBalloon spawn points'
+        lore: |-
+          &7
+          &f Edit the spawn points
+          &f of the balloons.
+          &7
+          &f Balloon spawns: &e%s
+          &7
+          &e Click to see them.
       give-balloon-tool:
-        name: '&aBalloon spawns'
-        lore:
-          - '&7Gives you the tool to'
-          - '&7set the balloon spawns.'
+        name: '&7» &bBalloon spawns'
+        lore: |-
+          &7
+          &f Gives you the tool to set
+          &f the balloon spawns.
+          &7
   select:
-    title: '&8Arena editor'
-    next-page: '&aNext page »'
-    previous-page: '&c« Previous page'
-    maps: '&b■ &7Maps'
-    worlds: '&b■ &7Worlds'
-    map-lore:
-      - ''
-      - '&b» &eLeft &7click to load this map.'
-      - '&b» &aRight &7click to delete this map.'
-      - ''
-    map-loaded-lore:
-      - '&cThis map is already loaded as a world!'
-      - ''
-    world-lore:
-      - ''
-      - '&b» &eLeft &7click to go to this world.'
-      - '&b» &aRight &7click to delete this world.'
-      - ''
+    title: '&8&lS&7&lS&0 » Arena Editor'
+    next-page: '&7Next Page &b»'
+    previous-page: '&b« &7Previous Page'
+    maps: '&7» &bMaps'
+    worlds: '&7» &bWorlds'
+    map-lore: |-
+      &7
+      &e Left click &fto load this map.
+      &c Right click &fto delete this map.
+      &7
+    map-loaded-lore: |-
+      &c This map is already loaded in the worlds.
+      &7
+    world-lore: |-
+      &7
+      &e Left click &fto go to this world.
+      &c Right click &fto delete this world.
+      &7
     # %s: map
     map-loaded: '{prefix}&aYou loaded the map &e%s&a!'
   arena:
     exists: '{prefix}&cThat arena already exists.'
-    creating: '{prefix}&eCreating arena...'
+    creating: '{prefix}&7Creating arena...'
     # %s: error
-    create-error: '{prefix}&cSomething went wrong creating the arena: %s'
-    created: '{prefix}&aArena created. Use &e/sw arena edit <arena> &ato edit it.'
-    usage-create: '{prefix}&cUsage: /sw arena create <name>'
-    not-found: '{prefix}&cThat arena does not exist.'
+    create-error: '{prefix}&cSomething went wrong creating the arena: &e%s'
+    created: '{prefix}&aArena created! &7Use &e/sw arena edit [arena] &7to edit it.'
+    usage-create: '{prefix}&cUsage: &e/sw arena create [name]'
+    not-found: '{prefix}&cThat arena does not exist!'
     # %s: arena
     stop-editing: '{prefix}&7You are no longer editing &e%s&7.'
-    opening-menus: '{prefix}&eOpening the editor...'
-    menu-error: '{prefix}&cSomething went wrong opening the editor: %s'
+    opening-menus: '{prefix}&7Opening the editor...'
+    menu-error: '{prefix}&cSomething went wrong opening the editor: &e%s'
     menu-error-plain: '{prefix}&cSomething went wrong opening the editor.'
     world-exists: '{prefix}&cThat world already exists.'
-    creating-world: '{prefix}&eCreating world...'
-    world-create-error: '{prefix}&cSomething went wrong creating the world: %s'
-    usage-createworld: '{prefix}&cUsage: /sw arena createworld <name>'
-    world-not-found: '{prefix}&cThat world does not exist.'
-    saving-world: '{prefix}&eSaving world...'
-    world-save-error: '{prefix}&cSomething went wrong saving the world: %s'
-    usage-saveworld: '{prefix}&cUsage: /sw arena saveworld <name>'
+    creating-world: '{prefix}&7Creating world...'
+    world-create-error: '{prefix}&cSomething went wrong creating the world: &e%s'
+    usage-createworld: '{prefix}&cUsage: &e/sw arena createworld [name]'
+    world-not-found: '{prefix}&cThat world does not exist!'
+    saving-world: '{prefix}&7Saving world...'
+    world-save-error: '{prefix}&cSomething went wrong saving the world: &e%s'
+    usage-saveworld: '{prefix}&cUsage: &e/sw arena saveworld [name]'
     not-editing: '{prefix}&cYou are not editing any arena!'
-    usage-editor: '{prefix}&cUsage: /sw arena editor'
+    usage-editor: '{prefix}&cUsage: &e/sw arena editor'
     # %s: arenas
-    list: '{prefix}&7Available arenas: %s'
-    editing-actionbar: '&7You are editing the arena &a&l%s'
+    list: '{prefix}&7Available arenas: &e%s'
+    editing-actionbar: '&fYou are editing the arena &a&l%s'
     help:
-      header: '&8------------ &a[SkyWars arenas] &8------------'
-      create: '&a/sw arena &ecreate <name> &a- &bCreate a new arena'
-      edit: '&a/sw arena &eedit [name] &a- &bEdit an arena (no name: maps and worlds)'
-      createworld: '&a/sw arena &ecreateworld <name> &a- &bCreate a world for a new arena'
-      saveworld: '&a/sw arena &esaveworld <name> &a- &bSave a world in the maps folder'
-      editor: '&a/sw arena &eeditor &a- &bOpen the arena editor'
-      list: '&a/sw arena &elist &a- &bList of available arenas'
+      header: |-
+        &7
+        {prefix}&fHelp &7● &eArenas
+        &7
+      create: '&7 /sw arena create [name] - &eCreates a new arena.'
+      edit: '&7 /sw arena edit <name> - &eEdits an arena (no name: maps and worlds).'
+      createworld: '&7 /sw arena createworld [name] - &eCreates a world for a new arena.'
+      saveworld: '&7 /sw arena saveworld [name] - &eSaves a world in the maps folder.'
+      editor: '&7 /sw arena editor - &eOpens the arena editor.'
+      list: '&7 /sw arena list - &eShows the available arenas.'
   reload:
     # %s: what is reloaded (admin.reload.targets)
-    start: '{prefix}&eReloading %s...'
-    done: '{prefix}&aReloaded %s.'
-    error: '{prefix}&cCould not reload %s, check the console.'
+    start: '{prefix}&7Reloading %s...'
+    done: '{prefix}&aReloaded %s!'
+    error: '{prefix}&c%s could not be reloaded, check the console.'
     targets:
-      all: 'all files'
+      all: 'all the files'
       config: 'config.yml'
       messages: 'the prefix (translations are reloaded with /core reload)'
-      scoreboard: 'the scoreboard and holograms'
+      scoreboard: 'the scoreboard and the holograms'
       chests: 'the chests'
       trails: 'trails.yml'
       killsounds: 'killSounds.yml'
@@ -1660,46 +1993,49 @@ admin:
       shop: 'shop.yml'
       abilities: 'abilities.yml'
     help:
-      header: '&8------------ &a[SkyWars reload] &8------------'
-      all: '&a/sw reload &call &a- &bEverything below'
-      config: '&a/sw reload &econfig &a- &bReload config.yml'
-      messages: '&a/sw reload &emessages &a- &bRefresh the prefix (translations: /core reload)'
-      score: '&a/sw reload &escore &a- &bReload the scoreboard and holograms'
-      chests: '&a/sw reload &echests &a- &bReload the chests'
-      shops: '&a/sw reload &eshops &a- &bReload the shop and abilities'
-      trails: '&a/sw reload &etrails &a- &bReload the trails'
-      boxes: '&a/sw reload &eboxes &a- &bReload the cages'
-      balloons: '&a/sw reload &eballoons &a- &bReload the balloons'
-      menus: '&a/sw reload &emenus &a- &bReload the menus'
+      header: |-
+        &7
+        {prefix}&fHelp &7● &eReload
+        &7
+      all: '&7 /sw reload all - &eReloads everything below.'
+      config: '&7 /sw reload config - &eReloads config.yml.'
+      messages: '&7 /sw reload messages - &eRefreshes the prefix (translations: /core reload).'
+      score: '&7 /sw reload score - &eReloads the scoreboard and the holograms.'
+      chests: '&7 /sw reload chests - &eReloads the chests.'
+      shops: '&7 /sw reload shops - &eReloads the shop and the abilities.'
+      trails: '&7 /sw reload trails - &eReloads the trails.'
+      boxes: '&7 /sw reload boxes - &eReloads the boxes.'
+      balloons: '&7 /sw reload balloons - &eReloads the balloons.'
+      menus: '&7 /sw reload menus - &eReloads the menus.'
   revive:
-    not-partner: '&cYou are not a partner member!'
-    not-in-arena: '&cYou must be in an arena to do this!'
+    not-partner: '{prefix}&cYou are not a partner member!'
+    not-in-arena: '{prefix}&cYou must be in an arena to do this!'
     # %s: command
-    usage: '{prefix}&7Use /%s &e<nick>&7.'
+    usage: '{prefix}&cUsage: &e/%s [player]'
     not-ingame: '{prefix}&cThis command only works in a running game!'
     not-found: '{prefix}&cThat player is not in the game!'
     not-dead: '{prefix}&cThat player is not dead!'
     # %s: player
-    done: '{prefix}&aYou revived %s!'
+    done: '{prefix}&aYou revived &e%s&a!'
   hologram:
-    usage-top: '{prefix}&cUsage: /sw hologram top <id> add|remove [#]'
+    usage-top: '{prefix}&cUsage: &e/sw hologram top [id] add|remove <#>'
     # %s: id
-    no-leaderboard: '{prefix}&cThere is no leaderboard &e%s&c in holograms.yml'
-    added: '{prefix}&aHologram added (&e#%s&a).'
+    no-leaderboard: '{prefix}&cThe leaderboard &e%s &cdoes not exist in holograms.yml.'
+    added: '{prefix}&7Hologram &aadded &8(#%s)'
     none: '{prefix}&cThere are no holograms to remove.'
-    invalid-number: '{prefix}&cInvalid number: %s'
-    not-found: '{prefix}&cThere is no hologram #%s'
-    removed: '{prefix}&aHologram #%s removed.'
-    usage: '{prefix}&cUsage: /sw hologram add | remove [#]'
+    invalid-number: '{prefix}&cInvalid number: &e%s'
+    not-found: '{prefix}&cThe hologram &e#%s &cdoes not exist.'
+    removed: '{prefix}&7Hologram &cremoved &8(#%s)'
+    usage: '{prefix}&cUsage: &e/sw hologram add|remove <#>'
   lobby-spawn:
-    set: '{prefix}&aLobby spawn set.'
+    set: '{prefix}&aLobby spawn set!'
   signs:
-    already-exists: '{prefix}&cThere is already a sign in that location.'
-    added: '{prefix}&aSign added.'
-    wall-only: '{prefix}&cThe sign must be placed on a wall.'
-    deleted: '{prefix}&cSign deleted.'
+    already-exists: '{prefix}&cThere is already a sign in that position.'
+    added: '{prefix}&aSign added!'
+    wall-only: '{prefix}&cThe sign must be on a wall.'
+    deleted: '{prefix}&7Sign &cdeleted&7.'
   tp:
-    usage: '{prefix}&cUsage: /sw tp <world>'
+    usage: '{prefix}&cUsage: &e/sw tp [world]'
     # %s: worlds
-    worlds: '{prefix}&7Loaded worlds: &f%s'
+    worlds: '{prefix}&7Loaded worlds: &e%s'
     not-found: '{prefix}&cThat world does not exist!'
