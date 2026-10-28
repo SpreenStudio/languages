@@ -1124,15 +1124,35 @@ trails:
 
 # Kill sounds (killSounds.yml → icon).
 kill-sounds:
+  anvil:
+    lore:
+      - '&7A heavy metal clang.'
+    name: '&e&lAnvil'
   bat:
     name: '&e&lBat'
+  blaze:
+    lore:
+      - '&7The last breath of a Blaze.'
+    name: '&e&lBlaze'
+  burp:
+    lore:
+      - '&7Excuse me...'
+    name: '&e&lBurp'
   cat:
     name: '&e&lCat'
   chicken:
     name: '&e&lChicken pop'
+  creeper:
+    lore:
+      - '&7Ssssss...'
+    name: '&e&lCreeper'
   default:
     lore: '&7Default.'
     name: '&aMeow'
+  donkey:
+    lore:
+      - '&7A most elegant bray.'
+    name: '&e&lDonkey'
   eat:
     name: '&e&lEat'
   enderdragon:
@@ -1141,12 +1161,44 @@ kill-sounds:
     name: '&e&lEnderman'
   explode:
     name: '&e&lExplosion'
+  fireworks:
+    lore:
+      - '&7A rocket bang and crackle.'
+    name: '&e&lFireworks'
   ghast:
     name: '&e&lGhast'
+  glass:
+    lore:
+      - '&7Something just shattered.'
+    name: '&e&lShattered glass'
+  golem:
+    lore:
+      - '&7The crunch of a falling golem.'
+    name: '&e&lIron golem'
+  howl:
+    lore:
+      - '&7A wolf howling at the moon.'
+    name: '&e&lHowl'
+  levelup:
+    lore:
+      - '&7The classic level-up sound.'
+    name: '&e&lLevel up'
+  magma:
+    lore:
+      - '&7A sticky, scorching bounce.'
+    name: '&e&lMagma cube'
   notebass:
     name: '&e&lNote bass'
   pig:
     name: '&e&lPig'
+  pling:
+    lore:
+      - '&7A clean, high-pitched chime.'
+    name: '&e&lPling'
+  roar:
+    lore:
+      - '&7The roar of the Ender Dragon.'
+    name: '&e&lDragon roar'
   skeleton:
     name: '&e&lSkeleton'
   slimewalk:
@@ -1157,6 +1209,10 @@ kill-sounds:
     name: '&e&lSplash'
   successful-hit:
     name: '&e&lA successful hit'
+  teleport:
+    lore:
+      - '&7Vanish like an Enderman.'
+    name: '&e&lTeleport'
   thor:
     lore:
       - '&7Do you want to be the God of Thunder?'
@@ -1164,6 +1220,10 @@ kill-sounds:
     name: '&aThor'
   thunder:
     name: '&e&lThunder'
+  tnt:
+    lore:
+      - '&7Tsss... better step back.'
+    name: '&e&lLit fuse'
   villager:
     name: '&e&lVillager'
   wither:

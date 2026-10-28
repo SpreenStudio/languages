@@ -403,7 +403,7 @@ items:
     clear-kill-sounds:
       lore:
         - '&7Click para restablecer'
-        - '&7tu sonido de muerte.'
+        - '&7tu sonido de baja.'
     clear-trail:
       lore:
         - '&7Click para restablecer'
@@ -998,8 +998,8 @@ menus:
       name: '&bCajas'
     kill-sounds:
       lore:
-        - '&7Abre el menú de sonidos de muerte'
-      name: '&bSonidos de Muerte'
+        - '&7Abre el menú de sonidos de baja'
+      name: '&bSonidos de Baja'
     kits:
       lore:
         - '&7Abre el menú de kits'
@@ -1161,16 +1161,36 @@ trails:
 
 # Sonidos de baja (killSounds.yml → icon).
 kill-sounds:
+  anvil:
+    lore:
+      - '&7Un golpe metálico y seco.'
+    name: '&e&lYunque'
   bat:
     name: '&e&lMurciélago'
+  blaze:
+    lore:
+      - '&7El último aliento de un Blaze.'
+    name: '&e&lBlaze'
+  burp:
+    lore:
+      - '&7Con perdón...'
+    name: '&e&lEructo'
   cat:
     name: '&e&lGato'
   chicken:
     name: '&e&lPOP de Gallina'
+  creeper:
+    lore:
+      - '&7Ssssss...'
+    name: '&e&lCreeper'
   default:
     lore:
       - '&7Por defecto.'
     name: '&aMiau'
+  donkey:
+    lore:
+      - '&7Un rebuzno de lo más elegante.'
+    name: '&e&lBurro'
   eat:
     name: '&e&lComer'
   enderdragon:
@@ -1179,12 +1199,44 @@ kill-sounds:
     name: '&e&lEnderman'
   explode:
     name: '&e&lExplosión'
+  fireworks:
+    lore:
+      - '&7Estallido y chispas de cohete.'
+    name: '&e&lFuegos artificiales'
   ghast:
     name: '&e&lGhast'
+  glass:
+    lore:
+      - '&7Algo acaba de hacerse añicos.'
+    name: '&e&lCristal roto'
+  golem:
+    lore:
+      - '&7El crujido de un gólem al caer.'
+    name: '&e&lGólem de hierro'
+  howl:
+    lore:
+      - '&7Un lobo aullando a la luna.'
+    name: '&e&lAullido'
+  levelup:
+    lore:
+      - '&7El clásico sonido de subir de nivel.'
+    name: '&e&lSubida de nivel'
+  magma:
+    lore:
+      - '&7Un rebote pegajoso y ardiente.'
+    name: '&e&lCubo de magma'
   notebass:
     name: '&e&lBajo de notas'
   pig:
     name: '&e&lCerdo'
+  pling:
+    lore:
+      - '&7Un tintineo limpio y agudo.'
+    name: '&e&lCampanilla'
+  roar:
+    lore:
+      - '&7El rugido del Dragón del End.'
+    name: '&e&lRugido de dragón'
   skeleton:
     name: '&e&lEsqueleto'
   slimewalk:
@@ -1195,6 +1247,10 @@ kill-sounds:
     name: '&e&lSalpicadura'
   successful-hit:
     name: '&e&lUn Golpe Exitoso'
+  teleport:
+    lore:
+      - '&7Desaparece como un Enderman.'
+    name: '&e&lTeletransporte'
   thor:
     lore:
       - '&7¿Quieres ser el Dios del Trueno?'
@@ -1202,6 +1258,10 @@ kill-sounds:
     name: '&aThor'
   thunder:
     name: '&e&lTrueno'
+  tnt:
+    lore:
+      - '&7Tsss... mejor apártate.'
+    name: '&e&lMecha encendida'
   villager:
     name: '&e&lAldeano'
   wither:
