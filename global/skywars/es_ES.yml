@@ -391,6 +391,14 @@ item:
       name: '&cSalir al lobby &7(Clic derecho)'
 
 items:
+  # Botón de los menús de FurryCore que entra a una partida al azar ([cmd]sw join).
+  join:
+    name: '&7» &bPartida aleatoria'
+    lore: |-
+      &7
+      &f Haz clic para entrar a la
+      &f mejor partida disponible.
+      &7
   spectator:
     tracker:
       name: '&eRastreador &7(Clic derecho)'
@@ -1093,6 +1101,7 @@ menus:
           &7
   kill-sounds:
     title: '&8&lS&7&lS&0 » Sonidos de baja'
+    preview: '&e Clic derecho para escucharlo.'
     items:
       noSounds:
         name: '&cNo hay sonidos disponibles'
@@ -1608,6 +1617,34 @@ wineffects:
       &7
       &f Deja un rastro de hielo
       &f al caminar sobre el suelo.
+      &7
+  gold-rain:
+    name: '&eLluvia de oro'
+    lore: |-
+      &7
+      &f Llueven lingotes y pepitas
+      &f de oro a tu alrededor.
+      &7
+  lightning:
+    name: '&eTormenta'
+    lore: |-
+      &7
+      &f Caen rayos a tu alrededor
+      &f para celebrar la victoria.
+      &7
+  flame-helix:
+    name: '&eTornado de fuego'
+    lore: |-
+      &7
+      &f Dos espirales de llamas
+      &f giran a tu alrededor.
+      &7
+  rainbow-sheep:
+    name: '&eOvejas arcoíris'
+    lore: |-
+      &7
+      &f Salen ovejas de colores
+      &f que explotan al poco rato.
       &7
 
 # Habilidades (abilities.yml).

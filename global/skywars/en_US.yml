@@ -391,6 +391,14 @@ item:
       name: '&cBack to lobby &7(Right click)'
 
 items:
+  # Button of the FurryCore menus that joins a random game ([cmd]sw join).
+  join:
+    name: '&7» &bRandom game'
+    lore: |-
+      &7
+      &f Click to join the best
+      &f available game.
+      &7
   spectator:
     tracker:
       name: '&eTracker &7(Right click)'
@@ -1093,6 +1101,7 @@ menus:
           &7
   kill-sounds:
     title: '&8&lS&7&lS&0 » Kill Sounds'
+    preview: '&e Right click to listen to it.'
     items:
       noSounds:
         name: '&cNo available sounds'
@@ -1607,6 +1616,34 @@ wineffects:
       &7
       &f Leave a trail of ice
       &f when you walk on the ground.
+      &7
+  gold-rain:
+    name: '&eGold rain'
+    lore: |-
+      &7
+      &f Gold ingots and nuggets
+      &f rain down around you.
+      &7
+  lightning:
+    name: '&eThunderstorm'
+    lore: |-
+      &7
+      &f Lightning strikes around you
+      &f to celebrate the win.
+      &7
+  flame-helix:
+    name: '&eFire tornado'
+    lore: |-
+      &7
+      &f Two spirals of flames
+      &f spin around you.
+      &7
+  rainbow-sheep:
+    name: '&eRainbow sheep'
+    lore: |-
+      &7
+      &f Colorful sheep come out
+      &f and explode shortly after.
       &7
 
 # Abilities (abilities.yml).
