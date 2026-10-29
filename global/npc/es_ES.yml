@@ -457,6 +457,12 @@ menus:
           &7{description}
           &7
           &7Haz clic para elegir esta acción.
+      core:
+        name: '&fFurryCore &b➟ &a{action}'
+        lore: |-
+          &7{description}
+          &7
+          &7Haz clic para elegir esta acción.
   select-execution:
     title: '&0¿Quién la ejecuta?'
     items:

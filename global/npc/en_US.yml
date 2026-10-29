@@ -36,6 +36,7 @@ commands:
   action:
     help: |-
       &7 /npc action add [npc] [console] [permission] [TYPE:value] - &eAdds an action.
+      &7 /npc action add [npc] false [permission] [[action]value] - &eAdds a FurryCore action ([open], [balancer]...).
       &7 /npc action remove [npc] [id] - &eRemoves an action.
       &7 /npc action cooldown [npc] [milliseconds] - &eChanges the delay between clicks.
       &7 /npc action list [npc] - &eShows the actions.
@@ -123,7 +124,7 @@ messages:
     removed: '{prefix}&fAction removed. &a&l✔'
     error-id: '{prefix}&cThat action does not exist. &c&l✖'
     error-saving: '{prefix}&cThe actions could not be saved. &c&l✖'
-    error-type: '{prefix}&cThe action must be &eTYPE:value&c with a valid type (cmd, bgcmd, server, merchant, msg, sound, wait, labyEmote, UPDATE).'
+    error-type: '{prefix}&cThe action must be &eTYPE:value&c with a valid type (cmd, bgcmd, server, merchant, msg, sound, wait, labyEmote, UPDATE) or a FurryCore action (&e[open]menu&c, &e[balancer]group&c...).'
     cooldown: '{prefix}&fThe delay between clicks of &e{npc}&f is now &e{time}&f ms.'
   hologram:
     added: '{prefix}&a&l✔&f Line added: {line}'
@@ -195,6 +196,18 @@ editor:
       wait: '&ethe time (in milliseconds)'
       laby-emote: '&ethe emote (or random)'
       update: '&ewhat to update (GLOW)'
+    # FurryCore actions.
+    what-core:
+      open: '&ethe id of the menu (for example &fselector&e or &fnpc:main&e)'
+      balancer: '&ethe server group'
+      server: '&ethe server'
+      cmd: '&ethe command'
+      cmd-console: '&ethe command'
+      cmd-op: '&ethe command'
+      msg: '&ethe message'
+      title: '&ethe title and the subtitle split by &f`&e (and optionally &f`fadeIn`stay`fadeOut&e in ticks)'
+      sound: '&ethe sound, volume and pitch (&fSOUND,1.0,1.0&e)'
+      action: '&ethe action (&fvisibility, fly, jump, doublejump, disableFly, disableJump, disableDoubleJump, disableSpeed&e or &fenderbutt&e)'
 
 # What each action type does (new action menu).
 action-types:
@@ -207,6 +220,21 @@ action-types:
   wait: 'Waits before the next actions.'
   laby-emote: 'The NPC plays a LabyMod emote.'
   update: 'Sends the glowing of the NPC again.'
+
+# What each FurryCore action does (new action menu).
+core-actions:
+  open: 'Opens a menu of FurryCore or of a module.'
+  balancer: 'Sends the player to a free server of a group.'
+  server: 'Sends the player to a server.'
+  cmd: 'The player runs a command.'
+  cmd-console: 'The console runs a command.'
+  cmd-op: 'The player runs a command without going through the chat.'
+  msg: 'Sends a message to the player.'
+  title: 'Shows a title to the player.'
+  sound: 'Plays a sound to the player.'
+  action: 'Visibility, flight, jumps, speed or ender butt.'
+  speed: 'Toggles the speed of the player.'
+  close: 'Closes the inventory of the player.'
 
 items:
   wand:
@@ -425,6 +453,12 @@ menus:
     items:
       type:
         name: '&fAction &b➟ &a{type}'
+        lore: |-
+          &7{description}
+          &7
+          &7Click to choose this action.
+      core:
+        name: '&fFurryCore &b➟ &a{action}'
         lore: |-
           &7{description}
           &7
