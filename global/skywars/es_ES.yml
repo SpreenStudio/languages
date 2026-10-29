@@ -2461,6 +2461,14 @@ admin:
           &f Dejas de editar y recuperas
           &f tu inventario.
           &7
+      delete:
+        name: '&7» &cBorrar arena'
+        lore: |-
+          &7
+          &f Borra esta arena. Podrás elegir
+          &f si también se borra su mapa.
+          &7
+          &e Haz clic para elegir.
   select:
     title: '&8&lS&7&lS&0 » Editor de arenas'
     next-page: '&7Página siguiente &b»'
@@ -2505,6 +2513,7 @@ admin:
       tools: '&7 /sw arena tools - &eTe da las herramientas del editor.'
       check: '&7 /sw arena check - &eMuestra lo que le falta para poder jugarse.'
       save: '&7 /sw arena save - &eGuarda el mapa en la carpeta de mapas.'
+      delete: '&7 /sw arena delete - &eBorra la arena que editas (y, si quieres, su mapa).'
       exit: '&7 /sw arena exit - &eDeja de editar.'
       list: '&7 /sw arena list - &eMuestra las arenas disponibles.'
   # Editor de arenas: herramientas, marcadores y lista de lo que falta.
@@ -2608,6 +2617,44 @@ admin:
           &f Dejas de editar y recuperas
           &f tu inventario.
           &7
+  # Borrar una arena (/sw arena delete o el botón del editor).
+  delete:
+    title: '&8&lS&7&lS&0 » Borrar arena'
+    items:
+      arena-only:
+        name: '&6Borrar solo la arena'
+        lore: |-
+          &7
+          &f Se borran los ajustes de &e%s
+          &f (spawns, sala, globos...).
+          &f El mapa se queda en &emaps &fy su
+          &f mundo, para volver a crearla con
+          &e /sw arena create&f.
+          &7
+          &e Haz clic para borrarla.
+      subject:
+        name: '&e%1$s'
+        lore: |-
+          &7
+          &f Nombre visible: &r%2$s
+          &f Spawns: &e%3$s
+          &7
+      with-map:
+        name: '&cBorrar arena y mapa'
+        lore: |-
+          &7
+          &f Se borran los ajustes de &e%s&f,
+          &f su mapa de &emaps &fy su mundo.
+          &7
+          &c No se puede deshacer.
+          &7
+          &e Haz clic para borrarlo todo.
+    # %s: instancias
+    in-use: '{prefix}&cNo se puede borrar: &e%s &cestá jugando ese mapa. Espera a que cambie de mapa.'
+    # %s: arena
+    done: '{prefix}&7Se borró la arena &e%s&7. Su mapa sigue en &emaps&7.'
+    done-with-map: '{prefix}&7Se borró la arena &e%s &7y su mapa.'
+    error: '{prefix}&cNo se pudo borrar todo de &e%s&c, revisa la consola.'
   reload:
     # %s: qué se recarga (admin.reload.targets)
     start: '{prefix}&7Recargando %s...'

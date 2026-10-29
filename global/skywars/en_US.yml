@@ -2457,6 +2457,14 @@ admin:
           &f Stop editing and get your
           &f inventory back.
           &7
+      delete:
+        name: '&7» &cDelete arena'
+        lore: |-
+          &7
+          &f Deletes this arena. You can choose
+          &f whether its map is deleted too.
+          &7
+          &e Click to choose.
   select:
     title: '&8&lS&7&lS&0 » Arena Editor'
     next-page: '&7Next Page &b»'
@@ -2501,6 +2509,7 @@ admin:
       tools: '&7 /sw arena tools - &eGives you the editor tools.'
       check: '&7 /sw arena check - &eShows what it still needs to be played.'
       save: '&7 /sw arena save - &eSaves the map to the maps folder.'
+      delete: '&7 /sw arena delete - &eDeletes the arena you are editing (and, if you want, its map).'
       exit: '&7 /sw arena exit - &eStops editing.'
       list: '&7 /sw arena list - &eShows the available arenas.'
   # Arena editor: tools, markers and the list of what is missing.
@@ -2604,6 +2613,44 @@ admin:
           &f Stop editing and get your
           &f inventory back.
           &7
+  # Deleting an arena (/sw arena delete or the editor button).
+  delete:
+    title: '&8&lS&7&lS&0 » Delete arena'
+    items:
+      arena-only:
+        name: '&6Delete only the arena'
+        lore: |-
+          &7
+          &f The settings of &e%s &fare deleted
+          &f (spawns, lobby, balloons...).
+          &f The map stays in &emaps &fand its
+          &f world, to create it again with
+          &e /sw arena create&f.
+          &7
+          &e Click to delete it.
+      subject:
+        name: '&e%1$s'
+        lore: |-
+          &7
+          &f Display name: &r%2$s
+          &f Spawns: &e%3$s
+          &7
+      with-map:
+        name: '&cDelete arena and map'
+        lore: |-
+          &7
+          &f The settings of &e%s&f, its map
+          &f in &emaps &fand its world are deleted.
+          &7
+          &c This cannot be undone.
+          &7
+          &e Click to delete everything.
+    # %s: instances
+    in-use: '{prefix}&cIt cannot be deleted: &e%s &cis playing that map. Wait until it changes map.'
+    # %s: arena
+    done: '{prefix}&7The arena &e%s &7was deleted. Its map is still in &emaps&7.'
+    done-with-map: '{prefix}&7The arena &e%s &7and its map were deleted.'
+    error: '{prefix}&cNot everything of &e%s &ccould be deleted, check the console.'
   reload:
     # %s: what is reloaded (admin.reload.targets)
     start: '{prefix}&7Reloading %s...'
