@@ -2329,6 +2329,21 @@ admin:
     # %s: modo, tamaño de equipo, máximo de jugadores
     team-size: '{prefix}&7Modo &e%s&7, equipos de &e%s&7. Máximo: &e%s &7jugadores.'
     map-saved: '{prefix}&7El mapa de &e%s &7se guardó en la carpeta &emaps&7.'
+    # %s: bloques
+    chest-radius: '{prefix}&7Los cofres a menos de &e%s &7bloques de un spawn son de su isla.'
+    border:
+      none: '&csin borde'
+      center-spectators: '&7el spawn de espectadores'
+      preview-start: '&ael del principio'
+      preview-final: '&cel final'
+      # %s: tamaño
+      size-set: '{prefix}&7Borde al empezar: &e%s'
+      # %s: centro
+      center-set: '{prefix}&7Centro del borde: &e%s'
+      # %s: tamaño
+      final-set: '{prefix}&7El borde se cierra hasta &e%1$sx%1$s&7.'
+      showing-final: '{prefix}&7Viendo el borde &cfinal&7 (hasta donde se cierra).'
+      showing-start: '{prefix}&7Viendo el borde del &aprincipio&7.'
     rename:
       title: '&a&lNombre de la arena'
       subtitle: '&7Escribe el nuevo nombre en el chat'
@@ -2486,6 +2501,47 @@ admin:
           &f si también se borra su mapa.
           &7
           &e Haz clic para elegir.
+      chest-radius:
+        name: '&7» &bRadio de los cofres de isla'
+        lore: |-
+          &7
+          &f Un cofre es de una isla si está
+          &f a menos de esta distancia de su
+          &f spawn; si no, es del centro.
+          &f Con los cofres en la mano se ve
+          &f el círculo de cada isla.
+          &7
+          &f Radio: &e%s &fbloques
+          &7
+          &e Clic izquierdo: +1 &7(shift: +5)
+          &e Clic derecho: -1 &7(shift: -5)
+      border:
+        name: '&7» &bBorde del mundo'
+        lore: |-
+          &7
+          &f El borde con el que empieza la
+          &f partida. Se ve en el mundo.
+          &7
+          &f Tamaño: &e%1$s
+          &f Centro: &e%2$s
+          &7
+          &e Clic izquierdo: +10 &7| &eDerecho: -10
+          &e Shift + izquierdo: centrarlo aquí.
+          &e Shift + derecho: centrarlo en
+          &e el spawn de espectadores.
+      border-final:
+        name: '&7» &bBorde final'
+        lore: |-
+          &7
+          &f Hasta dónde se cierra el borde
+          &f con el evento de borde.
+          &7
+          &f Tamaño: &e%1$sx%1$s
+          &f Viendo: %2$s
+          &7
+          &e Clic izquierdo: +5 &7| &eDerecho: -5
+          &e Shift + clic: ver este borde
+          &e o el del principio.
   select:
     title: '&8&lS&7&lS&0 » Editor de arenas'
     next-page: '&7Página siguiente &b»'
@@ -2579,7 +2635,7 @@ admin:
       island-empty: '&f Isla #%s: &csin cofres &7(se queda sin su lote)'
       # %s: cofres
       middle: '&f Centro: &e%s cofres'
-      radius: '&7 La distancia se cambia en &egames/<mapa>.yml → chests.island-radius&7.'
+      radius: '&7 El radio se cambia desde el menú del editor (libro).'
     # %s: arena, spawns, espectadores, sala de espera
     actionbar: '&fEditando &a%s &8| &fSpawns: &e%s &8| &fEspectadores: %s &8| &fSala: %s'
     state:

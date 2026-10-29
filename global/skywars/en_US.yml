@@ -2324,6 +2324,21 @@ admin:
     # %s: mode, team size, max players
     team-size: '{prefix}&7Mode &e%s&7, teams of &e%s&7. Max: &e%s &7players.'
     map-saved: '{prefix}&7The map of &e%s &7was saved in the &emaps &7folder.'
+    # %s: blocks
+    chest-radius: '{prefix}&7Chests closer than &e%s &7blocks to a spawn belong to its island.'
+    border:
+      none: '&cno border'
+      center-spectators: '&7the spectator spawn'
+      preview-start: '&athe starting one'
+      preview-final: '&cthe final one'
+      # %s: size
+      size-set: '{prefix}&7Starting border: &e%s'
+      # %s: center
+      center-set: '{prefix}&7Border center: &e%s'
+      # %s: size
+      final-set: '{prefix}&7The border shrinks down to &e%1$sx%1$s&7.'
+      showing-final: '{prefix}&7Showing the &cfinal&7 border (where it shrinks to).'
+      showing-start: '{prefix}&7Showing the &astarting&7 border.'
     rename:
       title: '&a&lArena name'
       subtitle: '&7Type the new name in the chat'
@@ -2481,6 +2496,47 @@ admin:
           &f whether its map is deleted too.
           &7
           &e Click to choose.
+      chest-radius:
+        name: '&7» &bIsland chest radius'
+        lore: |-
+          &7
+          &f A chest belongs to an island if it
+          &f is closer than this to its spawn;
+          &f otherwise it is a middle chest.
+          &f Holding the chests tool shows
+          &f each island's circle.
+          &7
+          &f Radius: &e%s &fblocks
+          &7
+          &e Left click: +1 &7(shift: +5)
+          &e Right click: -1 &7(shift: -5)
+      border:
+        name: '&7» &bWorld border'
+        lore: |-
+          &7
+          &f The border the game starts with.
+          &f You can see it in the world.
+          &7
+          &f Size: &e%1$s
+          &f Center: &e%2$s
+          &7
+          &e Left click: +10 &7| &eRight: -10
+          &e Shift + left: center it here.
+          &e Shift + right: center it on
+          &e the spectator spawn.
+      border-final:
+        name: '&7» &bFinal border'
+        lore: |-
+          &7
+          &f How far the border shrinks
+          &f with the border event.
+          &7
+          &f Size: &e%1$sx%1$s
+          &f Showing: %2$s
+          &7
+          &e Left click: +5 &7| &eRight: -5
+          &e Shift + click: show this border
+          &e or the starting one.
   select:
     title: '&8&lS&7&lS&0 » Arena Editor'
     next-page: '&7Next Page &b»'
@@ -2574,7 +2630,7 @@ admin:
       island-empty: '&f Island #%s: &cno chests &7(it gets no loot set)'
       # %s: chests
       middle: '&f Middle: &e%s chests'
-      radius: '&7 Change the distance in &egames/<map>.yml → chests.island-radius&7.'
+      radius: '&7 Change the radius from the editor menu (book).'
     # %s: arena, spawns, spectators, waiting lobby
     actionbar: '&fEditing &a%s &8| &fSpawns: &e%s &8| &fSpectators: %s &8| &fLobby: %s'
     state:
