@@ -192,3 +192,24 @@ core:
       available: '&eClick para conectar'
       maintenance: '&cServidor en mantenimiento'
       unavailable: '&cNo hay servidores disponibles'
+
+sanctions:
+  banned: |-
+    &7&lSpreen&f&lStudios
+    &7
+    &cEstás baneado de este servidor.
+    &7
+    &7Razón: &f{reason}
+    &7Sancionado por: &e{staff}
+    &7Expira: &f{end}
+    &7
+    &7ID de la sanción: &e#{id}
+  banned-permanent: |-
+    &7&lSpreen&f&lStudios
+    &7
+    &cEstás baneado permanentemente de este servidor.
+    &7
+    &7Razón: &f{reason}
+    &7Sancionado por: &e{staff}
+    &7
+    &7ID de la sanción: &e#{id}

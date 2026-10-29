@@ -192,3 +192,24 @@ core:
       available: '&eClick to join'
       maintenance: '&cServer in maintenance'
       unavailable: '&cNo servers available at the moment.'
+
+sanctions:
+  banned: |-
+    &7&lSpreen&f&lStudios
+    &7
+    &cYou are banned from this server.
+    &7
+    &7Reason: &f{reason}
+    &7Banned by: &e{staff}
+    &7Expires: &f{end}
+    &7
+    &7Sanction ID: &e#{id}
+  banned-permanent: |-
+    &7&lSpreen&f&lStudios
+    &7
+    &cYou are permanently banned from this server.
+    &7
+    &7Reason: &f{reason}
+    &7Banned by: &e{staff}
+    &7
+    &7Sanction ID: &e#{id}

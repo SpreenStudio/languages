@@ -1,0 +1,288 @@
+prefix: '&c&lSanciones&8 » &7'
+
+unavailable: '&cEl sistema de sanciones no está disponible ahora mismo.'
+error: '&cOcurrió un error al procesar la sanción. Revisa la consola.'
+player-not-found: '&cEl jugador &e{target} &cnunca ha entrado al servidor.'
+player-offline: '&cEl jugador &e{target} &cno está conectado.'
+self: '&c¡No puedes sancionarte a ti mismo!'
+exempt: '&cNo puedes sancionar a &e{target}&c.'
+no-ip: '&cNo se conoce la IP de &e{target}&c.'
+invalid-server: '&cEl servidor o grupo &e{server} &cno existe.'
+invalid-router: '&cEl router &e{router} &cno existe.'
+no-permission-router: '&cNo tienes permiso para sancionar fuera de tu router.'
+invalid-duration: '&cDebes indicar una duración válida &7(30m, 12h, 7d, 2w, 1mo...)&c.'
+limit-reduced: '&eLa duración se ha reducido a tu límite: &f{duration}&e.'
+limit-exceeded: '&cNo puedes sancionar por más de &e{duration}&c.'
+already-banned: '&e{target} &cya tiene un baneo activo en este router y servidor.'
+already-muted: '&e{target} &cya tiene un silencio activo en este router y servidor.'
+not-banned: '&e{target} &cno tiene ningún baneo activo que puedas quitar.'
+not-muted: '&e{target} &cno tiene ningún silencio activo que puedas quitar.'
+no-warnings: '&e{target} &cno tiene advertencias activas que puedas quitar.'
+kick-requested: '&e{target} &7no está en este proxy, se ha pedido su expulsión al resto.'
+category-not-found: '&cLa categoría &e{category} &cno existe.'
+no-permission-category: '&cNo tienes permiso para sancionar por &e{category}&c.'
+
+console: 'Consola'
+replaced: 'Reemplazada por la sanción #{id}'
+unknown: 'Desconocido'
+manual: '&7Manual'
+no-note: '&8Sin nota'
+date-format: 'dd/MM/yyyy HH:mm'
+
+default-reason:
+  ban: 'Incumplir las normas'
+  mute: 'Mal uso del chat'
+  warn: 'Incumplir las normas'
+  kick: 'Expulsado por el staff'
+  removal: 'Sin razón especificada'
+
+usage:
+  ban: '&cUso: &e/{command} [-s] <jugador> [duración] [razón]'
+  tempban: '&cUso: &e/{command} [-s] <jugador> <duración> [razón]'
+  ipban: '&cUso: &e/{command} [-s] <jugador|ip> [duración] [razón]'
+  mute: '&cUso: &e/{command} [-s] <jugador> [duración] [razón]'
+  tempmute: '&cUso: &e/{command} [-s] <jugador> <duración> [razón]'
+  ipmute: '&cUso: &e/{command} [-s] <jugador|ip> [duración] [razón]'
+  warn: '&cUso: &e/{command} [-s] <jugador> [razón]'
+  kick: '&cUso: &e/{command} [-s] <jugador> [razón]'
+  unban: '&cUso: &e/{command} [-s] <jugador|ip> [razón]'
+  unmute: '&cUso: &e/{command} [-s] <jugador|ip> [razón]'
+  unwarn: '&cUso: &e/{command} [-s] <jugador> [razón]'
+  history: '&cUso: &e/{command} <jugador> [página]'
+  staffhistory: '&cUso: &e/{command} <staff> [página]'
+  warnings: '&cUso: &e/{command} <jugador>'
+  checkban: '&cUso: &e/{command} <jugador>'
+  checkmute: '&cUso: &e/{command} <jugador>'
+  alts: '&cUso: &e/{command} <jugador>'
+  sancionar: '&cUso: &e/{command} <jugador> [categoría] [nota]'
+
+types:
+  ban: '&cBaneo'
+  ip-ban: '&4Baneo IP'
+  mute: '&6Silencio'
+  ip-mute: '&6Silencio IP'
+  warn: '&eAdvertencia'
+  kick: '&bExpulsión'
+
+punishment:
+  timed: '{type} &8(&f{duration}&8)'
+  permanent: '{type} &8(&4Permanente&8)'
+  instant: '{type}'
+
+time:
+  permanent: 'Permanente'
+  separator: ', '
+  year: 'año'
+  years: 'años'
+  month: 'mes'
+  months: 'meses'
+  day: 'día'
+  days: 'días'
+  hour: 'hora'
+  hours: 'horas'
+  minute: 'minuto'
+  minutes: 'minutos'
+  second: 'segundo'
+  seconds: 'segundos'
+
+scope:
+  network: 'Toda la network'
+  all-servers: 'Todos los servidores'
+
+status:
+  active: '&c[Activa]'
+  expired: '&8[Expirada]'
+  removed: '&7[Quitada]'
+  applied: '&8[Aplicada]'
+
+broadcast:
+  silent-prefix: '&8[&7Silencioso&8] '
+  ban: '&e{target} &7ha sido &cbaneado &7por &e{staff}&7. Razón: &f{reason}'
+  tempban: '&e{target} &7ha sido &cbaneado &7por &e{staff} &7durante &f{duration}&7. Razón: &f{reason}'
+  ipban: '&e{target} &7ha sido &4baneado por IP &7por &e{staff}&7. Razón: &f{reason}'
+  tempipban: '&e{target} &7ha sido &4baneado por IP &7por &e{staff} &7durante &f{duration}&7. Razón: &f{reason}'
+  mute: '&e{target} &7ha sido &6silenciado &7por &e{staff}&7. Razón: &f{reason}'
+  tempmute: '&e{target} &7ha sido &6silenciado &7por &e{staff} &7durante &f{duration}&7. Razón: &f{reason}'
+  ipmute: '&e{target} &7ha sido &6silenciado por IP &7por &e{staff}&7. Razón: &f{reason}'
+  tempipmute: '&e{target} &7ha sido &6silenciado por IP &7por &e{staff} &7durante &f{duration}&7. Razón: &f{reason}'
+  warn: '&e{target} &7ha recibido una &eadvertencia &7de &e{staff}&7. Razón: &f{reason}'
+  kick: '&e{target} &7ha sido &bexpulsado &7por &e{staff}&7. Razón: &f{reason}'
+  unban: '&e{removed-by} &7ha &adesbaneado &7a &e{target}&7. Razón: &f{removal-reason}'
+  unmute: '&e{removed-by} &7ha &aquitado el silencio &7a &e{target}&7. Razón: &f{removal-reason}'
+  unwarn: '&e{removed-by} &7ha &aquitado una advertencia &7a &e{target}&7.'
+
+target:
+  muted: |-
+    &7Has sido &6silenciado &7por &e{staff} &7durante &f{duration}&7.
+    &7Razón: &f{reason}
+  muted-permanent: |-
+    &7Has sido &6silenciado permanentemente &7por &e{staff}&7.
+    &7Razón: &f{reason}
+  warned: |-
+    &7Has recibido una &eadvertencia &7de &e{staff}&7.
+    &7Razón: &f{reason}
+  unmuted: '&aYa puedes volver a hablar en el chat.'
+  muted-chat: '&cEstás silenciado. &7Razón: &f{reason} &8(&7{remaining}&8)'
+  muted-command: '&cNo puedes usar ese comando mientras estás silenciado.'
+  blocked-server: '&cNo puedes entrar a &e{scope}&c: estás baneado ahí. &7Razón: &f{reason} &8(&7{remaining}&8)'
+
+screen:
+  ban: |-
+    &7&lSpreen&f&lStudios
+    &7
+    &cHas sido baneado temporalmente.
+    &7
+    &7Razón: &f{reason}
+    &7Sancionado por: &e{staff}
+    &7Expira en: &f{remaining}
+    &7
+    &7ID de la sanción: &e#{id}
+    &7¿Crees que es un error? Apela en &fdiscord.gg/spreen
+  ban-permanent: |-
+    &7&lSpreen&f&lStudios
+    &7
+    &cHas sido baneado permanentemente.
+    &7
+    &7Razón: &f{reason}
+    &7Sancionado por: &e{staff}
+    &7
+    &7ID de la sanción: &e#{id}
+    &7¿Crees que es un error? Apela en &fdiscord.gg/spreen
+  kick: |-
+    &7&lSpreen&f&lStudios
+    &7
+    &cHas sido expulsado de la network.
+    &7
+    &7Razón: &f{reason}
+    &7Expulsado por: &e{staff}
+
+notify:
+  banned-join: '&e{player} &7intentó entrar, pero está &cbaneado &8(&7{remaining}&8)&7. Razón: &f{reason}'
+  muted-chat: '&e{player} &7intentó hablar, pero está &6silenciado&7.'
+
+entry-hover: |-
+  &7ID: &e#{id}
+  &7Tipo: {punishment}
+  &7Razón: &f{reason}
+  &7Staff: &e{staff}
+  &7Fecha: &f{date}
+  &7Expira: &f{end}
+  &7Router: &f{router}
+  &7Servidores: &f{scope}
+  &7Servidor de origen: &f{server}
+  &7Categoría: &f{category}
+  &7Nota: &f{note}
+entry-hover-removed: |-
+  &7
+  &7Quitada por &e{removed-by} &7el &f{removed-date}
+  &7Razón: &f{removal-reason}
+
+history:
+  header: '&8&m------&r &c&lHistorial de {target} &8(&7{total}&8) &8&m------'
+  entry: ' &8• &7{date} &f{category} &8» {punishment} {status}'
+  empty: '&e{target} &7no tiene sanciones registradas.'
+
+staffhistory:
+  header: '&8&m------&r &c&lSanciones puestas por {target} &8(&7{total}&8) &8&m------'
+  entry: ' &8• &7{date} &e{target} &8» {punishment} {status}'
+  empty: '&e{target} &7no ha puesto ninguna sanción.'
+
+banlist:
+  header: '&8&m------&r &c&lBaneos activos &8(&7{total}&8) &8&m------'
+  entry: ' &8• &e{target} &8» {punishment} &7por &e{staff} &8(&7{remaining}&8)'
+  empty: '&7No hay baneos activos.'
+
+check:
+  not-banned: '&e{target} &7no está baneado.'
+  not-muted: '&e{target} &7no está silenciado.'
+  header:
+    ban: '&8&m------&r &c&l{target} está baneado &8(&7{total}&8) &8&m------'
+    mute: '&8&m------&r &6&l{target} está silenciado &8(&7{total}&8) &8&m------'
+    warn: '&8&m------&r &e&lAdvertencias de {target} &8(&7{total}&8) &8&m------'
+  details: |-
+    &8• &7ID: &e#{id} &8» {punishment}
+    &7   Razón: &f{reason}
+    &7   Staff: &e{staff} &8| &7Fecha: &f{date}
+    &7   Expira: &f{end} &8(&7{remaining}&8)
+    &7   Router: &f{router} &8| &7Servidores: &f{scope}
+
+warnings:
+  empty: '&e{target} &7no tiene advertencias activas.'
+
+alts:
+  header: '&8&m------&r &c&lCuentas de {target} &8(&7{total}&8) &8&m------'
+  separator: '&8, '
+  online: '&a'
+  offline: '&7'
+  banned: '&c'
+  muted: '&6'
+
+pages:
+  footer: '&7Página &e{page}&7/&e{pages}'
+  previous: '&b« Anterior'
+  next: '&bSiguiente »'
+  hover: '&7Ir a la página &e{page}'
+
+menu:
+  header: '&8&m------&r &c&lSancionar a {target} &8(&7{router}&8) &8&m------'
+  entry: ' &8• &f{category} &8» {punishment} &8(&7nivel &e{level}&8/&e{max}&8)'
+  hover: |-
+    {description}
+    &7
+    &7Siguiente sanción: {punishment}
+    &7Servidores: &f{scope}
+    &7Sanciones previas: &e{count}
+    &7
+    &eClick para preparar la sanción.
+  footer: '&7Haz click en una categoría y añade una nota si quieres antes de enviarla.'
+  empty: '&cNo tienes permiso para sancionar por ninguna categoría.'
+
+categories:
+  hacks:
+    name: 'Hacks'
+    description: |-
+      &7Clientes modificados o ventajas ilegales
+      &7(KillAura, Fly, X-Ray, AutoClicker...).
+    reason: 'Uso de hacks'
+  antijuego:
+    name: 'Antijuego'
+    description: |-
+      &7Teaming en modos solo, arruinar partidas
+      &7o no jugar de forma intencionada.
+    reason: 'Antijuego'
+  bugabuse:
+    name: 'Abuso de bugs'
+    description: '&7Aprovecharse de errores del servidor o del juego.'
+    reason: 'Abuso de bugs'
+  toxicidad:
+    name: 'Toxicidad'
+    description: '&7Insultos, faltas de respeto o provocaciones.'
+    reason: 'Toxicidad'
+  spam:
+    name: 'Spam'
+    description: '&7Flood, mensajes repetidos o abuso de mayúsculas.'
+    reason: 'Spam'
+  discriminacion:
+    name: 'Discriminación'
+    description: '&7Racismo, homofobia o cualquier tipo de discriminación.'
+    reason: 'Discriminación'
+  publicidad:
+    name: 'Publicidad'
+    description: '&7Anunciar otros servidores, IPs o enlaces.'
+    reason: 'Publicidad'
+  skin:
+    name: 'Skin inapropiada'
+    description: '&7Skins ofensivas, sexuales o que molesten.'
+    reason: 'Skin inapropiada'
+  nombre:
+    name: 'Nombre inapropiado'
+    description: '&7Nombres ofensivos o que imiten al staff.'
+    reason: 'Nombre inapropiado'
+  evasion:
+    name: 'Evasión de sanción'
+    description: '&7Entrar con otra cuenta estando sancionado.'
+    reason: 'Evasión de sanción'
+  amenazas:
+    name: 'Amenazas'
+    description: '&7Amenazas, doxeo o ataques a la network.'
+    reason: 'Amenazas'

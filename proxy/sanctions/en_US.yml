@@ -1,0 +1,288 @@
+prefix: '&c&lSanctions&8 » &7'
+
+unavailable: '&cThe sanction system is not available right now.'
+error: '&cAn error occurred while processing the sanction. Check the console.'
+player-not-found: '&cThe player &e{target} &chas never joined the server.'
+player-offline: '&cThe player &e{target} &cis not online.'
+self: '&cYou cannot sanction yourself!'
+exempt: '&cYou cannot sanction &e{target}&c.'
+no-ip: '&cThe IP of &e{target} &cis unknown.'
+invalid-server: '&cThe server or group &e{server} &cdoes not exist.'
+invalid-router: '&cThe router &e{router} &cdoes not exist.'
+no-permission-router: '&cYou do not have permission to sanction outside your router.'
+invalid-duration: '&cYou must specify a valid duration &7(30m, 12h, 7d, 2w, 1mo...)&c.'
+limit-reduced: '&eThe duration has been reduced to your limit: &f{duration}&e.'
+limit-exceeded: '&cYou cannot sanction for longer than &e{duration}&c.'
+already-banned: '&e{target} &calready has an active ban on this router and server.'
+already-muted: '&e{target} &calready has an active mute on this router and server.'
+not-banned: '&e{target} &chas no active ban that you can remove.'
+not-muted: '&e{target} &chas no active mute that you can remove.'
+no-warnings: '&e{target} &chas no active warnings that you can remove.'
+kick-requested: '&e{target} &7is not on this proxy, the other proxies have been asked to kick them.'
+category-not-found: '&cThe category &e{category} &cdoes not exist.'
+no-permission-category: '&cYou do not have permission to sanction for &e{category}&c.'
+
+console: 'Console'
+replaced: 'Replaced by sanction #{id}'
+unknown: 'Unknown'
+manual: '&7Manual'
+no-note: '&8No note'
+date-format: 'MM/dd/yyyy HH:mm'
+
+default-reason:
+  ban: 'Breaking the rules'
+  mute: 'Chat misuse'
+  warn: 'Breaking the rules'
+  kick: 'Kicked by the staff'
+  removal: 'No reason specified'
+
+usage:
+  ban: '&cUsage: &e/{command} [-s] <player> [duration] [reason]'
+  tempban: '&cUsage: &e/{command} [-s] <player> <duration> [reason]'
+  ipban: '&cUsage: &e/{command} [-s] <player|ip> [duration] [reason]'
+  mute: '&cUsage: &e/{command} [-s] <player> [duration] [reason]'
+  tempmute: '&cUsage: &e/{command} [-s] <player> <duration> [reason]'
+  ipmute: '&cUsage: &e/{command} [-s] <player|ip> [duration] [reason]'
+  warn: '&cUsage: &e/{command} [-s] <player> [reason]'
+  kick: '&cUsage: &e/{command} [-s] <player> [reason]'
+  unban: '&cUsage: &e/{command} [-s] <player|ip> [reason]'
+  unmute: '&cUsage: &e/{command} [-s] <player|ip> [reason]'
+  unwarn: '&cUsage: &e/{command} [-s] <player> [reason]'
+  history: '&cUsage: &e/{command} <player> [page]'
+  staffhistory: '&cUsage: &e/{command} <staff> [page]'
+  warnings: '&cUsage: &e/{command} <player>'
+  checkban: '&cUsage: &e/{command} <player>'
+  checkmute: '&cUsage: &e/{command} <player>'
+  alts: '&cUsage: &e/{command} <player>'
+  sancionar: '&cUsage: &e/{command} <player> [category] [note]'
+
+types:
+  ban: '&cBan'
+  ip-ban: '&4IP ban'
+  mute: '&6Mute'
+  ip-mute: '&6IP mute'
+  warn: '&eWarning'
+  kick: '&bKick'
+
+punishment:
+  timed: '{type} &8(&f{duration}&8)'
+  permanent: '{type} &8(&4Permanent&8)'
+  instant: '{type}'
+
+time:
+  permanent: 'Permanent'
+  separator: ', '
+  year: 'year'
+  years: 'years'
+  month: 'month'
+  months: 'months'
+  day: 'day'
+  days: 'days'
+  hour: 'hour'
+  hours: 'hours'
+  minute: 'minute'
+  minutes: 'minutes'
+  second: 'second'
+  seconds: 'seconds'
+
+scope:
+  network: 'Whole network'
+  all-servers: 'All servers'
+
+status:
+  active: '&c[Active]'
+  expired: '&8[Expired]'
+  removed: '&7[Removed]'
+  applied: '&8[Applied]'
+
+broadcast:
+  silent-prefix: '&8[&7Silent&8] '
+  ban: '&e{target} &7has been &cbanned &7by &e{staff}&7. Reason: &f{reason}'
+  tempban: '&e{target} &7has been &cbanned &7by &e{staff} &7for &f{duration}&7. Reason: &f{reason}'
+  ipban: '&e{target} &7has been &4IP banned &7by &e{staff}&7. Reason: &f{reason}'
+  tempipban: '&e{target} &7has been &4IP banned &7by &e{staff} &7for &f{duration}&7. Reason: &f{reason}'
+  mute: '&e{target} &7has been &6muted &7by &e{staff}&7. Reason: &f{reason}'
+  tempmute: '&e{target} &7has been &6muted &7by &e{staff} &7for &f{duration}&7. Reason: &f{reason}'
+  ipmute: '&e{target} &7has been &6IP muted &7by &e{staff}&7. Reason: &f{reason}'
+  tempipmute: '&e{target} &7has been &6IP muted &7by &e{staff} &7for &f{duration}&7. Reason: &f{reason}'
+  warn: '&e{target} &7has received a &ewarning &7from &e{staff}&7. Reason: &f{reason}'
+  kick: '&e{target} &7has been &bkicked &7by &e{staff}&7. Reason: &f{reason}'
+  unban: '&e{removed-by} &7has &aunbanned &e{target}&7. Reason: &f{removal-reason}'
+  unmute: '&e{removed-by} &7has &aunmuted &e{target}&7. Reason: &f{removal-reason}'
+  unwarn: '&e{removed-by} &7has &aremoved a warning &7from &e{target}&7.'
+
+target:
+  muted: |-
+    &7You have been &6muted &7by &e{staff} &7for &f{duration}&7.
+    &7Reason: &f{reason}
+  muted-permanent: |-
+    &7You have been &6permanently muted &7by &e{staff}&7.
+    &7Reason: &f{reason}
+  warned: |-
+    &7You have received a &ewarning &7from &e{staff}&7.
+    &7Reason: &f{reason}
+  unmuted: '&aYou can talk in the chat again.'
+  muted-chat: '&cYou are muted. &7Reason: &f{reason} &8(&7{remaining}&8)'
+  muted-command: '&cYou cannot use that command while you are muted.'
+  blocked-server: '&cYou cannot join &e{scope}&c: you are banned there. &7Reason: &f{reason} &8(&7{remaining}&8)'
+
+screen:
+  ban: |-
+    &7&lSpreen&f&lStudios
+    &7
+    &cYou have been temporarily banned.
+    &7
+    &7Reason: &f{reason}
+    &7Banned by: &e{staff}
+    &7Expires in: &f{remaining}
+    &7
+    &7Sanction ID: &e#{id}
+    &7Think it is a mistake? Appeal at &fdiscord.gg/spreen
+  ban-permanent: |-
+    &7&lSpreen&f&lStudios
+    &7
+    &cYou have been permanently banned.
+    &7
+    &7Reason: &f{reason}
+    &7Banned by: &e{staff}
+    &7
+    &7Sanction ID: &e#{id}
+    &7Think it is a mistake? Appeal at &fdiscord.gg/spreen
+  kick: |-
+    &7&lSpreen&f&lStudios
+    &7
+    &cYou have been kicked from the network.
+    &7
+    &7Reason: &f{reason}
+    &7Kicked by: &e{staff}
+
+notify:
+  banned-join: '&e{player} &7tried to join, but is &cbanned &8(&7{remaining}&8)&7. Reason: &f{reason}'
+  muted-chat: '&e{player} &7tried to talk, but is &6muted&7.'
+
+entry-hover: |-
+  &7ID: &e#{id}
+  &7Type: {punishment}
+  &7Reason: &f{reason}
+  &7Staff: &e{staff}
+  &7Date: &f{date}
+  &7Expires: &f{end}
+  &7Router: &f{router}
+  &7Servers: &f{scope}
+  &7Origin server: &f{server}
+  &7Category: &f{category}
+  &7Note: &f{note}
+entry-hover-removed: |-
+  &7
+  &7Removed by &e{removed-by} &7on &f{removed-date}
+  &7Reason: &f{removal-reason}
+
+history:
+  header: '&8&m------&r &c&lHistory of {target} &8(&7{total}&8) &8&m------'
+  entry: ' &8• &7{date} &f{category} &8» {punishment} {status}'
+  empty: '&e{target} &7has no recorded sanctions.'
+
+staffhistory:
+  header: '&8&m------&r &c&lSanctions issued by {target} &8(&7{total}&8) &8&m------'
+  entry: ' &8• &7{date} &e{target} &8» {punishment} {status}'
+  empty: '&e{target} &7has not issued any sanctions.'
+
+banlist:
+  header: '&8&m------&r &c&lActive bans &8(&7{total}&8) &8&m------'
+  entry: ' &8• &e{target} &8» {punishment} &7by &e{staff} &8(&7{remaining}&8)'
+  empty: '&7There are no active bans.'
+
+check:
+  not-banned: '&e{target} &7is not banned.'
+  not-muted: '&e{target} &7is not muted.'
+  header:
+    ban: '&8&m------&r &c&l{target} is banned &8(&7{total}&8) &8&m------'
+    mute: '&8&m------&r &6&l{target} is muted &8(&7{total}&8) &8&m------'
+    warn: '&8&m------&r &e&lWarnings of {target} &8(&7{total}&8) &8&m------'
+  details: |-
+    &8• &7ID: &e#{id} &8» {punishment}
+    &7   Reason: &f{reason}
+    &7   Staff: &e{staff} &8| &7Date: &f{date}
+    &7   Expires: &f{end} &8(&7{remaining}&8)
+    &7   Router: &f{router} &8| &7Servers: &f{scope}
+
+warnings:
+  empty: '&e{target} &7has no active warnings.'
+
+alts:
+  header: '&8&m------&r &c&lAccounts of {target} &8(&7{total}&8) &8&m------'
+  separator: '&8, '
+  online: '&a'
+  offline: '&7'
+  banned: '&c'
+  muted: '&6'
+
+pages:
+  footer: '&7Page &e{page}&7/&e{pages}'
+  previous: '&b« Previous'
+  next: '&bNext »'
+  hover: '&7Go to page &e{page}'
+
+menu:
+  header: '&8&m------&r &c&lSanction {target} &8(&7{router}&8) &8&m------'
+  entry: ' &8• &f{category} &8» {punishment} &8(&7level &e{level}&8/&e{max}&8)'
+  hover: |-
+    {description}
+    &7
+    &7Next sanction: {punishment}
+    &7Servers: &f{scope}
+    &7Previous sanctions: &e{count}
+    &7
+    &eClick to prepare the sanction.
+  footer: '&7Click a category and add a note if you want before sending it.'
+  empty: '&cYou do not have permission to sanction for any category.'
+
+categories:
+  hacks:
+    name: 'Hacks'
+    description: |-
+      &7Modified clients or illegal advantages
+      &7(KillAura, Fly, X-Ray, AutoClicker...).
+    reason: 'Using hacks'
+  antijuego:
+    name: 'Anti-game'
+    description: |-
+      &7Teaming in solo modes, ruining games
+      &7or intentionally not playing.
+    reason: 'Anti-game'
+  bugabuse:
+    name: 'Bug abuse'
+    description: '&7Exploiting server or game bugs.'
+    reason: 'Bug abuse'
+  toxicidad:
+    name: 'Toxicity'
+    description: '&7Insults, disrespect or provocations.'
+    reason: 'Toxicity'
+  spam:
+    name: 'Spam'
+    description: '&7Flood, repeated messages or caps abuse.'
+    reason: 'Spam'
+  discriminacion:
+    name: 'Discrimination'
+    description: '&7Racism, homophobia or any kind of discrimination.'
+    reason: 'Discrimination'
+  publicidad:
+    name: 'Advertising'
+    description: '&7Advertising other servers, IPs or links.'
+    reason: 'Advertising'
+  skin:
+    name: 'Inappropriate skin'
+    description: '&7Offensive, sexual or annoying skins.'
+    reason: 'Inappropriate skin'
+  nombre:
+    name: 'Inappropriate name'
+    description: '&7Offensive names or names impersonating the staff.'
+    reason: 'Inappropriate name'
+  evasion:
+    name: 'Sanction evasion'
+    description: '&7Joining with another account while sanctioned.'
+    reason: 'Sanction evasion'
+  amenazas:
+    name: 'Threats'
+    description: '&7Threats, doxxing or attacks on the network.'
+    reason: 'Threats'
