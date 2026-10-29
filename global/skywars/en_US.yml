@@ -1214,6 +1214,13 @@ menus:
           &f Click to choose the
           &f sound of your kills.
           &7
+      balloons:
+        name: '&7» &bBalloons'
+        lore: |-
+          &7
+          &f Click to choose the balloon
+          &f that floats over your post.
+          &7
   shop-kits:
     title: '&8&lS&7&lS&0 » Kit Shop'
   kits:
@@ -1615,6 +1622,125 @@ trails:
       &7
 
 # Kill sounds (killSounds.yml → icon).
+# Globos (balloons.yml).
+balloons:
+  melon:
+    name: '&eMelon'
+    lore: |-
+      &7
+      &f Fresh and juicy,
+      &f perfect for the heat.
+      &7
+  pumpkin:
+    name: '&ePumpkin'
+    lore: |-
+      &7
+      &f A pumpkin that does not
+      &f need Halloween.
+      &7
+  cactus:
+    name: '&eCactus'
+    lore: |-
+      &7
+      &f Better not hug it.
+      &7
+  coconut:
+    name: '&eCoconut'
+    lore: |-
+      &7
+      &f Straight from the beach.
+      &7
+  chest:
+    name: '&eChest'
+    lore: |-
+      &7
+      &f What could be inside?
+      &7
+  cake:
+    name: '&eCake'
+    lore: |-
+      &7
+      &f To celebrate every
+      &f win.
+      &7
+  pig:
+    name: '&ePiggy'
+    lore: |-
+      &7
+      &f Oink, oink... up in the air.
+      &7
+  present:
+    name: '&ePresent'
+    lore: |-
+      &7
+      &f A present that never
+      &f gets opened.
+      &7
+  tnt:
+    name: '&eTNT'
+    lore: |-
+      &7
+      &f Relax, it does not explode.
+      &f We think.
+      &7
+  slime:
+    name: '&eSlime'
+    lore: |-
+      &7
+      &f It bounces even in the air.
+      &7
+  creeper:
+    name: '&eCreeper'
+    lore: |-
+      &7
+      &f Ssss... just for show,
+      &f for once.
+      &7
+  squid:
+    name: '&eSquid'
+    lore: |-
+      &7
+      &f A squid that got lost
+      &f from the sea.
+      &7
+  ghast:
+    name: '&eGhast'
+    lore: |-
+      &7
+      &f A crybaby, but way up high.
+      &7
+  magma:
+    name: '&eMagma cube'
+    lore: |-
+      &7
+      &f Fresh out of the Nether.
+      &7
+  blaze:
+    name: '&eBlaze'
+    lore: |-
+      &7
+      &f It burns without burning
+      &f anyone.
+      &7
+  enderman:
+    name: '&eEnderman'
+    lore: |-
+      &7
+      &f Do not look it in the eyes.
+      &7
+  golem:
+    name: '&eIron golem'
+    lore: |-
+      &7
+      &f The guardian of the post.
+      &7
+  mystery:
+    name: '&eMystery'
+    lore: |-
+      &7
+      &f Nobody knows what it is.
+      &f Neither do we.
+      &7
 kill-sounds:
   anvil:
     name: '&eAnvil'
@@ -1624,6 +1750,11 @@ kill-sounds:
       &7
   bat:
     name: '&eBat'
+    lore: |-
+      &7
+      &f A squeak fading into
+      &f the cave.
+      &7
   blaze:
     name: '&eBlaze'
     lore: |-
@@ -1638,8 +1769,18 @@ kill-sounds:
       &7
   cat:
     name: '&eCat'
+    lore: |-
+      &7
+      &f A meow to see your
+      &f rival off.
+      &7
   chicken:
     name: '&eChicken pop'
+    lore: |-
+      &7
+      &f Pop. The chicken laid
+      &f an egg.
+      &7
   creeper:
     name: '&eCreeper'
     lore: |-
@@ -1660,12 +1801,30 @@ kill-sounds:
       &7
   eat:
     name: '&eEat'
+    lore: |-
+      &7
+      &f Nom. Gone in one bite.
+      &7
   enderdragon:
     name: '&eEnder dragon'
+    lore: |-
+      &7
+      &f The wingbeat of the
+      &f Ender Dragon.
+      &7
   enderman:
     name: '&eEnderman'
+    lore: |-
+      &7
+      &f The screech of a falling
+      &f Enderman.
+      &7
   explode:
     name: '&eExplosion'
+    lore: |-
+      &7
+      &f Boom! Nothing left.
+      &7
   fireworks:
     name: '&eFireworks'
     lore: |-
@@ -1674,6 +1833,10 @@ kill-sounds:
       &7
   ghast:
     name: '&eGhast'
+    lore: |-
+      &7
+      &f The wail of a Nether Ghast.
+      &7
   glass:
     name: '&eShattered glass'
     lore: |-
@@ -1706,8 +1869,16 @@ kill-sounds:
       &7
   notebass:
     name: '&eNote bass'
+    lore: |-
+      &7
+      &f A punchy bass drum hit.
+      &7
   pig:
     name: '&ePig'
+    lore: |-
+      &7
+      &f A pig's final oink.
+      &7
   pling:
     name: '&ePling'
     lore: |-
@@ -1722,14 +1893,36 @@ kill-sounds:
       &7
   skeleton:
     name: '&eSkeleton'
+    lore: |-
+      &7
+      &f A rattle of loose bones.
+      &7
   slimewalk:
     name: '&eWalking slime'
+    lore: |-
+      &7
+      &f Sticky little slime hops.
+      &7
   spider:
     name: '&eSpider'
+    lore: |-
+      &7
+      &f A hiss that gives
+      &f you chills.
+      &7
   splash:
     name: '&eSplash'
+    lore: |-
+      &7
+      &f Splash! Into the water.
+      &7
   successful-hit:
     name: '&eA successful hit'
+    lore: |-
+      &7
+      &f The "ding" of an arrow
+      &f hitting its mark.
+      &7
   teleport:
     name: '&eTeleport'
     lore: |-
@@ -1745,6 +1938,11 @@ kill-sounds:
       &7
   thunder:
     name: '&eThunder'
+    lore: |-
+      &7
+      &f Thunder rumbling across
+      &f the sky.
+      &7
   tnt:
     name: '&eLit fuse'
     lore: |-
@@ -1753,14 +1951,37 @@ kill-sounds:
       &7
   villager:
     name: '&eVillager'
+    lore: |-
+      &7
+      &f Hrmm... one unhappy
+      &f villager.
+      &7
   wither:
     name: '&eWither'
+    lore: |-
+      &7
+      &f The blast of a Wither skull.
+      &7
   wolf:
     name: '&eWolf'
+    lore: |-
+      &7
+      &f A wolf's last whimper.
+      &7
   wolfwhine:
     name: '&eDog bark'
+    lore: |-
+      &7
+      &f A puppy asking for
+      &f attention.
+      &7
   zombie:
     name: '&eZombie'
+    lore: |-
+      &7
+      &f A groan from beyond
+      &f the grave.
+      &7
 
 # Win effects.
 wineffects:

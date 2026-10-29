@@ -1214,6 +1214,13 @@ menus:
           &f Haz clic para elegir el
           &f sonido de tus bajas.
           &7
+      balloons:
+        name: '&7» &bGlobos'
+        lore: |-
+          &7
+          &f Haz clic para elegir el globo
+          &f que sale en tu poste.
+          &7
   shop-kits:
     title: '&8&lS&7&lS&0 » Tienda de kits'
   kits:
@@ -1615,6 +1622,124 @@ trails:
       &7
 
 # Sonidos de baja (killSounds.yml → icon).
+# Globos (balloons.yml).
+balloons:
+  melon:
+    name: '&eSandía'
+    lore: |-
+      &7
+      &f Fresca y jugosa,
+      &f perfecta para el calor.
+      &7
+  pumpkin:
+    name: '&eCalabaza'
+    lore: |-
+      &7
+      &f Una calabaza que no
+      &f necesita Halloween.
+      &7
+  cactus:
+    name: '&eCactus'
+    lore: |-
+      &7
+      &f Mejor no lo abraces.
+      &7
+  coconut:
+    name: '&eCoco'
+    lore: |-
+      &7
+      &f Directo desde la playa.
+      &7
+  chest:
+    name: '&eCofre'
+    lore: |-
+      &7
+      &f ¿Qué habrá dentro?
+      &7
+  cake:
+    name: '&ePastel'
+    lore: |-
+      &7
+      &f Para celebrar cada
+      &f victoria.
+      &7
+  pig:
+    name: '&eCerdito'
+    lore: |-
+      &7
+      &f Oink, oink... por los aires.
+      &7
+  present:
+    name: '&eRegalo'
+    lore: |-
+      &7
+      &f Un regalo que nunca
+      &f se abre.
+      &7
+  tnt:
+    name: '&eTNT'
+    lore: |-
+      &7
+      &f Tranquilo, no explota.
+      &f Creemos.
+      &7
+  slime:
+    name: '&eSlime'
+    lore: |-
+      &7
+      &f Rebota hasta en el aire.
+      &7
+  creeper:
+    name: '&eCreeper'
+    lore: |-
+      &7
+      &f Ssss... de adorno, por
+      &f una vez.
+      &7
+  squid:
+    name: '&eCalamar'
+    lore: |-
+      &7
+      &f Un calamar que se
+      &f perdió del mar.
+      &7
+  ghast:
+    name: '&eGhast'
+    lore: |-
+      &7
+      &f Llorón, pero bien alto.
+      &7
+  magma:
+    name: '&eCubo de magma'
+    lore: |-
+      &7
+      &f Recién salido del Nether.
+      &7
+  blaze:
+    name: '&eBlaze'
+    lore: |-
+      &7
+      &f Arde sin quemar a nadie.
+      &7
+  enderman:
+    name: '&eEnderman'
+    lore: |-
+      &7
+      &f No le mires a los ojos.
+      &7
+  golem:
+    name: '&eGólem de hierro'
+    lore: |-
+      &7
+      &f El guardián del poste.
+      &7
+  mystery:
+    name: '&eMisterio'
+    lore: |-
+      &7
+      &f Nadie sabe qué es.
+      &f Tampoco nosotros.
+      &7
 kill-sounds:
   anvil:
     name: '&eYunque'
@@ -1624,6 +1749,11 @@ kill-sounds:
       &7
   bat:
     name: '&eMurciélago'
+    lore: |-
+      &7
+      &f Un chillido que se pierde
+      &f en la cueva.
+      &7
   blaze:
     name: '&eBlaze'
     lore: |-
@@ -1638,8 +1768,18 @@ kill-sounds:
       &7
   cat:
     name: '&eGato'
+    lore: |-
+      &7
+      &f Un maullido para despedir
+      &f al rival.
+      &7
   chicken:
     name: '&ePop de gallina'
+    lore: |-
+      &7
+      &f Pop. La gallina puso
+      &f un huevo.
+      &7
   creeper:
     name: '&eCreeper'
     lore: |-
@@ -1660,12 +1800,31 @@ kill-sounds:
       &7
   eat:
     name: '&eComer'
+    lore: |-
+      &7
+      &f Ñam. Se lo comió de
+      &f un bocado.
+      &7
   enderdragon:
     name: '&eDragón del End'
+    lore: |-
+      &7
+      &f El aleteo del Dragón
+      &f del End.
+      &7
   enderman:
     name: '&eEnderman'
+    lore: |-
+      &7
+      &f El chillido de un Enderman
+      &f al caer.
+      &7
   explode:
     name: '&eExplosión'
+    lore: |-
+      &7
+      &f ¡Boom! No queda nada.
+      &7
   fireworks:
     name: '&eFuegos artificiales'
     lore: |-
@@ -1674,6 +1833,11 @@ kill-sounds:
       &7
   ghast:
     name: '&eGhast'
+    lore: |-
+      &7
+      &f El lamento de un Ghast
+      &f del Nether.
+      &7
   glass:
     name: '&eCristal roto'
     lore: |-
@@ -1707,8 +1871,17 @@ kill-sounds:
       &7
   notebass:
     name: '&eBajo de notas'
+    lore: |-
+      &7
+      &f Un golpe de bombo bien
+      &f marcado.
+      &7
   pig:
     name: '&eCerdo'
+    lore: |-
+      &7
+      &f El último oink de un cerdo.
+      &7
   pling:
     name: '&eCampanilla'
     lore: |-
@@ -1723,14 +1896,37 @@ kill-sounds:
       &7
   skeleton:
     name: '&eEsqueleto'
+    lore: |-
+      &7
+      &f Un traqueteo de huesos
+      &f sueltos.
+      &7
   slimewalk:
     name: '&eSlime caminando'
+    lore: |-
+      &7
+      &f Saltitos pegajosos de slime.
+      &7
   spider:
     name: '&eAraña'
+    lore: |-
+      &7
+      &f Un siseo que pone los
+      &f pelos de punta.
+      &7
   splash:
     name: '&eSalpicadura'
+    lore: |-
+      &7
+      &f ¡Al agua con él!
+      &7
   successful-hit:
     name: '&eUn golpe exitoso'
+    lore: |-
+      &7
+      &f El «ding» de una flecha
+      &f que da en el blanco.
+      &7
   teleport:
     name: '&eTeletransporte'
     lore: |-
@@ -1746,6 +1942,11 @@ kill-sounds:
       &7
   thunder:
     name: '&eTrueno'
+    lore: |-
+      &7
+      &f Un trueno que retumba
+      &f en el cielo.
+      &7
   tnt:
     name: '&eMecha encendida'
     lore: |-
@@ -1754,14 +1955,37 @@ kill-sounds:
       &7
   villager:
     name: '&eAldeano'
+    lore: |-
+      &7
+      &f Hmm... un aldeano no muy
+      &f contento.
+      &7
   wither:
     name: '&eWither'
+    lore: |-
+      &7
+      &f El disparo de una calavera
+      &f de Wither.
+      &7
   wolf:
     name: '&eLobo'
+    lore: |-
+      &7
+      &f El último gemido de un lobo.
+      &7
   wolfwhine:
     name: '&eLadrido de perro'
+    lore: |-
+      &7
+      &f Un perrito que pide
+      &f atención.
+      &7
   zombie:
     name: '&eZombi'
+    lore: |-
+      &7
+      &f Un gruñido de ultratumba.
+      &7
 
 # Efectos de victoria.
 wineffects:
