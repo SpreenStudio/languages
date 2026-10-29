@@ -15,8 +15,8 @@ scoreboard:
       
 npcs:
   skywars:
-    line1: '&b&lSkyWars&r ▏ &e%core_online_sky-wars,sky-wars-game%'
-    line2: '&8[%core_bar_sky-wars,sky-wars-game%&8]'
+    line1: '&b&lSkyWars&r ▏ &e%core_online_sw-lobby,sw-game%'
+    line2: '&8[%core_bar_sw-lobby,sw-game%&8]'
   arenapvp:
     line1: '&b&lArenaPvP&r ▏ &e%core_online_arena-pvp,arena-pvp-game%'
     line2: '&8[%core_bar_arena-pvp,arena-pvp-game%&8]'
@@ -142,8 +142,8 @@ menus:
           &7get items from chests, and
           &7be the last one standing to win.
           &f
-          &fPlayers Online: &5%core_online_sky-wars-game,sky-wars%
-          &8[%core_bar_sky-wars,sky-wars-game%&8]
+          &fPlayers Online: &5%core_online_sw-lobby,sw-game%
+          &8[%core_bar_sw-lobby,sw-game%&8]
       arenapvp:
         name: "&e&lArenaPvP"
         lore: |-
