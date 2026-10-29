@@ -424,6 +424,37 @@ elo:
   # %1$s: mode, %2$s: ELO, %3$s: wins, %4$s: losses
   line: '&7 %1$s&7: &b%2$s &8(&a%3$sW &c%4$sL&8)'
 
+ranks:
+  # Prefix of each rank in ranks.yml (ranks.<id>)
+  novato1: '&8[&7Novice ∣&8]'
+  novato2: '&8[&7Novice ∣∣&8]'
+  novato3: '&8[&7Novice ∣∣∣&8]'
+  aprendiz1: '&8[&7Apprentice ∣&8]'
+  aprendiz2: '&8[&7Apprentice ∣∣&8]'
+  aprendiz3: '&8[&7Apprentice ∣∣∣&8]'
+  espadachin1: '&7[&fSwordsman ∣&7]'
+  espadachin2: '&7[&fSwordsman ∣∣&7]'
+  espadachin3: '&7[&fSwordsman ∣∣∣&7]'
+  guerrero1: '&7[&bWarrior ∣&7]'
+  guerrero2: '&7[&bWarrior ∣∣&7]'
+  guerrero3: '&7[&bWarrior ∣∣∣&7]'
+  campeon1: '&7[&9Champion ∣&7]'
+  campeon2: '&7[&9Champion ∣∣&7]'
+  campeon3: '&7[&9Champion ∣∣∣&7]'
+  maestro1: '&7[&eMaster ∣&7]'
+  maestro2: '&7[&eMaster ∣∣&7]'
+  maestro3: '&7[&eMaster ∣∣∣&7]'
+  leyenda1: '&7[&6Legend ∣&7]'
+  leyenda2: '&7[&6Legend ∣∣&7]'
+  leyenda3: '&7[&6Legend ∣∣∣&7]'
+  mitico1: '&7[&2Mythic ∣&7]'
+  mitico2: '&7[&2Mythic ∣∣&7]'
+  mitico3: '&7[&2Mythic ∣∣∣&7]'
+  supremo1: '&7[&aSupreme ∣&7]'
+  supremo2: '&7[&aSupreme ∣∣&7]'
+  supremo3: '&7[&aSupreme ∣∣∣&7]'
+  dmc: '&c&m[DMC]&7'
+
 menus:
   unavailable: '{prefix}&cThat menu is not available here.'
   # %s: mode name
