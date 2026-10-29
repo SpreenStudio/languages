@@ -1280,8 +1280,42 @@ menus:
           &7
   win-effects:
     title: '&8&lS&7&lS&0 » Efectos'
+  game-modes:
+    title: '&8&lS&7&lS&0 » Modalidades'
+    # %mode% de los títulos de los menús de partidas y de mapas.
+    names:
+      solo: 'Solo'
+      team: 'Equipos'
+    items:
+      solo:
+        name: '&b&lSkyWars Solo'
+        lore: |-
+          &8PvP
+          &f
+          &7Lucha en el aire junto a otros,
+          &7obtén cosas de los cofres y
+          &7sé el último en pie para ganar.
+          &f
+          &fJugando: &5<players>
+          &fEsperando: &5<wplayers>
+          &f
+          &e Haz clic para ver las partidas.
+      team:
+        name: '&d&lSkyWars Equipos'
+        lore: |-
+          &8PvP
+          &f
+          &7Forma equipo con tus amigos,
+          &7obtén cosas de los cofres y
+          &7que tu equipo sea el último
+          &7en pie para ganar.
+          &f
+          &fJugando: &5<players>
+          &fEsperando: &5<wplayers>
+          &f
+          &e Haz clic para ver las partidas.
   games:
-    title: '&8&lS&7&lS&0 » SkyWars'
+    title: '&8&lS&7&lS&0 » SkyWars %mode%'
     items:
       solo:
         name: '&b&lSkyWars Solo'
@@ -1296,6 +1330,20 @@ menus:
           &fEsperando: &5<wplayers>
           &f
           &e Haz clic para entrar a una partida.
+      team:
+        name: '&d&lSkyWars Equipos'
+        lore: |-
+          &8PvP
+          &f
+          &7Forma equipo con tus amigos,
+          &7obtén cosas de los cofres y
+          &7que tu equipo sea el último
+          &7en pie para ganar.
+          &f
+          &fJugando: &5<players>
+          &fEsperando: &5<wplayers>
+          &f
+          &e Haz clic para entrar a una partida.
       mapSelector:
         name: '&7» &bSelector de mapas'
         lore: |-
@@ -1304,8 +1352,10 @@ menus:
           &f quieres jugar.
           &7
           &e Haz clic para abrirlo.
+      prev:
+        name: '&b« &eModalidades'
   game-selector:
-    title: '&8&lS&7&lS&0 » Mapas'
+    title: '&8&lS&7&lS&0 » Mapas %mode%'
     items:
       waiting:
         name: '&a%arena%'
@@ -1351,8 +1401,6 @@ menus:
           &f Haz clic para entrar a la
           &f mejor partida disponible.
           &7
-      prev:
-        name: '&b« &eModalidades'
 
 # Cajas (boxes.yml → icon).
 boxes:

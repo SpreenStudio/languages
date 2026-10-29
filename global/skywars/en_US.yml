@@ -1280,8 +1280,41 @@ menus:
           &7
   win-effects:
     title: '&8&lS&7&lS&0 » Win Effects'
+  game-modes:
+    title: '&8&lS&7&lS&0 » Game Modes'
+    # %mode% in the titles of the games and maps menus.
+    names:
+      solo: 'Solo'
+      team: 'Teams'
+    items:
+      solo:
+        name: '&b&lSkyWars Solo'
+        lore: |-
+          &8PvP
+          &f
+          &7Fight in the sky against others,
+          &7loot the chests and be the
+          &7last one standing to win.
+          &f
+          &fPlaying: &5<players>
+          &fWaiting: &5<wplayers>
+          &f
+          &e Click to see the games.
+      team:
+        name: '&d&lSkyWars Teams'
+        lore: |-
+          &8PvP
+          &f
+          &7Team up with your friends,
+          &7loot the chests and make your
+          &7team the last one standing.
+          &f
+          &fPlaying: &5<players>
+          &fWaiting: &5<wplayers>
+          &f
+          &e Click to see the games.
   games:
-    title: '&8&lS&7&lS&0 » SkyWars'
+    title: '&8&lS&7&lS&0 » SkyWars %mode%'
     items:
       solo:
         name: '&b&lSkyWars Solo'
@@ -1296,6 +1329,19 @@ menus:
           &fWaiting: &5<wplayers>
           &f
           &e Click to join a game.
+      team:
+        name: '&d&lSkyWars Teams'
+        lore: |-
+          &8PvP
+          &f
+          &7Team up with your friends,
+          &7loot the chests and make your
+          &7team the last one standing.
+          &f
+          &fPlaying: &5<players>
+          &fWaiting: &5<wplayers>
+          &f
+          &e Click to join a game.
       mapSelector:
         name: '&7» &bMap selector'
         lore: |-
@@ -1304,8 +1350,10 @@ menus:
           &f want to play on.
           &7
           &e Click to open it.
+      prev:
+        name: '&b« &eGame Modes'
   game-selector:
-    title: '&8&lS&7&lS&0 » Maps'
+    title: '&8&lS&7&lS&0 » Maps %mode%'
     items:
       waiting:
         name: '&a%arena%'
@@ -1351,8 +1399,6 @@ menus:
           &f Click to join the best
           &f available game.
           &7
-      prev:
-        name: '&b« &eGame Modes'
 
 # Boxes (boxes.yml → icon).
 boxes:
