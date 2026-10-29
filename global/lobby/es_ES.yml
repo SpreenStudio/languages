@@ -18,8 +18,8 @@ npcs:
     line1: '&b&lSkyWars&r ▏ &e%core_online_sw-lobby,sw-game%'
     line2: '&8[%core_bar_sw-lobby,sw-game%&8]'
   arenapvp:
-    line1: '&b&lArenaPvP&r ▏ &e%core_online_arena-pvp,arena-pvp-game%'
-    line2: '&8[%core_bar_arena-pvp,arena-pvp-game%&8]'
+    line1: '&b&lArenaPvP&r ▏ &e%core_online_apvp-lobby,apvp-game%'
+    line2: '&8[%core_bar_apvp-lobby,apvp-game%&8]'
   uhc:
     line1: '&b&lUHC&r ▏ &e%core_online_uhc-lobby,uhc-game%'
     line2: '&8[%core_bar_uhc-lobby,uhc-game%&8]'      

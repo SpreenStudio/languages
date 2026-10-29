@@ -36,6 +36,7 @@ commands:
   action:
     help: |-
       &7 /npc action add [npc] [consola] [permiso] [TIPO:valor] - &eAñade una acción.
+      &7 /npc action add [npc] false [permiso] [[acción]valor] - &eAñade una acción de FurryCore ([open], [balancer]...).
       &7 /npc action remove [npc] [id] - &eQuita una acción.
       &7 /npc action cooldown [npc] [milisegundos] - &eCambia la espera entre clics.
       &7 /npc action list [npc] - &eMuestra las acciones.
@@ -123,7 +124,7 @@ messages:
     removed: '{prefix}&fAcción quitada. &a&l✔'
     error-id: '{prefix}&cEsa acción no existe. &c&l✖'
     error-saving: '{prefix}&cNo se pudieron guardar las acciones. &c&l✖'
-    error-type: '{prefix}&cLa acción debe ser &eTIPO:valor&c con un tipo válido (cmd, bgcmd, server, merchant, msg, sound, wait, labyEmote, UPDATE).'
+    error-type: '{prefix}&cLa acción debe ser &eTIPO:valor&c con un tipo válido (cmd, bgcmd, server, merchant, msg, sound, wait, labyEmote, UPDATE) o una acción de FurryCore (&e[open]menú&c, &e[balancer]grupo&c...).'
     cooldown: '{prefix}&fAhora la espera entre clics de &e{npc}&f es de &e{time}&f ms.'
   hologram:
     added: '{prefix}&a&l✔&f Línea añadida: {line}'
@@ -195,6 +196,18 @@ editor:
       wait: '&eel tiempo (en milisegundos)'
       laby-emote: '&eel emote (o random)'
       update: '&equé actualizar (GLOW)'
+    # Acciones de FurryCore.
+    what-core:
+      open: '&eel id del menú (por ejemplo &fselector&e o &fnpc:main&e)'
+      balancer: '&eel grupo de servidores'
+      server: '&eel servidor'
+      cmd: '&eel comando'
+      cmd-console: '&eel comando'
+      cmd-op: '&eel comando'
+      msg: '&eel mensaje'
+      title: '&eel título y el subtítulo separados por &f`&e (y si quieres &f`entrada`duración`salida&e en ticks)'
+      sound: '&eel sonido, el volumen y el tono (&fSONIDO,1.0,1.0&e)'
+      action: '&ela acción (&fvisibility, fly, jump, doublejump, disableFly, disableJump, disableDoubleJump, disableSpeed&e o &fenderbutt&e)'
 
 # Lo que hace cada tipo de accion (menu de nueva accion).
 action-types:
@@ -207,6 +220,21 @@ action-types:
   wait: 'Espera antes de las siguientes acciones.'
   laby-emote: 'El NPC hace un emote de LabyMod.'
   update: 'Vuelve a enviar el brillo del NPC.'
+
+# Lo que hace cada accion de FurryCore (menu de nueva accion).
+core-actions:
+  open: 'Abre un menú de FurryCore o de un módulo.'
+  balancer: 'Envía al jugador a un servidor libre de un grupo.'
+  server: 'Envía al jugador a un servidor.'
+  cmd: 'El jugador ejecuta un comando.'
+  cmd-console: 'La consola ejecuta un comando.'
+  cmd-op: 'El jugador ejecuta un comando sin pasar por el chat.'
+  msg: 'Envía un mensaje al jugador.'
+  title: 'Muestra un título al jugador.'
+  sound: 'Reproduce un sonido al jugador.'
+  action: 'Visibilidad, vuelo, saltos, velocidad o ender butt.'
+  speed: 'Activa o desactiva la velocidad del jugador.'
+  close: 'Cierra el inventario del jugador.'
 
 items:
   wand:
