@@ -1,0 +1,2747 @@
+# Cosmetics (modulo de FurryCore): textos en espanol de la seccion 'cosmetics'.
+# Variables entre llaves ({player}, {item}, {mysteryDust}...). Los YAML de los menus usan las claves como
+# [lang=cosmetics]<clave>.
+
+prefix: '&d&lCosméticos &8» '
+general:
+  enabled: '&aActivado'
+  disabled: '&cDesactivado'
+  time:
+    second: segundo
+    seconds: segundos
+    minute: minuto
+    minutes: minutos
+    hour: hora
+    hours: horas
+    day: día
+    days: días
+  rarity:
+    common: '&e&lCOMÚN'
+    rare: '&9&lRARO'
+    epic: '&5&lÉPICO'
+    legendary: '&d&lLEGENDARIO'
+  categories:
+    hats: '&bCabeza'
+    animated-hats: '&bCabeza Animada'
+    particles: '&bPartícula'
+    suits: '&bTraje'
+    gadgets: '&bArtefacto'
+    pets: '&bMascota'
+    miniatures: '&bMiniatura'
+    morphs: '&bTransformación'
+    banners: '&bBandera'
+    emotes: '&bEmoticón'
+    cloaks: '&bPartícula Especial'
+  cooldown:
+    remain: '&7■'
+    retain: '&b■'
+    message: '&f{name} &b{cooldownBlock} &a{timeLeft}s'
+  loading: '&cCargando...'
+  none: Ninguno
+  no-recent-loot: Ninguno
+commands:
+  menu:
+    help: '&7 /gmenu menu <categoría> - &eAbre el menú de una categoría.'
+  equip:
+    help: '&7 /gmenu equip [categoría] [cosmético] <jugador> - &eEquipa un cosmético.'
+    usage: '{prefix}&cUso: &e/gmenu equip [categoría] [cosmético] <jugador>'
+  reset:
+    help: '&7 /gmenu reset <all|categoría> <jugador|all> <msg=false> - &eQuita los cosméticos.'
+  addpermission:
+    help: '&7 /gmenu addpermission [jugador] [categoría] [cosmético] - &eDesbloquea un cosmético.'
+    usage: '{prefix}&cUso: &e/gmenu addpermission [jugador] [categoría] [cosmético]'
+  removepermission:
+    help: '&7 /gmenu removepermission [jugador] [categoría] [cosmético] - &eBloquea un cosmético.'
+    usage: '{prefix}&cUso: &e/gmenu removepermission [jugador] [categoría] [cosmético]'
+  permission:
+    help: '&7 /gmenu permission [categoría|commands] <página> - &eLista los permisos.'
+    usage: '{prefix}&cUso: &e/gmenu permission [categoría|commands] <página>'
+    header: '{prefix}&fPermisos &7● &e{page}/{pages}'
+    line: '&7 - &e{permission}'
+  petitems:
+    help: |-
+      &7 /gmenu petitems add|remove|set [objeto|all] [jugador] [cantidad] - &eGestiona los objetos de mascota.
+      &7 /gmenu petitems check [jugador] - &eMuestra los objetos de mascota.
+    usage: '{prefix}&cUso: &e/gmenu petitems add|remove|set [objeto|all] [jugador] [cantidad] &7| &e/gmenu petitems check [jugador]'
+    header: '{prefix}&fObjetos de mascota de &b{player}'
+    line: '&7 - {petItem}&7: &e{amount}'
+    all: Todos
+  namepet:
+    help: |-
+      &7 /gmenu namepet [nombre] - &ePon nombre a tu mascota.
+      &7 /gmenu namepet [jugador] [mascota] [nombre|reset] - &eCambia el nombre de la mascota de otro.
+    usage: '{prefix}&cUso: &e/gmenu namepet [nombre] &7| &e/gmenu namepet [jugador] [mascota] [nombre|reset]'
+  menuitem:
+    help: '&7 /gmenu menuitem <jugador> - &eDa el objeto del menú de cosméticos.'
+  settings:
+    help: '&7 /gmenu settings [bypasscooldown|selfmorphview] [true|false] - &eCambia tus ajustes.'
+  status:
+    help: '&7 /gmenu status [jugador] - &eMuestra los datos de un jugador.'
+    usage: '{prefix}&cUso: &e/gmenu status [jugador]'
+    info: |-
+      {prefix}&fEstado de &b{player}
+      &7 UUID: &e{uuid}
+      &7 Polvo misterioso: &e{mysteryDust}
+      &7 Cajas misteriosas: &e{mysteryBoxes}
+      &7 Packs de regalo: &e{giftPacks}
+      &7 Regalos enviados: &e{giftSent} &8· &7Recibidos: &e{giftReceived}
+      &7 Cosméticos equipados: &e{equipped}
+      &7 Cosméticos desbloqueados: &e{unlocked}
+  reload:
+    help: '&7 /gmenu reload - &eRecarga el módulo.'
+  about:
+    help: '&7 /gmenu about - &eInformación del módulo.'
+    info: '{prefix}&fCosmetics &ev{version}&f, módulo de FurryCore con &b{cosmetics} &fcosméticos.'
+  dust-add:
+    help: '&7 /mysterydust add [jugador|all] [cantidad] - &eDa polvo misterioso.'
+    usage: '{prefix}&cUso: &e/mysterydust add [jugador|all] [cantidad]'
+  dust-remove:
+    help: '&7 /mysterydust remove [jugador] [cantidad] - &eQuita polvo misterioso.'
+    usage: '{prefix}&cUso: &e/mysterydust remove [jugador] [cantidad]'
+  dust-set:
+    help: '&7 /mysterydust set [jugador] [cantidad] - &eEstablece el polvo misterioso.'
+    usage: '{prefix}&cUso: &e/mysterydust set [jugador] [cantidad]'
+  dust-check:
+    help: '&7 /mysterydust check <jugador> - &eMuestra el polvo misterioso.'
+    usage: '{prefix}&cUso: &e/mysterydust check [jugador]'
+  dust-pay:
+    help: '&7 /mysterydust pay [jugador] [cantidad] - &eEnvía polvo misterioso.'
+    usage: '{prefix}&cUso: &e/mysterydust pay [jugador] [cantidad]'
+  boxes-give:
+    help: '&7 /gmb give [jugador|all] [calidad] <cantidad> <días> - &eDa cajas misteriosas.'
+    usage: '{prefix}&cUso: &e/gmb give [jugador|all] [calidad 1-5] <cantidad> <días>'
+  boxes-giveall:
+    help: '&7 /gmb giveall [calidad] <cantidad> <días> - &eDa cajas a todos los conectados.'
+    usage: '{prefix}&cUso: &e/gmb giveall [calidad 1-5] <cantidad> <días>'
+  boxes-check:
+    help: '&7 /gmb check <jugador> - &eMuestra las cajas de un jugador.'
+    usage: '{prefix}&cUso: &e/gmb check [jugador]'
+  boxes-gift:
+    help: '&7 /gmb gift [jugador] [cantidad] - &eDa packs de regalo.'
+    usage: '{prefix}&cUso: &e/gmb gift [jugador] [cantidad]'
+  boxes-vault:
+    help: |-
+      &7 /gmb vault create|move [nombre] - &eCrea o mueve una máquina al bloque que miras.
+      &7 /gmb vault remove|tp [nombre] - &eBorra una máquina o te lleva a ella.
+      &7 /gmb vault list - &eLista las máquinas de cajas.
+    usage: '{prefix}&cUso: &e/gmb vault create|remove|move|tp [nombre] &7| &e/gmb vault list'
+    line: '&7 - &b{name} &7({world}: {x}, {y}, {z})'
+messages:
+  cooldown: '{prefix}&cEste artefacto está en enfriamiento, debes esperar {cooldown} segundos.'
+  error: '{prefix}&cHa ocurrido un error al hacer esta operación.'
+  no-permission: '{prefix}&cNo tienes permisos para lo que estás haciendo. &7({permission})'
+  world-disabled: '{prefix}&cNo puedes hacer eso en este mundo.'
+  already-selected: '{prefix}&cYa está seleccionado.'
+  category-disabled:
+    hats: '{prefix}&c¡Este cosmético se encuentra deshabilitado!'
+    animated-hats: '{prefix}&c¡Este cosmético se encuentra deshabilitado!'
+    particles: '{prefix}&c¡Este cosmético se encuentra deshabilitado!'
+    suits: '{prefix}&c¡Este cosmético se encuentra deshabilitado!'
+    gadgets: '{prefix}&c¡Este cosmético se encuentra deshabilitado!'
+    pets: '{prefix}&c¡Este cosmético se encuentra deshabilitado!'
+    miniatures: '{prefix}&c¡Este cosmético se encuentra deshabilitado!'
+    morphs: '{prefix}&c¡Este cosmético se encuentra deshabilitado!'
+    banners: '{prefix}&c¡Este cosmético se encuentra deshabilitado!'
+    emotes: '{prefix}&c¡Este cosmético se encuentra deshabilitado!'
+    cloaks: '{prefix}&c¡Este cosmético se encuentra deshabilitado!'
+  select:
+    hats: '{prefix}&bHas seleccionado {item} &b(Cabeza).'
+    animated-hats: '{prefix}&bHas seleccionado {item} &b(Cabeza Animada).'
+    particles: '{prefix}&bHas seleccionado {item} &b(Partícula).'
+    suits: '{prefix}&bHas seleccionado {item} &b(Traje).'
+    gadgets: '{prefix}&bHas seleccionado {item} &b(Artefacto).'
+    pets: '{prefix}&bHas aparecido {item} &b(Mascota).'
+    miniatures: '{prefix}&bHas aparecido {item} &b(Miniatura).'
+    morphs: '{prefix}&bTe has convertido en {item} &b(Transformación).'
+    banners: '{prefix}&bHas seleccionado {item} &b(Bandera).'
+    emotes: '{prefix}&bHas seleccionado {item} &b(Emoticón).'
+    cloaks: '{prefix}&bHas seleccionado {item} &b(Partícula Especial).'
+  select-entire-suit: '{prefix}&bHas equipado {pieces} pieza(s) de {suit}'
+  no-suit-pieces-to-equip: '{prefix}&cNo tienes ninguna pieza de este traje para equiparte.'
+  reset:
+    cosmetics: '{prefix}&c¡Eliminaste todos tus cosméticos activos!'
+    hats: '{prefix}&c¡Eliminaste tu Cabeza correctamente!'
+    animated-hats: '{prefix}&c¡Eliminaste tu Cabeza Animada correctamente!'
+    particles: '{prefix}&c¡Eliminaste tu Partícula correctamente!'
+    suits: '{prefix}&c¡Eliminaste tu Traje correctamente!'
+    gadgets: '{prefix}&c¡Eliminaste tu Artefacto correctamente!'
+    pets: '{prefix}&c¡Desapareciste tu Mascota correctamente!'
+    miniatures: '{prefix}&c¡Desapareciste tu Miniatura correctamente!'
+    morphs: '{prefix}&c¡Desapareciste tu Transformación y volviste a ser tú!'
+    banners: '{prefix}&c¡Eliminaste tu Bandera correctamente!'
+    emotes: '{prefix}&c¡Eliminaste tu Emoticón correctamente!'
+    cloaks: '{prefix}&c¡Eliminaste tu Partícula Especial correctamente!'
+    suit-helmet: '{prefix}&c¡Eliminaste tu Cabeza de Traje correctamente!'
+    suit-chestplate: '{prefix}&c¡Eliminaste tu Pechera de Traje correctamente!'
+    suit-leggings: '{prefix}&c¡Eliminaste tus Pantalones de Traje correctamente!'
+    suit-boots: '{prefix}&c¡Eliminaste tus Botas de Traje correctamente!'
+  cosmetic-reset-completed: '{prefix}&a¡Reinicio de Cosméticos completado!'
+  equip-for-player:
+    hats: '{prefix}&aHas equipado {item} &aa el jugador &e{player}&a.'
+    animated-hats: '{prefix}&aHas equipado {item} &aa el jugador &e{player}&a.'
+    particles: '{prefix}&aHas equipado {item} &aa el jugador &e{player}&a.'
+    suits: '{prefix}&aHas equipado {item} &aa el jugador &e{player}&a.'
+    gadgets: '{prefix}&aHas equipado {item} &aa el jugador &e{player}&a.'
+    pets: '{prefix}&aHas aparecido {item} &aa el jugador &e{player}&a.'
+    miniatures: '{prefix}&aHas aparecido {item} &aa el jugador &e{player}&a.'
+    morphs: '{prefix}&aHas transformado a el jugador &e{player} &aen {item}&a.'
+    banners: '{prefix}&aHas equipado {item} &aa el jugador &e{player}&a.'
+    emotes: '{prefix}&aHas equipado {item} &aa el jugador &e{player}&a.'
+    cloaks: '{prefix}&aHas equipado {item} &aa el jugador &e{player}&a.'
+  granted:
+    hats: '{prefix}&bSe te ha concedido el permiso de equipar {item} &b(Cabeza).'
+    animated-hats: '{prefix}&bSe te ha concedido el permiso de equipar {item} &b(Cabeza Animada).'
+    particles: '{prefix}&bSe te ha concedido el permiso de equipar {item} &b(Partícula).'
+    suits: '{prefix}&bSe te ha concedido el permiso de equipar {item} &b(Traje).'
+    gadgets: '{prefix}&bSe te ha concedido el permiso de equipar {item} &b(Artefacto).'
+    pets: '{prefix}&bSe te ha concedido el permiso de equipar {item} &b(Mascota).'
+    miniatures: '{prefix}&bSe te ha concedido el permiso de equipar {item} &b(Miniatura).'
+    morphs: '{prefix}&bSe te ha concedido el permiso de equipar {item} &b(Transformación).'
+    banners: '{prefix}&bSe te ha concedido el permiso de equipar {item} &b(Bandera).'
+    emotes: '{prefix}&bSe te ha concedido el permiso de equipar {item} &b(Emoticón).'
+    cloaks: '{prefix}&bSe te ha concedido el permiso de equipar {item} &b(Partícula Especial).'
+  granted-for-player:
+    hats: '{prefix}&6{player} &aahora tiene permitido usar {item} &a(Cabeza).'
+    animated-hats: '{prefix}&6{player} &aahora tiene permitido usar {item} &a(Cabeza Animada).'
+    particles: '{prefix}&6{player} &aahora tiene permitido usar {item} &a(Partícula).'
+    suits: '{prefix}&6{player} &aahora tiene permitido usar {item} &a(Traje).'
+    gadgets: '{prefix}&6{player} &aahora tiene permitido usar {item} &a(Artefacto).'
+    pets: '{prefix}&6{player} &aahora tiene permitido usar {item} &a(Mascota).'
+    miniatures: '{prefix}&6{player} &aahora tiene permitido usar {item} &a(Miniatura).'
+    morphs: '{prefix}&6{player} &aahora tiene permitido usar {item} &a(Transformación).'
+    banners: '{prefix}&6{player} &aahora tiene permitido usar {item} &a(Bandera).'
+    emotes: '{prefix}&6{player} &aahora tiene permitido usar {item} &a(Emoticón).'
+    cloaks: '{prefix}&6{player} &aahora tiene permitido usar {item} &a(Partícula Especial).'
+  no-longer-have-access:
+    hats: '{prefix}&cYa no tienes permitido usar {item} &c(Cabeza).'
+    animated-hats: '{prefix}&cYa no tienes permitido usar {item} &c(Cabeza Animada).'
+    particles: '{prefix}&cYa no tienes permitido usar {item} &c(Partícula).'
+    suits: '{prefix}&cYa no tienes permitido usar {item} &c(Traje).'
+    gadgets: '{prefix}&cYa no tienes permitido usar {item} &c(Artefacto).'
+    pets: '{prefix}&cYa no tienes permitido usar {item} &c(Mascota).'
+    miniatures: '{prefix}&cYa no tienes permitido usar {item} &c(Miniatura).'
+    morphs: '{prefix}&cYa no tienes permitido usar {item} &c(Transformación).'
+    banners: '{prefix}&cYa no tienes permitido usar {item} &c(Bandera).'
+    emotes: '{prefix}&cYa no tienes permitido usar {item} &c(Emoticón).'
+    cloaks: '{prefix}&cYa no tienes permitido usar {item} &c(Partícula Especial).'
+  already-has-permission: '{prefix}&c{player} ya tiene ese permiso.'
+  successful-remove-permission: '{prefix}&cSe ha removido el permiso de acceder a {type} &ca el jugador {player}.'
+  purchase:
+    hats: '{prefix}&aHas comprado correctamente {item}&a.'
+    animated-hats: '{prefix}&aHas comprado correctamente {item}&a.'
+    particles: '{prefix}&aHas comprado correctamente {item}&a.'
+    suits: '{prefix}&aHas comprado correctamente {item}&a.'
+    gadgets: '{prefix}&aHas comprado correctamente {item}&a.'
+    pets: '{prefix}&aHas comprado correctamente {item}&a.'
+    miniatures: '{prefix}&aHas comprado correctamente {item}&a.'
+    morphs: '{prefix}&aHas comprado correctamente {item}&a.'
+    banners: '{prefix}&aHas comprado correctamente {item}&a.'
+    emotes: '{prefix}&aHas comprado correctamente {item}&a.'
+    cloaks: '{prefix}&aHas comprado correctamente {item}&a.'
+  purchase-cancelled: '{prefix}&c¡Has cancelado el proceso de compra!'
+  failed-to-purchase: '{prefix}&cNo se pudo obtener el artículo que compraste.'
+  item-unpurchasable: '{prefix}&cNo puedes comprar este artículo.'
+  failed-to-deduct-mystery-dust: '{prefix}&cNo se pudo deducir tu Polvo, intentalo de nuevo.'
+  not-enough-mysterydust-to-purchase: '{prefix}&cNo tienes el Polvo suficiente para comprar este artículo.'
+  not-allowed-region:
+    all: '{prefix}&cNo tienes permitido equipar cosméticos en esta región.'
+    hats: '{prefix}&cNo tienes permitido equipar Cabezas en esta región.'
+    animated-hats: '{prefix}&cNo tienes permitido equipar Cabezas Animadas en esta región.'
+    particles: '{prefix}&cNo tienes permitido equipar Partículas en esta región.'
+    suits: '{prefix}&cNo tienes permitido equipar Trajes en esta región.'
+    gadgets: '{prefix}&cNo tienes permitido equipar Artefactos en esta región.'
+    pets: '{prefix}&cNo tienes permitido equipar Mascotas en esta región.'
+    miniatures: '{prefix}&cNo tienes permitido equipar Miniaturas en esta región.'
+    morphs: '{prefix}&cNo tienes permitido transformarte en esta región.'
+    banners: '{prefix}&cNo tienes permitido equipar Banderas en esta región.'
+    emotes: '{prefix}&cNo tienes permitido equipar Emoticones en esta región.'
+    cloaks: '{prefix}&cNo tienes permitido equipar Partículas Especiales en esta región.'
+    pet-riding: '{prefix}&cNo tienes permitido subir en tu Mascota en esta región.'
+  not-allow-teleport-to-that-location: '{prefix}&cNo tienes permitido teletransportarte a esta localización.'
+  occupied:
+    helmet:
+      hats: '{prefix}&cTienes que remover tu casco para equipar esta cabeza.'
+      animated-hats: '{prefix}&cTienes que remover tu casco para equipar esta cabeza animada.'
+      banners: '{prefix}&cTienes que remover tu casco para equipar esta bandera.'
+      emotes: '{prefix}&cTienes que remover tu casco para equipar este emoticón.'
+    slot:
+      gadgets: '{prefix}&cTienes que remover el item de tu slot {slot} para equipar este artefacto.'
+      morphs: '{prefix}&cTienes que remover el item de tu slot {slot} para equipar esta Transformación.'
+      emotes: '{prefix}&cTienes que remover el item de tu slot {slot} para equipar este emoticón.'
+    armor: '{prefix}&cTienes que remover tu armadura para equipar este Traje.'
+  not-enough-space: '{prefix}&cNo hay suficiente espacio a tu alrededor para utilizar este artefacto.'
+  not-enough-space-for-target-block: '{prefix}&cNo hay suficiente espacio en el bloque al que apuntaste para utilizar este artefacto.'
+  not-on-ground: '{prefix}&cDebes estar en el suelo para utilizar este artefacto.'
+  not-on-flat-ground: '{prefix}&cDebes estar en terreno plano para utilizar este artefacto.'
+  target-a-block: '{prefix}&cDebes apuntar a un bloque.'
+  target-a-player: '{prefix}&cDebes apuntar a un jugador.'
+  player-not-found: '{prefix}&cNo se encontro al jugador que especificaste.'
+  player-is-offline: '{prefix}&cEste jugador se encuentra desconectado.'
+  not-allowed-from-console: '{prefix}&cNo puedes utilizar este comando en la Consola.'
+  plugin-reloaded: '{prefix}&aEl modulo ha sido recargado correctamente &8[&a&l✔&8]'
+  reloading-plugin: '{prefix}&cRecargando el modulo...'
+  required-number-format: '{prefix}&cEs requerido que especifiques un número.'
+  required-positive-number: '{prefix}&cTienes que especificar un número positivo.'
+  invalid-type: '{prefix}&cEl tipo {type} que has ingresado no es valido.'
+  only-boolean-value-can-be-accepted: '{prefix}&cSolo se puede aceptar un valor booleano.'
+  gadget-is-activated: '{prefix}&c{gadget} &cya está activado.'
+  gadget-activated-in-same-area: '{prefix}&cHay un Artefacto activado en esta área, por favor inténtalo en otra área.'
+  emote-is-activated: '{prefix}&cEste emoticón ya está activado.'
+  rocket-countdown: '{prefix}&c&lLANZANDO EN {timer} {second}!'
+  rocket-lift-off: '{prefix}&a&lTEN UN BUEN VIAJE.'
+  turn-off-bumblebee-song: '{prefix}&cLa canción Bumblebee está desactivada.'
+  playing-song: '{prefix}{randomColor}Ahora se reproduce: {song}'
+  enabled-self-morph-view: '{prefix}&bTu vista de Transformación ha sido activada.'
+  disabled-self-morph-view: '{prefix}&cTu vista de Transformación ha sido desactivada.'
+  enabled-bypass-cooldown: '{prefix}&bTu Ignorar de Cooldown ha sido activada.'
+  disabled-bypass-cooldown: '{prefix}&cTu Ignorar de Cooldown ha sido desactivada.'
+  enabled-random-mystery-vault-animation: '{prefix}&bHas seleccionado Aleatoria (Animación).'
+  disabled-random-mystery-vault-animation: '{prefix}&c¡Eliminaste tu Animación Aleatoria correctamente!'
+  disabled-command-while-cosmetics-activated: '{prefix}&cNo puedes utilizar este comando si tienes cosméticos activos.'
+  unequip-cosmetics-due-to-low-tps: '{prefix}&cTus cosméticos fueron des-equipados para evitar el Lag.'
+  disable-usage-of-cosmetics: '{prefix}&cPerdone, todos los cosméticos fueron deshabilitados por el retraso del servidor.'
+  no-pet-spawned: '{prefix}&cNo tienes una Mascota generada.'
+  unlock-pet-before-rename: '{prefix}&c{player} necesita desbloquear la Mascota {type} &cantes de poder cambiar el nombre.'
+  pet-name-in-blacklist: '{prefix}&cNo puedes colocar este nombre a tu mascota porque contiene caracteres indecentes.'
+  characters-too-long: '{prefix}&cEl nombre de la mascota no puede superar los {characters} caracteres.'
+  does-not-support-characters: '{prefix}&cSolo puedes utilizar el Alfabeto del idioma ingles para el nombre.'
+  rename-pet: '{prefix}&aEl nombre de tu mascota {type} &afue establecido a &6{name}&a.'
+  rename-pet-for-player: '{prefix}&aEl nombre de la mascota {type} &ade &6{player} &afue establecido a &e{name}&a.'
+  rename-pet-in-chat: |-
+    {prefix}&cTienes 20 segundos para insertar el nombre de tu mascota en el Chat.
+    &cEscribe "Cancelar" para no colocar un nombre.
+  timed-out: '{prefix}&cEl tiempo límite para cambiar el nombre de tu mascota ha terminado.'
+  cancel-rename-pet: '{prefix}&6Se ha cancelado el cambio de nombre.'
+  no-permission-to-ride-pet: '{prefix}&cNo tienes permisos para montar a tu mascota.'
+  not-allowed-to-ride-other-pet: '{prefix}&cNo puedes subir encima de las mascotas de otras personas.'
+  no-permission-to-spawn-pet: '{prefix}&cNo tienes permisos para generar a tus mascotas.'
+  request-pet-with-happy-status: '{prefix}&cDebes tener al menos una mascota en estado &aFeliz &8[&2&l✔&8] &cpara hacer esto.'
+  click-to-increase-happiness: '{prefix}&7Haz Clic derecho en tus mascotas para darles cuidado y mejorar su estado.'
+  pet-earn-exp: '{prefix}&aTu mascota &6{petName} {level} &aha obtenido &e{exp} Experiencia &apor ir a la misión.'
+  pet-level-up: '{prefix}&aTu mascota &6{petName} {level} &aha obtenido &e{exp} Experiencia &apor ir a la misión y ha subido de Nivel.'
+  send-pet-on-mission-is-on-cooldown: '{prefix}&cYa has hecho esto una vez. Por favor espera {cooldownMinutes} minutos para volver a enviar a tus mascotas a una misión.'
+  pet-stat-fulled: '{prefix}&cTu mascota {petName} &cya ha completado totalmente {stat}.'
+  zero-pet-item-remain: '{prefix}&cEste artículo se puede obtener abriendo Cajas.'
+  pet-care:
+    hunger:
+      dislike: '{prefix}&6Tu mascota &a{petName} &6se ha comido &a{item} &6pero no le ha gustado mucho. &7(&a+{increment} &cHambre&7)'
+      like: '{prefix}&6Tu mascota &a{petName} &6se ha comido &a{item} &6y le gusto. &7(&a+{increment} &cHambre&7)'
+      really-like: '{prefix}&6Tu mascota &a{petName} &6se ha comido &a{item} &6¡y le gusto mucho! &7(&a+{increment} &cHambre&7)'
+      favourite: '{prefix}&6Tu mascota &a{petName} &6se ha comido &a{item} &6y es su comida favorita. &7(&a+{increment} &cHambre&7)'
+    thirst:
+      dislike: '{prefix}&6Tu mascota &a{petName} &6ha bebido &a{item} &6pero no le ha gustado mucho. &7(&a+{increment} &bSed&7)'
+      like: '{prefix}&6Tu mascota &a{petName} &6ha bebido &a{item} &6y le gusto. &7(&a+{increment} &bSed&7)'
+      really-like: '{prefix}&6Tu mascota &a{petName} &6ha bebido &a{item} &6¡y le gusto mucho! &7(&a+{increment} &bSed&7)'
+      favourite: '{prefix}&6Tu mascota &a{petName} &6ha bebido &a{item} &6y es su bebida favorita. &7(&a+{increment} &bSed&7)'
+    exercise:
+      dislike: '{prefix}&6Tu mascota &a{petName} &6ha jugado con &a{item} &6pero no le ha gustado mucho. &7(&a+{increment} &3Ejercicio&7)'
+      like: '{prefix}&6Tu mascota &a{petName} &6ha jugado con &a{item} &6y le gusto. &7(&a+{increment} &3Ejercicio&7)'
+      really-like: '{prefix}&6Tu mascota &a{petName} &6ha jugado con &a{item} &6¡y le gusto mucho! &7(&a+{increment} &3Ejercicio&7)'
+      favourite: '{prefix}&6Tu mascota &a{petName} &6ha jugado con &a{item} &6y es su juguete favorito. &7(&a+{increment} &3Ejercicio&7)'
+  added-pet-item: '{prefix}&fSe han agregado &b{amount} {petItem} &fObjetos de mascota a &b{player}.'
+  received-pet-item: '{prefix}&bHas recibido {amount} {petItem} &bObjetos de Mascota de parte de {player}.'
+  removed-pet-item: '{prefix}&bHas removido &b{amount} {petItem} &fObjetos de Mascota de &f{player}&e.'
+  removed-pet-item-from-player: '{prefix}&cSe te han removido {amount} {petItem} &cObjetos de Mascota.'
+  set-pet-item: '{prefix}&fHas establecido a &b{amount} {petItem} &fObjetos de Mascota a &b{player}.'
+  set-player-pet-item: '{prefix}&aTus {petItem} &aObjetos de Mascota fueron establecidos a {amount}.'
+  player-not-enough-mysterydust: '{prefix}&cTu solamente tienes {mysteryDust} Polvos.'
+  added-mysterydust: '{prefix}&aHas agregado &e{mysteryDust} Polvos &aa el jugador &6{player}.'
+  added-mysterydust-to-all-players: '{prefix}&aHas agregado &e{mysteryDust} Polvos &aa &6{online} &6jugadores.'
+  check-mysterydust: '{prefix}&6{player} tiene &e{mysteryDust} Polvos.'
+  received-mysterydust: '{prefix}&aHas recibido &e{mysteryDust} Polvos &ade parte de &6{player}.'
+  removed-mysterydust: '{prefix}&aHas removido &e{mysteryDust} Polvos &ade &6{player}.'
+  sent-mysterydust: '{prefix}&aHas enviado correctamente &e{mysteryDust} Polvos &aa &6{player}.'
+  set-mysterydust: '{prefix}&aHas establecido a &e{mysteryDust} &alos &ePolvos &ade &6{player}.'
+  only-have-mysterydust: '{prefix}&c{player} solo tiene {mysteryDust} Polvos.'
+  removed-mysterydust-from-player: '{prefix}&c{mysteryDust} Polvos han sido removidos de tu cuenta.'
+  set-player-mysterydust: '{prefix}&aTu polvo ha sido establecido a &e{mysteryDust} Polvos.'
+  pay-mysterydust-to-self: '{prefix}&cNo puedes pagarte Polvo a ti mismo.'
+  gave-mystery-boxes: '{prefix}&aLe has dado &e{mysteryBoxes} Cajas &aa &6{player}.'
+  gave-mystery-boxes-to-all-players: '{prefix}&aLe has dado &e{mysteryBoxes} Cajas a &6{online} jugadores.'
+  received-mystery-boxes: '{prefix}&bHas recibido &f{mysteryBoxes} Caja(s) &bde parte de &f{player}.'
+  check-mystery-boxes: '{prefix}&f{player} &btiene &3{mysteryBoxes} &bCajas.'
+  mystery-box-was-expired: '{prefix}&cHa pasado el tiempo límite que puedes guardar una Caja y ha expirado.'
+  mystery-boxes-are-disabled: '{prefix}&cLas Cajas estan deshabilitadas.'
+  crafted-mystery-box: '{prefix}&bHas fabricado una {name} &bcorrectamente.'
+  not-enough-mystery-boxes: '{prefix}&cNo tienes suficientes Cajas que se puedan abrir.'
+  can-only-open-one-mystery-box: '{prefix}&cTienes que esperar a que la Caja sea abierta para poder abrir otra.'
+  open-mystery-vault-at-a-time: '{prefix}&c¡Solo un jugador puede usar la máquina al mismo tiempo!'
+  select-mystery-vault-animation: '{prefix}&bHas seleccionado {animation} &b(Animación).'
+  no-permission-to-open-box:
+    one-star: '{prefix}&cNo tienes el permiso requerido para abrir esta Caja.'
+    two-star: '{prefix}&cNo tienes el permiso requerido para abrir esta Caja.'
+    three-star: '{prefix}&cNo tienes el permiso requerido para abrir esta Caja.'
+    four-star: '{prefix}&cNo tienes el permiso requerido para abrir esta Caja.'
+    five-star: '{prefix}&cNo tienes el permiso requerido para abrir esta Caja.'
+  gave-mystery-gifts: '{prefix}&eHas dado &b{gifts} &eregalos misteriosos a &r{player}&e.'
+  received-mystery-gifts: '{prefix}&eHas recibido &b{gifts} &eregalos misteriosos de &r{player}&e.'
+  send-a-gift-to-player: '{prefix}&aHas enviado un regalo con &bCajas Misteriosas &aa &r{player}&a.'
+  received-gift: '{prefix}&a¡Has recibido un regalo de &r{player}&a! Visita una &bMáquina de Cajas &apara abrirlo.'
+  added-mystery-vault: '{prefix}&6Se ha creado correctamente una Máquina con el nombre: &a{name}'
+  redefined-mystery-vault: '{prefix}&aLa localización de la Máquina de nombre: {name} fue cambiada correctamente.'
+  mystery-vault-same-location: '{prefix}&cYa has creado una Máquina en esta misma localización.'
+  mystery-vault-is-exists: '{prefix}&cYa existe una máquina con ese nombre.'
+  do-not-have-any-mystery-vault: '{prefix}&cNo hay ninguna Máquina creada.'
+  removed-mystery-vault: '{prefix}&cSe ha removido la máquina con el nombre: {name}'
+  mystery-vault-not-found-with-name: '{prefix}&cNo se encontro ninguna máquina con el nombre: {name}'
+  teleport-to-mystery-vault: '{prefix}&aHas sido teletransportado a la máquina con el nombre {name}'
+items:
+  menu-selector:
+    name: '&d&l• &5&lCosméticos &d&l•'
+    lore: |-
+      &7Accede a más de 500 cosméticos
+      &7divididos entre cabezas, partículas, y más.
+  gadget:
+    lore: |-
+      &7Clic derecho para usarlo.
+  emote:
+    lore: |-
+      &7Haz clic para expresarte.
+  morph-skill:
+    name: '&a&lHabilidad de Morph'
+    lore: |-
+      &7Clic derecho para usar la habilidad.
+menus:
+  general-items:
+    back:
+      name: '&b« &7Volver'
+      lore: |-
+        &7
+        &f Vuelve al menú anterior.
+        &7
+    prevPage:
+      name: '&7Página anterior &f({actualPage}/{maxPages})'
+      lore: |-
+        &7
+        &f Ve a la página anterior.
+        &7
+    nextPage:
+      name: '&7Página siguiente &f({actualPage}/{maxPages})'
+      lore: |-
+        &7
+        &f Ve a la página siguiente.
+        &7
+    rename-pet:
+      name: '&6&lNombrar mascota'
+      lore: |-
+        &fCambia el nombre de tu mascota
+        &fcolocando el nombre y un formato opcional.
+        &7
+        &aHaz clic para darle un nombre.
+    cosmetic:
+      locked: |-
+        &f
+        &8&l» &fRareza: {rarity}
+        &8&l» &fEstado: &4¡Bloqueado! &8[&c&l✕&8]
+      unlocked: |-
+        &f
+        &8&l» &fRareza: {rarity}
+        &8&l» &fEstado: &2¡Desbloqueado! &8[&a&l✔&8]
+      pet-unlocked: |-
+        &f
+        &8&l» &fNivel: {level}
+        &8&l» &fEstado: {happiness}
+      selected: |-
+        &7
+        &cYa está seleccionado.
+      select: |-
+        &7
+        &aHaz clic para seleccionar.
+      unlocked-count: |-
+        &7
+        &eDesbloqueados: &b{hasPermission}/{size} &7({percentage}%)
+        &7
+        &aHaz clic para acceder al menú.
+      no-permission: |-
+        &7
+        &7Estado: &c&lBLOQUEADO
+      has-permission: |-
+        &7
+        &7Estado: &a&lDESBLOQUEADO
+      enough-dust: |-
+        &7
+        &6Clic para craftear con {cost} Polvos.
+      not-enough-dust: |-
+        &7
+        &cNecesitas {costLeft} Polvos para craftear esto.
+      unpurchasable: |-
+        &7
+        &cNo es posible craftear.
+    discount:
+      default:
+        enough: |-
+          &7
+          &8Costo Regular: &f{cost} &fPolvos &e◀
+          &cVIP: {vipCost} Polvos (20% OFF!)
+          &cMVP: {mvpCost} Polvos (40% OFF!)
+          &7
+          &cTu costo: {defaultCost} Polvos
+          &6Clic para craftear.
+        not-enough: |-
+          &7
+          &aRegular: {cost} Polvos &e◀
+          &cVIP: {vipCost} Polvos (20% OFF!)
+          &cMVP: {mvpCost} Polvos (40% OFF!)
+          &7
+          &7Tu costo: &c{defaultCost} &7Polvos
+          &cTe faltan &b{costLeft} &cPolvos.
+      vip:
+        enough: |-
+          &7
+          &8&mRegular: {cost} Polvos
+          &aVIP&7: &a{vipCost} &7Polvos (&a20% &7OFF!) &e◀
+          &cMVP: {mvpCost} Polvos (40% OFF!)
+          &7
+          &7Tu costo: &a{vipCost} &7Polvos
+          &eHaz clic para craftear.
+        not-enough: |-
+          &7
+          &8&mRegular: {cost} Polvos
+          &aVIP&7: &a{vipCost} &7Polvos (&a20% &7OFF!) &e◀
+          &cMVP: {mvpCost} Polvos (40% OFF!)
+          &7
+          &7Tu costo: &c{vipCost} &7Polvos
+          &cTe faltan &b{costLeft} &cPolvos.
+      mvp:
+        enough: |-
+          &7
+          &8&mRegular: {cost} Polvos
+          &8&mVIP: {vipCost} Polvos (20% OFF!)
+          &bMVP&7: &a{mvpCost} &7Polvos (&a40% &7OFF!) &e◀
+          &7
+          &7Tu costo: &a{mvpCost} &7Polvos
+          &eHaz clic para craftear.
+        not-enough: |-
+          &7
+          &8&mRegular: {cost} Polvos
+          &8&mVIP: {vipCost} Polvos (20% OFF!)
+          &bMVP&7: &a{mvpCost} &7Polvos (&a40% &7OFF!) &e◀
+          &7
+          &7Tu costo: &a{mvpCost} &7Polvos
+          &cTe faltan &b{costLeft} &cPolvos.
+  main:
+    title: '&8&lS&7&lS&0 » Cosméticos'
+    items:
+      hats:
+        name: '&b&lCabezas'
+        lore: |-
+          &7
+          &fIngresa a una enorme variedad de
+          &fcabezas de todo tipo.
+      animated-hats:
+        name: '&b&lCabezas Animadas'
+        lore: |-
+          &7
+          &fUtiliza cabezas animadas
+          &fque se ven increibles.
+      particles:
+        name: '&b&lPartículas'
+        lore: |-
+          &7
+          &fAparece hermosas partículas de
+          &fmuchos tipos que te seguirán en el lobby.
+      suits:
+        name: '&b&lTrajes'
+        lore: |-
+          &f
+          &fColecciona todos los trajes
+          &fdisponibles y vistete de muchas formas.
+      gadgets:
+        name: '&b&lArtefactos'
+        lore: |-
+          &f
+          &fSi te encuentras aburrido diviertete
+          &futilizando artefactos geniales en el lobby.
+      pets:
+        name: '&b&lMascotas'
+        lore: |-
+          &f
+          &fDesbloquea nuevos amigos que te
+          &facompañarán en todo el lobby.
+      miniatures:
+        name: '&b&lMiniaturas'
+        lore: |-
+          &7
+          &fDesbloquea pequeños amigos
+          &fque flotarán y te seguirán.
+      morphs:
+        name: '&b&lTransformaciones'
+        lore: |-
+          &7
+          &fConviertete en un Mob, encontrarás
+          &falgunos hostiles y otros muy amigables.
+      banners:
+        name: '&b&lBanderas'
+        lore: |-
+          &f
+          &fDesbloquea banderas maravillosas
+          &fpara utilizar sobre ti en el lobby.
+      emotes:
+        name: '&b&lEmoticones'
+        lore: |-
+          &f
+          &fExpresa como te encuentras utilizando
+          &femoticones animados.
+      cloaks:
+        name: '&b&lPartículas Especiales'
+        lore: |-
+          &f
+          &fEste tipo de partículas son diferentes,
+          &fpodrás utilizar varias con efectos y formas diferentes.
+      reset:
+        name: '&cEliminar Cosméticos'
+        lore: ''
+      settings:
+        name: '&6&lOpciones'
+        lore: |-
+          &fCambia algunos ajustes
+          &fpersonales de los cosméticos.
+          &7
+          &aHaz clic para acceder al menú.
+      info:
+        name: '&aMenú Principal'
+        lore: |-
+          &7Polvo Misterioso: &b{mysteryDust}
+          &7Cajas Misteriosas: &b{mysteryBoxes}
+          &7
+          &7Disfruta de los cosméticos.
+  hats:
+    title: '&8&lS&7&lS&0 » Cabezas'
+    items:
+      reset:
+        name: '&cEliminar Cabeza'
+        lore: ''
+  animated-hats:
+    title: '&8&lS&7&lS&0 » Cabezas Animadas'
+    items:
+      reset:
+        name: '&cEliminar Cabeza Animada'
+        lore: ''
+  particles:
+    title: '&8&lS&7&lS&0 » Partículas'
+    items:
+      reset:
+        name: '&cEliminar Partícula'
+        lore: ''
+  suits:
+    title: '&8&lS&7&lS&0 » Trajes'
+    items:
+      reset:
+        name: '&cEliminar Traje'
+        lore: ''
+  gadgets:
+    title: '&8&lS&7&lS&0 » Artefactos'
+    items:
+      reset:
+        name: '&cEliminar Artefacto'
+        lore: ''
+  pets:
+    title: '&8&lS&7&lS&0 » Mascotas'
+    items:
+      reset:
+        name: '&cEliminar Mascota'
+        lore: ''
+      send-pet-on-mission:
+        name: '&e&lEnviar a una Misión'
+        lore: |-
+          &fEnvía a tus mascotas con estado &aFeliz&7,
+          &2Muy Feliz&f y &6Super Feliz &fa una misión secreta.
+  miniatures:
+    title: '&8&lS&7&lS&0 » Miniaturas'
+    items:
+      reset:
+        name: '&cEliminar Miniatura'
+        lore: ''
+  morphs:
+    title: '&8&lS&7&lS&0 » Transformaciones'
+    items:
+      reset:
+        name: '&cEliminar Transformación'
+        lore: ''
+      self-morph-view:
+        name: '&b&lVer Transformación'
+        lore: |-
+          &fCambia el poder ver o no tu
+          &fpropia transformación.
+          &7
+          &6&lEstado: {status}
+          &7
+          &aHaz clic para alternar.
+  banners:
+    title: '&8&lS&7&lS&0 » Banderas'
+    items:
+      reset:
+        name: '&cEliminar Bandera'
+        lore: ''
+  emotes:
+    title: '&8&lS&7&lS&0 » Emoticones'
+    items:
+      reset:
+        name: '&cEliminar Emoticón'
+        lore: ''
+  cloaks:
+    title: '&8&lS&7&lS&0 » Part. Especiales'
+    items:
+      reset:
+        name: '&cEliminar Partículas Especiales'
+        lore: ''
+  purchase:
+    title: '&8&lS&7&lS&0 » Confirmar compra'
+    items:
+      confirm:
+        name: '&2&lConfirmar'
+        lore: |-
+          &fAl confirmar estarás usando tu Polvo
+          &fpara craftear este objeto.
+          &7
+          &eCosto: &6{cost} Polvos
+          &7
+          &aHaz clic para craftear.
+      cancel:
+        name: '&c&lCancelar'
+        lore: |-
+          &fCancela el proceso de compra
+          &fy quedate con tu Polvo.
+          &7
+          &aHaz clic para cancelar.
+  confirm-open-box:
+    title: '&8&lS&7&lS&0 » Abrir caja'
+    items:
+      open:
+        name: '&2&lABRIR'
+        lore: |-
+          &fTu caja será abierta y este
+          &fproceso no se podrá deshacer.
+          &7
+          &aHaz clic para abrir.
+      cancel:
+        name: '&c&lCancelar'
+        lore: |-
+          &fTu caja no será abierta y
+          &fvolverás al menú de tus cajas.
+          &7
+          &aHaz clic para cancelar
+  mystery-vault:
+    title: '&8&lS&7&lS&0 » Máquina de Cajas'
+    items:
+      error:
+        name: '&c¡No tienes Cajas!'
+        lore: |-
+          &7No tienes ninguna Caja para abrir.
+      information:
+        name: '&b&lINFORMACIÓN'
+        lore: |-
+          &fEn este menú encontrarás las Cajas
+          &fque tienes, y aquí tus últimas &b5 &frecompensas.
+          &7
+          &fTus últimas &3&l5 &frecompensas son:
+          &7
+          &31. &7| {recentLoot1}
+          &32. &7| {recentLoot2}
+          &33. &7| {recentLoot3}
+          &34. &7| {recentLoot4}
+          &35. &7| {recentLoot5}
+          &7
+          &6&l» &aActualmente tienes &e{mysteryBoxes} &aCajas.
+      craft-mystery-boxes:
+        name: '&6&lCRAFTEAR CAJAS'
+        lore: |-
+          &fUtiliza Polvos para craftear más
+          &fcajas y desbloquear algunos objetos.
+          &7
+          &eTienes &6{mysteryDust} &ePolvos.
+          &7
+          &aHaz clic para acceder al menú.
+      animations:
+        name: '&2&lANIMACIONES'
+        lore: |-
+          &fCambia la animación con la que
+          &fse abrirá la caja que selecciones.
+          &7
+          &aHaz clic para acceder al menú.
+      gift-inventory:
+        name: '&aInventario de Regalos'
+        lore: |-
+          &7Envía regalos a tus amigos.
+          &7
+          &7Regalos enviados: &e{giftSent}
+          &7Regalos recibidos: &e{giftReceived}
+          &7
+          &eHaz clic para ver tus regalos.
+      open-multiple-boxes:
+        name: '&cAbrir varias Cajas'
+        lore: |-
+          &7Abre muchas cajas
+          &7a la vez.
+  box-crafting:
+    title: '&8&lS&7&lS&0 » Fabricar Cajas'
+    items:
+      box:
+        enough: |-
+          &7
+          &6Clic para craftear con {cost} Polvos.
+        not-enough: |-
+          &7
+          &cNecesitas {cost} Polvos para craftear esto.
+  gift-inventory:
+    title: '&8&lS&7&lS&0 » Regalos'
+    items:
+      gift:
+        name: '&aRegalo Misterioso ({boxes} Cajas)'
+        lore: |-
+          &7Este regalo contiene &a{boxes}
+          &bCajas Misteriosas&7.
+          &7
+          &eHaz clic para enviarlo a un jugador.
+      error:
+        name: '&c¡ERROR!'
+        lore: |-
+          &7No tienes ningún &bRegalo&7.
+  send-gift:
+    title: '&8&lS&7&lS&0 » Enviar regalo'
+    items:
+      gift:
+        name: '&aRegalo Misterioso ({boxes} Cajas)'
+        lore: |-
+          &7Este regalo contiene &a{boxes}
+          &bCajas Misteriosas&7.
+          &7
+          &b¿A quien se lo quieres enviar?
+      player:
+        lore: |-
+          &7
+          &aHaz clic para enviar el regalo.
+  confirm:
+    title: '&8&lS&7&lS&0 » Confirmar'
+    items:
+      confirm:
+        name: '&aConfirmar'
+        lore: ''
+      cancel:
+        name: '&cCancelar'
+        lore: ''
+  settings:
+    title: '&8&lS&7&lS&0 » Opciones'
+    items:
+      ignore-cooldown:
+        name: '&b&lIgnorar Cooldown'
+        lore: |-
+          &fNo tendrás tiempo de espera en
+          &flos cosméticos y podrás usarlos más rápido.
+      self-morph-view:
+        name: '&b&lVer Transformación'
+        lore: |-
+          &fCambia el poder ver o no
+          &ftu propia transformación.
+      enabled:
+        name: '&a&lActivado'
+        lore: |-
+          &7Haz clic para desactivar.
+      disabled:
+        name: '&c&lDesactivado'
+        lore: |-
+          &7Haz clic para activar.
+  animations:
+    title: '&8&lS&7&lS&0 » Animaciones'
+    items:
+      random:
+        name: '&e&lAnimación Aleatoria'
+        lore: |-
+          &fElige y al abrir una caja la animación
+          &fque tendrá será totalmente aleatoria.
+          &7
+          &6&lEstado: {status}
+          &7
+          &aHaz clic para alternar.
+      locked: |-
+        &7
+        &4¡Bloqueada! &8[&c&l✕&8]
+  open-multiple:
+    title: '&8&lS&7&lS&0 » Abrir varias'
+    items:
+      type:
+        name: '&aAbrir {amount} Cajas'
+        lore: |-
+          &7Abre hasta {amount} cajas
+          &7a la vez.
+  pet-items:
+    title: '&8&lS&7&lS&0 » Cuidar mascota'
+  suit:
+    title: '&8&lS&7&lS&0 » {suit}'
+    items:
+      equip-entire-suit:
+        name: '&6&lEquipar Todo'
+        lore: |-
+          &fPonte rápidamente el traje
+          &fcon solo un clic.
+          &7
+          &aHaz clic para equipar.
+pets:
+  level: '&8[&e{level}&8]'
+  exp: '&a{expBlocks} &e{obtainedExp}&f/&6{maxExp}'
+  max-exp: '{expBlocks} &d&lMAXIMA EXP'
+  exp-block:
+    remain: '&7■'
+    retain: '&b&l■'
+  percentage-bar: '{remain}&f/100'
+  stat-line: '&7{stat}: &f{bar}'
+  zero-item-material: GRAY_DYE
+  happiness:
+    okay: '&cNormal &8[&4&l⚠&8]'
+    happy: '&aFeliz &8[&2&l✔&8]'
+    very-happy: '&2Muy Feliz &8[&6&l✚&8]'
+    super-happy: '&6Super Feliz &8[&e&l✰&8]'
+  stats:
+    hunger: Hambre
+    thirst: Sed
+    exercise: Ejercicio
+    hunger-lore: |-
+      &7
+      &6Restante: &e{remain}
+      &7
+      &aHaz clic para dar a tu Mascota.
+    thirst-lore: |-
+      &7
+      &6Restante: &e{remain}
+      &7
+      &aHaz clic para dar a tu Mascota.
+    exercise-lore: |-
+      &7
+      &6Restante: &e{remain}
+      &7
+      &aHaz clic para dar a tu Mascota.
+  lore:
+    summon: |-
+      &7
+      &aClic izquierdo para aparecer.
+    despawn: |-
+      &7
+      &aClic izquierdo para desaparecer.
+    provide-care: |-
+      &cClic derecho para dar cuidado.
+  mission:
+    ready: |-
+      &7
+      &aHaz clic para enviar mascotas.
+    on-cooldown: |-
+      &7
+      &cDebes esperar {cooldownMinutes} minutos.
+mystery-boxes:
+  already-had-loot: '{prefix}&bComo ya tenias el Objeto que has obtenido, recibiste {mysteryDust} Polvos.'
+  found-loot:
+    common: |-
+      &8&m---------------------------------------
+                             &3&lCaja Misteriosa
+      &7
+                              &e&lCOMÚN &7| &f{loot}
+                              &7{petItems}x &b&lArtículos
+      &7
+      &8&m---------------------------------------
+    rare: |-
+      &8&m---------------------------------------
+                             &3&lCaja Misteriosa
+      &7
+                              &9&lRARO &7| &f{loot}
+                              &7{petItems}x &b&lArtículos
+      &7
+      &8&m---------------------------------------
+    epic: |-
+      &8&m---------------------------------------
+                             &3&lCaja Misteriosa
+      &7
+                              &5&lÉPICO &7| &f{loot}
+                              &7{petItems}x &b&lArtículos
+      &7
+      &8&m---------------------------------------
+    legendary: |-
+      &8&m---------------------------------------
+                             &3&lCaja Misteriosa
+      &7
+                              &d&lLEGENDARIO &7| {loot}
+                              &7{petItems}x &b&lArtículos
+      &7
+      &8&m---------------------------------------
+  found-loot-hover-link: '&7(Pasa el raton por aquí para ver los detalles)'
+  found-loot-hover:
+    common: |-
+      &e&lCOMÚN {loot}
+      &7Tipo: {category}
+      &7Rareza: &eComún
+    rare: |-
+      &9&lRARO {loot}
+      &7Tipo: {category}
+      &7Rareza: &9Raro
+    epic: |-
+      &5&lÉPICO {loot}
+      &7Tipo: {category}
+      &7Rareza: &5Épico
+    legendary: |-
+      &d&lLEGENDARIO {loot}
+      &7Tipo: {category}
+      &7Rareza: &dLegendario
+  reward:
+    one-star: '{prefix}&aHas encontrado una Caja Misteriosa &7(&e✰&7✰✰✰✰&7)'
+    two-star: '{prefix}&aHas encontrado una Caja Misteriosa &7(&e✰✰&7✰✰✰&7)'
+    three-star: '{prefix}&aHas encontrado una Caja Misteriosa &7(&e✰✰✰&7✰✰&7)'
+    four-star: '{prefix}&aHas encontrado una Caja Misteriosa &7(&e✰✰✰✰&7✰&7)'
+    five-star: '{prefix}&aHas encontrado una Caja Misteriosa &7(&e✰✰✰✰✰&7)'
+  reward-hover-link: '&7(Pasa el raton por aquí para ver los detalles)'
+  reward-hover:
+    one-star: |-
+      &b&lCaja Misteriosa
+      &7Calidad: &e✰&7✰✰✰✰
+      &fPuedes encontrar Cajas Misteriosas
+      &fjugando en el Servidor.
+    two-star: |-
+      &b&lCaja Misteriosa
+      &7Calidad: &e✰✰&7✰✰✰
+      &fPuedes encontrar Cajas Misteriosas
+      &fjugando en el Servidor.
+    three-star: |-
+      &b&lCaja Misteriosa
+      &7Calidad: &e✰✰✰&7✰✰
+      &fPuedes encontrar Cajas Misteriosas
+      &fjugando en el Servidor.
+    four-star: |-
+      &b&lCaja Misteriosa
+      &7Calidad: &e✰✰✰✰&7✰
+      &fPuedes encontrar Cajas Misteriosas
+      &fjugando en el Servidor.
+    five-star: |-
+      &b&lCaja Misteriosa
+      &7Calidad: &e✰✰✰✰✰
+      &fPuedes encontrar Cajas Misteriosas
+      &fjugando en el Servidor.
+  broadcast:
+    opening-mystery-box: '{prefix}&b[Caja Misteriosa] &7{player} &resta abriendo una Caja Misteriosa.'
+    found-loot:
+      common: '{prefix}&b[Caja Misteriosa] &7{player} &rha encontrado &eComún {loot}&r.'
+      rare: '{prefix}&b[Caja Misteriosa] &7{player} &rha encontrado &9Raro {loot}&r.'
+      epic: '{prefix}&b[Caja Misteriosa] &7{player} &rha encontrado &5Épico {loot}&r.'
+      legendary: '{prefix}&b[Caja Misteriosa] &7{player} &rha encontrado &6Legendario {loot}&r.'
+    found-mystery-box:
+      one-star: ''
+      two-star: ''
+      three-star: ''
+      four-star: ''
+      five-star: ''
+  holograms:
+    line-1: '&b&lMáquina de Cajas'
+    line-2: '&fClic para abrir.'
+    boxes:
+    - '&6Tienes &a&l{mysteryBoxes} &6Cajas disponibles.'
+    - '&eTienes &a&l{mysteryBoxes} &eCajas disponibles.'
+    no-boxes: '&fTienes &3&l0 &fCajas disponibles'
+    found-loot:
+      common: '&e&lCOMÚN {loot}'
+      rare: '&9&lRARO {loot}'
+      epic: '&5&lÉPICO {loot}'
+      legendary: '&d&lLEGENDARIO {loot}'
+  countdown: '&e&l{timer}'
+  multiple-boxes-book: |2-
+       &9&lABRISTE {mysteryBoxesOpened} Cajas
+    &7
+    &0¡Felicidades! Has
+    &0obtenido cosas nuevas.
+    &7
+    &0&lLoot encontrado:
+    &0&l• &c&l{mysteryDust} &cPolvos
+    &0&l• &d&l{petItems} &dObjetos de Mascota
+    &7
+    &0Ve a la siguiente página para
+    &0ver los items desbloqueados...
+  normal:
+    material: ENDER_CHEST
+    name: '&b&lCaja Misteriosa'
+    expiry-date: '&bExpira en: &f{expiryDate}'
+    never-expires: '&bEsta caja no expira nunca.'
+    one-star: |-
+      &7
+      &fEn este tipo de Caja solo se pueden
+      &fencontrar cosas muy comunes.
+      &7
+      &6Calidad: &e✰&7✰✰✰✰
+      &7
+      &a¡Clic para abrir!
+      {expiryDate}
+    two-star: |-
+      &7
+      &fEn este tipo de Caja solo se pueden
+      &fencontrar cosas no muy comunes.
+      &7
+      &6Calidad: &e✰✰&7✰✰✰
+      &7
+      &a¡Clic para abrir!
+      {expiryDate}
+    three-star: |-
+      &7
+      &fEn este tipo de Caja solo se pueden
+      &fencontrar cosas normales.
+      &7
+      &6Calidad: &e✰✰✰&7✰✰
+      &7
+      &a¡Clic para abrir!
+      {expiryDate}
+    four-star: |-
+      &7
+      &fEn este tipo de Caja solo se pueden
+      &fencontrar cosas buenas.
+      &7
+      &6Calidad: &e✰✰✰✰&7✰
+      &7
+      &a¡Clic para abrir!
+      {expiryDate}
+    five-star: |-
+      &7
+      &fEn este tipo de Caja solo se pueden
+      &fencontrar cosas muy buenas.
+      &7
+      &6Calidad: &e✰✰✰✰✰
+      &7
+      &a¡Clic para abrir!
+      {expiryDate}
+  gifted:
+    material: ENDER_CHEST
+    name: '&dCaja Misteriosa de Regalo'
+    one-star: |-
+      &6Calidad: &e✰&7✰✰✰✰
+      &7
+      &7Has recibido este regalo de:
+      &7{sender}
+      &7
+      &a¡Clic para abrir!
+    two-star: |-
+      &6Calidad: &e✰✰&7✰✰✰
+      &7
+      &7Has recibido este regalo de:
+      &7{sender}
+      &7
+      &a¡Clic para abrir!
+    three-star: |-
+      &6Calidad: &e✰✰✰&7✰✰
+      &7
+      &7Has recibido este regalo de:
+      &7{sender}
+      &7
+      &a¡Clic para abrir!
+    four-star: |-
+      &6Calidad: &e✰✰✰✰&7✰
+      &7
+      &7Has recibido este regalo de:
+      &7{sender}
+      &7
+      &a¡Clic para abrir!
+    five-star: |-
+      &6Calidad: &e✰✰✰✰✰
+      &7
+      &7Has recibido este regalo de:
+      &7{sender}
+      &7
+      &a¡Clic para abrir!
+  crafted:
+    material: ENDER_CHEST
+    one-star:
+      name: '&b&lCaja Misteriosa &7(1)'
+      lore: |-
+        &7
+        &fEn este tipo de Caja solo se pueden
+        &fencontrar cosas muy comunes.
+        &7
+        &6Calidad: &e✰&7✰✰✰✰
+        &7
+        &a¡Clic para abrir!
+        &bFabricado el: &f{date}
+    two-star:
+      name: '&b&lCaja Misteriosa &7(2)'
+      lore: |-
+        &7
+        &fEn este tipo de Caja solo se pueden
+        &fencontrar cosas no muy comunes.
+        &7
+        &6Calidad: &e✰✰&7✰✰✰
+        &7
+        &a¡Clic para abrir!
+        &bFabricado el: &f{date}
+    three-star:
+      name: '&b&lCaja Misteriosa &7(3)'
+      lore: |-
+        &7
+        &fEn este tipo de Caja solo se pueden
+        &fencontrar cosas normales.
+        &7
+        &6Calidad: &e✰✰✰&7✰✰
+        &7
+        &a¡Clic para abrir!
+        &bFabricado el: &f{date}
+    four-star:
+      name: '&b&lCaja Misteriosa &7(4)'
+      lore: |-
+        &7
+        &fEn este tipo de Caja solo se pueden
+        &fencontrar cosas buenas.
+        &7
+        &6Calidad: &e✰✰✰✰&7✰
+        &7
+        &a¡Clic para abrir!
+        &bFabricado el: &f{date}
+    five-star:
+      name: '&b&lCaja Misteriosa &7(5)'
+      lore: |-
+        &7
+        &fEn este tipo de Caja solo se pueden
+        &fencontrar cosas muy buenas.
+        &7
+        &6Calidad: &e✰✰✰✰✰
+        &7
+        &a¡Clic para abrir!
+        &bFabricado el: &f{date}
+  crafting:
+    one-star:
+      name: '&b&lCaja Misteriosa &7(1)'
+      lore: |-
+        &fEn esta caja podrás encontrar
+        &flos siguientes items:
+        &7
+        &7• &a&lComunes: &f4
+        &7• &9&lRaros: &f1
+        &7• &5&lÉpicos: &f1
+        &7• &d&lLegendarios: &f1
+        &7
+        &6Calidad: &e✰&7✰✰✰✰
+    two-star:
+      name: '&b&lCaja Misteriosa &7(2)'
+      lore: |-
+        &fEn esta caja podrás encontrar
+        &flos siguientes items:
+        &7
+        &7• &a&lComunes: &f3
+        &7• &9&lRaros: &f2
+        &7• &5&lÉpicos: &f1
+        &7• &d&lLegendarios: &f1
+        &7
+        &6Calidad: &e✰✰&7✰✰✰
+    three-star:
+      name: '&b&lCaja Misteriosa &7(3)'
+      lore: |-
+        &fEn esta caja podrás encontrar
+        &flos siguientes items:
+        &7
+        &7• &a&lComunes: &f2
+        &7• &9&lRaros: &f2
+        &7• &5&lÉpicos: &f2
+        &7• &d&lLegendarios: &f1
+        &7
+        &6Calidad: &e✰✰✰&7✰✰
+    four-star:
+      name: '&b&lCaja Misteriosa &7(4)'
+      lore: |-
+        &fEn esta caja podrás encontrar
+        &flos siguientes items:
+        &7
+        &7• &a&lComunes: &f1
+        &7• &9&lRaros: &f1
+        &7• &5&lÉpicos: &f2
+        &7• &d&lLegendarios: &f3
+        &7
+        &6Calidad: &e✰✰✰✰&7✰
+    five-star:
+      name: '&b&lCaja Misteriosa &7(5)'
+      lore: |-
+        &fEn esta caja podrás encontrar
+        &flos siguientes items:
+        &7
+        &7• &a&lComunes: &f0
+        &7• &9&lRaros: &f1
+        &7• &5&lÉpicos: &f2
+        &7• &d&lLegendarios: &f4
+        &7
+        &6Calidad: &e✰✰✰✰✰
+animations:
+  none:
+    name: '&b&lNinguna'
+    lore: |-
+      &fElimina la animación al abrir
+      &funa caja, esta se abrirá instantáneamente.
+  normal:
+    name: '&b&lNormal'
+    lore: |-
+      &fColoca la animación al abrir una
+      &fCaja en Normal.
+  countdown:
+    name: '&b&lContador'
+    lore: |-
+      &fColoca la animación al abrir una
+      &fCaja en Contador.
+  star:
+    name: '&b&lEstrella'
+    lore: |-
+      &fColoca la animación al abrir una
+      &fCaja en Estrella.
+  crafting:
+    name: '&b&lCrafteo'
+    lore: |-
+      &fColoca la animación al abrir una
+      &fCaja en Crafteo.
+  summer:
+    name: '&b&lVerano'
+    lore: |-
+      &fColoca la animación al abrir una
+      &fCaja en Verano.
+  halloween:
+    name: '&b&lHalloween'
+    lore: |-
+      &fColoca la animación al abrir una
+      &fCaja en Halloween.
+  holiday:
+    name: '&b&lNavidad'
+    lore: |-
+      &fColoca la animación al abrir una
+      &fCaja en Navidad.
+custom-loots:
+  10-money:
+    name: '&a10$'
+    category: '&cDinero'
+  12-tnt:
+    name: '&912x TNT (Bloque)'
+    category: '&cBloque'
+  16-gold-ore:
+    name: '&916x Mena de Oro (Bloque)'
+    category: '&cBloque'
+  16-diamond-ore:
+    name: '&516x Mena de Diamante (Bloque)'
+    category: '&cBloque'
+  diamond-suit:
+    name: '&6Armadura de Diamante'
+    category: '&cArmadura'
+gadgets:
+  magic-9-ball:
+    messages:
+    - '&bLos gatos dicen: &fAlimentame.'
+    - '&bEl troll dice: &fTrololololololol'
+    - '&bEl staff dice: &fPor favor no rompas las reglas.'
+    - '&bTu mama dice: &fJuegas demasiados videojuegos, para un poco.'
+    - '&bAnna dice: &f¿Quieres construir un muñeco de nieve?'
+    - '&bMinion dicen: &f¡BEE DO BEE DO BEE DO!'
+    - '&bHerobrine says: &f¡Nadie sobrevivira!'
+    - '&bEl perro dice: &fMeow!'
+    - '&bDarth Vader dice: &fYo soy tu padre.'
+    - '&bElsa dice: &fEl frio nunca me molesto.'
+    - '&bEl creeper dice: &fNo, no te preocupes. No explotaré en tu cara'
+    - '&bNotch dice: &fLa vida es más divertida si juegas Minecraft.'
+    - '&bMario dice: &f¡It''s me, Mario!'
+  fortune-cookie:
+    player:
+    - '&e{player}&f: ¡Oh mira, una Galleta!'
+    - '&e{player}&f: ¡Estaba deliciosa!'
+    - '&e{player}&f: Pero espera, habia un papel dentro de ella ¿Que dice?'
+    cookie:
+    - '&eGalleta de la Fortuna&f: Si no está contento con el lugar en el que se encuentra, siga algunos pasos A la izquierda. Si aún no está satisfecho, no podemos ayudarlo.'
+    - '&eGalleta de la Fortuna&f: Algunos aprendemos de los errores de otros; el resto de los otros.'
+    - '&eGalleta de la Fortuna&f: Mañana, gire a la izquierda. Luego un giro a la derecha. Luego otro giro a la izquierda. Ahora ha llegado a su destino.'
+    - '&eGalleta de la Fortuna&f: Eres único, como todos los demás.'
+    - '&eGalleta de la Fortuna&f: Puede o no ser una persona indecisa.'
+    - '&eGalleta de la Fortuna&f: La fortuna que buscas está dentro de otra galleta.'
+    - '&eGalleta de la Fortuna&f: Hay tres tipos de personas en el mundo: las quién puede contar y los que no pueden.'
+  diving-board:
+    messages:
+    - '&b¡Backflip!'
+    - '&b¡Frontflip!'
+    - '&b¡Clavado!'
+    - '&b¡Golpe de Panza!'
+    - '&b¡Bala de Cañon!'
+  flower-giver:
+    messages:
+      target-a-player: '{prefix}&cTienes que hacer Clic derecho en un jugador.'
+      already-had-a-flower: '{prefix}&cEste jugador ya tiene una Rosa.'
+      sent-a-flower: '{prefix}&a¡Has enviado una Rosa a &e{player}&a!'
+      already-sent-a-request: '{prefix}&cLe has enviado una solicitud de Rosa a {player}.'
+      received-flower: '{prefix}&e{player} &ate ha regalado una Rosa.'
+      accept: '&2&l&l[ACCEPTAR]'
+      decline: '&c&l[RECHAZAR]'
+      accept-hover: '&7Haz clic para aceptar la Rosa.'
+      decline-hover: '&7Haz clic para rechazar la Rosa.'
+      no-pending-invite: '{prefix}&cNo tienes una solicitud pendiente de ese jugador.'
+      accepted-flower: '&3{player} &bha aceptado tu Rosa.'
+      declined-flower: '&c{player} ha rechazado tu Rosa.'
+      right-click-to-remove-flower: '{prefix}&eClic derecho para remover tu Rosa.'
+    flower-name: '&cRosa'
+  ice-cream-stand:
+    messages:
+    - '&eSr de los Helados&f: De Fresa... Doble chcolate... Y vainilla... ¿Olvide algo?'
+    - '&eSr de los Helados&f: Helado de Fresa, ¡Mi favorito!'
+    - '&eSr de los Helados&f: Me temo que no tengo cambio en este momento :('
+    - '&eSr de los Helados&f: Lo sentimos, ¡solo aceptamos efectivo por ahora!'
+  tic-tac-toe:
+    messages:
+      target-a-player: '{prefix}&cHaz clic en un jugador para iniciar un juego de Tic Tac Toe con el.'
+      target-other-player: '{prefix}&cEste jugador se encuentra ya jugando una partida de Tic Tac Toe, intenta con otro jugador.'
+      challenge: '{prefix}&aHas retado a &E{player} &aa un juego de Tic Tac Toe.'
+      already-sent-a-request: '{prefix}&cYa le has enviado una solicitud de juego a {player}.'
+      received-challenge: '{prefix}&e{player} &ate ha desafiado a un juego de Tic Tac Toe.'
+      accept: '&2&l&l[ACCEPTAR]'
+      decline: '&c&l[RECHAZAR]'
+      accept-hover: '&7Haz clic para aceptar el reto.'
+      decline-hover: '&7Haz clic para rechazar el reto.'
+      no-pending-challenge: '{prefix}&cTu no tienes solicitudes de juego de este jugador.'
+      accepted-challenge: '&b{player} ha aceptado tu desafio.'
+      declined-challenge: '&c{player} ha rechazado tu desafio.'
+      draw: '{prefix}&cTu partida con {player} &ctermino en empate.'
+      win: '{prefix}&bHas derrotado a {player} en el juego de Tic Tac Toe.'
+      loss: '{prefix}&c{player} te ha derrotado en el juego de Tic Tac Toe.'
+      opponent-left-game: '{prefix}&cTu oponente se retiro del juego.'
+      player-left-game: '{prefix}&cTe has retirado el juego.'
+    items:
+      title: '&8&lS&7&lS&0 » {opponent}'
+      place-symbol:
+        material: ITEM_FRAME
+        name: '&b&lSeleccionar'
+        lore: |-
+          &fHaz clic aquí para colocar
+          &ftu simbolo.
+      not-your-turn:
+        material: PAINTING
+        name: '&cAun no es tu turno'
+        lore: |-
+          &7Tu oponente aún no ha colocado su
+          &7simbolo, debes esperar.
+      challenger:
+        material: ORANGE_TERRACOTTA
+        name: '&6&lNaranja: &e{player}'
+        lore: |-
+          &fEl jugador del equipo Naranja
+          &fes {player}.
+      opponent:
+        material: LIGHT_BLUE_TERRACOTTA
+        name: '&b&lAzul: &3{player}'
+        lore: |-
+          &fEl jugador del equipo Azul
+          &fes {player}.
+      challenger-symbol:
+        material: ORANGE_TERRACOTTA
+        name: '&6Naranja'
+        lore: "&7Este slot pertenece al \n&7equipo Naranja."
+      opponent-symbol:
+        material: LIGHT_BLUE_TERRACOTTA
+        name: '&bAzul'
+        lore: |-
+          &7Este slot pertenece al
+          &7equipo Azul.
+  exploding-sheep:
+    remain-time: '&c&l{remainTime}s'
+  scarecrow:
+    jack-o-lantern: '&cScarecrow'
+  teleporter:
+    messages:
+      initiating-teleport-sequence: '{prefix}&e&lIniciando secuencia de teletransportación. Por favor, espere...'
+      scanning-players: '{prefix}&e&lEscaneando jugadores en busca de un objetivo para teletransportarse...'
+      target-acquired: '{prefix}&e&lObjetivo Localizado: &a&k&lRANDOMCHARATERS&e&l!'
+      teleport-initiating: '{prefix}&a&lIniciando teletransportación...'
+      teleport-complete: '{prefix}&b&lCompletado. &fGracias por usar el &fviaje rápido.'
+      process-failed: '{prefix}&cEl proceso de localización fallo, debido a que no se encontraron objetivos.'
+      aborted-teleport-sequence: '{prefix}&cAbortando la secuencia de teletransportación...'
+  jukebox:
+    items:
+      title: '&8&lS&7&lS&0 » Jukebox'
+      track:
+        name: '&b{track}'
+        lore: |-
+          &7
+          &aHaz clic para reproducir.
+      stop-track:
+        material: RED_WOOL
+        name: '&cParar música'
+        lore: |-
+          &7
+          &aHaz clic para parar la música.
+  radio:
+    items:
+      title: '&8&lS&7&lS&0 » Radio'
+      track:
+        material: NOTE_BLOCK
+        name: '&b{track}'
+        lore: |-
+          &7
+          &eHaz clic para reproducir.
+      stop-track:
+        material: RED_WOOL
+        name: '&cParar pista'
+        lore: |-
+          &7
+          &aHaz clic para parar la pista.
+  mobgun:
+    actionbar-message: '{gadget} &r- {mob}'
+    mob-name:
+      Pig: Cerdo
+      Villager: Aldeano
+      Ocelot: Ocelote
+      Cow: Vaca
+      Creeper: Creeper
+      Spider: Araña
+      Squid: Calamar
+      Chicken: Pollo
+      Sheep: Oveja
+      Wolf: Lobo
+      Witch: Bruja
+      Blaze: Blaze
+      Horse: Caballo
+      Zombie: Zombie
+      Skeleton: Esqueleto
+      MushroomCow: Vaca Mushroom
+      CaveSpider: Araña de Cueva
+      PigZombie: Zombie Cerdo
+  cowboy:
+    messages:
+      target-a-player: '{prefix}&cHaz clic derecho en un jugador para montarlo.'
+names:
+  hats:
+    hamburger: '&b&lHamburguesa'
+    chocolate-donut: '&b&lDona de Chocolate'
+    sandwich: '&b&lSandwich'
+    black-chocolate-bar: '&b&lChocolate Negro'
+    white-chocolate-bar: '&b&lChocolate Blanco'
+    candy-cane: '&b&lDulce'
+    computer: '&b&lComputadora'
+    gold-steve: '&b&lSteve Dorado'
+    diamond-steve: '&b&lSteve de Diamante'
+    emerald-steve: '&b&lSteve de Esmeralda'
+    gold-block: '&b&lBloque de Oro'
+    diamond-block: '&b&lBloque de Diamante'
+    scared: '&b&lAsustado'
+    angel: '&b&lAngel'
+    embarrassed: '&b&lAvergonzado'
+    sad: '&b&lTriste'
+    cool: '&b&lCool'
+    surprised: '&b&lSorprendido'
+    dead: '&b&lMuerto'
+    cry: '&b&lLlorando'
+    grin: '&b&lFeliz'
+    wink: '&b&lGuiño'
+    derp: '&b&lDistraido'
+    mustache: '&b&lBigote'
+    big-smile: '&b&lGran Sonrisa'
+    smile: '&b&lSonrisa'
+    neutral: '&b&lNeutral'
+    fall-in-love: '&b&lEnamorado'
+    netherlands: '&b&lNetherlands'
+    norway: '&b&lNoruega'
+    sweden: '&b&lSuecia'
+    chile: '&b&lChile'
+    monaco: '&b&lMonaco'
+    canada: '&b&lCanada'
+    united-states: '&b&lUnited States'
+    italy: '&b&lItalia'
+    england: '&b&lInglaterra'
+    germany: '&b&lAlemania'
+    singapore: '&b&lSingapur'
+    france: '&b&lFrancia'
+    spain: '&b&lEspaña'
+    australia: '&b&lAustralia'
+    china: '&b&lChina'
+    letter-a: '&b&lLetra A'
+    letter-b: '&b&lLetra B'
+    letter-c: '&b&lLetra C'
+    letter-d: '&b&lLetra D'
+    letter-e: '&b&lLetra E'
+    letter-f: '&b&lLetra F'
+    letter-g: '&b&lLetra G'
+    letter-h: '&b&lLetra H'
+    letter-i: '&b&lLetra I'
+    letter-j: '&b&lLetra J'
+    letter-k: '&b&lLetra K'
+    letter-l: '&b&lLetra L'
+    letter-m: '&b&lLetra M'
+    letter-n: '&b&lLetra N'
+    letter-o: '&b&lLetra O'
+    letter-p: '&b&lLetra P'
+    letter-q: '&b&lLetra Q'
+    letter-r: '&b&lLetra R'
+    letter-s: '&b&lLetra S'
+    letter-t: '&b&lLetra T'
+    letter-u: '&b&lLetra U'
+    letter-v: '&b&lLetra V'
+    letter-w: '&b&lLetra W'
+    letter-x: '&b&lLetra X'
+    letter-y: '&b&lLetra Y'
+    letter-z: '&b&lLetra Z'
+    rainbow-letter-a: '&b&lLetra colorida A'
+    rainbow-letter-b: '&b&lLetra colorida B'
+    rainbow-letter-c: '&b&lLetra colorida C'
+    rainbow-letter-d: '&b&lLetra colorida D'
+    rainbow-letter-e: '&b&lLetra colorida E'
+    rainbow-letter-f: '&b&lLetra colorida F'
+    rainbow-letter-g: '&b&lLetra colorida G'
+    rainbow-letter-h: '&b&lLetra colorida H'
+    rainbow-letter-i: '&b&lLetra colorida I'
+    rainbow-letter-j: '&b&lLetra colorida J'
+    rainbow-letter-k: '&b&lLetra colorida K'
+    rainbow-letter-l: '&b&lLetra colorida L'
+    rainbow-letter-m: '&b&lLetra colorida M'
+    rainbow-letter-n: '&b&lLetra colorida N'
+    rainbow-letter-o: '&b&lLetra colorida O'
+    rainbow-letter-p: '&b&lLetra colorida P'
+    rainbow-letter-q: '&b&lLetra colorida Q'
+    rainbow-letter-r: '&b&lLetra colorida R'
+    rainbow-letter-s: '&b&lLetra colorida S'
+    rainbow-letter-t: '&b&lLetra colorida T'
+    rainbow-letter-u: '&b&lLetra colorida U'
+    rainbow-letter-v: '&b&lLetra colorida V'
+    rainbow-letter-w: '&b&lLetra colorida W'
+    rainbow-letter-x: '&b&lLetra colorida X'
+    rainbow-letter-y: '&b&lLetra colorida Y'
+    rainbow-letter-z: '&b&lLetra colorida Z'
+    number-0: '&b&lNumero 0'
+    number-1: '&b&lNumero 1'
+    number-2: '&b&lNumero 2'
+    number-3: '&b&lNumero 3'
+    number-4: '&b&lNumero 4'
+    number-5: '&b&lNumero 5'
+    number-6: '&b&lNumero 6'
+    number-7: '&b&lNumero 7'
+    number-8: '&b&lNumero 8'
+    number-9: '&b&lNumero 9'
+    symbol-plus: '&b&lSimbolo +'
+    symbol-pound-key: '&b&lSimbolo #'
+    symbol-question: '&b&lSimbolo ?'
+    symbol-exclamation: '&b&lSimbolo !'
+    aquarius-constellation: '&b&lZodiaco Acuario'
+    pisces-constellation: '&b&lZodiaco Piscis'
+    aries-constellation: '&b&lZodiaco Aries'
+    taurus-constellation: '&b&lZodiaco Tauro'
+    gemini-constellation: '&b&lZodiaco Geminis'
+    cancer-constellation: '&b&lZodiaco Cancer'
+    leo-constellation: '&b&lZodiaco Leo'
+    virgo-constellation: '&b&lZodiaco Virgo'
+    libra-constellation: '&b&lZodiaco Libra'
+    scorpio-constellation: '&b&lZodiaco Escorpio'
+    sagittarius-constellation: '&b&lZodiaco Sagitario'
+    capricorn-constellation: '&b&lZodiaco Capricornio'
+    blaze: '&b&lBlaze'
+    enderman: '&b&lEnderman'
+    slime: '&b&lSlime'
+    magma-cube: '&b&lCubo de Magma'
+    ocelot: '&b&lOcelote'
+    ender-dragon: '&b&lDragon del End'
+    cave-spider: '&b&lAraña de Cueva'
+    ghast: '&b&lGhast'
+    pig-zombie: '&b&lZombie Cerdo'
+    chicken: '&b&lPollo'
+    pig: '&b&lCerdo'
+    cow: '&b&lVaca'
+    mushroom-cow: '&b&lVaca Mushroom'
+    squid: '&b&lCalamar'
+    iron-golem: '&b&lGolem de Hierro'
+    horse: '&b&lCaballo'
+    herobine: '&b&lHerobrine'
+    bird: '&b&lPajaro'
+    poke-ball: '&b&lPoke Bola'
+    mario: '&b&lMario'
+    nurse: '&b&lEnfermero'
+    freddy-fazbear: '&b&lFreddy Fazbear'
+    bonnie: '&b&lBonnie'
+    jake: '&b&lJake'
+    doge: '&b&lDoge'
+    cool-doge: '&b&lDoge Cool'
+    polar-bear: '&b&lOso Polar'
+    rabbit: '&b&lConejo'
+    koala: '&b&lKoala'
+    bee: '&b&lAbeja'
+    clownfish: '&b&lPez Payaso'
+    ferret: '&b&lHuron'
+    walrus: '&b&lMorsa'
+    tiger: '&b&lTigre'
+    monkey: '&b&lMono'
+    cactus: '&b&lCactus'
+    duck: '&b&lPato'
+    earth: '&b&lGlobo Terrestre'
+    beach-ball: '&b&lPelota de Playa'
+    snowglobe: '&b&lGlobo de Nieve'
+    toaster: '&b&lTostadora'
+    cheese: '&b&lQueso'
+    mars: '&b&lMarte'
+    penguin: '&b&lPingüino'
+    elephant: '&b&lElefante'
+    astronaut: '&b&lAstronauta'
+    otter: '&b&lNutria'
+    mummy: '&b&lMomia'
+    orc: '&b&lOrco'
+    minotaur: '&b&lMinotauro'
+    demon-knight: '&b&lCaballero Demonio'
+    white-wizard: '&b&lMago Blanco'
+    miner: '&b&lMinero'
+    monk: '&b&lMonje'
+    wood-elf: '&b&lElefante de Madera'
+    pirate: '&b&lPirata'
+    odin: '&b&lOdin'
+    ghost: '&b&lFantasma'
+    skull: '&b&lCraneo'
+    pumpkin: '&b&lCalabaza'
+    scarecrow: '&b&lEspantapajaros'
+    fox: '&b&LZorro'
+    pug: '&b&lPerro'
+    owl: '&b&lBuho'
+    panda: '&b&lPanda'
+    sloth: '&b&lPerezoso'
+    gorilla: '&b&lGorilla'
+    snowman: '&b&lMuñeco de Nieve'
+    reindeer: '&b&lReno'
+    shulker: '&b&lShulker'
+    turtle: '&b&lTortuga'
+    solved-rubiks-cube: '&b&lCubo Rubik Resuelto'
+    scrambled-rubiks-cube: '&b&lCubo Rubik Revuelto'
+    rainbow-glitch: '&b&lGlitch Colorido'
+    pacman: '&b&lPacman'
+    steve: '&b&lAmong Us'
+    sponge: '&aSponge Hat'
+  animated-hats:
+    siren: '&b&lSirena de Policia'
+    traffic-light: '&b&lSemaforo de Colores'
+    sammy-the-cookie: '&b&lGalleta'
+    chroma-slime: '&b&lSlime de Colores'
+    color-block: '&b&lBloque de Colores'
+    joe-the-penguin: '&b&lPingüino'
+    comet-the-reindeer: '&b&lReno'
+    broken-tv: '&b&lTV Rota'
+    smiles: '&aSmiles Animated Hat'
+  emotes:
+    smile: '&b&lSonrisa'
+    cool: '&b&lCool'
+    wink: '&b&lGuiño'
+    grin: '&b&lGran Sonrisa'
+    surprised: '&b&lSorprendido'
+    cry: '&b&lLlorar'
+    sleepy: '&b&lDormido'
+    rage: '&b&lRabia'
+    frown: '&b&lFruncido'
+    cheeky: '&b&lFresco'
+    sun-tan: '&b&lBronceado'
+    heart-eyes: '&b&lEnamorado'
+    dizzy: '&b&lMareado'
+    rip: '&b&LRIP'
+    relax: '&b&lRelajado'
+    spicy: '&b&lPicante'
+    deal-with-it: '&b&lTratado'
+    smiles: '&aSmiles Emote'
+  banners:
+    snow-bunny: '&b&lConejo Blanco'
+    reindeer: '&b&lReno'
+    holiday-tree: '&b&lArbol de Navidad'
+    santa: '&b&lSanta'
+    holiday-wreath: '&b&lCorona de Navidad'
+    heart: '&b&lCorazon'
+    guitar: '&b&lGuitarra'
+    dino: '&b&lDinosaurio'
+    redpool: '&b&lDeadpool'
+    pengu: '&b&lPingüino'
+    pug: '&b&lPerro'
+    tryhard: '&b&lTryHard'
+    pumpkin: '&b&lCalabaza'
+    crown: '&b&lCorona'
+    fire-creeper: '&b&lCreeper de Fuego'
+    portal: '&b&lPortal'
+    rainbow-wall: '&b&lPared de Colores'
+    skull-king: '&b&lRey'
+    devourer: '&b&lDevorador'
+    wolf: '&5Wolf Banner'
+  particles:
+    water-splash: '&b&lSalpicaduras'
+    drip-water: '&b&lGoteo de Agua'
+    drip-lava: '&b&lGoteo de Lava'
+    crit: '&b&lCriticos'
+    magic-crit: '&b&lCriticos magicos'
+    spell: '&b&lHechizo'
+    instant-spell: '&b&lHechizo instantaneo'
+    mob-spell: '&b&lHechizo de Mob'
+    witch-spell: '&b&lHechizo de Bruja'
+    angry-villager: '&b&lEnojado'
+    happy-villager: '&b&lFeliz'
+    town-aura: '&b&lAura Gris'
+    note: '&b&lNotas'
+    portal: '&b&lPortal'
+    enchantment-table: '&b&lEncantamientos'
+    flame: '&b&lFlamas'
+    redstone: '&b&lRedstone'
+    heart: '&b&lCorazones'
+    fireworks-spark: '&b&lFuegos Artificiales'
+    smoke: '&b&lHumo'
+    slime: '&b&lSlime'
+    end-rod: '&5End Rod Particle'
+  cloaks:
+    superhero: '&b&lSuper Herore'
+    mystical: '&b&lMistico'
+    firewings: '&b&lAlas de Fuego'
+    vampire-wings: '&b&lAlas de Vampiro'
+    frosty: '&b&lHelado'
+    icewings: '&b&lAlas de Hielo'
+    shaman: '&b&lEfectos de Chaman'
+    firerings: '&b&lAros de Fuego'
+    scanner: '&b&lEscaner'
+    archangel: '&b&lAlas de Arcangel'
+    yin-and-yang: '&b&lYin Yang'
+    flame-of-the-titans: '&b&lFlamas de los Titanes'
+  morphs:
+    pig: '&b&lCerdo'
+    cow: '&b&lVaca'
+    enderman: '&b&lEnderman'
+    chicken: '&b&lPollo'
+    spider: '&b&lAraÃ±a'
+    sheep: '&b&lOveja'
+    skeleton: '&b&lEsqueleto'
+    creeper: '&b&lCreeper'
+    blaze: '&b&lBlaze'
+    zombie: '&b&lZombie'
+    iron-golem: '&b&lGolem de Hierro'
+    witch: '&b&lBruja'
+    snowman: '&b&lMuÃ±eco de Nieve'
+    guardian: '&b&lGuardian'
+  miniatures:
+    doge: '&b&lDoge'
+    mr-smiley: '&b&lSr Sonrisa'
+    devil: '&b&lDemonio'
+    astronaut: '&b&lAstronauta'
+    zombie: '&b&lZombie'
+    enderman: '&b&lEnderman'
+    iron-golem: '&b&lGolem de Hierro'
+    witch: '&b&lBruha'
+    swamp-monster: '&b&lMonstruo del Pantano'
+    scarecrow: '&b&lEspantapajaros'
+    clown: '&b&lPayaso'
+    ghost: '&b&lFantasma'
+    grim-reaper: '&b&lParca'
+    miner: '&b&lMinero'
+    santa: '&b&lSanta'
+    snowman: '&b&lMuÃ±eco de Nieve'
+    reindeer: '&b&lReno'
+    lantern: '&b&lLinterna'
+    present: '&b&lRegalo'
+    globe: '&b&lGlobo'
+    mars: '&b&LMarte'
+    snowglobe: '&b&lGlobo de Nieve'
+  suit-pieces:
+    frog:
+      helmet: '&b&lCasco de Rana'
+      chestplate: '&b&lPechera de Rana'
+      leggings: '&b&lPantalones de Rana'
+      boots: '&b&lBotas de Rana'
+    ninja:
+      helmet: '&b&lCabeza de Ninja'
+      chestplate: '&b&lPechera de Ninja'
+      leggings: '&b&lPantalones de Ninja'
+      boots: '&b&lBotas de Ninja'
+    speedster:
+      helmet: '&b&lCabeza de Flash'
+      chestplate: '&b&lPechera de Flash'
+      leggings: '&b&lPantalones de Flash'
+      boots: '&b&lBotas de Flash'
+    ghostly:
+      helmet: '&b&lCabeza de Fantasma'
+      chestplate: '&b&lPechera de Fantasma'
+      leggings: '&b&lPantalones de Fantasma'
+      boots: '&b&lBotas de Fantasma'
+    disco:
+      helmet: '&b&lCasco de Colores'
+      chestplate: '&b&lPechera de Colores'
+      leggings: '&b&lPantalones de Colores'
+      boots: '&b&lBotas de Colores'
+    mermaid:
+      helmet: '&b&lCaso de Sirena'
+      chestplate: '&b&lPechera de Sirena'
+      leggings: '&b&lPantalones de Sirena'
+      boots: '&b&lBotas de Sirena'
+    spooderman:
+      helmet: '&b&lCabeza de Spiderman'
+      chestplate: '&b&lPechera de Spiderman'
+      leggings: '&b&lPantalones de Spiderman'
+      boots: '&b&lBotas de Spiderman'
+    warrior:
+      helmet: '&b&lCasco de Guerrero'
+      chestplate: '&b&lPechera de Guerrero'
+      leggings: '&b&lPantalones de Guerrero'
+      boots: '&b&lBotas de Guerrero'
+    necromancer:
+      helmet: '&b&lCabeza de Nigromante'
+      chestplate: '&b&lPechera de Nigromante'
+      leggings: '&b&lPantalones de Nigromante'
+      boots: '&b&lBotas de Nigromante'
+    thor:
+      helmet: '&b&lCabeza de Thor'
+      chestplate: '&b&lPechera de Thor'
+      leggings: '&b&lPantalones de Thor'
+      boots: '&b&lBotas de Thor'
+    baker:
+      helmet: '&b&lCasco de Panadero'
+      chestplate: '&b&lPechera de Panadero'
+      leggings: '&b&lPantalones de Panadero'
+      boots: '&b&lBotas de Panadero'
+    bumblebee:
+      helmet: '&b&lCasco de Abejorro'
+      chestplate: '&b&lPechera de Abejorro'
+      leggings: '&b&lPantalones de Abejorro'
+      boots: '&b&lBotas de Abejorro'
+    firefighter:
+      helmet: '&b&lCabeza de Bombero'
+      chestplate: '&b&lPechera de Bombero'
+      leggings: '&b&lPantalones de Bombero'
+      boots: '&b&lBotas de Bombero'
+    plumber:
+      helmet: '&b&lCabeza de Plomero'
+      chestplate: '&b&lPechera de Plomero'
+      leggings: '&b&lPantalones de Plomero'
+      boots: '&b&lBotas de Plomero'
+    ice-walker:
+      helmet: '&b&lCabeza de Caminante de Hielo'
+      chestplate: '&b&lPechera de Caminante de Hielo'
+      leggings: '&b&lPantalones de Caminante de Hielo'
+      boots: '&b&lBotas de Caminante de Hielo'
+    vampire:
+      helmet: '&b&lCasco de Vampiro'
+      chestplate: '&b&lPechera de Vampiro'
+      leggings: '&b&lPantalones de Vampiro'
+      boots: '&b&lBotas de Vampiro'
+  suits:
+    frog: '&b&lTraje de Rana'
+    ninja: '&b&lTraje de Ninja'
+    speedster: '&b&lTraje de Flash'
+    ghostly: '&b&lTraje de Fantasma'
+    disco: '&b&lTraje de Colores'
+    mermaid: '&b&lTraje de Sirena'
+    spooderman: '&b&lTraje de Spiderman'
+    warrior: '&b&lTraje de Guerrero'
+    necromancer: '&b&lTraje de Nigromante'
+    thor: '&b&lTraje de Thor'
+    baker: '&b&lTraje de Panadero'
+    bumblebee: '&b&lTraje de Abejorro'
+    firefighter: '&b&LTraje de Bombero'
+    plumber: '&b&lTraje de Fontanero'
+    ice-walker: '&b&lTraje de Caminante de Hielo'
+    vampire: '&b&lTraje de Vampiro'
+  gadgets:
+    magic-9-ball: '&b&lBola 8'
+    fortune-cookie: '&b&lFortune Cookie Gadget'
+    tetherball: '&b&lTetherball'
+    diving-board: '&b&lPiscina'
+    trampoline: '&b&lTrampolin'
+    flower-giver: '&b&lFlower Giver Gadget'
+    sand-castle: '&b&lCastillo de Arena'
+    bbq-grill: '&b&lParrilla de BBQ'
+    pocket-beach: '&b&lSilla de Playa'
+    ice-cream-stand: '&b&lCarrito de Helados'
+    tic-tac-toe: '&b&lTic Tac Toe Gadget'
+    piggy-bank: '&b&lBanco en forma de Cerdo'
+    catapult: '&b&lCatapulta'
+    when-pigs-fly: '&b&lCerdo Volador'
+    creeper-astronaut: '&b&lCreeper Astronauta'
+    exploding-sheep: '&b&lOveja explosiva'
+    bat-launcher: '&b&lPistola de Muercielagos'
+    scarecrow: '&b&lEspantapajaros'
+    cowboy: '&b&lMontura'
+    teleport-stick: '&b&lPalo teletransportador'
+    fire-trail: '&b&lRastro de Fuego'
+    paint-trail: '&b&lRastro de Pintura'
+    parachute: '&b&lParacaidas'
+    teleporter: '&b&lTeletransportador'
+    rocket: '&b&lCohete'
+    let-it-snow: '&b&lTormenta de Nieve'
+    jukebox: '&b&lCaja de Música'
+    radio: '&b&lRadio'
+    disco-ball: '&b&lBola Disco'
+    dj-booth: '&b&lCabina de DJ'
+    mobgun: '&b&lPistola de Mobs'
+    railgun: '&b&lPistola'
+    explosive-bow: '&b&lArco Explosivo'
+    paintball-gun: '&b&lPistola de Pintura'
+    melon-launcher: '&b&lLanzador de Sandias'
+    kookie-fountain: '&b&lFuente de Galletas'
+    pyromaniac: '&b&lPiromano'
+    diamond-shower: '&b&lBaÃ±era de Diamantes'
+    gold-fountain: '&b&lFuente de Oro'
+    kawarimi-no-jutsu: '&b&lKawarimi No Jutsu'
+    cryotube: '&b&lCriotubo'
+    ghosts: '&b&lFantasmas'
+    party-popper: '&b&lFiesta de Lanas'
+    poop-bomb: '&b&lBomba de Poop'
+    tnt-fountain: '&b&lFuente de TNT'
+    dracula: '&b&lDracula'
+  pets:
+    silverfish: '&b&lPez Plata'
+    chicken: '&b&lPollo'
+    baby-chicken: '&b&lPollo &7(Bebe)'
+    wolf: '&b&lLobo'
+    baby-wolf: '&b&lLobo &7(Baby)'
+    black-cat: '&b&lGato Negro'
+    baby-black-cat: '&b&lGato Negro &7(Bebe)'
+    red-cat: '&b&lGato Rojo'
+    baby-red-cat: '&b&LGato Rojo &7(Bebe)'
+    siamese-cat: '&b&lGato Siames'
+    baby-siamese-cat: '&b&lGato Siames &7(Bebe)'
+    wild-ocelot: '&b&lOcelote Salvaje'
+    baby-wild-ocelot: '&b&lOcelote Salvaje &7(Bebe)'
+    zombie: '&b&lZombie'
+    baby-zombie: '&b&lZombie &7(Bebe)'
+    husk: '&b&lZombie Husk'
+    baby-husk: '&b&lZombie Husk &7(Bebe)'
+    red-little-helper: '&b&lPequeÃ±o Ayudante Rojo'
+    green-little-helper: '&b&lPequeÃ±o Ayudante Verde'
+    bat: '&b&lMurcielago'
+    spider: '&b&lAraña'
+    cave-spider: '&b&lAraÃ±a de Cueva'
+    snowman: '&b&lMuñeco de Nieve'
+    black-rabbit: '&b&lConejo Negro'
+    baby-black-rabbit: '&b&lConejo Negro &7(Bebe)'
+    black-and-white-rabbit: '&b&lConejo Blanco y Negro'
+    baby-black-and-white-rabbit: '&b&lConejo Blanco y Negro &7(Bebe)'
+    brown-rabbit: '&b&lConejo Cafe'
+    baby-brown-rabbit: '&b&lConejo Cafe &7(Baby)'
+    gold-rabbit: '&b&lConejo Dorado'
+    baby-gold-rabbit: '&b&lConejo Dorado &7(Baby)'
+    salt-and-pepper-rabbit: '&b&lConejo Pimienta'
+    baby-salt-and-pepper-rabbit: '&b&lConejo Pimienta &7(Bebe)'
+    white-rabbit: '&b&lConejo Blanco'
+    baby-white-rabbit: '&b&LConejo Blanco &7(Bebe)'
+    blacksmith-villager: '&b&lHerrero'
+    baby-blacksmith-villager: '&b&lHerrero &7(Bebe)'
+    butcher-villager: '&b&lCarnicero'
+    baby-butcher-villager: '&b&lCarnicero &7(Bebe)'
+    farmer-villager: '&b&lGranjero'
+    baby-farmer-villager: '&b&lGranjero &7(Bebe)'
+    librarian-villager: '&b&lLibrero'
+    baby-librarian-villager: '&b&lLibrero (Bebe)'
+    priest-villager: '&b&lSacerdote'
+    baby-priest-villager: '&b&lSacerdote &7(Bebe)'
+    zombie-villager: '&b&lZombie'
+    baby-zombie-villager: '&b&lZombie &7(Bebe)'
+    witch: '&b&lBruja'
+    evoker: '&b&lEvocador'
+    vindicator: '&b&lVindicador'
+    illusioner: '&b&lIlusionador'
+    golem: '&b&lGolem de Hierro'
+    enderman: '&b&lEnderman'
+    blaze: '&b&lBlaze'
+    endermite: '&b&lEndermite'
+    cow: '&b&lVaca'
+    baby-cow: '&b&lVaca &7(Bebe)'
+    mushroom-cow: '&b&lVaca &7(Mushroom&7)'
+    baby-mushroom-cow: '&b&lVaca Bebe &7(Mushroom)'
+    creeper: '&b&lCreeper'
+    powered-creeper: '&b&LCreeper &7(Recargado)'
+    black-horse: '&b&lCaballo Negro'
+    baby-black-horse: '&b&lCaballo Negro &7(Bebe)'
+    brown-horse: '&b&lCaballo Cafe'
+    baby-brown-horse: '&b&lCaballo Cafe &7(Bebe)'
+    chestnut-horse: '&b&lCastaño'
+    baby-chestnut-horse: '&b&lCastaño &7(Bebe)'
+    creamy-horse: '&b&lCremoso'
+    baby-creamy-horse: '&b&lCremoso &7(Bebe)'
+    dark-brown-horse: '&b&lCafe Oscuro'
+    baby-dark-brown-horse: '&b&lCafe Oscuro &7(Bebe)'
+    gray-horse: '&b&lGris'
+    baby-gray-horse: '&b&lGris &7(Bebe)'
+    white-horse: '&b&lBlanco'
+    baby-white-horse: '&b&lBlanco (Bebe)'
+    donkey: '&b&lBurro'
+    baby-donkey: '&b&lBurro &7(Bebe)'
+    mule: '&b&lMula'
+    baby-mule: '&b&lMula &7(Bebe)'
+    skeleton-horse: '&b&lCaballo Esqueleto'
+    baby-skeleton-horse: '&b&lCaballo Esqueleto &7(Bebe)'
+    undead-horse: '&b&lCaballo Zombie'
+    baby-undead-horse: '&b&lCaballo Zombie &7(Bebe)'
+    pig: '&b&lCerdo'
+    baby-pig: '&b&lCerdo &7(Bebe)'
+    pig-zombie: '&b&lCerdo &7(Zombie)'
+    baby-pig-zombie: '&b&LCerdo Bebe &7(Zombie)'
+    black-sheep: '&B&LOveja Negra'
+    baby-black-sheep: '&b&lOveja Negra &7(Bebe)'
+    blue-sheep: '&b&lOveja Azul'
+    baby-blue-sheep: '&b&lOveja Azul &7(Bebe)'
+    brown-sheep: '&b&lOveja Cafe'
+    baby-brown-sheep: '&b&lOveja Cafe &7(Bebe)'
+    cyan-sheep: '&b&lOveja Cyan'
+    baby-cyan-sheep: '&b&lOveja Cyan &7(Bebe)'
+    gray-sheep: '&b&lOveja Gris'
+    baby-gray-sheep: '&b&lOveja Gris &7(Bebe)'
+    green-sheep: '&b&lOveja Verde'
+    baby-green-sheep: '&b&lOveja Verde &7(Bebe)'
+    light-blue-sheep: '&b&lOveja Celeste'
+    baby-light-blue-sheep: '&b&lOveja Celeste &7(Bebe)'
+    lime-sheep: '&b&lOveja Lima'
+    baby-lime-sheep: '&b&lOveja Lima &7(Bebe)'
+    magenta-sheep: '&b&lOveja Magneta'
+    baby-magenta-sheep: '&b&lOveja Magneta (Bebe)'
+    orange-sheep: '&b&lOveja Naranja'
+    baby-orange-sheep: '&b&lOveja Naranja &7(Bebe)'
+    pink-sheep: '&b&lOveja Rosa'
+    baby-pink-sheep: '&b&lOveja Rosa &7(Bebe)'
+    purple-sheep: '&b&lOveja Morada'
+    baby-purple-sheep: '&b&lOveja Morada &7(Bebe)'
+    red-sheep: '&b&lOveja Roja'
+    baby-red-sheep: '&b&lOveja Roja &7(Bebe)'
+    silver-sheep: '&b&lOveja Gris'
+    baby-silver-sheep: '&b&lOveja Gris &7(Bebe)'
+    white-sheep: '&b&lOveja Blanca'
+    baby-white-sheep: '&b&lOveja Blanca &7(Bebe)'
+    yellow-sheep: '&b&LOveja Amarilla'
+    baby-yellow-sheep: '&b&LOveja Amarilla &7(Bebe)'
+    rainbow-sheep: '&b&lOveja Colorida'
+    big-slime: '&b&lSlime &7(Grande)'
+    small-slime: '&b&lSlime &7(Normal)'
+    tiny-slime: '&b&lSlime &7(Pequeño)'
+    big-magma-cube: '&b&lMagma &7(Grande)'
+    small-magma-cube: '&b&lMagma &7(Normal)'
+    tiny-magma-cube: '&b&lMagma &7(Pequeño)'
+    skeleton: '&b&lEsqueleto'
+    wither-skeleton: '&b&lEsqueleto Wither'
+    stray-skeleton: '&b&lEsqueleto Callejero'
+    squid: '&b&lCalamar'
+    polar-bear: '&b&lOso Polar'
+    baby-polar-bear: '&b&lOso Polar &7(Bebe)'
+    brown-llama: '&b&lLlama Cafe'
+    baby-brown-llama: '&b&lLlama Cafe &7(Bebe)'
+    creamy-llama: '&b&lLlama Cremosa'
+    baby-creamy-llama: '&b&lLlama Cremosa &7(Bebe)'
+    gray-llama: '&b&lLlama Gris'
+    baby-gray-llama: '&b&lLlama Gris &7(Bebe)'
+    white-llama: '&b&lLlama Blanca'
+    baby-white-llama: '&b&lLlama Blanca &7(Bebe)'
+    normal-panda: '&5Panda: Normal'
+    baby-normal-panda: '&6Panda: Normal (Baby)'
+    lazy-panda: '&5Panda: Lazy'
+    baby-lazy-panda: '&6Panda: Lazy (Baby)'
+    worried-panda: '&5Panda: Worried'
+    baby-worried-panda: '&6Panda: Worried (Baby)'
+    playful-panda: '&5Panda: Playful'
+    baby-playful-panda: '&6Panda: Playful (Baby)'
+    brown-panda: '&5Panda: Brown'
+    baby-brown-panda: '&6Panda: Brown (Baby)'
+    weak-panda: '&5Panda: Weak'
+    baby-weak-panda: '&6Panda: Weak (Baby)'
+    aggressive-panda: '&5Panda: Aggressive'
+    baby-aggressive-panda: '&6Panda: Aggressive (Baby)'
+    turtle: '&b&lTortuga'
+    baby-turtle: '&b&lTortuga &7(Bebe)'
+    red-fox: '&5Red Fox'
+    baby-red-fox: '&6Red Fox (Baby)'
+    snow-fox: '&6Snow Fox'
+    baby-snow-fox: '&6Snow Fox (Baby)'
+    goat: '&5Goat'
+    baby-goat: '&b&lCabra &7(Bebe)'
+pet-default-names:
+  silverfish: '&ePez Plata'
+  chicken: '&ePollo'
+  baby-chicken: '&ePollo (Bebe)'
+  wolf: '&b&lLobo'
+  baby-wolf: '&eLobo (Bebe)'
+  black-cat: '&eGato Negro'
+  baby-black-cat: '&eGato Negro (Bebe)'
+  red-cat: '&eGato Rojo'
+  baby-red-cat: '&eGato Rojo (Bebe)'
+  siamese-cat: '&eGato Siames'
+  baby-siamese-cat: '&eGato Siames (Bebe)'
+  wild-ocelot: '&eOcelote Salvaje'
+  baby-wild-ocelot: '&eOcelote Salvaje (Bebe'
+  zombie: '&eZombie'
+  baby-zombie: '&eZombie (Bebe)'
+  husk: '&eZombie Husk'
+  baby-husk: '&eZombie Husk (Babe)'
+  red-little-helper: '&ePequeÃ±o Ayudante Rojo'
+  green-little-helper: '&ePequeÃ±o Ayudante Verde'
+  bat: '&eMurcielago'
+  spider: '&eAraña'
+  cave-spider: '&eAraÃ±a de Cueva'
+  snowman: '&eMuñeco de Nieve'
+  black-rabbit: '&b&lConejo Negro'
+  baby-black-rabbit: '&eConejo Negro (Bebe)'
+  black-and-white-rabbit: '&eConejo Blanco y Negro'
+  baby-black-and-white-rabbit: '&eConejo Blanco y Negro (Bebe)'
+  brown-rabbit: '&eConejo Cafe'
+  baby-brown-rabbit: '&eConejo Cafe (Bebe)'
+  gold-rabbit: '&eConejo Dorado'
+  baby-gold-rabbit: '&eConejo Dorado (Bebe)'
+  salt-and-pepper-rabbit: '&eConejo Pimienta'
+  baby-salt-and-pepper-rabbit: '&eConejo Pimienta (Bebe)'
+  white-rabbit: '&eConejo Blanco'
+  baby-white-rabbit: '&eConejo Blanco (Bebe)'
+  blacksmith-villager: '&eHerrero'
+  baby-blacksmith-villager: '&eHerrero (Bebe)'
+  butcher-villager: '&eCarnicero'
+  baby-butcher-villager: '&eCarnicero (Bebe)'
+  farmer-villager: '&eGranjero'
+  baby-farmer-villager: '&eGranjero (Bebe)'
+  librarian-villager: '&eLibrero'
+  baby-librarian-villager: '&eLibrero &7(Bebe)'
+  priest-villager: '&eSacerdote'
+  baby-priest-villager: '&bSacerdote (Bebe)'
+  zombie-villager: '&eZombie'
+  baby-zombie-villager: '&eZombie (Bebe)'
+  witch: '&eBruja'
+  evoker: '&eEvocador'
+  vindicator: '&eVindicador'
+  illusioner: '&eIlusionador'
+  golem: '&eGolem de Hierro'
+  enderman: '&eEnderman'
+  blaze: '&eBlaze'
+  endermite: '&eEndermite'
+  cow: '&eVaca'
+  baby-cow: '&eVaca (Bebe)'
+  mushroom-cow: '&eVaca Mushroom'
+  baby-mushroom-cow: '&eVaca Bebe (Mushroom)'
+  creeper: '&eCreeper'
+  powered-creeper: '&eCreeper Recargado'
+  black-horse: '&eCaballo Negro'
+  baby-black-horse: '&b&lCaballo Negro (Bebe)'
+  brown-horse: '&eCaballo Cafe'
+  baby-brown-horse: '&eCaballo Cafe (Bebe)'
+  chestnut-horse: '&eCastaño'
+  baby-chestnut-horse: '&eCastaño (Bebe)'
+  creamy-horse: '&eCremoso'
+  baby-creamy-horse: '&eCremoso (Bebe)'
+  dark-brown-horse: '&eCafe Oscuro'
+  baby-dark-brown-horse: '&eCafe Oscuro (Bebe)'
+  gray-horse: '&eGris'
+  baby-gray-horse: '&eGris (Bebe)'
+  white-horse: '&eBlanco'
+  baby-white-horse: '&eBlanco &7(Bebe)'
+  donkey: '&eBurro'
+  baby-donkey: '&eBurro (Bebe)'
+  mule: '&eMula'
+  baby-mule: '&b&lMula (Bebe)'
+  skeleton-horse: '&eCaballo Esqueleto'
+  baby-skeleton-horse: '&eCaballo Esqueleto (Bebe)'
+  undead-horse: '&eCaballo Zombie'
+  baby-undead-horse: '&eCaballo Zombie (Bebe)'
+  pig: '&eCerdo'
+  baby-pig: '&eCerdo (Bebe)'
+  pig-zombie: '&eCerdo Zombie'
+  baby-pig-zombie: '&eCerdo Zombie Bebe'
+  black-sheep: '&eOveja Negra'
+  baby-black-sheep: '&eOveja Bebe (Bebe)'
+  blue-sheep: '&eOveja Azul'
+  baby-blue-sheep: '&eOveja Azul (Bebe)'
+  brown-sheep: '&eOveja Cafe'
+  baby-brown-sheep: '&eOveja Cafe (Bebe)'
+  cyan-sheep: '&eOveja Cyan'
+  baby-cyan-sheep: '&eOveja Cyan (Bebe)'
+  gray-sheep: '&eOveja Gris'
+  baby-gray-sheep: '&eOveja Gris (Bebe)'
+  green-sheep: '&eOveja Verde'
+  baby-green-sheep: '&eOveja Verde (Bebe)'
+  light-blue-sheep: '&eOveja Celeste'
+  baby-light-blue-sheep: '&eOveja Celeste (Bebe)'
+  lime-sheep: '&eOveja Lima'
+  baby-lime-sheep: '&eOveja Lima (Bebe)'
+  magenta-sheep: '&eOveja Magneta'
+  baby-magenta-sheep: '&eOveja Magneta &7(Bebe)'
+  orange-sheep: '&eOveja Naranja'
+  baby-orange-sheep: '&eOveja Naranja (Bebe)'
+  pink-sheep: '&eOveja Rosa'
+  baby-pink-sheep: '&eOveja Rosa (Bebe)'
+  purple-sheep: '&eOveja Morada'
+  baby-purple-sheep: '&eOveja Morada (Bebe)'
+  red-sheep: '&eOveja Roja'
+  baby-red-sheep: '&eOveja Roja (Bebe)'
+  silver-sheep: '&eOveja Gris'
+  baby-silver-sheep: '&eOveja Gris (Bebe)'
+  white-sheep: '&eOveja Blanca'
+  baby-white-sheep: '&b&lOveja Blanca (Bebe)'
+  yellow-sheep: '&eOveja Amarilla'
+  baby-yellow-sheep: '&eOveja Amarilla (Bebe)'
+  rainbow-sheep: '&eOveja Colorida'
+  big-slime: '&eSlime &7(Grande)'
+  small-slime: '&eSlime &7(Normal)'
+  tiny-slime: '&eSlime &7(Pequeño)'
+  big-magma-cube: '&eMagma &7(Grande)'
+  small-magma-cube: '&eMagma (Normal)'
+  tiny-magma-cube: '&eMagma &7(Pequeño)'
+  skeleton: '&eEsqueleto'
+  wither-skeleton: '&eEsqueleto Wither'
+  stray-skeleton: '&eEsqueleto Callejero'
+  squid: '&eCalamar'
+  polar-bear: '&eOso Polar'
+  baby-polar-bear: '&eOso Polar (Bebe)'
+  brown-llama: '&eLlama Cafe'
+  baby-brown-llama: '&b&lLlama Cafe (Bebe)'
+  creamy-llama: '&eLlama Cremosa'
+  baby-creamy-llama: '&eLlama Cremosa (Bebe)'
+  gray-llama: '&eLlama Gris'
+  baby-gray-llama: '&b&lLlama Gris (Bebe)'
+  white-llama: '&eLlama Blanca'
+  baby-white-llama: '&eLlama Blanca (Bebe)'
+  normal-panda: '&5Panda: Normal'
+  baby-normal-panda: '&6Panda: Normal (Baby)'
+  lazy-panda: '&5Panda: Lazy'
+  baby-lazy-panda: '&6Panda: Lazy (Baby)'
+  worried-panda: '&5Panda: Worried'
+  baby-worried-panda: '&6Panda: Worried (Baby)'
+  playful-panda: '&5Panda: Playful'
+  baby-playful-panda: '&6Panda: Playful (Baby)'
+  brown-panda: '&5Panda: Brown'
+  baby-brown-panda: '&6Panda: Brown (Baby)'
+  weak-panda: '&5Panda: Weak'
+  baby-weak-panda: '&6Panda: Weak (Baby)'
+  aggressive-panda: '&5Panda: Aggressive'
+  baby-aggressive-panda: '&6Panda: Aggressive (Baby)'
+  turtle: '&eTortuga'
+  baby-turtle: '&eTortuga (Bebe)'
+  red-fox: '&5Red Fox'
+  baby-red-fox: '&6Red Fox (Baby)'
+  snow-fox: '&6Snow Fox'
+  baby-snow-fox: '&6Snow Fox (Baby)'
+  goat: '&5Goat'
+  baby-goat: '&eCabra (Bebe)'
+emote-holograms:
+  smile: '&6Linda Sonrisa'
+  cool: '&6B)'
+  wink: '&6Guiños'
+  grin: '&6Yey!'
+  surprised: '&6OMG'
+  cry: '&6Waaaaa!'
+  sleepy: '&6ZZzzzz'
+  rage: '&cGRRRRR!!!'
+  frown: '&fsniff'
+  cheeky: '&6:P'
+  sun-tan: '&6Soleado'
+  heart-eyes: '&d❤  ❤'
+  dizzy: '&c'
+  rip: '&cx_x'
+  relax: '&6:)'
+  spicy: '&6Uff'
+  deal-with-it: '&6Tratando con el'
+  smiles: ''
+suit-descriptions:
+  frog: |-
+    &7
+    &fHabilidad: Posibilidad de saltar
+    &fmás de lo normal.
+  ninja: |-
+    &7
+    &fHabilidad: Lanzar Shurikens al
+    &fhacer clic en el aire.
+  speedster: |-
+    &7
+    &fHabilidad: Sprintear para correr
+    &fmucho más rápido de lo normal.
+  ghostly: |-
+    &7
+    &fHabilidad: Hacer invisible
+    &fa quien este utilizando el traje.
+  disco: |-
+    &7
+    &fHabilidad: Cambiar de colores
+    &fcada pieza del traje.
+  mermaid: |-
+    &7
+    &fHabilidad: Transformarse en
+    &fun calamar al entrar al agua.
+  spooderman: |-
+    &7
+    &fHabilidad: Lanzar telaraña
+    &fy ser impulsado hacia donde se lanza.
+  warrior: |-
+    &7
+    &fHabilidad: Levanta los bloques
+    &fde tu alrededor con un clic.
+  necromancer: |-
+    &7
+    &fHabilidad: Aparece a tu ejercito de
+    &fmosntruos con un clic.
+  thor: |-
+    &7
+    &fHabilidad: Haz caer un Yunque del
+    &fcielo seguido de un Rayo.
+  baker: |-
+    &7
+    &fHabilidad: Haz clic para
+    &flanzar Pan recien hecho.
+  bumblebee: |-
+    &7
+    &fHabilidad: Haz clic para
+    &freproducir una canción.
+  firefighter: |-
+    &7
+    &fHabilidad: Lanzar un spray
+    &fde agua al hacer clic.
+  plumber: |-
+    &7
+    &fHabilidad: Lanzar bolas de
+    &ffuego con un clic.
+  ice-walker: |-
+    &7
+    &fHabilidad: Crear capas de nieve
+    &fen cada bloque que pisas.
+  vampire: |-
+    &7
+    &fHabilidad: Te transformaras
+    &fen muercielago al volar.
+gadget-categories:
+  fun-and-games:
+    name: '&b&lArtefactos de Diversión'
+    title: '&8&lS&7&lS&0 » Diversión'
+    lore: |-
+      &b&l
+      &fUtiliza artefactos de minijuegos
+      &fcompartidos y diversión en el lobby
+  mobs-and-npcs:
+    name: '&b&lArtefactos de Mobs'
+    title: '&8&lS&7&lS&0 » Mobs y NPCs'
+    lore: |-
+      &b&l
+      &fJuega con divertidos artefactos
+      &fde mobs y otras cosas.
+  movement:
+    name: '&b&lArtefactos de Movimiento'
+    title: '&8&lS&7&lS&0 » Movimiento'
+    lore: |-
+      &b&l
+      &fCambia tu forma de caminar o
+      &fvolar de una manera divertida.
+  musical:
+    name: '&b&lArtefactos de Música'
+    title: '&8&lS&7&lS&0 » Música'
+    lore: |-
+      &b&l
+      &fSi te gusta la música reproduce algunos
+      &fdiscos o conviertete en un DJ.
+  projectile:
+    name: '&b&lArtefactos de Proyectiles'
+    title: '&8&lS&7&lS&0 » Proyectiles'
+    lore: |-
+      &b&l
+      &fUsa geniales items con los que
+      &fpodrás disparar varias cosas.
+  visual:
+    name: '&b&lArtefactos Visuales'
+    title: '&8&lS&7&lS&0 » Visuales'
+    lore: |-
+      &b&l
+      &fUtiliza artefactos que crean partículas
+      &fy más cosas en el lobby.
+pet-categories:
+  silverfish:
+    name: '&b&lPeces Plata'
+    title: '&8&lS&7&lS&0 » Pez Plata'
+    lore: |-
+      &7
+      &fIngresa al menú donde se encuentran
+      &ftodos los tipos de Pez Plata.
+  chicken:
+    name: '&b&lPollos'
+    title: '&8&lS&7&lS&0 » Pollos'
+    lore: |-
+      &7
+      &fIngresa al menú donde se encuentran
+      &ftodos los tipos de Pollos.
+  wolf:
+    name: '&b&lLobos'
+    title: '&8&lS&7&lS&0 » Lobos'
+    lore: |-
+      &7
+      &fIngresa al menú donde se encuentran
+      &ftodos los tipos de Lobos.
+  cat:
+    name: '&b&lGatos'
+    title: '&8&lS&7&lS&0 » Gatos'
+    lore: |-
+      &7
+      &fIngresa al menú donde se encuentran
+      &ftodos los tipos de Gatos.
+  zombie:
+    name: '&b&lZombies'
+    title: '&8&lS&7&lS&0 » Zombies'
+    lore: |-
+      &7
+      &fIngresa al menú donde se encuentran
+      &ftodos los tipos de Zombies.
+  bat:
+    name: '&b&lMurcielagos'
+    title: '&8&lS&7&lS&0 » Murcielagos'
+    lore: |-
+      &7
+      &fIngresa al menú donde se encuentran
+      &ftodos los tipos de Murcielagos.
+  spider:
+    name: '&b&lAraÃ±as'
+    title: '&8&lS&7&lS&0 » AraÃ±as'
+    lore: |-
+      &7
+      &fIngresa al menú donde se encuentran
+      &ftodos los tipos de AraÃ±as.
+  snowman:
+    name: '&b&lMuñecos de Nieve'
+    title: '&8&lS&7&lS&0 » Muñeco de Nieve'
+    lore: |-
+      &7
+      &fIngresa al menú donde se encuentran
+      &ftodos los tipos de Muñecos de Nieve.
+  rabbit:
+    name: '&b&lConejos'
+    title: '&8&lS&7&lS&0 » Conejos'
+    lore: |-
+      &7
+      &fIngresa al menú donde se encuentran
+      &ftodos los tipos de Conejos.
+  villager:
+    name: '&b&lAldeanos'
+    title: '&8&lS&7&lS&0 » Aldeanos'
+    lore: |-
+      &7
+      &fIngresa al menú donde se encuentran
+      &ftodos los tipos de Aldeanos.
+  golem:
+    name: '&b&lGolems de Hierro'
+    title: '&8&lS&7&lS&0 » Golems'
+    lore: |-
+      &7
+      &fIngresa al menú donde se encuentran
+      &ftodos los tipos de Golems de Hierro.
+  enderman:
+    name: '&b&lEndermans'
+    title: '&8&lS&7&lS&0 » Endermans'
+    lore: |-
+      &7
+      &fIngresa al menú donde se encuentran
+      &ftodos los tipos de Endermans.
+  blaze:
+    name: '&b&lBlazes'
+    title: '&8&lS&7&lS&0 » Blazes'
+    lore: |-
+      &7
+      &fIngresa al menú donde se encuentran
+      &ftodos los tipos de Blazes.
+  endermite:
+    name: '&b&lEndermites'
+    title: '&8&lS&7&lS&0 » Endermites'
+    lore: |-
+      &7
+      &fIngresa al menú donde se encuentran
+      &ftodos los tipos de Endermites.
+  cow:
+    name: '&b&lVacas'
+    title: '&8&lS&7&lS&0 » Vacas'
+    lore: |-
+      &7
+      &fIngresa al menú donde se encuentran
+      &ftodos los tipos de Vacas.
+  creeper:
+    name: '&b&lCreepers'
+    title: '&8&lS&7&lS&0 » Creepers'
+    lore: |-
+      &7
+      &fIngresa al menú donde se encuentran
+      &ftodos los tipos de Creepers
+  horse:
+    name: '&b&lCaballos'
+    title: '&8&lS&7&lS&0 » Caballos'
+    lore: |-
+      &7
+      &fIngresa al menú donde se encuentran
+      &ftodos los tipos de Caballos
+  pig:
+    name: '&b&lCerdos'
+    title: '&8&lS&7&lS&0 » Cerdos'
+    lore: |-
+      &7
+      &fIngresa al menú donde se encuentran
+      &ftodos los tipos de Cerdos.
+  sheep:
+    name: '&b&lOvejas'
+    title: '&8&lS&7&lS&0 » Ovejas'
+    lore: |-
+      &7
+      &fIngresa al menú donde se encuentran
+      &ftodos los tipos de Ovejas.
+  slime:
+    name: '&b&lSlimes'
+    title: '&8&lS&7&lS&0 » Slimes'
+    lore: |-
+      &7
+      &fIngresa al menú donde se encuentran
+      &ftodos los tipos de Slimes.
+  skeleton:
+    name: '&b&lEsqueletos'
+    title: '&8&lS&7&lS&0 » Esqueletos'
+    lore: |-
+      &7
+      &fIngresa al menú donde se encuentran
+      &ftodos los tipos de Esqueletos.
+  squid:
+    name: '&b&lCalamares'
+    title: '&8&lS&7&lS&0 » Calamares'
+    lore: |-
+      &7
+      &fIngresa al menú donde se encuentran
+      &ftodos los tipos de Calamares.
+  polar-bear:
+    name: '&b&lOsos Polares'
+    title: '&8&lS&7&lS&0 » Osos Polares'
+    lore: |-
+      &7
+      &fIngresa al menú donde se encuentran
+      &ftodos los tipos de Osos Polares.
+  llama:
+    name: '&b&lLlamas'
+    title: '&8&lS&7&lS&0 » Llamas'
+    lore: |-
+      &7
+      &fIngresa al menú donde se encuentran
+      &ftodos los tipos de Llamas.
+  panda:
+    name: '&6Panda'
+    title: '&8&lS&7&lS&0 » Panda'
+    lore: |-
+      &7Clic here to see all pets
+      &7in the Panda category!
+  turtle:
+    name: '&6Turtle'
+    title: '&8&lS&7&lS&0 » Turtle'
+    lore: |-
+      &7
+      &fIngresa al menú donde se encuentran
+      &ftodos los tipos de Tortugas.
+  fox:
+    name: '&6Fox'
+    title: '&8&lS&7&lS&0 » Fox'
+    lore: |-
+      &7Clic here to see all pets
+      &7in the Fox category!
+  goat:
+    name: '&b&lCabras'
+    title: '&8&lS&7&lS&0 » Cabras'
+    lore: |-
+      &7
+      &fIngresa al menú donde se encuentran
+      &ftodos los tipos de Cabras.
+pet-items:
+  apple:
+    name: '&b&lManzana'
+    lore: |-
+      &FAlimenta a tu mascota para
+      &fllenar su hambre y que este feliz.
+  melon:
+    name: '&b&lSandía'
+    lore: |-
+      &FAlimenta a tu mascota para
+      &fllenar su hambre y que este feliz.
+  pumpkin-pie:
+    name: '&b&lPay de Calabaza'
+    lore: |-
+      &FAlimenta a tu mascota para
+      &fllenar su hambre y que este feliz.
+  carrot:
+    name: '&b&lZanahoria'
+    lore: |-
+      &FAlimenta a tu mascota para
+      &fllenar su hambre y que este feliz.
+  baked-potato:
+    name: '&b&lPatata Cocinada'
+    lore: |-
+      &FAlimenta a tu mascota para
+      &fllenar su hambre y que este feliz.
+  mushroom-soup:
+    name: '&b&lSopa de Setas'
+    lore: |-
+      &FAlimenta a tu mascota para
+      &fllenar su hambre y que este feliz.
+  flower:
+    name: '&b&lFlor'
+    lore: |-
+      &FAlimenta a tu mascota para
+      &fllenar su hambre y que este feliz.
+  hay:
+    name: '&b&lHeno'
+    lore: |-
+      &FAlimenta a tu mascota para
+      &fllenar su hambre y que este feliz.
+  wheat:
+    name: '&b&lTrigo'
+    lore: |-
+      &FAlimenta a tu mascota para
+      &fllenar su hambre y que este feliz.
+  bread:
+    name: '&b&lPan'
+    lore: |-
+      &FAlimenta a tu mascota para
+      &fllenar su hambre y que este feliz.
+  cookie:
+    name: '&b&lGalleta'
+    lore: |-
+      &FAlimenta a tu mascota para
+      &fllenar su hambre y que este feliz.
+  cake:
+    name: '&b&lPastel'
+    lore: |-
+      &FAlimenta a tu mascota para
+      &fllenar su hambre y que este feliz.
+  raw-fish:
+    name: '&b&lPez crudo'
+    lore: |-
+      &FAlimenta a tu mascota para
+      &fllenar su hambre y que este feliz.
+  raw-porkchop:
+    name: '&b&lChuleta Cruda'
+    lore: |-
+      &FAlimenta a tu mascota para
+      &fllenar su hambre y que este feliz.
+  angus-steak:
+    name: '&b&lCarne Cocinada'
+    lore: |-
+      &FAlimenta a tu mascota para
+      &fllenar su hambre y que este feliz.
+  bone:
+    name: '&b&lHueso'
+    lore: |-
+      &FAlimenta a tu mascota para
+      &fllenar su hambre y que este feliz.
+  rotten-flesh:
+    name: '&b&lCarne Podrida'
+    lore: |-
+      &FAlimenta a tu mascota para
+      &fllenar su hambre y que este feliz.
+  magma-cream:
+    name: '&b&lCrema de Magma'
+    lore: |-
+      &FAlimenta a tu mascota para
+      &fllenar su hambre y que este feliz.
+  water:
+    name: '&b&lAgua'
+    lore: |-
+      &FDale de beber a tu mascota para
+      &fllenar su sed y que este feliz.
+  milk:
+    name: '&b&lLeche'
+    lore: |-
+      &FDale de beber a tu mascota para
+      &fllenar su sed y que este feliz.
+  lava:
+    name: '&b&lLava'
+    lore: |-
+      &FDale de beber a tu mascota para
+      &fllenar su sed y que este feliz.
+  stick:
+    name: '&b&lPalo'
+    lore: |-
+      &FDale un juguete a tu mascota para
+      &fque se ejercite y que este feliz.
+  ball:
+    name: '&b&lSlime'
+    lore: |-
+      &FDale un juguete a tu mascota para
+      &fque se ejercite y que este feliz.
+  leash:
+    name: '&b&lCuerda'
+    lore: |-
+      &FDale un juguete a tu mascota para
+      &fque se ejercite y que este feliz.
+  feather:
+    name: '&b&lPluma'
+    lore: |-
+      &FDale un juguete a tu mascota para
+      &fque se ejercite y que este feliz.
+  frisbee:
+    name: '&b&lFrisbee'
+    lore: |-
+      &FDale un juguete a tu mascota para
+      &fque se ejercite y que este feliz.
+  sparring-sword:
+    name: '&b&lEspada'
+    lore: |-
+      &FDale un juguete a tu mascota para
+      &fque se ejercite y que este feliz.
