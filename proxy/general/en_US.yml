@@ -37,6 +37,10 @@ lobby:
   already-connected: '{prefix}&cYou are already connected to the lobby.'
   no-server: '{prefix}&cNo lobby server was found.'
   connecting: '{prefix}&7Connecting you to the lobby...'
+  not-found: '{prefix}&cThere is no lobby called &e{group}&c.'
+  no-permission: '{prefix}&cYou do not have permission to go to &e{group}&c.'
+  already-in-group: '{prefix}&cYou are already in &e{group}&c.'
+  connecting-group: '{prefix}&7Connecting you to &b{group}&7...'
 
 groups:
   help: |-
