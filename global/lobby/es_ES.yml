@@ -207,8 +207,8 @@ menus:
           &7 Coins: &b%core_coins%
           &7
           &8Cosméticos:
-          &7 Cajas: &e0
-          &7 Doritos: &60
+          &7 Cajas: &e%cosmetics_mystery_boxes%
+          &7 Doritos: &6%cosmetics_mystery_dust%
           &7     
       cosmetics:
         name: '&7» &bCosméticos'
