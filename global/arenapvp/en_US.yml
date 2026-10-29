@@ -1,0 +1,719 @@
+prefix: '&c&lArenaPvP &8» '
+
+general:
+  loading: '&cYour data is still loading, please join again in a few seconds.'
+
+# Used by GameCore while moving players around.
+game:
+  no-games: '{prefix}&cThere is no free arena right now! Try again in a few seconds.'
+  # %s: game
+  sending: '{prefix}&7Sending you to &e%s&7...'
+  queued: '{prefix}&7No free arenas: &eyou will join as soon as one is free&7.'
+player:
+  teleport:
+    lobby: '{prefix}&7Going back to the &elobby&7...'
+
+commands:
+  unknown: '{prefix}&cThat command does not exist! Use &e/apvp help&c.'
+  only-players: '{prefix}&cThis option is for players only!'
+  no-permission: '{prefix}&cYou do not have permission to do that!'
+  error: '{prefix}&cSomething went wrong running the command, check the console.'
+  only-lobby: '{prefix}&cYou can only do this in the lobby!'
+  # %s: player
+  player-not-found: '{prefix}&cThe player &e%s &cis not online.'
+  # %s: mode
+  unknown-mode: '{prefix}&cThere is no mode called &e%s&c.'
+  not-in-match: '{prefix}&cYou are not in any match or queue!'
+  usage:
+    arena: '{prefix}&cUsage: &e/apvp arena create|edit [map], set [red|blue|spectators], region, goal|cage|cagespawn [red|blue], finish, miny <y>, modes [modes], instances [n], maxplayers [n], name [name], wand, check, save, exit, list, delete [map] <map>'
+    duel: '{prefix}&cUsage: &e/duel [player] <mode> <rounds>&c, &e/duel accept|deny [player] &cor &e/duel toggle&c.'
+    kit: '{prefix}&cUsage: &e/apvp kit save|reset|cancel'
+    spect: '{prefix}&cUsage: &e/spect [player]'
+  help:
+    # %s: version
+    header: |-
+      &7
+      {prefix}&fHelp &7● &e<optional> / [required] &8(v%s)
+      &7
+    footer: '&7'
+    queue: '&7 /apvp queue <mode> <ranked> - &eJoin the queue of a mode.'
+    leave: '&7 /apvp leave - &eLeave the queue, the match or the editor.'
+    editkit: '&7 /apvp editkit <mode> - &eArrange the kit of a mode.'
+    history: '&7 /apvp history <player> - &eLatest matches.'
+    elo: '&7 /apvp elo <player> - &eELO in every mode.'
+    menu: '&7 /apvp menu [id] - &eOpen an ArenaPvP menu.'
+    setlobby: '&7 /apvp setlobby - &eSet the lobby spawn.'
+    setkit: '&7 /apvp setkit [mode] - &eSave your inventory as the kit of a mode.'
+    reload: '&7 /apvp reload <arenas> - &eReload the files (and the arenas).'
+    debug: '&7 /apvp debug - &eState of the arenas and queues.'
+    arena: '&7 /apvp arena - &eCreate and edit maps.'
+
+admin:
+  lobby-set: '{prefix}&7Lobby spawn &aset &7where you are.'
+  # %s: mode
+  kit-saved: '{prefix}&7Kit of &e%s &asaved &7from your inventory.'
+  reloaded: '{prefix}&aFiles reloaded.'
+
+teams:
+  red: 'Red'
+  blue: 'Blue'
+  green: 'Green'
+  yellow: 'Yellow'
+
+modes:
+  nodebuff:
+    name: 'NoDebuff'
+    description: |-
+      &7
+      &f Sword, pearls and healing potions.
+      &f No harming potions.
+  debuff:
+    name: 'Debuff'
+    description: |-
+      &7
+      &f Like NoDebuff, with poison and
+      &f slowness potions.
+  builduhc:
+    name: 'BuildUHC'
+    description: |-
+      &7
+      &f Building allowed and no regeneration:
+      &f golden apples and golden heads.
+  gapple:
+    name: 'GApple'
+    description: |-
+      &7
+      &f Strong armor, strength, speed
+      &f and plenty of god apples.
+  combo:
+    name: 'Combo'
+    description: |-
+      &7
+      &f Very fast hits and combo knockback.
+  classic:
+    name: 'Classic'
+    description: |-
+      &7
+      &f The usual sword, bow and rod.
+  axepvp:
+    name: 'Axe PvP'
+    description: |-
+      &7
+      &f Fight with axes.
+  cavefight:
+    name: 'Cave Fight'
+    description: |-
+      &7
+      &f Fight in caves: mining and building
+      &f allowed.
+  training:
+    name: 'Training'
+    description: |-
+      &7
+      &f Simple matches to practice.
+  sumo:
+    name: 'Sumo'
+    description: |-
+      &7
+      &f No damage: knock your rival off the ring.
+  boxing:
+    name: 'Boxing'
+    description: |-
+      &7
+      &f No damage: first to land 100 hits wins.
+  spleef:
+    name: 'Spleef'
+    description: |-
+      &7
+      &f Break the snow under your rival.
+      &f Whoever touches the water loses.
+  stickfight:
+    name: 'Stick Fight'
+    description: |-
+      &7
+      &f Knockback stick and wool.
+      &f Each team has 5 lives.
+  thebridge:
+    name: 'The Bridge'
+    description: |-
+      &7
+      &f Cross the bridge and jump into the
+      &f enemy goal. 5 goals to win.
+  battlerush:
+    name: 'BattleRush'
+    description: |-
+      &7
+      &f No damage: build your way to the
+      &f enemy goal. 3 goals to win.
+  survivalrun:
+    name: 'Survival Run'
+    description: |-
+      &7
+      &f Reach the finish before your rival.
+      &f PvP starts halfway through.
+  skywars:
+    name: 'SkyWars'
+    description: |-
+      &7
+      &f 1v1 SkyWars: loot the chests and
+      &f knock your rival into the void.
+
+items:
+  unranked:
+    name: '&aPlay unranked &7(Right click)'
+    lore: |-
+      &7
+      &f Unranked matches of every mode.
+      &7
+      &e Click to choose a mode.
+      &f
+  ranked:
+    name: '&bRanked &7(Right click)'
+    lore: |-
+      &7
+      &f ELO matches: you are paired with
+      &f players of your level.
+      &7
+      &e Click to choose a mode.
+      &f
+  party:
+    name: '&dParty fight &7(Right click)'
+    lore: |-
+      &7
+      &f Split your party into two teams.
+      &f Leader only.
+      &7
+      &e Click to choose a mode.
+      &f
+  editor:
+    name: '&6Kit editor &7(Right click)'
+    lore: |-
+      &7
+      &f Arrange the items of every kit.
+      &7
+      &e Click to choose a kit.
+      &f
+  history:
+    name: '&eStatistics &7(Right click)'
+    lore: |-
+      &7
+      &f Your ELO and your latest matches.
+      &7
+      &e Click to see them.
+      &f
+  leave-queue:
+    name: '&cLeave the queue &7(Right click)'
+    lore: |-
+      &7
+      &f Stop looking for a match.
+      &f
+  golden-head:
+    name: '&6Golden head'
+
+queue:
+  # %1$s: mode, %2$s: kind, %3$s: time
+  actionbar: '&7Looking for &e%1$s &8(%2$s&8) &7· &f%3$s'
+  # %s: mode, kind
+  joined: '{prefix}&7Looking for a &e%s &8(%s&8) &7match. Use the red dye or &e/leave &7to leave.'
+  left: '{prefix}&7You &cleft &7the queue.'
+  # %s: mode
+  matched: '{prefix}&aMatch found! &7Sending you to &e%s&7...'
+  no-game: '{prefix}&7There are no free &e%s &7arenas right now; &eyou are still queued&7.'
+  not-ranked: '{prefix}&c&e%s &cis not played ranked!'
+  party-ranked: '{prefix}&cRanked is solo only! Leave your party to play.'
+  party-use-menu: '{prefix}&7You are in a party: use the &dParty fight &7menu to play with it.'
+  in-match: '{prefix}&cYou are already in a match!'
+
+match:
+  kind:
+    ranked: '&bRanked'
+    unranked: '&aUnranked'
+    duel: '&6Duel'
+    party: '&dParty'
+  # %1$s: player, %2$s: arrived, %3$s: expected
+  player-joined: '{prefix}&e%1$s &7arrived. &8(&a%2$s&8/&a%3$s&8)'
+  # %s: player
+  player-left: '{prefix}&e%s &7left the match.'
+  # %1$s: mode, %2$s: players, %3$s: kind, %4$s: rounds
+  start-message:
+    - '&8&m-------------------------------'
+    - '&e&l%1$s &7(%3$s&7)'
+    - '%2$s'
+    - '&7Best of &e%4$s'
+    - '&8&m-------------------------------'
+  # %1$s: player, %2$s: ELO
+  opponent-elo: '{prefix}&7Your rival &e%1$s &7has &b%2$s &7ELO.'
+  countdown:
+    # %s: seconds
+    title: '&e%s'
+    subtitle: '&7Get ready!'
+  fight:
+    title: '&cFight!'
+    subtitle: ''
+  # %1$s: round, %2$s: score
+  round-start: '{prefix}&7Round &e%1$s &8(%2$s&8)'
+  # %1$s: victim, %2$s: killer
+  killed: '{prefix}%1$s &7was taken down by %2$s&7.'
+  # %s: victim
+  died: '{prefix}%s &7fell.'
+  # %1$s: team, %2$s: score
+  round-won: '{prefix}%1$s &7wins the round. &8(%2$s&8)'
+  time-limit: '{prefix}&cTime is up! &7The match is a draw.'
+  victory:
+    title: '&a&lVICTORY!'
+    subtitle: '&7Well played!'
+  defeat:
+    title: '&c&lDEFEAT'
+    subtitle: '&7Better luck next time.'
+  draw:
+    title: '&e&lDRAW'
+    subtitle: '&7Nobody wins this time.'
+  nobody: '&7Nobody'
+  # %1$s: mode, %2$s: winners, %3$s: duration
+  summary:
+    - '&8&m-------------------------------'
+    - '&e&l%1$s &7· &f%3$s'
+    - '&7Winner: %2$s'
+  # %1$s: hits, %2$s: accuracy, %3$s: combo, %4$s: damage, %5$s: bow, %6$s: apples, %7$s: pearls
+  stats:
+    - '&7Hits: &f%1$s &8(&f%2$s%%&8) &7· Combo: &f%3$s'
+    - '&7Damage: &c%4$s❤ &7· Bow: &f%5$s%% &7· Apples: &f%6$s &7· Pearls: &f%7$s'
+    - '&8&m-------------------------------'
+  # %1$s: points, %2$s: new ELO
+  elo-gain: '&7ELO: &a+%1$s &8(&b%2$s&8)'
+  elo-loss: '&7ELO: &c-%1$s &8(&b%2$s&8)'
+  forfeit: '&7Your rival left the match.'
+  cancelled-left: '{prefix}&cThe match is cancelled: someone left before it started.'
+  cancelled-missing: '{prefix}&cThe match is cancelled: not every player arrived.'
+  # %1$s: player, %2$s: hearts
+  health-bar: '&e%1$s &7has &c%2$s❤'
+  # %s: seconds
+  pearl-cooldown: '{prefix}&cYou can use another pearl in &e%s &cs.'
+  respawn:
+    title: '&cYou fell!'
+    # %s: seconds
+    subtitle: '&7Back in &e%s&7...'
+  you-left: '{prefix}&7You left the match.'
+
+arena:
+  only-matches: '{prefix}&cArenas can only be joined with a matched game.'
+  mode-unavailable: '{prefix}&cThis arena does not have that mode; back to the lobby.'
+  editor:
+    # %s: map
+    created: '{prefix}&7Map &e%s &acreated&7. Set the spawns with &e/apvp arena set red|blue&7 and use the golden axe for the zones.'
+    editing: '{prefix}&7Editing &e%s&7. &e/apvp arena check &7tells you what is missing.'
+    in-use: '{prefix}&cThe map &e%s &cis in use! Wait for its match to end.'
+    not-editing: '{prefix}&cYou are not editing any map! Use &e/apvp arena edit [map]&c.'
+    # %1$s: corner, %2$s %3$s %4$s: coordinates
+    corner: '{prefix}&7Corner &e%1$s&7: &f%2$s, %3$s, %4$s'
+    no-selection: '{prefix}&cMark both corners with the golden axe (left and right click).'
+    # %s: point
+    point-set: '{prefix}&7Point &e%s &asaved &7where you are.'
+    # %s: zone
+    zone-set: '{prefix}&7Zone &e%s &asaved &7from your selection.'
+    # %1$s: key, %2$s: value
+    value-set: '{prefix}&e%1$s&7: &f%2$s'
+    complete: '{prefix}&aThe map is complete!'
+    missing:
+      red: '{prefix}&cThe red team spawn is missing &7(/apvp arena set red)&c.'
+      blue: '{prefix}&cThe blue team spawn is missing &7(/apvp arena set blue)&c.'
+      modes: '{prefix}&cSay which modes are played here &7(/apvp arena modes ...)&c.'
+      goals: '{prefix}&cThe goals are missing &7(/apvp arena goal red|blue)&c.'
+      finish: '{prefix}&cThe finish is missing &7(/apvp arena finish)&c.'
+    # %s: map
+    saved: '{prefix}&7Map &e%s &asaved &7to maps/. Use &e/apvp reload arenas &7to load it.'
+    saved-incomplete: '{prefix}&7Map &e%s &asaved&7, but it is &cnot complete &7yet (&e/apvp arena check&7).'
+    # %s: maps
+    list: '{prefix}&7Maps: &e%s'
+    deleted: '{prefix}&7Map &e%s &cdeleted&7.'
+    exit: '{prefix}&7You left the map editor.'
+
+spectate:
+  no-match: '{prefix}&cThat arena has no match right now.'
+  full: '{prefix}&cThis match already has the maximum number of spectators!'
+  # %1$s: mode, %2$s: players
+  joined: '{prefix}&7Watching &e%1$s&7: %2$s'
+  # %s: spectator
+  announce: '{prefix}&e%s &7is watching the match.'
+
+kit-editor:
+  busy: '{prefix}&cYou cannot do this now! &7Leave the queue or the kit editor first.'
+  # %s: mode
+  no-kit: '{prefix}&c&e%s &chas no kit to arrange!'
+  opened:
+    - '&8&m-------------------------------'
+    - '{prefix}&7Editing the &e%s &7kit.'
+    - '&7Place the items as you like and save.'
+  save-button: '&a&l[SAVE]'
+  save-hover: '&7Save this layout.'
+  reset-button: '&e&l[RESET]'
+  reset-hover: '&7Back to the default layout.'
+  cancel-button: '&c&l[CANCEL]'
+  cancel-hover: '&7Leave without saving.'
+  not-editing: '{prefix}&cYou are not editing any kit!'
+  saved: '{prefix}&7Kit of &e%s &asaved&7.'
+  reset: '{prefix}&7Kit of &e%s &ereset&7.'
+  cancelled: '{prefix}&7You left the editor &cwithout saving&7.'
+
+duel:
+  # %1$s: challenger, %2$s: mode, %3$s: rounds
+  invite:
+    - '&8&m-------------------------------'
+    - '{prefix}&e%1$s &7challenges you to &e%2$s &8(best of %3$s)'
+  accept-button: '&a&l[ACCEPT]'
+  accept-hover: '&7Accept the duel.'
+  deny-button: '&c&l[DENY]'
+  deny-hover: '&7Deny the duel.'
+
+# Replies to requests (from FurryCore or this server). %s: a player or a mode.
+replies:
+  duel:
+    sent: '{prefix}&7Challenge sent to &e%s&7.'
+    offline: '{prefix}&cThe player &e%s &cis not online.'
+    self: '{prefix}&cYou cannot challenge yourself!'
+    disabled: '{prefix}&e%s &cdoes not accept duels.'
+    unavailable: '{prefix}&e%s &ccannot get duels right now (not in an ArenaPvP lobby).'
+    expired: '{prefix}&cThat challenge does not exist or has expired.'
+    denied: '{prefix}&e%s &cdenied your challenge.'
+    denied-self: '{prefix}&7You denied the challenge from &e%s&7.'
+    accepted: '{prefix}&e%s &aaccepted your challenge&7.'
+    accepted-self: '{prefix}&aDuel accepted&7.'
+    no-game: '{prefix}&cThere are no free &e%s &carenas right now.'
+    enabled: '{prefix}&7Duels &aenabled&7.'
+    toggled-off: '{prefix}&7Duels &cdisabled&7.'
+  party:
+    no-party: '{prefix}&cYou are not in a party!'
+    not-leader: '{prefix}&cOnly the party leader can do this!'
+    too-small: '{prefix}&cAt least &e%s &conline members are needed.'
+    started: '{prefix}&a&e%s &aparty fight!'
+    no-game: '{prefix}&cThere are no free &e%s &carenas right now.'
+  spectate:
+    offline: '{prefix}&cThe player &e%s &cis not online.'
+    not-playing: '{prefix}&e%s &cis not in any match.'
+    sending: '{prefix}&7Sending you to watch &e%s&7...'
+
+bridge:
+  scored:
+    # %s: player
+    title: '%s &e&lscores!'
+    # %1$s: player, %2$s: hearts, %3$s: score
+    chat:
+      - '&6&m-------------------------------'
+      - '%1$s &7(&c%2$s❤&7) &escores!'
+      - '%3$s'
+      - '&6&m-------------------------------'
+  # %s: seconds
+  cages: '&7Cages open in &a%ss&7...'
+
+battlerush:
+  # %s: seconds
+  pause: '&e%s'
+
+survivalrun:
+  pvp-enabled: '{prefix}&cPvP is now enabled!'
+  # %1$s: arrow, %2$s: distance
+  compass: '&e%1$s &7Finish in &f%2$sm'
+  pvp-on: '&cOn'
+  pvp-off: '&aOff'
+
+elo:
+  # %1$s: player, %2$s: average ELO, %3$s: rank
+  header:
+    - '&7'
+    - '{prefix}&fELO of &e%1$s&7: &b%2$s %3$s'
+  # %1$s: mode, %2$s: ELO, %3$s: wins, %4$s: losses
+  line: '&7 %1$s&7: &b%2$s &8(&a%3$sW &c%4$sL&8)'
+
+menus:
+  unavailable: '{prefix}&cThat menu is not available here.'
+  # %s: mode name
+  mode-name: '&a%s'
+  in-this-queue:
+    - '&7'
+    - '&a You are in this queue.'
+    - '&c Click to leave.'
+  general-items:
+    close:
+      name: '&cClose'
+      lore: |-
+        &7
+        &e Click to close.
+        &f
+    prevPage:
+      name: '&aPrevious page &7({actualPage}/{maxPages})'
+      lore: |-
+        &7
+        &e Click to go back.
+        &f
+    nextPage:
+      name: '&aNext page &7({actualPage}/{maxPages})'
+      lore: |-
+        &7
+        &e Click to go forward.
+        &f
+  links:
+    unranked:
+      name: '&aUnranked'
+      lore: |-
+        &7
+        &e Click to see the unranked modes.
+        &f
+    ranked:
+      name: '&bRanked'
+      lore: |-
+        &7
+        &e Click to see the ranked modes.
+        &f
+    party:
+      name: '&dParty fight'
+      lore: |-
+        &7
+        &e Click to play with your party.
+        &f
+  unranked:
+    title: '&8&lS&7&lS&0 » Unranked'
+    # %1$s: queued, %2$s: playing, %3$s: your ELO, %4$s: wins, %5$s: losses
+    mode-lore: |-
+      &7
+      &f Queued: &e%1$s
+      &f Playing: &e%2$s
+      &7
+      &e Click to look for a match.
+      &f
+    empty:
+      name: '&cNo modes'
+      lore: |-
+        &7
+        &f There are no modes right now.
+        &f
+  ranked:
+    title: '&8&lS&7&lS&0 » Ranked'
+    mode-lore: |-
+      &7
+      &f Your ELO: &b%3$s
+      &f Wins: &a%4$s &8· &fLosses: &c%5$s
+      &f Queued: &e%1$s &8· &fPlaying: &e%2$s
+      &7
+      &e Click to look for a match.
+      &f
+    empty:
+      name: '&cNo ranked modes'
+      lore: |-
+        &7
+        &f There are no ranked modes right now.
+        &f
+  party:
+    title: '&8&lS&7&lS&0 » Party fight'
+    mode-lore: |-
+      &7
+      &f Your party is split into two teams.
+      &f Playing: &e%2$s
+      &7
+      &e Click to start.
+      &f
+    empty:
+      name: '&cNo modes'
+      lore: |-
+        &7
+        &f There are no modes right now.
+        &f
+  editor:
+    title: '&8&lS&7&lS&0 » Kit editor'
+    mode-lore: |-
+      &7
+      &e Click to arrange this kit.
+      &f
+    empty:
+      name: '&cNo kits'
+      lore: |-
+        &7
+        &f No mode has a kit to arrange.
+        &f
+  duel:
+    title: '&8&lS&7&lS&0 » Duel'
+    mode-lore: |-
+      &7
+      &e Left click: best of 1.
+      &e Right click: best of 3.
+      &e Shift + click: best of 5.
+      &f
+    empty:
+      name: '&cNo modes'
+      lore: |-
+        &7
+        &f There are no modes right now.
+        &f
+  history:
+    title: '&8&lS&7&lS&0 » Statistics'
+    # %s: mode
+    won: '&aVictory &7· &f%s'
+    lost: '&cDefeat &7· &f%s'
+    # %1$s: rival, %2$s: kind, %3$s: ELO, %4$s: duration, %5$s: date
+    lore: |-
+      &7
+      &f Rival: &e%1$s
+      &f Kind: %2$s
+      &f ELO: %3$s
+      &f Duration: &e%4$s
+      &7 %5$s
+      &f
+    # %s: player
+    stats-name: '&e%s''s statistics'
+    # %1$s: player, %2$s: ELO, %3$s: rank, %4$s: wins, %5$s: losses
+    stats-header: |-
+      &7
+      &f Average ELO: &b%2$s %3$s
+      &f Ranked: &a%4$sW &c%5$sL
+      &7
+    # %1$s: mode, %2$s: ELO, %3$s: wins, %4$s: losses
+    stats-line: '&f %1$s&7: &b%2$s &8(&a%3$s&8/&c%4$s&8)'
+    empty:
+      name: '&cNo matches'
+      lore: |-
+        &7
+        &f You have not played any match yet.
+        &f
+
+scoreboard:
+  title: '&c&lArenaPvP'
+  lobby:
+    - '&7%date%'
+    - '&7'
+    - '&f Online: &e%online%'
+    - '&f Queued: &e%in_queue%'
+    - '&f Playing: &e%playing%'
+    - '&f'
+    - '&f ELO: &b%elo%'
+    - '&f Rank: %rank%'
+    - '&e'
+    - '&7spreen.studio'
+  queue:
+    - '&7%date%'
+    - '&7'
+    - '&f Looking: &e%queue_mode%'
+    - '&f Kind: %queue_kind%'
+    - '&f Time: &e%queue_time%'
+    - '&f'
+    - '&f Queued: &e%in_queue%'
+    - '&f Playing: &e%playing%'
+    - '&e'
+    - '&7spreen.studio'
+  waiting:
+    - '&7%date%'
+    - '&7'
+    - '&f Mode: &e%mode%'
+    - '&f Map: &e%map%'
+    - '&f'
+    - '&f Arriving: &e%players%&7/&e%expected%'
+    - '&e'
+    - '&7spreen.studio'
+  match:
+    - '&7%date%'
+    - '&7'
+    - '&f Mode: &e%mode%'
+    - '&f Kind: %kind%'
+    - '&f Duration: &e%duration%'
+    - '&f'
+    - '&f Rival: &c%opponent%'
+    - '&f Rounds: &a%my_rounds% &7- &c%their_rounds%'
+    - '&f Ping: &e%ping%ms &7/ &e%opponent_ping%ms'
+    - '&e'
+    - '&7spreen.studio'
+  boxing:
+    - '&7%date%'
+    - '&7'
+    - '&f Mode: &e%mode%'
+    - '&f Duration: &e%duration%'
+    - '&f'
+    - '&f Hits: &a%points% &7/ &e%points_to_win%'
+    - '&f Rival: &c%opponent_points%'
+    - '&f Combo: &e%combo%'
+    - '&e'
+    - '&7spreen.studio'
+  thebridge:
+    - '&7%date%'
+    - '&7'
+    - '&f Mode: &e%mode%'
+    - '&f Duration: &e%duration%'
+    - '&f'
+    - '&c [R] &f%red_points% &7/ %points_to_win%'
+    - '&9 [B] &f%blue_points% &7/ %points_to_win%'
+    - '&f'
+    - '&f Rival: &c%opponent%'
+    - '&e'
+    - '&7spreen.studio'
+  stickfight:
+    - '&7%date%'
+    - '&7'
+    - '&f Mode: &e%mode%'
+    - '&f Duration: &e%duration%'
+    - '&f'
+    - '&c Red: &f%red_lives% ❤'
+    - '&9 Blue: &f%blue_lives% ❤'
+    - '&e'
+    - '&7spreen.studio'
+  survivalrun:
+    - '&7%date%'
+    - '&7'
+    - '&f Mode: &e%mode%'
+    - '&f Duration: &e%duration%'
+    - '&f'
+    - '&f PvP: %pvp%'
+    - '&f Rival: &c%opponent%'
+    - '&e'
+    - '&7spreen.studio'
+  spectator:
+    - '&7%date%'
+    - '&7'
+    - '&f Watching: &e%mode%'
+    - '&f Duration: &e%duration%'
+    - '&f'
+    - '&c %red%'
+    - '&7 vs'
+    - '&9 %blue%'
+    - '&e'
+    - '&7spreen.studio'
+
+tab:
+  header:
+    - '&c&lArenaPvP &7· &fspreen.studio'
+  footer:
+    - '&7Queued: &e%arenapvp_in_queue% &7· Playing: &e%arenapvp_playing%'
+  column-player:
+    - '&c&lYou'
+    - '&7'
+    - '&f%player_name%'
+    - '&7'
+    - '&fELO: &b%arenapvp_elo%'
+    - '&fRank: %arenapvp_rank%'
+    - '&7'
+    - '&fWins: &a%arenapvp_wins%'
+    - '&fLosses: &c%arenapvp_losses%'
+  column-queues:
+    - '&e&lQueued'
+    - '&7'
+    - '&fNoDebuff: &e%arenapvp_queue_nodebuff%'
+    - '&fBuildUHC: &e%arenapvp_queue_builduhc%'
+    - '&fGApple: &e%arenapvp_queue_gapple%'
+    - '&fClassic: &e%arenapvp_queue_classic%'
+    - '&fSumo: &e%arenapvp_queue_sumo%'
+    - '&fBoxing: &e%arenapvp_queue_boxing%'
+    - '&fThe Bridge: &e%arenapvp_queue_thebridge%'
+    - '&fSkyWars: &e%arenapvp_queue_skywars%'
+  column-staff:
+    - '&b&lStaff'
+    - '&7'
+    - '%staff_1%'
+    - '%staff_2%'
+    - '%staff_3%'
+    - '%staff_4%'
+    - '%staff_5%'
+    - '%staff_6%'
+    - '%staff_7%'
+    - '%staff_8%'
+  column-network:
+    - '&a&lNetwork'
+    - '&7'
+    - '&fOnline: &e%online%'
+    - '&fPlaying: &e%arenapvp_playing%'
+    - '&fQueued: &e%arenapvp_in_queue%'

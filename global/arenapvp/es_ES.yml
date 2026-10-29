@@ -1,0 +1,721 @@
+prefix: '&c&lArenaPvP &8» '
+
+general:
+  loading: '&cTus datos todavía se están cargando, vuelve a entrar en unos segundos.'
+
+# Los usa GameCore al llevar a los jugadores de un sitio a otro.
+game:
+  no-games: '{prefix}&c¡No hay ninguna arena libre ahora mismo! Prueba en unos segundos.'
+  # %s: partida
+  sending: '{prefix}&7Enviándote a &e%s&7...'
+  queued: '{prefix}&7No hay arenas libres: &eentrarás en cuanto quede una&7.'
+player:
+  teleport:
+    lobby: '{prefix}&7Volviendo al &elobby&7...'
+
+commands:
+  unknown: '{prefix}&c¡Ese comando no existe! Usa &e/apvp help&c.'
+  only-players: '{prefix}&c¡Esta opción es solo para jugadores!'
+  no-permission: '{prefix}&c¡No tienes permiso para hacer eso!'
+  error: '{prefix}&cOcurrió un error al ejecutar el comando, revisa la consola.'
+  only-lobby: '{prefix}&c¡Esto solo se puede hacer en el lobby!'
+  # %s: jugador
+  player-not-found: '{prefix}&cEl jugador &e%s &cno está conectado.'
+  # %s: modo
+  unknown-mode: '{prefix}&cNo existe el modo &e%s&c.'
+  not-in-match: '{prefix}&c¡No estás en ninguna partida ni cola!'
+  usage:
+    arena: '{prefix}&cUso: &e/apvp arena create|edit [mapa], set [red|blue|spectators], region, goal|cage|cagespawn [red|blue], finish, miny <y>, modes [modos], instances [n], maxplayers [n], name [nombre], wand, check, save, exit, list, delete [mapa] <map>'
+    duel: '{prefix}&cUso: &e/duel [jugador] <modo> <rondas>&c, &e/duel accept|deny [jugador] &co &e/duel toggle&c.'
+    kit: '{prefix}&cUso: &e/apvp kit save|reset|cancel'
+    spect: '{prefix}&cUso: &e/spect [jugador]'
+  help:
+    # %s: versión
+    header: |-
+      &7
+      {prefix}&fAyuda &7● &e<opcional> / [requerido] &8(v%s)
+      &7
+    footer: '&7'
+    queue: '&7 /apvp queue <modo> <ranked> - &eEntra a la cola de un modo.'
+    leave: '&7 /apvp leave - &eSal de la cola, la partida o el editor.'
+    editkit: '&7 /apvp editkit <modo> - &eOrdena el kit de un modo.'
+    history: '&7 /apvp history <jugador> - &eÚltimas partidas.'
+    elo: '&7 /apvp elo <jugador> - &eELO en cada modo.'
+    menu: '&7 /apvp menu [id] - &eAbre un menú de ArenaPvP.'
+    setlobby: '&7 /apvp setlobby - &eEstablece el spawn del lobby.'
+    setkit: '&7 /apvp setkit [modo] - &eGuarda tu inventario como kit del modo.'
+    reload: '&7 /apvp reload <arenas> - &eRecarga los archivos (y las arenas).'
+    debug: '&7 /apvp debug - &eEstado de las arenas y las colas.'
+    arena: '&7 /apvp arena - &eCrea y edita los mapas.'
+
+admin:
+  lobby-set: '{prefix}&7Spawn del lobby &aestablecido &7donde estás.'
+  # %s: modo
+  kit-saved: '{prefix}&7Kit de &e%s &aguardado &7con tu inventario.'
+  reloaded: '{prefix}&aArchivos recargados.'
+
+teams:
+  red: 'Rojo'
+  blue: 'Azul'
+  green: 'Verde'
+  yellow: 'Amarillo'
+
+modes:
+  nodebuff:
+    name: 'NoDebuff'
+    description: |-
+      &7
+      &f Espada, perlas y pociones de curación.
+      &f Sin pociones de daño.
+  debuff:
+    name: 'Debuff'
+    description: |-
+      &7
+      &f Como NoDebuff, con pociones de
+      &f veneno y lentitud.
+  builduhc:
+    name: 'BuildUHC'
+    description: |-
+      &7
+      &f Se construye y no hay regeneración:
+      &f manzanas y cabezas doradas.
+  gapple:
+    name: 'GApple'
+    description: |-
+      &7
+      &f Armadura fuerte, fuerza y velocidad
+      &f y muchas manzanas de Notch.
+  combo:
+    name: 'Combo'
+    description: |-
+      &7
+      &f Golpes muy seguidos y knockback
+      &f de combo.
+  classic:
+    name: 'Classic'
+    description: |-
+      &7
+      &f Espada, arco y caña de toda la vida.
+  axepvp:
+    name: 'Axe PvP'
+    description: |-
+      &7
+      &f Lucha con hachas.
+  cavefight:
+    name: 'Cave Fight'
+    description: |-
+      &7
+      &f Pelea en cuevas: se puede picar
+      &f y construir.
+  training:
+    name: 'Training'
+    description: |-
+      &7
+      &f Partidas sencillas para practicar.
+  sumo:
+    name: 'Sumo'
+    description: |-
+      &7
+      &f Sin daño: tira a tu rival del ring.
+  boxing:
+    name: 'Boxing'
+    description: |-
+      &7
+      &f Sin daño: gana quien da antes
+      &f 100 golpes.
+  spleef:
+    name: 'Spleef'
+    description: |-
+      &7
+      &f Rompe la nieve bajo tu rival.
+      &f Quien toca el agua, pierde.
+  stickfight:
+    name: 'Stick Fight'
+    description: |-
+      &7
+      &f Palo de knockback y lana.
+      &f Cada equipo tiene 5 vidas.
+  thebridge:
+    name: 'The Bridge'
+    description: |-
+      &7
+      &f Cruza el puente y salta a la
+      &f portería rival. 5 goles para ganar.
+  battlerush:
+    name: 'BattleRush'
+    description: |-
+      &7
+      &f Sin daño: construye hasta la
+      &f portería rival. 3 goles para ganar.
+  survivalrun:
+    name: 'Survival Run'
+    description: |-
+      &7
+      &f Llega antes que tu rival a la meta.
+      &f El PvP empieza a mitad de camino.
+  skywars:
+    name: 'SkyWars'
+    description: |-
+      &7
+      &f SkyWars 1 contra 1: saquea los cofres
+      &f y tira a tu rival al vacío.
+
+items:
+  unranked:
+    name: '&aJugar sin ELO &7(Clic derecho)'
+    lore: |-
+      &7
+      &f Partidas sin ELO de todos los modos.
+      &7
+      &e Haz clic para elegir modo.
+      &f
+  ranked:
+    name: '&bRanked &7(Clic derecho)'
+    lore: |-
+      &7
+      &f Partidas por ELO: te empareja con
+      &f jugadores de tu nivel.
+      &7
+      &e Haz clic para elegir modo.
+      &f
+  party:
+    name: '&dParty fight &7(Clic derecho)'
+    lore: |-
+      &7
+      &f Reparte tu party en dos equipos.
+      &f Solo el líder.
+      &7
+      &e Haz clic para elegir modo.
+      &f
+  editor:
+    name: '&6Editor de kits &7(Clic derecho)'
+    lore: |-
+      &7
+      &f Coloca los ítems de cada kit a tu gusto.
+      &7
+      &e Haz clic para elegir kit.
+      &f
+  history:
+    name: '&eEstadísticas &7(Clic derecho)'
+    lore: |-
+      &7
+      &f Tu ELO y tus últimas partidas.
+      &7
+      &e Haz clic para verlas.
+      &f
+  leave-queue:
+    name: '&cSalir de la cola &7(Clic derecho)'
+    lore: |-
+      &7
+      &f Deja de buscar partida.
+      &f
+  golden-head:
+    name: '&6Cabeza dorada'
+
+queue:
+  # %1$s: modo, %2$s: tipo, %3$s: tiempo
+  actionbar: '&7Buscando &e%1$s &8(%2$s&8) &7· &f%3$s'
+  # %s: modo, tipo
+  joined: '{prefix}&7Buscando partida de &e%s &8(%s&8)&7. Usa el tinte rojo o &e/leave &7para salir.'
+  left: '{prefix}&7Has &csalido &7de la cola.'
+  # %s: modo
+  matched: '{prefix}&a¡Partida encontrada! &7Enviándote a &e%s&7...'
+  no-game: '{prefix}&7No hay arenas libres de &e%s &7ahora mismo; &esigues en la cola&7.'
+  not-ranked: '{prefix}&c¡&e%s &cno se juega en ranked!'
+  party-ranked: '{prefix}&c¡En ranked se entra solo! Sal de la party para jugar.'
+  party-use-menu: '{prefix}&7Estás en una party: usa el menú &dParty fight &7para jugar con ella.'
+  in-match: '{prefix}&c¡Ya estás en una partida!'
+
+match:
+  kind:
+    ranked: '&bRanked'
+    unranked: '&aSin ELO'
+    duel: '&6Duelo'
+    party: '&dParty'
+  # %1$s: jugador, %2$s: llegados, %3$s: esperados
+  player-joined: '{prefix}&e%1$s &7ha llegado. &8(&a%2$s&8/&a%3$s&8)'
+  # %s: jugador
+  player-left: '{prefix}&e%s &7ha salido de la partida.'
+  # %1$s: modo, %2$s: jugadores, %3$s: tipo, %4$s: rondas
+  start-message:
+    - '&8&m-------------------------------'
+    - '&e&l%1$s &7(%3$s&7)'
+    - '%2$s'
+    - '&7Al mejor de &e%4$s'
+    - '&8&m-------------------------------'
+  # %1$s: jugador, %2$s: ELO
+  opponent-elo: '{prefix}&7Tu rival &e%1$s &7tiene &b%2$s &7de ELO.'
+  countdown:
+    # %s: segundos
+    title: '&e%s'
+    subtitle: '&7¡Prepárate!'
+  fight:
+    title: '&c¡A luchar!'
+    subtitle: ''
+  # %1$s: ronda, %2$s: marcador
+  round-start: '{prefix}&7Ronda &e%1$s &8(%2$s&8)'
+  # %1$s: víctima, %2$s: asesino
+  killed: '{prefix}%1$s &7ha caído ante %2$s&7.'
+  # %s: víctima
+  died: '{prefix}%s &7ha caído.'
+  # %1$s: equipo, %2$s: marcador
+  round-won: '{prefix}%1$s &7gana la ronda. &8(%2$s&8)'
+  time-limit: '{prefix}&c¡Se acabó el tiempo! &7La partida queda en empate.'
+  victory:
+    title: '&a&l¡VICTORIA!'
+    subtitle: '&7¡Bien jugado!'
+  defeat:
+    title: '&c&lDERROTA'
+    subtitle: '&7Suerte la próxima vez.'
+  draw:
+    title: '&e&lEMPATE'
+    subtitle: '&7Nadie gana esta vez.'
+  nobody: '&7Nadie'
+  # %1$s: modo, %2$s: ganadores, %3$s: duración
+  summary:
+    - '&8&m-------------------------------'
+    - '&e&l%1$s &7· &f%3$s'
+    - '&7Ganador: %2$s'
+  # %1$s: golpes, %2$s: precisión, %3$s: combo, %4$s: daño, %5$s: arco, %6$s: manzanas, %7$s: perlas
+  stats:
+    - '&7Golpes: &f%1$s &8(&f%2$s%%&8) &7· Combo: &f%3$s'
+    - '&7Daño: &c%4$s❤ &7· Arco: &f%5$s%% &7· Manzanas: &f%6$s &7· Perlas: &f%7$s'
+    - '&8&m-------------------------------'
+  # %1$s: puntos, %2$s: ELO nuevo
+  elo-gain: '&7ELO: &a+%1$s &8(&b%2$s&8)'
+  elo-loss: '&7ELO: &c-%1$s &8(&b%2$s&8)'
+  forfeit: '&7El rival abandonó la partida.'
+  cancelled-left: '{prefix}&cLa partida se cancela: alguien se fue antes de empezar.'
+  cancelled-missing: '{prefix}&cLa partida se cancela: no llegaron todos los jugadores.'
+  # %1$s: jugador, %2$s: corazones
+  health-bar: '&e%1$s &7tiene &c%2$s❤'
+  # %s: segundos
+  pearl-cooldown: '{prefix}&cPodrás usar otra perla en &e%s &cs.'
+  respawn:
+    title: '&c¡Has caído!'
+    # %s: segundos
+    subtitle: '&7Vuelves en &e%s&7...'
+  you-left: '{prefix}&7Has salido de la partida.'
+
+arena:
+  only-matches: '{prefix}&cA las arenas solo se entra con una partida emparejada.'
+  mode-unavailable: '{prefix}&cEsta arena no tiene ese modo; vuelves al lobby.'
+  editor:
+    # %s: mapa
+    created: '{prefix}&7Mapa &e%s &acreado&7. Pon los spawns con &e/apvp arena set red|blue&7 y usa el hacha de oro para las zonas.'
+    editing: '{prefix}&7Editando &e%s&7. &e/apvp arena check &7dice lo que falta.'
+    in-use: '{prefix}&c¡El mapa &e%s &cestá en uso! Espera a que acabe su partida.'
+    not-editing: '{prefix}&c¡No estás editando ningún mapa! Usa &e/apvp arena edit [mapa]&c.'
+    # %1$s: esquina, %2$s %3$s %4$s: coordenadas
+    corner: '{prefix}&7Esquina &e%1$s&7: &f%2$s, %3$s, %4$s'
+    no-selection: '{prefix}&cMarca las dos esquinas con el hacha de oro (clic izquierdo y derecho).'
+    # %s: punto
+    point-set: '{prefix}&7Punto &e%s &aguardado &7donde estás.'
+    # %s: zona
+    zone-set: '{prefix}&7Zona &e%s &aguardada &7con tu selección.'
+    # %1$s: clave, %2$s: valor
+    value-set: '{prefix}&e%1$s&7: &f%2$s'
+    complete: '{prefix}&a¡El mapa está completo!'
+    missing:
+      red: '{prefix}&cFalta el spawn del equipo rojo &7(/apvp arena set red)&c.'
+      blue: '{prefix}&cFalta el spawn del equipo azul &7(/apvp arena set blue)&c.'
+      modes: '{prefix}&cFalta decir qué modos se juegan &7(/apvp arena modes ...)&c.'
+      goals: '{prefix}&cFaltan las porterías &7(/apvp arena goal red|blue)&c.'
+      finish: '{prefix}&cFalta la meta &7(/apvp arena finish)&c.'
+    # %s: mapa
+    saved: '{prefix}&7Mapa &e%s &aguardado &7en maps/. Usa &e/apvp reload arenas &7para cargarlo.'
+    saved-incomplete: '{prefix}&7Mapa &e%s &aguardado&7, pero aún &cno está completo &7(&e/apvp arena check&7).'
+    # %s: mapas
+    list: '{prefix}&7Mapas: &e%s'
+    deleted: '{prefix}&7Mapa &e%s &cborrado&7.'
+    exit: '{prefix}&7Has salido del editor de mapas.'
+
+spectate:
+  no-match: '{prefix}&cEsa arena no tiene ninguna partida ahora.'
+  full: '{prefix}&c¡Esta partida ya tiene el máximo de espectadores!'
+  # %1$s: modo, %2$s: jugadores
+  joined: '{prefix}&7Mirando &e%1$s&7: %2$s'
+  # %s: espectador
+  announce: '{prefix}&e%s &7está mirando la partida.'
+
+kit-editor:
+  busy: '{prefix}&c¡No puedes hacer esto ahora! &7Sal antes de la cola o del editor de kits.'
+  # %s: modo
+  no-kit: '{prefix}&c¡&e%s &cno tiene kit que ordenar!'
+  opened:
+    - '&8&m-------------------------------'
+    - '{prefix}&7Editando el kit de &e%s&7.'
+    - '&7Coloca los ítems a tu gusto y guarda.'
+  save-button: '&a&l[GUARDAR]'
+  save-hover: '&7Guarda este orden.'
+  reset-button: '&e&l[RESTABLECER]'
+  reset-hover: '&7Vuelve al orden de siempre.'
+  cancel-button: '&c&l[CANCELAR]'
+  cancel-hover: '&7Sale sin guardar.'
+  not-editing: '{prefix}&c¡No estás editando ningún kit!'
+  saved: '{prefix}&7Kit de &e%s &aguardado&7.'
+  reset: '{prefix}&7Kit de &e%s &erestablecido&7.'
+  cancelled: '{prefix}&7Has salido del editor &csin guardar&7.'
+
+duel:
+  # %1$s: retador, %2$s: modo, %3$s: rondas
+  invite:
+    - '&8&m-------------------------------'
+    - '{prefix}&e%1$s &7te reta a &e%2$s &8(al mejor de %3$s)'
+  accept-button: '&a&l[ACEPTAR]'
+  accept-hover: '&7Acepta el duelo.'
+  deny-button: '&c&l[RECHAZAR]'
+  deny-hover: '&7Rechaza el duelo.'
+
+# Respuestas a las peticiones (de FurryCore o de este servidor). %s: un jugador o un modo.
+replies:
+  duel:
+    sent: '{prefix}&7Reto enviado a &e%s&7.'
+    offline: '{prefix}&cEl jugador &e%s &cno está conectado.'
+    self: '{prefix}&c¡No puedes retarte a ti mismo!'
+    disabled: '{prefix}&e%s &cno acepta duelos.'
+    unavailable: '{prefix}&e%s &cno puede recibir duelos ahora (no está en un lobby de ArenaPvP).'
+    expired: '{prefix}&cEse reto ya no existe o ha caducado.'
+    denied: '{prefix}&e%s &cha rechazado tu reto.'
+    denied-self: '{prefix}&7Has rechazado el reto de &e%s&7.'
+    accepted: '{prefix}&e%s &aha aceptado tu reto&7.'
+    accepted-self: '{prefix}&aDuelo aceptado&7.'
+    no-game: '{prefix}&cNo hay arenas libres de &e%s &cahora mismo.'
+    enabled: '{prefix}&7Duelos &aactivados&7.'
+    toggled-off: '{prefix}&7Duelos &cdesactivados&7.'
+  party:
+    no-party: '{prefix}&c¡No estás en ninguna party!'
+    not-leader: '{prefix}&c¡Solo el líder de la party puede hacer esto!'
+    too-small: '{prefix}&cHacen falta al menos &e%s &cmiembros conectados.'
+    started: '{prefix}&a¡Party fight de &e%s&a!'
+    no-game: '{prefix}&cNo hay arenas libres de &e%s &cahora mismo.'
+  spectate:
+    offline: '{prefix}&cEl jugador &e%s &cno está conectado.'
+    not-playing: '{prefix}&e%s &cno está en ninguna partida.'
+    sending: '{prefix}&7Enviándote a mirar a &e%s&7...'
+
+bridge:
+  scored:
+    # %s: jugador
+    title: '%s &e&l¡marca!'
+    # %1$s: jugador, %2$s: corazones, %3$s: marcador
+    chat:
+      - '&6&m-------------------------------'
+      - '%1$s &7(&c%2$s❤&7) &e¡marca!'
+      - '%3$s'
+      - '&6&m-------------------------------'
+  # %s: segundos
+  cages: '&7Las jaulas se abren en &a%ss&7...'
+
+battlerush:
+  # %s: segundos
+  pause: '&e%s'
+
+survivalrun:
+  pvp-enabled: '{prefix}&c¡El PvP está activado!'
+  # %1$s: flecha, %2$s: distancia
+  compass: '&e%1$s &7Meta a &f%2$sm'
+  pvp-on: '&cActivado'
+  pvp-off: '&aDesactivado'
+
+elo:
+  # %1$s: jugador, %2$s: ELO medio, %3$s: rango
+  header:
+    - '&7'
+    - '{prefix}&fELO de &e%1$s&7: &b%2$s %3$s'
+  # %1$s: modo, %2$s: ELO, %3$s: victorias, %4$s: derrotas
+  line: '&7 %1$s&7: &b%2$s &8(&a%3$sV &c%4$sD&8)'
+
+menus:
+  unavailable: '{prefix}&cEse menú no está disponible aquí.'
+  # %s: nombre del modo
+  mode-name: '&a%s'
+  in-this-queue:
+    - '&7'
+    - '&a Estás en esta cola.'
+    - '&c Haz clic para salir.'
+  general-items:
+    close:
+      name: '&cCerrar'
+      lore: |-
+        &7
+        &e Haz clic para cerrar.
+        &f
+    prevPage:
+      name: '&aPágina anterior &7({actualPage}/{maxPages})'
+      lore: |-
+        &7
+        &e Haz clic para ir atrás.
+        &f
+    nextPage:
+      name: '&aPágina siguiente &7({actualPage}/{maxPages})'
+      lore: |-
+        &7
+        &e Haz clic para avanzar.
+        &f
+  links:
+    unranked:
+      name: '&aSin ELO'
+      lore: |-
+        &7
+        &e Haz clic para ver los modos sin ELO.
+        &f
+    ranked:
+      name: '&bRanked'
+      lore: |-
+        &7
+        &e Haz clic para ver los modos ranked.
+        &f
+    party:
+      name: '&dParty fight'
+      lore: |-
+        &7
+        &e Haz clic para jugar con tu party.
+        &f
+  unranked:
+    title: '&8&lS&7&lS&0 » Sin ELO'
+    # %1$s: en cola, %2$s: jugando, %3$s: tu ELO, %4$s: victorias, %5$s: derrotas
+    mode-lore: |-
+      &7
+      &f En cola: &e%1$s
+      &f Jugando: &e%2$s
+      &7
+      &e Haz clic para buscar partida.
+      &f
+    empty:
+      name: '&cNo hay modos'
+      lore: |-
+        &7
+        &f Ahora mismo no hay ningún modo.
+        &f
+  ranked:
+    title: '&8&lS&7&lS&0 » Ranked'
+    mode-lore: |-
+      &7
+      &f Tu ELO: &b%3$s
+      &f Victorias: &a%4$s &8· &fDerrotas: &c%5$s
+      &f En cola: &e%1$s &8· &fJugando: &e%2$s
+      &7
+      &e Haz clic para buscar partida.
+      &f
+    empty:
+      name: '&cNo hay modos ranked'
+      lore: |-
+        &7
+        &f Ahora mismo no hay modos ranked.
+        &f
+  party:
+    title: '&8&lS&7&lS&0 » Party fight'
+    mode-lore: |-
+      &7
+      &f Tu party se reparte en dos equipos.
+      &f Jugando: &e%2$s
+      &7
+      &e Haz clic para empezar.
+      &f
+    empty:
+      name: '&cNo hay modos'
+      lore: |-
+        &7
+        &f Ahora mismo no hay ningún modo.
+        &f
+  editor:
+    title: '&8&lS&7&lS&0 » Editor de kits'
+    mode-lore: |-
+      &7
+      &e Haz clic para ordenar este kit.
+      &f
+    empty:
+      name: '&cNo hay kits'
+      lore: |-
+        &7
+        &f Ningún modo tiene kit que ordenar.
+        &f
+  duel:
+    title: '&8&lS&7&lS&0 » Duelo'
+    mode-lore: |-
+      &7
+      &e Clic izquierdo: al mejor de 1.
+      &e Clic derecho: al mejor de 3.
+      &e Shift + clic: al mejor de 5.
+      &f
+    empty:
+      name: '&cNo hay modos'
+      lore: |-
+        &7
+        &f Ahora mismo no hay ningún modo.
+        &f
+  history:
+    title: '&8&lS&7&lS&0 » Estadísticas'
+    # %s: modo
+    won: '&aVictoria &7· &f%s'
+    lost: '&cDerrota &7· &f%s'
+    # %1$s: rival, %2$s: tipo, %3$s: ELO, %4$s: duración, %5$s: fecha
+    lore: |-
+      &7
+      &f Rival: &e%1$s
+      &f Tipo: %2$s
+      &f ELO: %3$s
+      &f Duración: &e%4$s
+      &7 %5$s
+      &f
+    # %s: jugador
+    stats-name: '&eEstadísticas de %s'
+    # %1$s: jugador, %2$s: ELO, %3$s: rango, %4$s: victorias, %5$s: derrotas
+    stats-header: |-
+      &7
+      &f ELO medio: &b%2$s %3$s
+      &f Ranked: &a%4$sV &c%5$sD
+      &7
+    # %1$s: modo, %2$s: ELO, %3$s: victorias, %4$s: derrotas
+    stats-line: '&f %1$s&7: &b%2$s &8(&a%3$s&8/&c%4$s&8)'
+    empty:
+      name: '&cSin partidas'
+      lore: |-
+        &7
+        &f Aún no has jugado ninguna partida.
+        &f
+
+scoreboard:
+  title: '&c&lArenaPvP'
+  lobby:
+    - '&7%date%'
+    - '&7'
+    - '&f Conectados: &e%online%'
+    - '&f En cola: &e%in_queue%'
+    - '&f Jugando: &e%playing%'
+    - '&f'
+    - '&f ELO: &b%elo%'
+    - '&f Rango: %rank%'
+    - '&e'
+    - '&7spreen.studio'
+  queue:
+    - '&7%date%'
+    - '&7'
+    - '&f Buscando: &e%queue_mode%'
+    - '&f Tipo: %queue_kind%'
+    - '&f Tiempo: &e%queue_time%'
+    - '&f'
+    - '&f En cola: &e%in_queue%'
+    - '&f Jugando: &e%playing%'
+    - '&e'
+    - '&7spreen.studio'
+  waiting:
+    - '&7%date%'
+    - '&7'
+    - '&f Modo: &e%mode%'
+    - '&f Mapa: &e%map%'
+    - '&f'
+    - '&f Llegando: &e%players%&7/&e%expected%'
+    - '&e'
+    - '&7spreen.studio'
+  match:
+    - '&7%date%'
+    - '&7'
+    - '&f Modo: &e%mode%'
+    - '&f Tipo: %kind%'
+    - '&f Duración: &e%duration%'
+    - '&f'
+    - '&f Rival: &c%opponent%'
+    - '&f Rondas: &a%my_rounds% &7- &c%their_rounds%'
+    - '&f Ping: &e%ping%ms &7/ &e%opponent_ping%ms'
+    - '&e'
+    - '&7spreen.studio'
+  boxing:
+    - '&7%date%'
+    - '&7'
+    - '&f Modo: &e%mode%'
+    - '&f Duración: &e%duration%'
+    - '&f'
+    - '&f Golpes: &a%points% &7/ &e%points_to_win%'
+    - '&f Rival: &c%opponent_points%'
+    - '&f Combo: &e%combo%'
+    - '&e'
+    - '&7spreen.studio'
+  thebridge:
+    - '&7%date%'
+    - '&7'
+    - '&f Modo: &e%mode%'
+    - '&f Duración: &e%duration%'
+    - '&f'
+    - '&c [R] &f%red_points% &7/ %points_to_win%'
+    - '&9 [A] &f%blue_points% &7/ %points_to_win%'
+    - '&f'
+    - '&f Rival: &c%opponent%'
+    - '&e'
+    - '&7spreen.studio'
+  stickfight:
+    - '&7%date%'
+    - '&7'
+    - '&f Modo: &e%mode%'
+    - '&f Duración: &e%duration%'
+    - '&f'
+    - '&c Rojo: &f%red_lives% ❤'
+    - '&9 Azul: &f%blue_lives% ❤'
+    - '&e'
+    - '&7spreen.studio'
+  survivalrun:
+    - '&7%date%'
+    - '&7'
+    - '&f Modo: &e%mode%'
+    - '&f Duración: &e%duration%'
+    - '&f'
+    - '&f PvP: %pvp%'
+    - '&f Rival: &c%opponent%'
+    - '&e'
+    - '&7spreen.studio'
+  spectator:
+    - '&7%date%'
+    - '&7'
+    - '&f Mirando: &e%mode%'
+    - '&f Duración: &e%duration%'
+    - '&f'
+    - '&c %red%'
+    - '&7 vs'
+    - '&9 %blue%'
+    - '&e'
+    - '&7spreen.studio'
+
+tab:
+  header:
+    - '&c&lArenaPvP &7· &fspreen.studio'
+  footer:
+    - '&7En cola: &e%arenapvp_in_queue% &7· Jugando: &e%arenapvp_playing%'
+  column-player:
+    - '&c&lTú'
+    - '&7'
+    - '&f%player_name%'
+    - '&7'
+    - '&fELO: &b%arenapvp_elo%'
+    - '&fRango: %arenapvp_rank%'
+    - '&7'
+    - '&fVictorias: &a%arenapvp_wins%'
+    - '&fDerrotas: &c%arenapvp_losses%'
+  column-queues:
+    - '&e&lEn cola'
+    - '&7'
+    - '&fNoDebuff: &e%arenapvp_queue_nodebuff%'
+    - '&fBuildUHC: &e%arenapvp_queue_builduhc%'
+    - '&fGApple: &e%arenapvp_queue_gapple%'
+    - '&fClassic: &e%arenapvp_queue_classic%'
+    - '&fSumo: &e%arenapvp_queue_sumo%'
+    - '&fBoxing: &e%arenapvp_queue_boxing%'
+    - '&fThe Bridge: &e%arenapvp_queue_thebridge%'
+    - '&fSkyWars: &e%arenapvp_queue_skywars%'
+  column-staff:
+    - '&b&lStaff'
+    - '&7'
+    - '%staff_1%'
+    - '%staff_2%'
+    - '%staff_3%'
+    - '%staff_4%'
+    - '%staff_5%'
+    - '%staff_6%'
+    - '%staff_7%'
+    - '%staff_8%'
+  column-network:
+    - '&a&lRed'
+    - '&7'
+    - '&fConectados: &e%online%'
+    - '&fJugando: &e%arenapvp_playing%'
+    - '&fEn cola: &e%arenapvp_in_queue%'
