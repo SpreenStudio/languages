@@ -1109,6 +1109,7 @@ signs:
   map: '&nMap: %map%'
   searching-1: 'SEARCHING'
   searching-2: 'GAMES'
+  searching-team: 'TEAM GAMES'
   error:
     - '&b&lSkyWars'
     - '&cERROR'

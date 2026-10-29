@@ -25,7 +25,6 @@ commands:
   unknown-mode: '{prefix}&cThere is no mode called &e%s&c.'
   not-in-match: '{prefix}&cYou are not in any match or queue!'
   usage:
-    arena: '{prefix}&cUsage: &e/apvp arena create|edit [map], set [red|blue|spectators], region, goal|cage|cagespawn [red|blue], finish, miny <y>, modes [modes], instances [n], maxplayers [n], name [name], wand, check, save, exit, list, delete [map] <map>'
     duel: '{prefix}&cUsage: &e/duel [player] <mode> <rounds>&c, &e/duel accept|deny [player] &cor &e/duel toggle&c.'
     kit: '{prefix}&cUsage: &e/apvp kit save|reset|cancel'
     spect: '{prefix}&cUsage: &e/spect [player]'
@@ -46,13 +45,698 @@ commands:
     setkit: '&7 /apvp setkit [mode] - &eSave your inventory as the kit of a mode.'
     reload: '&7 /apvp reload <arenas> - &eReload the files (and the arenas).'
     debug: '&7 /apvp debug - &eState of the arenas and queues.'
-    arena: '&7 /apvp arena - &eCreate and edit maps.'
+    arena: '&7 /apvp arena - &eCreate and edit maps, with a guide and a check of everything.'
 
 admin:
   lobby-set: '{prefix}&7Lobby spawn &aset &7where you are.'
   # %s: mode
   kit-saved: '{prefix}&7Kit of &e%s &asaved &7from your inventory.'
   reloaded: '{prefix}&aFiles reloaded.'
+  # Maps (/apvp arena).
+  arena:
+    # %s: map
+    creating: '{prefix}&7Creating the map &e%s&7...'
+    world-created: '{prefix}&7There was no map with that name: an &eempty world &7was created with a block to stand on.'
+    exists: '{prefix}&cThere is already a map called &e%1$s&c. Edit it with &e/apvp arena edit %1$s&c.'
+    not-found: '{prefix}&cThere is no map called &e%1$s&c. Create it with &e/apvp arena create %1$s&c.'
+    reserved-world: '{prefix}&cThe world &e%s &ccannot be a map: it is the main world or the lobby one.'
+    create-error: '{prefix}&cSomething went wrong loading &e%s&c, check the console.'
+    in-use: '{prefix}&cThe map &e%s &cis in a match! Wait for it to end.'
+    invalid-name: '{prefix}&cThe name can only have letters, numbers, - and _.'
+    usage-create: '{prefix}&cUsage: &e/apvp arena create <name>'
+    not-editing: '{prefix}&cYou are not editing any map! Use &e/apvp arena edit&c.'
+    busy: '{prefix}&cYou cannot edit maps right now! &7Leave the match, the queue or the kit editor first.'
+    editing: '{prefix}&cYou are editing a map! &7Leave with &e/apvp arena exit &7or the barrier.'
+    # %s: maps
+    list: '{prefix}&7Maps: %s &8(&aplayed&8, &ebeing edited&8, &csomething missing&8)'
+    help:
+      header: |-
+        &7
+        {prefix}&fHelp &7● &eMaps
+        &7
+      create: '&7 /apvp arena create <name> - &eCreate a map (and an empty world if there is none) and edit it.'
+      edit: '&7 /apvp arena edit [name] - &eEdit a map (without a name: the list of maps).'
+      editor: '&7 /apvp arena editor - &eOpen the menu of the map you are editing.'
+      tools: '&7 /apvp arena tools - &eGive you the editor tools again.'
+      check: '&7 /apvp arena check [name] - &eWhat it is missing (with nothing and not editing: every map).'
+      save: '&7 /apvp arena save - &eSave the world to maps/ without enabling it.'
+      enable: '&7 /apvp arena enable - &eCheck everything, save it and start playing it.'
+      delete: '&7 /apvp arena delete - &eDelete the map you are editing (and, if you want, its world).'
+      exit: '&7 /apvp arena exit - &eStop editing.'
+      list: '&7 /apvp arena list - &eShow the maps.'
+  # Map editor (/apvp arena editor or the book in the hotbar).
+  editor:
+    # %s: map (the title cannot be longer than 32 characters)
+    title: '&8&lS&7&lS&0 » %s'
+    not-set: '&7not set'
+    # %s: map
+    disabled: '{prefix}&e%s &7is now being edited: it will not be played until you enable it.'
+    map-saved: '{prefix}&7The world of &e%s &7was saved to &emaps/&7. It is not played until you enable it.'
+    # %1$s: map, %2$s: copies
+    enabled: '{prefix}&e%1$s &ais now being played! &8(&e%2$s &7copies&8)'
+    # %s: copies
+    enabled-busy: '{prefix}&e%s &7copies were in a match: they will get the new map when the server restarts.'
+    # %s: map
+    enabled-rotation: '{prefix}&e%s &asaved! &7It joins the arena rotation (&earenas.instances&7).'
+    saved-lobby: '{prefix}&e%1$s &asaved! &7This is a lobby: copy &emaps/%1$s &7and &egames/%1$s.yml &7to the arena servers.'
+    not-in-maps: '{prefix}&eHeads up: &f%s &eis not in &farenas.maps &eof config.yml: it will not load on restart.'
+    # %s: copies
+    instances-set: '{prefix}&7Copies at once: &e%s'
+    # %s: players
+    max-players-set: '{prefix}&7Max players: &e%s'
+    rename:
+      title: '&a&lMap name'
+      subtitle: '&7Type it in the chat'
+      message: '{prefix}&7Type in the chat the name players will see. &e"cancel" &7or left click to leave.'
+      # %1$s: map, %2$s: new name
+      done: '{prefix}&7Display name of &e%1$s&7: &r%2$s'
+    # Editor buttons. In texts with several values: %1$s, %2$s...
+    items:
+      back:
+        name: '&b« &eBack'
+        lore: |-
+          &7
+          &f Go back to the previous menu.
+          &7
+      checklist:
+        name: '&7» &bWhat is missing'
+        lore: |-
+          &7
+          &f To enable the map everything has to
+          &f be &a✔&f. What shows &e⚠ &fis a warning:
+          &f it does not stop you from enabling it.
+          &7
+        footer: |-
+          &7
+          &e Click to see it in the chat.
+      display-name:
+        name: '&7» &bDisplay name'
+        lore: |-
+          &7
+          &f The name players will see.
+          &7
+          &f Current: &r%s
+          &7
+          &e Click to change it.
+      modes:
+        name: '&7» &bModes'
+        lore: |-
+          &7
+          &f The modes played here. Each one
+          &f tells what the map needs.
+          &7
+          &f State: %1$s
+          &f Modes: &e%2$s
+          &7
+          &e Click to choose them.
+      instances:
+        name: '&7» &bCopies at once'
+        lore: |-
+          &7
+          &f How many matches are played at once
+          &f on this map, each in its own world.
+          &7 (With arenas.instances: 0 in config.yml.)
+          &7
+          &f Copies: &e%s
+          &7
+          &e Left click to increase.
+          &e Right click to decrease.
+      max-players:
+        name: '&7» &bMax players'
+        lore: |-
+          &7
+          &f For party fights. With 2 only
+          &f 1 vs 1 is played.
+          &7
+          &f Max: &e%s
+          &7
+          &e Left click to increase.
+          &e Right click to decrease.
+      void:
+        name: '&7» &bVoid height'
+        lore: |-
+          &7
+          &f Whoever goes below this height falls
+          &f into the void (in Sumo, loses). It has
+          &f to be below the spawns.
+          &7
+          &f State: %1$s
+          &f Height: &e%2$s
+          &7
+          &e Left click: +1 &7| &eRight: -1
+          &e Shift + left: your height.
+          &e Shift + right: 0.
+      region:
+        name: '&7» &bBuild zone'
+        lore: |-
+          &7
+          &f Players can only build inside it. In
+          &f SkyWars the chests inside are filled.
+          &7
+          &f State: %1$s
+          &f Size: &e%2$s
+          &7
+          &e Left click: save your selection.
+          &e Right click: remove it.
+          &e Shift + click: go to it.
+      spectators:
+        name: '&7» &bSpectator spawn'
+        lore: |-
+          &7
+          &f Where spectators appear, and the
+          &f players who fall into the void.
+          &7
+          &f State: %1$s
+          &f Position: &e%2$s
+          &7
+          &e Left click: set it where you are.
+          &e Right click: remove it.
+          &e Shift + click: go to it.
+      red-spawn:
+        name: '&7» &cRed spawn'
+        lore: |-
+          &7
+          &f Where the red team appears,
+          &f facing where you look.
+          &7
+          &f State: %1$s
+          &f Position: &e%2$s
+          &7
+          &e Left click: set it where you are.
+          &e Right click: remove it.
+          &e Shift + click: go to it.
+      blue-spawn:
+        name: '&7» &9Blue spawn'
+        lore: |-
+          &7
+          &f Where the blue team appears,
+          &f facing where you look.
+          &7
+          &f State: %1$s
+          &f Position: &e%2$s
+          &7
+          &e Left click: set it where you are.
+          &e Right click: remove it.
+          &e Shift + click: go to it.
+      red-goal:
+        name: '&7» &cRed goal'
+        lore: |-
+          &7
+          &f If a blue player gets in, they score.
+          &f The Bridge and BattleRush.
+          &7
+          &f State: %1$s
+          &f Size: &e%2$s
+          &7
+          &e Left click: save your selection.
+          &e Right click: remove it.
+          &e Shift + click: go to it.
+      blue-goal:
+        name: '&7» &9Blue goal'
+        lore: |-
+          &7
+          &f If a red player gets in, they score.
+          &f The Bridge and BattleRush.
+          &7
+          &f State: %1$s
+          &f Size: &e%2$s
+          &7
+          &e Left click: save your selection.
+          &e Right click: remove it.
+          &e Shift + click: go to it.
+      red-cage:
+        name: '&7» &cRed cage'
+        lore: |-
+          &7
+          &f Made of glass (floor and walls)
+          &f while waiting after each goal.
+          &f The Bridge.
+          &7
+          &f State: %1$s
+          &f Size: &e%2$s
+          &7
+          &e Left click: save your selection.
+          &e Right click: remove it.
+          &e Shift + click: go to it.
+      blue-cage:
+        name: '&7» &9Blue cage'
+        lore: |-
+          &7
+          &f Made of glass (floor and walls)
+          &f while waiting after each goal.
+          &f The Bridge.
+          &7
+          &f State: %1$s
+          &f Size: &e%2$s
+          &7
+          &e Left click: save your selection.
+          &e Right click: remove it.
+          &e Shift + click: go to it.
+      red-cage-spawn:
+        name: '&7» &cRed cage point'
+        lore: |-
+          &7
+          &f Where the red team waits inside its
+          &f cage. If missing, its spawn is used.
+          &7
+          &f State: %1$s
+          &f Position: &e%2$s
+          &7
+          &e Left click: set it where you are.
+          &e Right click: remove it.
+          &e Shift + click: go to it.
+      blue-cage-spawn:
+        name: '&7» &9Blue cage point'
+        lore: |-
+          &7
+          &f Where the blue team waits inside its
+          &f cage. If missing, its spawn is used.
+          &7
+          &f State: %1$s
+          &f Position: &e%2$s
+          &7
+          &e Left click: set it where you are.
+          &e Right click: remove it.
+          &e Shift + click: go to it.
+      finish:
+        name: '&7» &6Finish'
+        lore: |-
+          &7
+          &f The first one to reach it wins.
+          &f Survival Run.
+          &7
+          &f State: %1$s
+          &f Size: &e%2$s
+          &7
+          &e Left click: save your selection.
+          &e Right click: remove it.
+          &e Shift + click: go to it.
+      tools:
+        name: '&7» &bTools'
+        lore: |-
+          &7
+          &f Gives you the editor tools
+          &f in the hotbar again.
+          &7
+          &e Click to get them.
+      delete:
+        name: '&7» &cDelete map'
+        lore: |-
+          &7
+          &f Deletes this map. You will choose
+          &f whether its world is deleted too.
+          &7
+          &e Click to choose.
+      enable:
+        name: '&7» &aEnable map'
+        lore: |-
+          &7
+          &f Nothing is missing: it is saved to
+          &f maps/ and starts being played.
+          &f You will stop editing it.
+          &7
+          &e Click to enable it.
+      enable-missing:
+        name: '&7» &cEnable map'
+        lore: |-
+          &7
+          &f It is still missing &c%s &fthings:
+          &f they are in the book at the top.
+          &7
+          &e Click to see what is missing.
+      save-map:
+        name: '&7» &bSave the world'
+        lore: |-
+          &7
+          &f Saves the world to maps/ without
+          &f enabling it, so nothing is lost.
+          &7
+          &e Click to save it.
+      exit:
+        name: '&7» &cLeave the editor'
+        lore: |-
+          &7
+          &f You get your inventory back. Points
+          &f and zones stay; the world only if
+          &f you save it or enable it.
+          &7
+  # Map editor: tools, markers and the list of what is missing.
+  setup:
+    # %s: map
+    started: '{prefix}&7Editing &e%s&7. The tools are in your hotbar.'
+    guide: |-
+      &7
+      &c Red &7/ &9blue wool&f: each team spawn where you are, facing where you look.
+      &b Eye of ender&f: the spectator spawn where you are.
+      &6 Axe&f: left and right click two blocks to mark a zone.
+      &e Item frame&f: saves the marked zone as build zone, goal, cage or finish.
+      &5 Bedrock&f: the void height at your height (hold it to see the grid).
+      &6 Book&f: the menu with the modes, the settings and what is missing.
+      &a 1. &fChoose the modes &8» &a2. &fSet the spawns &8» &a3. &fMark the zones they need &8» &a4. &fEnable it.
+      &7 Every point and zone shows with particles of its color.
+      &7
+    stopped: '{prefix}&7You are no longer editing &e%s&7.'
+    wrong-world: '{prefix}&cGo to the world of &e%s &cto use the tools.'
+    click-block: '{prefix}&cClick on a block!'
+    # %1$s: corner, %2$s %3$s %4$s: coordinates
+    corner: '{prefix}&7Corner &e%1$s&7: &f%2$s, %3$s, %4$s'
+    corner-missing: '&cnot marked'
+    # %s: size
+    selection-ready: '{prefix}&7Zone marked &8(&e%s&8)&7. Save it with the &eitem frame&7.'
+    no-selection: '{prefix}&cMark both corners with the axe first (left and right click on a block).'
+    # %s: point
+    point-set: '{prefix}%s &aset &7where you are.'
+    point-removed: '{prefix}%s &cremoved&7.'
+    point-missing: '{prefix}&cThat is not set yet.'
+    # %1$s: zone, %2$s: size
+    zone-set: '{prefix}%1$s &asaved &8(&e%2$s&8)&7.'
+    # %s: zone
+    zone-removed: '{prefix}%s &cremoved&7.'
+    # %s: height
+    void-set: '{prefix}&7Void height: &e%s&7. Whoever goes below it falls.'
+    # %s: point
+    void-above: '{prefix}&cHeads up: %s &cis below it: it would fall right after appearing.'
+    # %s: void height
+    below-void: '{prefix}&cHeads up: it is below the void height (&e%s&c): it would fall right after appearing.'
+    no-ground: '{prefix}&eHeads up: there is no ground under your feet; players will fall when they appear.'
+    outside-cage: '{prefix}&eHeads up: the cage point is outside the cage (or in its wall). The cage has to surround it.'
+    spawn-inside: '{prefix}&cHeads up: there is a spawn inside this zone.'
+    prompt-cancelled: '{prefix}&7Cancelled.'
+    prompt-expired: '{prefix}&7Time is up: nothing was changed.'
+    # Action bar. %1$s: map, %2$s and %3$s: spawns, %4$s: modes, %5$s: state
+    actionbar: '&fEditing &a%1$s &8| &cRed %2$s &8| &9Blue %3$s &8| &fModes: &e%4$s &8| %5$s'
+    actionbar-ready: '&a✔ Ready to enable'
+    # %s: things
+    actionbar-missing: '&e%s &cmissing'
+    # %1$s and %2$s: corners, %3$s: size
+    actionbar-selection: '&6Corner 1: &f%1$s &8| &6Corner 2: &f%2$s &8| &fSize: &e%3$s'
+    # %1$s: void height, %2$s: your height
+    actionbar-void: '&5Void: &e%1$s &8| &fYou: &e%2$s &8| &7Click: set it at your height'
+    actionbar-prompt: '&eType in the chat &8| &7"cancel" or left click to leave'
+    state:
+      done: '&a✔'
+      missing: '&c✘'
+      optional: '&7-'
+      warning: '&e⚠'
+    optional: '&8(optional)'
+    none: '&cnone'
+    separator: '&7, &e'
+    check:
+      # %s: modes
+      modes: '&fModes: &e%s'
+      red-spawn: '&fRed spawn'
+      blue-spawn: '&fBlue spawn'
+      spectators: '&fSpectator spawn'
+      region: '&fBuild zone'
+      # %s: height
+      void: '&fVoid height: &e%s'
+      red-goal: '&fRed goal'
+      blue-goal: '&fBlue goal'
+      red-cage: '&fRed cage'
+      blue-cage: '&fBlue cage'
+      finish: '&fFinish'
+      # %s: chests
+      chests: '&fChests in the zone: &e%s'
+      map: '&fWorld saved to maps/'
+    # After each point: why it is like that.
+    note:
+      # %s: modes
+      unknown-modes: '&7(do not exist: &c%s&7)'
+      no-ground: '&e(no ground below)'
+      too-close: '&e(next to the other spawn)'
+      spectators-fallback: '&7(if missing: the zone center or the red spawn)'
+      build-anywhere: '&e(without it players build anywhere)'
+      spawns-outside: '&e(a spawn is outside)'
+      # %s: points
+      void-above: '&c(above: %s&c)'
+      spawn-inside: '&c(has a spawn inside)'
+      point-outside: '&c(its point is outside)'
+      map-on-enable: '&7(saved when enabled)'
+    # Names of the points and zones in messages.
+    points:
+      red-spawn: '&cRed spawn'
+      blue-spawn: '&9Blue spawn'
+      spectators: '&bSpectator spawn'
+      red-cage-spawn: '&cRed cage point'
+      blue-cage-spawn: '&9Blue cage point'
+    zones:
+      region: '&fBuild zone'
+      red-goal: '&cRed goal'
+      blue-goal: '&9Blue goal'
+      red-cage: '&cRed cage'
+      blue-cage: '&9Blue cage'
+      finish: '&6Finish'
+    # Short, for the list of every map.
+    short:
+      modes: 'modes'
+      red-spawn: 'red spawn'
+      blue-spawn: 'blue spawn'
+      spectators: 'spectators'
+      region: 'build zone'
+      void: 'void height'
+      red-goal: 'red goal'
+      blue-goal: 'blue goal'
+      red-cage: 'red cage'
+      blue-cage: 'blue cage'
+      finish: 'finish'
+      chests: 'chests'
+      map: 'saved world'
+    # %s: map
+    check-header: '{prefix}&7What &e%s &7needs:'
+    check-ready: '{prefix}&aReady! &7Enable it with the emerald in the menu or with &e/apvp arena enable&7.'
+    check-active: '{prefix}&aIt is being played and nothing is missing.'
+    check-missing: '{prefix}&cIt still needs whatever is in &c✘&c.'
+    cannot-enable: '{prefix}&cIt cannot be enabled yet. Missing:'
+    # Every map (/apvp arena check while not editing).
+    overview:
+      # %s: maps
+      header: '{prefix}&7Maps &8(&e%s&8)&7:'
+      # %1$s: state, %2$s: map, %3$s: how it is
+      line: '&7 %1$s &e%2$s &8» %3$s'
+      # %s: what is missing
+      missing: '&7(missing: &e%s&7)'
+      footer: '{prefix}&7A full one: &e/apvp arena check <map>&7. To fix it: &e/apvp arena edit <map>&7.'
+      empty: '{prefix}&7There are no maps. Create one with &e/apvp arena create <name>&7.'
+      # %s: map
+      not-loaded: '{prefix}&7It is not loaded: edit it (&e/apvp arena edit %s&7) to see the full list.'
+    tools:
+      red-spawn:
+        name: '&cRed spawn &7(Click)'
+        lore: |-
+          &7
+          &f Sets it where you are, facing
+          &f where you look.
+          &7
+      blue-spawn:
+        name: '&9Blue spawn &7(Click)'
+        lore: |-
+          &7
+          &f Sets it where you are, facing
+          &f where you look.
+          &7
+      spectators:
+        name: '&bSpectator spawn &7(Click)'
+        lore: |-
+          &7
+          &f Sets it where you are. Spectators
+          &f and those who fall appear there.
+          &7
+      wand:
+        name: '&6Mark zone &7(Click)'
+        lore: |-
+          &7
+          &e Left click &fon a block: corner 1.
+          &e Right click &fon a block: corner 2.
+          &7
+      zones:
+        name: '&eSave zone &7(Click)'
+        lore: |-
+          &7
+          &f Saves what you marked with the axe
+          &f as build zone, goal, cage or finish.
+          &7
+      void:
+        name: '&5Void height &7(Click)'
+        lore: |-
+          &7
+          &f Sets it at your height: whoever goes
+          &f below falls. Hold it to see the grid.
+          &7
+      menu:
+        name: '&6Editor menu &7(Click)'
+        lore: |-
+          &7
+          &f Modes, settings, points, zones and
+          &f what the map is missing.
+          &7
+      exit:
+        name: '&cLeave the editor &7(Click)'
+        lore: |-
+          &7
+          &f You stop editing and get
+          &f your inventory back.
+          &7
+  # Save zone (the item frame in the hotbar).
+  zones:
+    title: '&8&lS&7&lS&0 » Save zone'
+    # %1$s: selection size, %2$s: state, %3$s: current size, %4$s: what it is for
+    lore: |-
+      &7
+      %4$s
+      &7
+      &f Now: %2$s &7%3$s
+      &7
+      &e Click to save your selection
+      &e (&f%1$s&e) here.
+    used:
+      region: '&f Players can only build inside it.'
+      red-goal: '&f If a blue player gets in, they score (The Bridge, BattleRush).'
+      blue-goal: '&f If a red player gets in, they score (The Bridge, BattleRush).'
+      red-cage: '&f Where red waits after each goal (The Bridge).'
+      blue-cage: '&f Where blue waits after each goal (The Bridge).'
+      finish: '&f The first one to reach it wins (Survival Run).'
+    close:
+      name: '&cClose'
+      lore: |-
+        &7
+        &e Click to close.
+        &7
+  # Modes of the map (the sword in the editor menu).
+  modes:
+    # %s: map
+    title: '&8&lS&7&lS&0 » Modes'
+    # %s: mode
+    on-name: '&a%s &7(played)'
+    off-name: '&7%s'
+    on-lore: |-
+      &7
+      &e Click to remove it.
+    off-lore: |-
+      &7
+      &e Click to add it.
+    missing-zones: |-
+      &c Its zones are missing: it will not
+      &c be played until you set them.
+    empty: '&cThere are no modes'
+    # %s: mode
+    added: '{prefix}&e%s &ais played &7on this map.'
+    removed: '{prefix}&e%s &cis no longer played &7on this map.'
+    # What the map needs for the mode mechanic (mechanic in modes/<mode>.yml).
+    needs:
+      classic: |-
+        &7
+        &f Needs: both spawns.
+      boxing: |-
+        &7
+        &f Needs: both spawns.
+      sumo: |-
+        &7
+        &f Needs: the spawns on the ring and the
+        &f void height right below it (or water).
+      spleef: |-
+        &7
+        &f Needs: the spawns on the snow and
+        &f water or void below.
+      stick-fight: |-
+        &7
+        &f Needs: the spawns and the void height.
+        &f Better with a build zone.
+      the-bridge: |-
+        &7
+        &f Needs: the spawns, both goals
+        &f and both cages.
+      battle-rush: |-
+        &7
+        &f Needs: the spawns and both goals.
+      survival-run: |-
+        &7
+        &f Needs: the spawns and the finish.
+      skywars: |-
+        &7
+        &f Needs: the spawns (the cage gives the
+        &f floor) and chests in the zone.
+  # Delete a map (/apvp arena delete or the editor button).
+  delete:
+    title: '&8&lS&7&lS&0 » Delete map'
+    items:
+      arena-only:
+        name: '&6Delete only the settings'
+        lore: |-
+          &7
+          &f The settings of &e%s &fare deleted
+          &f (spawns, zones, modes...).
+          &f The world stays in &emaps/&f, to create
+          &f it again with &e/apvp arena create&f.
+          &7
+          &e Click to delete them.
+      subject:
+        name: '&e%1$s'
+        lore: |-
+          &7
+          &f Display name: &r%2$s
+          &f Modes: &e%3$s
+          &7
+      with-map:
+        name: '&cDelete settings and world'
+        lore: |-
+          &7
+          &f The settings of &e%s&f, its world
+          &f and its copy in &emaps/ &fare deleted.
+          &7
+          &c This cannot be undone.
+          &7
+          &e Click to delete everything.
+    # %s: arena
+    in-use: '{prefix}&cIt cannot be deleted: &e%s &cis in a match. Wait for it to end.'
+    # %s: map
+    done: '{prefix}&7The settings of &e%s &7were deleted. Its world is still in &emaps/&7.'
+    done-with-map: '{prefix}&e%s &7was deleted with its world.'
+    error: '{prefix}&cNot everything of &e%s &ccould be deleted, check the console.'
+  # List of maps (/apvp arena edit without a name).
+  select:
+    title: '&8&lS&7&lS&0 » Maps'
+    map:
+      # %s: map
+      name: '&e%s'
+      # %s: state
+      lore: |-
+        &7
+        &f State: %s
+      # %s: what is missing
+      missing: '&f Missing: &c%s'
+      # %s: player
+      editor: '&f Edited by: &e%s'
+      click: |-
+        &7
+        &e Click to edit it.
+    # %1$s: copies, %2$s: in a match
+    state:
+      active: '&aPlayed &7(%1$s copies, %2$s in a match)'
+      editing: '&eBeing edited'
+      rotation: '&aIn the arena rotation'
+      not-loaded: '&6Not loaded &7(/apvp reload arenas)'
+      not-listed: '&6Not in arenas.maps'
+      incomplete: '&cIncomplete &7(spawns or modes missing)'
+      no-map: '&cNo world saved in maps/'
+      no-config: '&7Not set up'
+      lobby: '&7Saved &8(not played in the lobby)'
+    create:
+      name: '&a&lCreate map'
+      lore: |-
+        &7
+        &f Uses the world in maps/ or the one with
+        &f that name and, if there is none, an empty one.
+        &7
+        &e Click and type the name.
+      title: '&a&lNew map'
+      subtitle: '&7Type the name in the chat'
+      message: '{prefix}&7Type in the chat the name of the map (letters, numbers, - and _). &e"cancel" &7or left click to leave.'
+    empty:
+      name: '&cThere are no maps'
+      lore: |-
+        &7
+        &f Create the first one with the star.
+        &7
 
 teams:
   red: 'Red'
@@ -298,35 +982,6 @@ match:
 arena:
   only-matches: '{prefix}&cArenas can only be joined with a matched game.'
   mode-unavailable: '{prefix}&cThis arena does not have that mode; back to the lobby.'
-  editor:
-    # %s: map
-    created: '{prefix}&7Map &e%s &acreated&7. Set the spawns with &e/apvp arena set red|blue&7 and use the golden axe for the zones.'
-    editing: '{prefix}&7Editing &e%s&7. &e/apvp arena check &7tells you what is missing.'
-    in-use: '{prefix}&cThe map &e%s &cis in use! Wait for its match to end.'
-    not-editing: '{prefix}&cYou are not editing any map! Use &e/apvp arena edit [map]&c.'
-    # %1$s: corner, %2$s %3$s %4$s: coordinates
-    corner: '{prefix}&7Corner &e%1$s&7: &f%2$s, %3$s, %4$s'
-    no-selection: '{prefix}&cMark both corners with the golden axe (left and right click).'
-    # %s: point
-    point-set: '{prefix}&7Point &e%s &asaved &7where you are.'
-    # %s: zone
-    zone-set: '{prefix}&7Zone &e%s &asaved &7from your selection.'
-    # %1$s: key, %2$s: value
-    value-set: '{prefix}&e%1$s&7: &f%2$s'
-    complete: '{prefix}&aThe map is complete!'
-    missing:
-      red: '{prefix}&cThe red team spawn is missing &7(/apvp arena set red)&c.'
-      blue: '{prefix}&cThe blue team spawn is missing &7(/apvp arena set blue)&c.'
-      modes: '{prefix}&cSay which modes are played here &7(/apvp arena modes ...)&c.'
-      goals: '{prefix}&cThe goals are missing &7(/apvp arena goal red|blue)&c.'
-      finish: '{prefix}&cThe finish is missing &7(/apvp arena finish)&c.'
-    # %s: map
-    saved: '{prefix}&7Map &e%s &asaved &7to maps/. Use &e/apvp reload arenas &7to load it.'
-    saved-incomplete: '{prefix}&7Map &e%s &asaved&7, but it is &cnot complete &7yet (&e/apvp arena check&7).'
-    # %s: maps
-    list: '{prefix}&7Maps: &e%s'
-    deleted: '{prefix}&7Map &e%s &cdeleted&7.'
-    exit: '{prefix}&7You left the map editor.'
 
 spectate:
   no-match: '{prefix}&cThat arena has no match right now.'

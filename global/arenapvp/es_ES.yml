@@ -25,7 +25,6 @@ commands:
   unknown-mode: '{prefix}&cNo existe el modo &e%s&c.'
   not-in-match: '{prefix}&c¡No estás en ninguna partida ni cola!'
   usage:
-    arena: '{prefix}&cUso: &e/apvp arena create|edit [mapa], set [red|blue|spectators], region, goal|cage|cagespawn [red|blue], finish, miny <y>, modes [modos], instances [n], maxplayers [n], name [nombre], wand, check, save, exit, list, delete [mapa] <map>'
     duel: '{prefix}&cUso: &e/duel [jugador] <modo> <rondas>&c, &e/duel accept|deny [jugador] &co &e/duel toggle&c.'
     kit: '{prefix}&cUso: &e/apvp kit save|reset|cancel'
     spect: '{prefix}&cUso: &e/spect [jugador]'
@@ -46,13 +45,699 @@ commands:
     setkit: '&7 /apvp setkit [modo] - &eGuarda tu inventario como kit del modo.'
     reload: '&7 /apvp reload <arenas> - &eRecarga los archivos (y las arenas).'
     debug: '&7 /apvp debug - &eEstado de las arenas y las colas.'
-    arena: '&7 /apvp arena - &eCrea y edita los mapas.'
+    arena: '&7 /apvp arena - &eCrea y edita los mapas, con guía y comprobación de todo.'
 
 admin:
   lobby-set: '{prefix}&7Spawn del lobby &aestablecido &7donde estás.'
   # %s: modo
   kit-saved: '{prefix}&7Kit de &e%s &aguardado &7con tu inventario.'
   reloaded: '{prefix}&aArchivos recargados.'
+  # Mapas (/apvp arena).
+  arena:
+    # %s: mapa
+    creating: '{prefix}&7Creando el mapa &e%s&7...'
+    world-created: '{prefix}&7No había mapa con ese nombre: se creó un &emundo vacío &7con un bloque donde aparecer.'
+    exists: '{prefix}&cYa hay un mapa llamado &e%1$s&c. Edítalo con &e/apvp arena edit %1$s&c.'
+    not-found: '{prefix}&cNo hay ningún mapa llamado &e%1$s&c. Créalo con &e/apvp arena create %1$s&c.'
+    reserved-world: '{prefix}&cEl mundo &e%s &cno puede ser un mapa: es el principal o el del lobby.'
+    create-error: '{prefix}&cAlgo salió mal al cargar &e%s&c, revisa la consola.'
+    in-use: '{prefix}&c¡El mapa &e%s &cestá en una partida! Espera a que acabe.'
+    invalid-name: '{prefix}&cEl nombre solo puede tener letras, números, - y _.'
+    usage-create: '{prefix}&cUso: &e/apvp arena create <nombre>'
+    not-editing: '{prefix}&c¡No estás editando ningún mapa! Usa &e/apvp arena edit&c.'
+    busy: '{prefix}&c¡Ahora no puedes editar mapas! &7Sal antes de la partida, la cola o el editor de kits.'
+    editing: '{prefix}&c¡Estás editando un mapa! &7Sal con &e/apvp arena exit &7o con la barrera.'
+    # %s: mapas
+    list: '{prefix}&7Mapas: %s &8(&ase juega&8, &een edición&8, &cle falta algo&8)'
+    help:
+      header: |-
+        &7
+        {prefix}&fAyuda &7● &eMapas
+        &7
+      create: '&7 /apvp arena create <nombre> - &eCrea un mapa (y un mundo vacío si no hay) y lo edita.'
+      edit: '&7 /apvp arena edit [nombre] - &eEdita un mapa (sin nombre: la lista de mapas).'
+      editor: '&7 /apvp arena editor - &eAbre el menú del mapa que editas.'
+      tools: '&7 /apvp arena tools - &eTe vuelve a dar las herramientas del editor.'
+      check: '&7 /apvp arena check [nombre] - &eLo que le falta (sin nada y sin editar: todos los mapas).'
+      save: '&7 /apvp arena save - &eGuarda el mundo en maps/ sin activarlo.'
+      enable: '&7 /apvp arena enable - &eLo comprueba todo, lo guarda y lo pone a jugarse.'
+      delete: '&7 /apvp arena delete - &eBorra el mapa que editas (y, si quieres, su mundo).'
+      exit: '&7 /apvp arena exit - &eDeja de editar.'
+      list: '&7 /apvp arena list - &eMuestra los mapas.'
+  # Editor de mapas (/apvp arena editor o el libro de la barra).
+  editor:
+    # %s: mapa (el título no puede pasar de 32 caracteres)
+    title: '&8&lS&7&lS&0 » %s'
+    not-set: '&7sin poner'
+    # %s: mapa
+    disabled: '{prefix}&e%s &7queda en edición: no se jugará hasta que lo actives.'
+    map-saved: '{prefix}&7El mundo de &e%s &7se guardó en &emaps/&7. No se juega hasta que lo actives.'
+    # %1$s: mapa, %2$s: copias
+    enabled: '{prefix}&a¡&e%1$s &aya se juega! &8(&e%2$s &7copias&8)'
+    # %s: copias
+    enabled-busy: '{prefix}&e%s &7copias estaban en partida: cogerán el mapa nuevo al reiniciar el servidor.'
+    # %s: mapa
+    enabled-rotation: '{prefix}&a¡&e%s &aguardado! &7Entra en la rotación de las arenas (&earenas.instances&7).'
+    saved-lobby: '{prefix}&a¡&e%1$s &aguardado! &7Esto es un lobby: copia &emaps/%1$s &7y &egames/%1$s.yml &7a los servidores de arenas.'
+    not-in-maps: '{prefix}&eOjo: &f%s &eno está en &farenas.maps &edel config.yml: no se cargará al reiniciar.'
+    # %s: copias
+    instances-set: '{prefix}&7Copias a la vez: &e%s'
+    # %s: jugadores
+    max-players-set: '{prefix}&7Máximo de jugadores: &e%s'
+    rename:
+      title: '&a&lNombre del mapa'
+      subtitle: '&7Escríbelo en el chat'
+      message: '{prefix}&7Escribe en el chat el nombre que verán los jugadores. &e"cancelar" &7o clic izquierdo para salir.'
+      # %1$s: mapa, %2$s: nombre nuevo
+      done: '{prefix}&7Nombre visible de &e%1$s&7: &r%2$s'
+    # Botones del editor. En textos con varios valores: %1$s, %2$s...
+    items:
+      back:
+        name: '&b« &eVolver'
+        lore: |-
+          &7
+          &f Vuelve al menú anterior.
+          &7
+      checklist:
+        name: '&7» &bLo que falta'
+        lore: |-
+          &7
+          &f Para activar el mapa tiene que estar
+          &f todo en &a✔&f. Lo de &e⚠ &fes un aviso:
+          &f no impide activarlo.
+          &7
+        footer: |-
+          &7
+          &e Haz clic para verlo en el chat.
+      display-name:
+        name: '&7» &bNombre visible'
+        lore: |-
+          &7
+          &f El nombre que verán los jugadores.
+          &7
+          &f Actual: &r%s
+          &7
+          &e Haz clic para cambiarlo.
+      modes:
+        name: '&7» &bModos'
+        lore: |-
+          &7
+          &f Los modos que se juegan aquí. Cada
+          &f uno dice qué necesita el mapa.
+          &7
+          &f Estado: %1$s
+          &f Modos: &e%2$s
+          &7
+          &e Haz clic para elegirlos.
+      instances:
+        name: '&7» &bCopias a la vez'
+        lore: |-
+          &7
+          &f Cuántas partidas se juegan a la vez
+          &f en este mapa, cada una en su mundo.
+          &7 (Con arenas.instances: 0 en config.yml.)
+          &7
+          &f Copias: &e%s
+          &7
+          &e Clic izquierdo para aumentar.
+          &e Clic derecho para disminuir.
+      max-players:
+        name: '&7» &bMáximo de jugadores'
+        lore: |-
+          &7
+          &f Para las party fights. Con 2 solo
+          &f se juega 1 contra 1.
+          &7
+          &f Máximo: &e%s
+          &7
+          &e Clic izquierdo para aumentar.
+          &e Clic derecho para disminuir.
+      void:
+        name: '&7» &bAltura del vacío'
+        lore: |-
+          &7
+          &f Quien baja de esta altura cae al
+          &f vacío (en Sumo, pierde). Tiene que
+          &f quedar por debajo de los spawns.
+          &7
+          &f Estado: %1$s
+          &f Altura: &e%2$s
+          &7
+          &e Clic izquierdo: +1 &7| &eDerecho: -1
+          &e Shift + izquierdo: tu altura.
+          &e Shift + derecho: 0.
+      region:
+        name: '&7» &bZona de construcción'
+        lore: |-
+          &7
+          &f Solo se construye dentro. En SkyWars
+          &f se llenan los cofres que hay dentro.
+          &7
+          &f Estado: %1$s
+          &f Tamaño: &e%2$s
+          &7
+          &e Clic izquierdo: guardar tu selección.
+          &e Clic derecho: quitarla.
+          &e Shift + clic: ir a ella.
+      spectators:
+        name: '&7» &bSpawn de espectadores'
+        lore: |-
+          &7
+          &f Donde aparecen los que miran la
+          &f partida y los que caen al vacío.
+          &7
+          &f Estado: %1$s
+          &f Posición: &e%2$s
+          &7
+          &e Clic izquierdo: ponerlo donde estás.
+          &e Clic derecho: quitarlo.
+          &e Shift + clic: ir a él.
+      red-spawn:
+        name: '&7» &cSpawn rojo'
+        lore: |-
+          &7
+          &f Donde aparece el equipo rojo,
+          &f mirando hacia donde mires.
+          &7
+          &f Estado: %1$s
+          &f Posición: &e%2$s
+          &7
+          &e Clic izquierdo: ponerlo donde estás.
+          &e Clic derecho: quitarlo.
+          &e Shift + clic: ir a él.
+      blue-spawn:
+        name: '&7» &9Spawn azul'
+        lore: |-
+          &7
+          &f Donde aparece el equipo azul,
+          &f mirando hacia donde mires.
+          &7
+          &f Estado: %1$s
+          &f Posición: &e%2$s
+          &7
+          &e Clic izquierdo: ponerlo donde estás.
+          &e Clic derecho: quitarlo.
+          &e Shift + clic: ir a él.
+      red-goal:
+        name: '&7» &cPortería roja'
+        lore: |-
+          &7
+          &f Si un azul entra en ella, marca.
+          &f The Bridge y BattleRush.
+          &7
+          &f Estado: %1$s
+          &f Tamaño: &e%2$s
+          &7
+          &e Clic izquierdo: guardar tu selección.
+          &e Clic derecho: quitarla.
+          &e Shift + clic: ir a ella.
+      blue-goal:
+        name: '&7» &9Portería azul'
+        lore: |-
+          &7
+          &f Si un rojo entra en ella, marca.
+          &f The Bridge y BattleRush.
+          &7
+          &f Estado: %1$s
+          &f Tamaño: &e%2$s
+          &7
+          &e Clic izquierdo: guardar tu selección.
+          &e Clic derecho: quitarla.
+          &e Shift + clic: ir a ella.
+      red-cage:
+        name: '&7» &cJaula roja'
+        lore: |-
+          &7
+          &f Se hace de cristal (suelo y paredes)
+          &f mientras se espera tras cada punto.
+          &f The Bridge.
+          &7
+          &f Estado: %1$s
+          &f Tamaño: &e%2$s
+          &7
+          &e Clic izquierdo: guardar tu selección.
+          &e Clic derecho: quitarla.
+          &e Shift + clic: ir a ella.
+      blue-cage:
+        name: '&7» &9Jaula azul'
+        lore: |-
+          &7
+          &f Se hace de cristal (suelo y paredes)
+          &f mientras se espera tras cada punto.
+          &f The Bridge.
+          &7
+          &f Estado: %1$s
+          &f Tamaño: &e%2$s
+          &7
+          &e Clic izquierdo: guardar tu selección.
+          &e Clic derecho: quitarla.
+          &e Shift + clic: ir a ella.
+      red-cage-spawn:
+        name: '&7» &cPunto de la jaula roja'
+        lore: |-
+          &7
+          &f Donde espera el rojo dentro de su
+          &f jaula. Si falta, se usa su spawn.
+          &7
+          &f Estado: %1$s
+          &f Posición: &e%2$s
+          &7
+          &e Clic izquierdo: ponerlo donde estás.
+          &e Clic derecho: quitarlo.
+          &e Shift + clic: ir a él.
+      blue-cage-spawn:
+        name: '&7» &9Punto de la jaula azul'
+        lore: |-
+          &7
+          &f Donde espera el azul dentro de su
+          &f jaula. Si falta, se usa su spawn.
+          &7
+          &f Estado: %1$s
+          &f Posición: &e%2$s
+          &7
+          &e Clic izquierdo: ponerlo donde estás.
+          &e Clic derecho: quitarlo.
+          &e Shift + clic: ir a él.
+      finish:
+        name: '&7» &6Meta'
+        lore: |-
+          &7
+          &f Gana el primero que llega a ella.
+          &f Survival Run.
+          &7
+          &f Estado: %1$s
+          &f Tamaño: &e%2$s
+          &7
+          &e Clic izquierdo: guardar tu selección.
+          &e Clic derecho: quitarla.
+          &e Shift + clic: ir a ella.
+      tools:
+        name: '&7» &bHerramientas'
+        lore: |-
+          &7
+          &f Te vuelve a dar las herramientas
+          &f del editor en la barra.
+          &7
+          &e Haz clic para obtenerlas.
+      delete:
+        name: '&7» &cBorrar mapa'
+        lore: |-
+          &7
+          &f Borra este mapa. Podrás elegir
+          &f si también se borra su mundo.
+          &7
+          &e Haz clic para elegir.
+      enable:
+        name: '&7» &aActivar mapa'
+        lore: |-
+          &7
+          &f No le falta nada: se guarda en
+          &f maps/ y empieza a jugarse.
+          &f Dejarás de editarlo.
+          &7
+          &e Haz clic para activarlo.
+      enable-missing:
+        name: '&7» &cActivar mapa'
+        lore: |-
+          &7
+          &f Todavía le faltan &c%s &fcosas:
+          &f están en el libro de arriba.
+          &7
+          &e Haz clic para ver qué falta.
+      save-map:
+        name: '&7» &bGuardar el mundo'
+        lore: |-
+          &7
+          &f Guarda el mundo en maps/ sin
+          &f activarlo, para no perder nada.
+          &7
+          &e Haz clic para guardarlo.
+      exit:
+        name: '&7» &cSalir del editor'
+        lore: |-
+          &7
+          &f Recuperas tu inventario. Los puntos
+          &f y las zonas se quedan; el mundo, solo
+          &f si lo guardas o lo activas.
+          &7
+  # Editor de mapas: herramientas, marcadores y lista de lo que falta.
+  setup:
+    # %s: mapa
+    started: '{prefix}&7Editando &e%s&7. Las herramientas están en tu barra.'
+    guide: |-
+      &7
+      &c Lana roja &7/ &9azul&f: el spawn de cada equipo donde estás, mirando hacia donde miras.
+      &b Ojo de ender&f: el spawn de espectadores donde estás.
+      &6 Hacha&f: clic izquierdo y derecho en dos bloques para marcar una zona.
+      &e Marco&f: guarda la zona marcada como zona de construcción, portería, jaula o meta.
+      &5 Bedrock&f: la altura del vacío a tu altura (en la mano se ve la rejilla).
+      &6 Libro&f: el menú con los modos, los ajustes y lo que falta.
+      &a 1. &fElige los modos &8» &a2. &fPon los spawns &8» &a3. &fMarca las zonas que pidan &8» &a4. &fActívalo.
+      &7 Cada punto y cada zona se ven con partículas de su color.
+      &7
+    stopped: '{prefix}&7Ya no estás editando &e%s&7.'
+    wrong-world: '{prefix}&cVe al mundo de &e%s &cpara usar las herramientas.'
+    click-block: '{prefix}&c¡Haz clic en un bloque!'
+    # %1$s: esquina, %2$s %3$s %4$s: coordenadas
+    corner: '{prefix}&7Esquina &e%1$s&7: &f%2$s, %3$s, %4$s'
+    corner-missing: '&csin marcar'
+    # %s: tamaño
+    selection-ready: '{prefix}&7Zona marcada &8(&e%s&8)&7. Guárdala con el &emarco&7.'
+    no-selection: '{prefix}&cMarca antes las dos esquinas con el hacha (clic izquierdo y derecho en un bloque).'
+    # %s: punto
+    point-set: '{prefix}%s &aestablecido &7donde estás.'
+    point-removed: '{prefix}%s &cquitado&7.'
+    point-missing: '{prefix}&cEso todavía no está puesto.'
+    # %1$s: zona, %2$s: tamaño
+    zone-set: '{prefix}%1$s &aguardada &8(&e%2$s&8)&7.'
+    # %s: zona
+    zone-removed: '{prefix}%s &cquitada&7.'
+    # %s: altura
+    void-set: '{prefix}&7Altura del vacío: &e%s&7. Quien baje de ahí, cae.'
+    # %s: punto
+    void-above: '{prefix}&cOjo: %s &cqueda por debajo: caería nada más aparecer.'
+    # %s: altura del vacío
+    below-void: '{prefix}&cOjo: está por debajo de la altura del vacío (&e%s&c): caería nada más aparecer.'
+    no-ground: '{prefix}&eOjo: no hay suelo bajo tus pies; los jugadores caerán al aparecer.'
+    outside-cage: '{prefix}&eOjo: el punto de la jaula queda fuera de ella (o en su pared). La jaula tiene que rodearlo.'
+    spawn-inside: '{prefix}&cOjo: hay un spawn dentro de esta zona.'
+    prompt-cancelled: '{prefix}&7Cancelado.'
+    prompt-expired: '{prefix}&7Se acabó el tiempo para escribirlo: no se cambió nada.'
+    # Barra de acción. %1$s: mapa, %2$s y %3$s: spawns, %4$s: modos, %5$s: estado
+    actionbar: '&fEditando &a%1$s &8| &cRojo %2$s &8| &9Azul %3$s &8| &fModos: &e%4$s &8| %5$s'
+    actionbar-ready: '&a✔ Listo para activar'
+    # %s: cosas
+    actionbar-missing: '&cFaltan &e%s'
+    # %1$s y %2$s: esquinas, %3$s: tamaño
+    actionbar-selection: '&6Esquina 1: &f%1$s &8| &6Esquina 2: &f%2$s &8| &fTamaño: &e%3$s'
+    # %1$s: altura del vacío, %2$s: tu altura
+    actionbar-void: '&5Vacío: &e%1$s &8| &fTú: &e%2$s &8| &7Clic: ponerlo a tu altura'
+    actionbar-prompt: '&eEscribe en el chat &8| &7"cancelar" o clic izquierdo para salir'
+    state:
+      done: '&a✔'
+      missing: '&c✘'
+      optional: '&7-'
+      warning: '&e⚠'
+    optional: '&8(opcional)'
+    none: '&cninguno'
+    separator: '&7, &e'
+    check:
+      # %s: modos
+      modes: '&fModos: &e%s'
+      red-spawn: '&fSpawn rojo'
+      blue-spawn: '&fSpawn azul'
+      spectators: '&fSpawn de espectadores'
+      region: '&fZona de construcción'
+      # %s: altura
+      void: '&fAltura del vacío: &e%s'
+      red-goal: '&fPortería roja'
+      blue-goal: '&fPortería azul'
+      red-cage: '&fJaula roja'
+      blue-cage: '&fJaula azul'
+      finish: '&fMeta'
+      # %s: cofres
+      chests: '&fCofres en la zona: &e%s'
+      map: '&fMundo guardado en maps/'
+    # Detrás de cada punto: por qué está así.
+    note:
+      # %s: modos
+      unknown-modes: '&7(no existen: &c%s&7)'
+      no-ground: '&e(sin suelo debajo)'
+      too-close: '&e(pegado al otro spawn)'
+      spectators-fallback: '&7(si falta: el centro de la zona o el spawn rojo)'
+      build-anywhere: '&e(sin ella se construye en todo el mundo)'
+      spawns-outside: '&e(algún spawn queda fuera)'
+      # %s: puntos
+      void-above: '&c(por encima de: %s&c)'
+      spawn-inside: '&c(tiene un spawn dentro)'
+      point-outside: '&c(su punto queda fuera)'
+      map-on-enable: '&7(se guarda al activarlo)'
+    # Nombres de los puntos y las zonas en los mensajes.
+    points:
+      red-spawn: '&cSpawn rojo'
+      blue-spawn: '&9Spawn azul'
+      spectators: '&bSpawn de espectadores'
+      red-cage-spawn: '&cPunto de la jaula roja'
+      blue-cage-spawn: '&9Punto de la jaula azul'
+    zones:
+      region: '&fZona de construcción'
+      red-goal: '&cPortería roja'
+      blue-goal: '&9Portería azul'
+      red-cage: '&cJaula roja'
+      blue-cage: '&9Jaula azul'
+      finish: '&6Meta'
+    # En corto, para la lista de todos los mapas.
+    short:
+      modes: 'modos'
+      red-spawn: 'spawn rojo'
+      blue-spawn: 'spawn azul'
+      spectators: 'espectadores'
+      region: 'zona de construcción'
+      void: 'altura del vacío'
+      red-goal: 'portería roja'
+      blue-goal: 'portería azul'
+      red-cage: 'jaula roja'
+      blue-cage: 'jaula azul'
+      finish: 'meta'
+      chests: 'cofres'
+      map: 'mundo guardado'
+    # %s: mapa
+    check-header: '{prefix}&7Lo que necesita &e%s&7:'
+    check-ready: '{prefix}&a¡Listo! &7Actívalo con la esmeralda del menú o con &e/apvp arena enable&7.'
+    check-active: '{prefix}&aSe está jugando y no le falta nada.'
+    check-missing: '{prefix}&cTodavía le falta lo que está en &c✘&c.'
+    cannot-enable: '{prefix}&cTodavía no se puede activar. Falta:'
+    # Todos los mapas (/apvp arena check sin estar editando).
+    overview:
+      # %s: mapas
+      header: '{prefix}&7Mapas &8(&e%s&8)&7:'
+      # %1$s: estado, %2$s: mapa, %3$s: cómo está
+      line: '&7 %1$s &e%2$s &8» %3$s'
+      # %s: lo que falta
+      missing: '&7(falta: &e%s&7)'
+      footer: '{prefix}&7Uno entero: &e/apvp arena check <mapa>&7. Para arreglarlo: &e/apvp arena edit <mapa>&7.'
+      empty: '{prefix}&7No hay mapas. Crea uno con &e/apvp arena create <nombre>&7.'
+      # %s: mapa
+      not-loaded: '{prefix}&7No está cargado: edítalo (&e/apvp arena edit %s&7) para ver la lista entera.'
+    tools:
+      red-spawn:
+        name: '&cSpawn rojo &7(Clic)'
+        lore: |-
+          &7
+          &f Lo pone donde estás, mirando
+          &f hacia donde miras.
+          &7
+      blue-spawn:
+        name: '&9Spawn azul &7(Clic)'
+        lore: |-
+          &7
+          &f Lo pone donde estás, mirando
+          &f hacia donde miras.
+          &7
+      spectators:
+        name: '&bSpawn de espectadores &7(Clic)'
+        lore: |-
+          &7
+          &f Lo pone donde estás. Ahí aparecen
+          &f los que miran y los que caen.
+          &7
+      wand:
+        name: '&6Marcar zona &7(Clic)'
+        lore: |-
+          &7
+          &e Clic izquierdo &fen un bloque: esquina 1.
+          &e Clic derecho &fen un bloque: esquina 2.
+          &7
+      zones:
+        name: '&eGuardar zona &7(Clic)'
+        lore: |-
+          &7
+          &f Guarda lo que marcaste con el hacha
+          &f como zona de construcción, portería,
+          &f jaula o meta.
+          &7
+      void:
+        name: '&5Altura del vacío &7(Clic)'
+        lore: |-
+          &7
+          &f La pone a tu altura: quien baje de
+          &f ahí, cae. En la mano se ve la rejilla.
+          &7
+      menu:
+        name: '&6Menú del editor &7(Clic)'
+        lore: |-
+          &7
+          &f Modos, ajustes, puntos, zonas y
+          &f lo que le falta al mapa.
+          &7
+      exit:
+        name: '&cSalir del editor &7(Clic)'
+        lore: |-
+          &7
+          &f Dejas de editar y recuperas
+          &f tu inventario.
+          &7
+  # Guardar zona (el marco de la barra).
+  zones:
+    title: '&8&lS&7&lS&0 » Guardar zona'
+    # %1$s: tamaño de la selección, %2$s: estado, %3$s: tamaño ahora, %4$s: para qué sirve
+    lore: |-
+      &7
+      %4$s
+      &7
+      &f Ahora: %2$s &7%3$s
+      &7
+      &e Haz clic para guardar aquí
+      &e tu selección (&f%1$s&e).
+    used:
+      region: '&f Solo se construye dentro de ella.'
+      red-goal: '&f Si un azul entra, marca (The Bridge, BattleRush).'
+      blue-goal: '&f Si un rojo entra, marca (The Bridge, BattleRush).'
+      red-cage: '&f Donde espera el rojo tras cada punto (The Bridge).'
+      blue-cage: '&f Donde espera el azul tras cada punto (The Bridge).'
+      finish: '&f Gana el primero que llega (Survival Run).'
+    close:
+      name: '&cCerrar'
+      lore: |-
+        &7
+        &e Haz clic para cerrar.
+        &7
+  # Modos del mapa (la espada del menú del editor).
+  modes:
+    # %s: mapa
+    title: '&8&lS&7&lS&0 » Modos'
+    # %s: modo
+    on-name: '&a%s &7(se juega)'
+    off-name: '&7%s'
+    on-lore: |-
+      &7
+      &e Haz clic para quitarlo.
+    off-lore: |-
+      &7
+      &e Haz clic para añadirlo.
+    missing-zones: |-
+      &c Le faltan sus zonas: no se
+      &c jugará hasta que las pongas.
+    empty: '&cNo hay modos'
+    # %s: modo
+    added: '{prefix}&e%s &ase juega &7en este mapa.'
+    removed: '{prefix}&e%s &cya no se juega &7en este mapa.'
+    # Lo que necesita el mapa según la mecánica del modo (mechanic en modes/<modo>.yml).
+    needs:
+      classic: |-
+        &7
+        &f Necesita: los dos spawns.
+      boxing: |-
+        &7
+        &f Necesita: los dos spawns.
+      sumo: |-
+        &7
+        &f Necesita: los spawns en el ring y la
+        &f altura del vacío justo debajo (o agua).
+      spleef: |-
+        &7
+        &f Necesita: los spawns sobre la nieve y
+        &f agua o vacío debajo.
+      stick-fight: |-
+        &7
+        &f Necesita: los spawns y la altura del
+        &f vacío. Mejor con zona de construcción.
+      the-bridge: |-
+        &7
+        &f Necesita: los spawns, las dos porterías
+        &f y las dos jaulas.
+      battle-rush: |-
+        &7
+        &f Necesita: los spawns y las dos porterías.
+      survival-run: |-
+        &7
+        &f Necesita: los spawns y la meta.
+      skywars: |-
+        &7
+        &f Necesita: los spawns (la jaula pone el
+        &f suelo) y cofres en la zona.
+  # Borrar un mapa (/apvp arena delete o el botón del editor).
+  delete:
+    title: '&8&lS&7&lS&0 » Borrar mapa'
+    items:
+      arena-only:
+        name: '&6Borrar solo la configuración'
+        lore: |-
+          &7
+          &f Se borran los ajustes de &e%s
+          &f (spawns, zonas, modos...).
+          &f El mundo se queda en &emaps/&f, para
+          &f volver a crearlo con &e/apvp arena create&f.
+          &7
+          &e Haz clic para borrarla.
+      subject:
+        name: '&e%1$s'
+        lore: |-
+          &7
+          &f Nombre visible: &r%2$s
+          &f Modos: &e%3$s
+          &7
+      with-map:
+        name: '&cBorrar configuración y mundo'
+        lore: |-
+          &7
+          &f Se borran los ajustes de &e%s&f,
+          &f su mundo y su copia de &emaps/&f.
+          &7
+          &c No se puede deshacer.
+          &7
+          &e Haz clic para borrarlo todo.
+    # %s: arena
+    in-use: '{prefix}&cNo se puede borrar: &e%s &cestá en una partida. Espera a que acabe.'
+    # %s: mapa
+    done: '{prefix}&7Se borró la configuración de &e%s&7. Su mundo sigue en &emaps/&7.'
+    done-with-map: '{prefix}&7Se borró &e%s &7con su mundo.'
+    error: '{prefix}&cNo se pudo borrar todo de &e%s&c, revisa la consola.'
+  # Lista de mapas (/apvp arena edit sin nombre).
+  select:
+    title: '&8&lS&7&lS&0 » Mapas'
+    map:
+      # %s: mapa
+      name: '&e%s'
+      # %s: estado
+      lore: |-
+        &7
+        &f Estado: %s
+      # %s: lo que falta
+      missing: '&f Falta: &c%s'
+      # %s: jugador
+      editor: '&f Lo edita: &e%s'
+      click: |-
+        &7
+        &e Haz clic para editarlo.
+    # %1$s: copias, %2$s: en partida
+    state:
+      active: '&aSe juega &7(%1$s copias, %2$s en partida)'
+      editing: '&eEn edición'
+      rotation: '&aEn la rotación de las arenas'
+      not-loaded: '&6Sin cargar &7(/apvp reload arenas)'
+      not-listed: '&6Fuera de arenas.maps'
+      incomplete: '&cIncompleto &7(le faltan spawns o modos)'
+      no-map: '&cSin mundo guardado en maps/'
+      no-config: '&7Sin configurar'
+      lobby: '&7Guardado &8(en el lobby no se juega)'
+    create:
+      name: '&a&lCrear mapa'
+      lore: |-
+        &7
+        &f Usa el mundo de maps/ o el que tenga
+        &f ese nombre y, si no hay, uno vacío.
+        &7
+        &e Haz clic y escribe el nombre.
+      title: '&a&lMapa nuevo'
+      subtitle: '&7Escribe el nombre en el chat'
+      message: '{prefix}&7Escribe en el chat el nombre del mapa (letras, números, - y _). &e"cancelar" &7o clic izquierdo para salir.'
+    empty:
+      name: '&cNo hay mapas'
+      lore: |-
+        &7
+        &f Crea el primero con la estrella.
+        &7
 
 teams:
   red: 'Rojo'
@@ -300,35 +985,6 @@ match:
 arena:
   only-matches: '{prefix}&cA las arenas solo se entra con una partida emparejada.'
   mode-unavailable: '{prefix}&cEsta arena no tiene ese modo; vuelves al lobby.'
-  editor:
-    # %s: mapa
-    created: '{prefix}&7Mapa &e%s &acreado&7. Pon los spawns con &e/apvp arena set red|blue&7 y usa el hacha de oro para las zonas.'
-    editing: '{prefix}&7Editando &e%s&7. &e/apvp arena check &7dice lo que falta.'
-    in-use: '{prefix}&c¡El mapa &e%s &cestá en uso! Espera a que acabe su partida.'
-    not-editing: '{prefix}&c¡No estás editando ningún mapa! Usa &e/apvp arena edit [mapa]&c.'
-    # %1$s: esquina, %2$s %3$s %4$s: coordenadas
-    corner: '{prefix}&7Esquina &e%1$s&7: &f%2$s, %3$s, %4$s'
-    no-selection: '{prefix}&cMarca las dos esquinas con el hacha de oro (clic izquierdo y derecho).'
-    # %s: punto
-    point-set: '{prefix}&7Punto &e%s &aguardado &7donde estás.'
-    # %s: zona
-    zone-set: '{prefix}&7Zona &e%s &aguardada &7con tu selección.'
-    # %1$s: clave, %2$s: valor
-    value-set: '{prefix}&e%1$s&7: &f%2$s'
-    complete: '{prefix}&a¡El mapa está completo!'
-    missing:
-      red: '{prefix}&cFalta el spawn del equipo rojo &7(/apvp arena set red)&c.'
-      blue: '{prefix}&cFalta el spawn del equipo azul &7(/apvp arena set blue)&c.'
-      modes: '{prefix}&cFalta decir qué modos se juegan &7(/apvp arena modes ...)&c.'
-      goals: '{prefix}&cFaltan las porterías &7(/apvp arena goal red|blue)&c.'
-      finish: '{prefix}&cFalta la meta &7(/apvp arena finish)&c.'
-    # %s: mapa
-    saved: '{prefix}&7Mapa &e%s &aguardado &7en maps/. Usa &e/apvp reload arenas &7para cargarlo.'
-    saved-incomplete: '{prefix}&7Mapa &e%s &aguardado&7, pero aún &cno está completo &7(&e/apvp arena check&7).'
-    # %s: mapas
-    list: '{prefix}&7Mapas: &e%s'
-    deleted: '{prefix}&7Mapa &e%s &cborrado&7.'
-    exit: '{prefix}&7Has salido del editor de mapas.'
 
 spectate:
   no-match: '{prefix}&cEsa arena no tiene ninguna partida ahora.'
