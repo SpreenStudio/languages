@@ -1,0 +1,511 @@
+# NPC (FurryCore module, formerly ServerNPC): English texts of the 'npc' section.
+# Placeholders between braces ({npc}, {skin}, {merchant}...). Menu YAMLs use the keys as
+# [lang=npc]<key>.
+
+prefix: '&6&lNPC &8» '
+general:
+  enabled: '&a&lENABLED'
+  disabled: '&c&lDISABLED'
+  'yes': '&aYes'
+  'no': '&cNo'
+
+commands:
+  wand:
+    help: '&7 /npc wand - &eGives you the NPC editing wand.'
+  create:
+    help: '&7 /npc create [name] [skin|mob] - &eCreates an NPC where you are.'
+    usage: '{prefix}&cUsage: &e/npc create [name] [skin|mob]'
+  delete:
+    help: '&7 /npc delete [npc] - &eDeletes an NPC.'
+    usage: '{prefix}&cUsage: &e/npc delete [npc]'
+  skin:
+    help: '&7 /npc skin [npc] [skin|mob] - &eChanges the skin or the mob of an NPC.'
+    usage: '{prefix}&cUsage: &e/npc skin [npc] [skin|mob]'
+  inventory:
+    help: '&7 /npc inventory [npc] - &eChanges the equipment of an NPC.'
+    usage: '{prefix}&cUsage: &e/npc inventory [npc]'
+  lookclose:
+    help: '&7 /npc lookclose [npc] <range> - &eToggles looking at players, or changes its range (1-24).'
+    usage: '{prefix}&cUsage: &e/npc lookclose [npc] <range>'
+  display-name:
+    help: '&7 /npc display-name [npc] [name] - &eChanges the shown name of an NPC.'
+    usage: '{prefix}&cUsage: &e/npc display-name [npc] [name]'
+  rename:
+    help: '&7 /npc rename [npc] [new] - &eChanges the name (and the file) of an NPC.'
+    usage: '{prefix}&cUsage: &e/npc rename [npc] [new]'
+  action:
+    help: |-
+      &7 /npc action add [npc] [console] [permission] [TYPE:value] - &eAdds an action.
+      &7 /npc action remove [npc] [id] - &eRemoves an action.
+      &7 /npc action cooldown [npc] [milliseconds] - &eChanges the delay between clicks.
+      &7 /npc action list [npc] - &eShows the actions.
+    usage: '{prefix}&cUsage: &e/npc action [add|remove|cooldown|list] [npc] ...'
+  glow:
+    help: '&7 /npc glow [npc] <color> - &eToggles the glowing or changes its color (1.9+).'
+    usage: '{prefix}&cUsage: &e/npc glow [npc] <color>'
+  list:
+    help: '&7 /npc list - &eShows every NPC.'
+  tphere:
+    help: '&7 /npc tphere [npc] - &eMoves an NPC to you.'
+    usage: '{prefix}&cUsage: &e/npc tphere [npc]'
+  reload:
+    help: |-
+      &7 /npc reload all - &eReloads the settings, menus, merchants and every NPC.
+      &7 /npc reload config - &eReloads the settings, menus and merchants.
+      &7 /npc reload npc [npc] - &eReloads an NPC.
+    usage: '{prefix}&cUsage: &e/npc reload [all|config|npc] <npc>'
+  import:
+    help: '&7 /npc import [citizens|servernpc] - &eImports the NPCs of Citizens or ServerNPC.'
+    usage: '{prefix}&cUsage: &e/npc import [citizens|servernpc]'
+  hologram:
+    help: |-
+      &7 /npc hologram add [npc] [text] - &eAdds a line to the hologram.
+      &7 /npc hologram set [npc] [line] [text] - &eChanges a line.
+      &7 /npc hologram remove [npc] [line] - &eRemoves a line.
+      &7 /npc hologram height [npc] [height] - &eChanges the height of the hologram.
+    usage: '{prefix}&cUsage: &e/npc hologram [add|set|remove|height] [npc] ...'
+  render:
+    help: '&7 /npc render [npc] [distance] - &eFrom how far an NPC is seen (5-64).'
+    usage: '{prefix}&cUsage: &e/npc render [npc] [distance]'
+  merchant:
+    help: |-
+      &7 /npc merchant create [name] [title] - &eCreates a merchant.
+      &7 /npc merchant open [name] - &eOpens a merchant.
+      &7 /npc merchant recipes [name] - &eEdits the trades of a merchant.
+      &7 /npc merchant delete [name] - &eDeletes a merchant.
+    usage: '{prefix}&cUsage: &e/npc merchant [create|open|recipes|delete] [name] <title>'
+  sit:
+    help: '&7 /npc sit [npc] - &eMakes an NPC sit or stand up.'
+    usage: '{prefix}&cUsage: &e/npc sit [npc]'
+
+messages:
+  invalid-number: '{prefix}&e{value}&c is not a valid number.'
+  interact:
+    cooldown: '{prefix}&cWait &e{time}s&c to click again.'
+  npc:
+    not-exist: '{prefix}&fThe NPC &c{npc}&f does not exist. &c&l✖'
+    invalid-name: '{prefix}&e{npc}&c is not a valid name: use letters, numbers, _ or -.'
+    created: '{prefix}&fNPC &e{npc}&f created. &a&l✔'
+    already-exist: '{prefix}&fThe NPC &e{npc}&f already exists. &c&l✖'
+    deleted: '{prefix}&fNPC &c{npc}&f deleted. &a&l✔'
+    delete-error: '{prefix}&cThe file of the NPC &e{npc}&c could not be deleted.'
+    save-error: '{prefix}&cThe NPC &e{npc}&c could not be saved. Check the console.'
+    reloaded: '{prefix}&fNPC &a{npc}&f reloaded. &a&l✔ &8(Move to see it again)'
+    reload-error: '{prefix}&cThe NPC &e{npc}&c could not be reloaded. &c&l✖'
+    display-name: '{prefix}&fShown name changed from &e{old}&f to &e{new}&f.'
+    renamed: '{prefix}&fNPC &e{old}&f renamed to &e{new}&f.'
+    rename-error: '{prefix}&e{old}&c could not be renamed: &e{new}&c already exists or the file could not be deleted.'
+    moved: '{prefix}&aYou moved &e{npc}&a to your location.'
+    move-error: '{prefix}&e{npc}&c could not be moved.'
+    look-close: '{prefix}&fLook at players of &e{npc}&f: {state}&f.'
+    look-range: '{prefix}&fLook range of &e{npc}&f changed to &e{range}&f.'
+    look-range-invalid: '{prefix}&e{range}&c is not a valid range (1-24).'
+    render: '{prefix}&e{npc}&f is now seen from &a{distance}&f blocks.'
+    render-invalid: '{prefix}&e{distance}&c is not a valid distance (5-64).'
+    seated: '{prefix}&e{npc}&f is now seated.'
+    not-seated: '{prefix}&e{npc}&f is no longer seated.'
+    glow-unsupported: '{prefix}&cThe glowing of NPCs needs version 1.9 or newer, and this server is 1.8.'
+    list:
+      title: '{prefix}&fAvailable NPCs'
+      empty: '  &e➥ &cNone'
+      line: '  &e➥ &b{npc} &6➟&f Skin: &e{skin} &b▌ &fLocation: &e{location}'
+  skin:
+    changing: '{prefix}&fChanging the skin of &e{npc}&f to &a{skin}&f...'
+    success: '{prefix}&fSkin of &e{npc}&f changed. &a&l✔'
+    error: '{prefix}&cThe skin of &e{npc}&c could not be changed. &c&l✖'
+    mob: '{prefix}&e{npc}&f is now a mob. &a&l✔'
+    invalid-character: '{prefix}&cThe skin has an invalid character (%). Is PlaceholderAPI installed?'
+  actions:
+    title: '{prefix}&fActions of &e{npc}'
+    empty: '  &e➥ &cNone'
+    line: '  &e➥&f ID: {id} &a➟&f CONSOLE={console} &e▌&f PERMISSION={permission} &e▌&f ACTION={action}'
+    added: '{prefix}&fAction added. &a&l✔'
+    removed: '{prefix}&fAction removed. &a&l✔'
+    error-id: '{prefix}&cThat action does not exist. &c&l✖'
+    error-saving: '{prefix}&cThe actions could not be saved. &c&l✖'
+    error-type: '{prefix}&cThe action must be &eTYPE:value&c with a valid type (cmd, bgcmd, server, merchant, msg, sound, wait, labyEmote, UPDATE).'
+    cooldown: '{prefix}&fThe delay between clicks of &e{npc}&f is now &e{time}&f ms.'
+  hologram:
+    added: '{prefix}&a&l✔&f Line added: {line}'
+    changed: '{prefix}&a&l✔&f Line &b{line}&f changed to: {text}'
+    removed: '{prefix}&fLine &b{line}&f removed from the hologram of &e{npc}&f.'
+    height: '{prefix}&fHologram height changed to &e{height}&f.'
+    increased: '{prefix}&fHologram raised &e{amount}&f.'
+    decreased: '{prefix}&fHologram lowered &e{amount}&f.'
+    empty: '{prefix}&cThe hologram has no lines.'
+    line-not-exist: '{prefix}&cThe line &e{line}&c does not exist.'
+  inventory:
+    set: '{prefix}&aYou put &e{item}&a in {slot}&a of &e{npc}&a.'
+    removed: '{prefix}&aYou removed {slot}&a of &e{npc}&a.'
+    no-item: '{prefix}&cYou need an item on your cursor to change it.'
+  mob:
+    applied: '{prefix}&aChanges applied. Move to see the NPC again.'
+    size-help: |-
+      {prefix}&eLeft click: &a+1 &7| &eRight click: &c-1
+      {prefix}&eWith shift it adds or removes &a5&e.
+  merchant:
+    not-found: '{prefix}&fThe merchant &c{merchant}&f does not exist. &c&l✖'
+    created: '{prefix}&aMerchant &e{merchant}&a created.'
+    exists: '{prefix}&cThe merchant &e{merchant}&c already exists.'
+    deleted: '{prefix}&aMerchant &e{merchant}&a deleted.'
+    saved: '{prefix}&aMerchant &e{merchant}&a saved.'
+    drag: '{prefix}&cDragging is not allowed here!'
+  import:
+    checking: '{prefix}&eLooking for NPCs of {plugin}...'
+    no-folder: '{prefix}&cThe data of {plugin} was not found.'
+    empty: '{prefix}&cThere are no NPCs of {plugin} to import.'
+    creating: '{prefix}&aCreating the NPC &e{npc}&a...'
+    exists: '{prefix}&cThe NPC &e{npc}&c already exists, skipping.'
+    save-error: '{prefix}&cThe NPC &e{npc}&c could not be saved, skipping.'
+    merchant: '{prefix}&aMerchant &e{merchant}&a imported.'
+    merchant-exists: '{prefix}&cThe merchant &e{merchant}&c already exists, skipping.'
+    done: '{prefix}&aNPCs of {plugin} imported!'
+  reload:
+    all: '{prefix}&eThe settings, menus, merchants, skins and every NPC have been reloaded.'
+    config: '{prefix}&fSettings reloaded. &a&l✔'
+
+editor:
+  # 'cancel' works too.
+  cancel-word: 'cancel'
+  cancelled: '{prefix}&cAction cancelled.'
+  skin: |-
+    {prefix}&fWrite in the chat the skin of the NPC: a &aMojang&f name, a &eMineskin.org&f link, a mob or a placeholder.
+    {prefix}&fWrite &ccancel&f to cancel.
+  hologram: |-
+    {prefix}&fWrite in the chat the line of the hologram.
+    {prefix}&fWrite &ccancel&f to cancel.
+  action:
+    type: '{prefix}&aAction type: &e{type}&a.'
+    value: |-
+      &f
+      {prefix}&fGreat, now write {what}.
+      {prefix}&fWrite &ccancel&f to cancel.
+    permission: |-
+      &f
+      {prefix}&fOne more thing: does the action need a permission? (&e!permission&f for those without it)
+      {prefix}&fIf not, write &enone&f.
+      {prefix}&fWrite &ccancel&f to cancel.
+    what:
+      spigot-cmd: '&ethe command'
+      bungee-cmd: '&ethe proxy command'
+      bungee-send: '&ethe server'
+      merchant: '&ethe name of the merchant'
+      player-msg: '&ethe message'
+      player-sound: '&ethe sound'
+      wait: '&ethe time (in milliseconds)'
+      laby-emote: '&ethe emote (or random)'
+      update: '&ewhat to update (GLOW)'
+
+# What each action type does (new action menu).
+action-types:
+  spigot-cmd: 'Runs a command.'
+  bungee-cmd: 'Runs a command on the proxy.'
+  bungee-send: 'Sends the player to another server.'
+  merchant: 'Opens a merchant.'
+  player-msg: 'Sends a message to the player.'
+  player-sound: 'Plays a sound to the player.'
+  wait: 'Waits before the next actions.'
+  laby-emote: 'The NPC plays a LabyMod emote.'
+  update: 'Sends the glowing of the NPC again.'
+
+items:
+  wand:
+    name: '&b&l⚒ &fEditing &5&lWAND'
+    lore: |-
+      &7
+      &fClick an NPC to edit it.
+
+menus:
+  general-items:
+    back:
+      name: '&b« &7Back'
+      lore: |-
+        &7
+        &f Go back to the previous menu.
+        &7
+    cancel:
+      name: '&cCancel'
+      lore: |-
+        &7
+        &f Cancels the new action.
+        &7
+    prevPage:
+      name: '&7Previous page &f({actualPage}/{maxPages})'
+      lore: |-
+        &7
+        &f Go to the previous page.
+        &7
+    nextPage:
+      name: '&7Next page &f({actualPage}/{maxPages})'
+      lore: |-
+        &7
+        &f Go to the next page.
+        &7
+  main:
+    title: '&8&lS&7&lS&0 » NPCs'
+    items:
+      info:
+        name: '&b&l✦ &fInformation'
+        lore: |-
+          &7
+          &6➥ &fCreated NPCs &a{npcs}
+          &f   &e➥ &fPlayers &a{humans}
+          &f   &e➥ &fMobs &a{mobs}
+          &7
+          &6➥ &fPlaceholderAPI {placeholderapi}
+          &6➥ &fHolograms &a{holograms}
+          &6➥ &fLabyMod {labymod}
+          &6➥ &fVersion &a{version}
+          &7
+      list:
+        name: '&b&l✦ &fSee NPCs'
+        lore: |-
+          &7
+          &7Click to see every &bNPC&7.
+      help:
+        name: '&b&l✦ &fHelp'
+        lore: |-
+          &7
+          &7Click to see the commands.
+      merchants:
+        name: '&b&l✦ &fMerchants'
+        lore: |-
+          &7
+          &7Click to see the &dmerchant&7 commands.
+      wand:
+        name: '&b&l⚒ &fEditing &5&lWAND'
+        lore: |-
+          &7
+          &7Click to get the &bediting wand&7.
+  list:
+    title: '&8&lS&7&lS&0 » NPC list'
+    items:
+      npc:
+        name: '&6&l✦ &f{npc}'
+        lore: |-
+          &7
+          &fSkin: &e{skin}
+          &7
+          &7Left click to teleport to it.
+          &7Right click to edit it.
+          &7Middle click (or Q) to &4&ldelete&7 it.
+      empty:
+        name: '&cThere are no NPCs'
+        lore: |-
+          &7
+          &7Create one with &e/npc create&7.
+  editor:
+    title: '&0{npc} &8» &0Edit'
+    items:
+      skin:
+        name: '&b&l✦ &fNPC skin'
+        lore: |-
+          &7
+          &fCurrent: &e{skin}
+          &7
+          &7Click to change the skin.
+      inventory:
+        name: '&b&l✦ &fInventory'
+        lore: |-
+          &7
+          &7Click to change the equipment of the NPC.
+      hologram:
+        name: '&b&l✦ &fHologram'
+        lore: |-
+          &7
+          &7Click to add, remove or change lines.
+      actions:
+        name: '&b&l✦ &fActions'
+        lore: |-
+          &7
+          &7Click to add and remove actions.
+      attributes:
+        name: '&b&l✦ &fAttributes'
+        lore: |-
+          &7
+          &6➥ &fLook at players {lookClose}
+          &6➥ &fGlowing (1.9+) {glowing}
+          &6➥ &fSeated {seated}
+          &7
+          &7Click to change the attributes.
+  attributes:
+    title: '&0Attributes of {npc}'
+    items:
+      look-close:
+        name: '&6&l✦ &fLook at players'
+        lore: |-
+          &fStatus {state}
+          &fRange &e{range}
+          &7
+          &7Click to change it.
+      glowing:
+        name: '&6&l✦ &fGlowing'
+        lore: |-
+          &fStatus {state}
+          &fColor &e{color}
+          &7
+          &7Needs version 1.9 or newer.
+      mob-settings:
+        name: '&6&l✦ &fMob settings'
+        lore: |-
+          &fMob &e{mob}
+          &7
+          &7Click to change them.
+  inventory:
+    title: '&0Inventory of {npc}'
+    slots:
+      helmet: '&cHelmet'
+      chestplate: '&cChestplate'
+      leggings: '&cLeggings'
+      boots: '&cBoots'
+      hand: '&cHand'
+      offhand: '&cOff hand'
+    items:
+      empty:
+        name: '{slot}'
+        lore: |-
+          &7
+          &7Click with an item to put it.
+      filled:
+        name: '{slot}'
+        lore: |-
+          &7
+          &7Click with an item to change it.
+          &7Middle click (or Q) to remove it.
+  holograms:
+    title: '&0Hologram of {npc}'
+    items:
+      line:
+        name: '&c&l✦ &f{id}'
+        lore: |-
+          &7
+          &f{line}
+          &7
+          &7Left click to change it.
+          &7Middle click (or Q) to remove it.
+      add:
+        name: '&aAdd line'
+        lore: |-
+          &7
+          &7Click and write the line in the chat.
+      decrease:
+        name: '&aLower hologram'
+        lore: |-
+          &7
+          &7Current height &a&l{height}
+          &7Click: lowers 0.10
+          &7Shift + click: lowers 1.0
+      increase:
+        name: '&aRaise hologram'
+        lore: |-
+          &7
+          &7Current height &a&l{height}
+          &7Click: raises 0.10
+          &7Shift + click: raises 1.0
+  actions:
+    title: '&0Actions of {npc}'
+    items:
+      action:
+        name: '&c&l✦ &f{id}'
+        lore: |-
+          &7
+          &fType &a{type}
+          &fValue &a{value}
+          &fConsole? {console}
+          &fPermission &a{permission}
+          &7
+          &7Middle click (or Q) to remove it.
+      add:
+        name: '&aAdd action'
+        lore: |-
+          &7
+          &7Click to add an action.
+  select-action:
+    title: '&0Action type'
+    items:
+      type:
+        name: '&fAction &b➟ &a{type}'
+        lore: |-
+          &7{description}
+          &7
+          &7Click to choose this action.
+  select-execution:
+    title: '&0Who runs it?'
+    items:
+      player:
+        name: '&aRun by &b➟ &ePlayer'
+        lore: |-
+          &7
+          &7The &eplayer&7 runs the action.
+      console:
+        name: '&aRun by &b➟ &eConsole'
+        lore: |-
+          &7
+          &7The &econsole&7 runs the action.
+  mob-settings:
+    title: '&0Settings of {npc}'
+    items:
+      sheep-color:
+        name: '&6&l✦ &fSheep color'
+        lore: |-
+          &fColor: &b{color}
+          &7
+          &7Click to change it.
+      angry:
+        name: '&6&l✦ &fAngry'
+        lore: |-
+          &fStatus: {state}
+          &7
+          &7Click to change it.
+      villager-type:
+        name: '&6&l✦ &fVillager profession'
+        lore: |-
+          &fProfession: &e{profession}
+          &7
+          &7Click to change it.
+      baby:
+        name: '&6&l✦ &fBaby'
+        lore: |-
+          &fStatus: {state}
+          &7
+          &7Click to change it.
+      size:
+        name: '&6&l✦ &fSize &7(Slime/Magma cube)'
+        lore: |-
+          &fSize: &a{size}
+          &7
+          &7Left/right click: add/remove 1
+          &7Shift + click: add/remove 5
+      apply:
+        name: '&aApply changes'
+        lore: |-
+          &7
+          &7Click to apply the changes.
+  sheep-color:
+    title: '&0Color of {npc}'
+    items:
+      color:
+        name: '&2{color}'
+        lore: |-
+          &7
+          &7Click to choose it.
+      reset:
+        name: '&fReset'
+        lore: |-
+          &7
+          &7Click to go back to white.
+  villager-type:
+    title: '&0Profession of {npc}'
+    items:
+      profession:
+        name: '&2{profession}'
+        lore: |-
+          &7
+          &7Click to choose it.
+      reset:
+        name: '&fReset'
+        lore: |-
+          &7
+          &7Click to go back to farmer.
+  merchant:
+    title: '&0Merchant {merchant}'
