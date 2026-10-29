@@ -167,6 +167,8 @@ maintenance: '{prefix}&cIn development or under maintenance.'
 
 menus:
   not-exist: '{prefix}&cThat menu doesn''t exist!'
+  confirm: '&a&lConfirm!'
+  cancel: '&c&lCancel'
 
 messages:
   alreadyConnected: '{prefix}&cYou''re already connected to that server!'

@@ -136,6 +136,10 @@ game:
     kills: '&f Kills: &e%s'
     accuracy: '&f Bow accuracy: &e%s'
 
+  # Waiting lobby: countdown.cages seconds before the start, players go to their cages.
+  cages:
+    moved: '{prefix}&eTo the cages! &7The game starts in a few seconds.'
+    back-to-lobby: '{prefix}&cNot enough players: &7back to the waiting lobby.'
 team:
   # %s: team
   joined: '{prefix}&7You are in the %s &7team.'
@@ -203,6 +207,12 @@ events:
   zombies:
     title: '&2&lZombies'
     subtitle: '&7Run from the zombies!'
+  meteors:
+    title: '&6&lMeteors'
+    subtitle: '&7Look at the sky!'
+  low-gravity:
+    title: '&b&lLow gravity'
+    subtitle: '&7Time to fly!'
 
 death:
   self:
@@ -291,6 +301,7 @@ ranks:
   vote-time: '&aVIP'
   vote-chest: '&aVIP'
   games-selector: '&6Hero'
+  vote-health: '&aVIP'
 
 variable:
   time-played: '{DAYS}{HOURS}{MINUTES}{SECONDS}'
@@ -345,6 +356,8 @@ vote:
       none: 'No projectiles'
       normal: 'Normal'
       block_breaker: 'Block breaker'
+      teleport: 'Teleport'
+      explosive: 'Explosive'
     already-chosen: '{prefix}&cThe projectiles of this game have already been chosen.'
     # Titles of the voting submenus (32 characters at most)
     projectiles:
@@ -364,6 +377,8 @@ vote:
       wither: 'Wither'
       border: 'Border'
       zombies: 'Zombies'
+      meteors: 'Meteor shower'
+      low_gravity: 'Low gravity'
   scenarios:
     none-selected: '{prefix}&7Nobody voted for a scenario: it will be a normal game.'
     selected: '{prefix}&7Selected scenario: &e%s&7.'
@@ -373,6 +388,19 @@ vote:
       speed: 'Speed'
       strength: 'Strength'
       nofall: 'Feather feet'
+      anti_clean: 'AntiClean'
+      no_hunger: 'No hunger'
+      super_jump: 'Super jump'
+      fireless: 'Fireless'
+  health:
+    title: '&8&lS&7&lS&0 » Health'
+    selected: '{prefix}&7Game health: &e%s&7.'
+    player-vote: '{prefix}&b%s &7voted for &e%s &7health. &8(&e%s votes&8)'
+    names:
+      half: 'Half health'
+      normal: 'Normal'
+      double: 'Double health'
+      triple: 'Triple health'
 
 item:
   kits:
@@ -570,12 +598,11 @@ items:
         &f kits.
         &7
   vote-items:
-    anti-clean-scenario:
-      name: '&aAntiClean'
-    border-event:
-      name: '&fBorder'
-    dragon-event:
-      name: '&5Bomber dragon'
+    votes-lore: |-
+      &7
+      &f Votes: &e<votes>
+      &7
+      &e Click to vote.
     events:
       name: '&7» &bEvents'
       lore: |-
@@ -583,17 +610,6 @@ items:
         &f Vote the events
         &f of the game.
         &7
-    no-fall-scenario:
-      name: '&9Feather feet'
-    no-projectiles:
-      name: '&7No projectiles'
-    votes-lore: |-
-      &7
-      &f Votes: &e<votes>
-      &7
-      &e Click to vote.
-    normal-projectiles:
-      name: '&aNormal projectiles'
     projectiles:
       name: '&7» &bProjectiles'
       lore: |-
@@ -608,16 +624,147 @@ items:
         &f Vote the scenario
         &f of the game.
         &7
+    health:
+      name: '&7» &bHealth'
+      lore: |-
+        &7
+        &f Vote how much health
+        &f the game is played with.
+        &7
+    no-projectiles:
+      name: '&7No projectiles'
+      lore: |-
+        &7
+        &f Arrows, snowballs and
+        &f eggs cannot be used.
+    normal-projectiles:
+      name: '&aNormal projectiles'
+      lore: |-
+        &7
+        &f Projectiles work
+        &f as always.
     soft-blocks-projectiles:
       name: '&cBlock breaker'
-    strength-scenario:
-      name: '&cStrength'
+      lore: |-
+        &7
+        &f Projectiles break the
+        &f blocks they hit.
+    teleport-projectiles:
+      name: '&5Teleport'
+      lore: |-
+        &7
+        &f Every projectile takes you where
+        &f it lands, like an ender pearl.
+    explosive-projectiles:
+      name: '&6Explosive'
+      lore: |-
+        &7
+        &f Every projectile explodes
+        &f where it lands.
+    dragon-event:
+      name: '&5Bomber dragon'
+      lore: |-
+        &7
+        &f An ender dragon flies over
+        &f the map destroying everything.
     tnt-rain-event:
       name: '&cTNT rain'
+      lore: |-
+        &7
+        &f Lit TNT falls
+        &f all over the map.
     wither-event:
       name: '&4Deadly Wither'
+      lore: |-
+        &7
+        &f A Wither appears in
+        &f the middle of the map.
     zombies-event:
       name: '&2Killer zombies'
+      lore: |-
+        &7
+        &f Zombies appear and
+        &f chase the players.
+    border-event:
+      name: '&fBorder'
+      lore: |-
+        &7
+        &f The world border closes in
+        &f towards the middle of the map.
+    meteors-event:
+      name: '&6Meteor shower'
+      lore: |-
+        &7
+        &f Fireballs fall from the sky
+        &f near the players.
+    low-gravity-event:
+      name: '&bLow gravity'
+      lore: |-
+        &7
+        &f For 40 seconds everybody jumps
+        &f really high and falls do not hurt.
+    speed-scenario:
+      name: '&bSpeed'
+      lore: |-
+        &7
+        &f Everybody plays with Speed I.
+    strength-scenario:
+      name: '&cStrength'
+      lore: |-
+        &7
+        &f Everybody plays with Strength I.
+    no-fall-scenario:
+      name: '&9Feather feet'
+      lore: |-
+        &7
+        &f Falls do not hurt.
+    anti-clean-scenario:
+      name: '&aAntiClean'
+      lore: |-
+        &7
+        &f Killing someone heals you and
+        &f gives you Regeneration II.
+    no-hunger-scenario:
+      name: '&6No hunger'
+      lore: |-
+        &7
+        &f Nobody loses food
+        &f during the whole game.
+    super-jump-scenario:
+      name: '&aSuper jump'
+      lore: |-
+        &7
+        &f Everybody plays with Jump Boost II.
+    fireless-scenario:
+      name: '&cFireless'
+      lore: |-
+        &7
+        &f Fire and lava
+        &f do not hurt.
+    half-health:
+      name: '&cHalf health'
+      lore: |-
+        &7
+        &f Everybody starts with
+        &f 5 hearts.
+    normal-health:
+      name: '&aNormal health'
+      lore: |-
+        &7
+        &f Everybody starts with
+        &f 10 hearts.
+    double-health:
+      name: '&6Double health'
+      lore: |-
+        &7
+        &f Everybody starts with
+        &f 20 hearts.
+    triple-health:
+      name: '&dTriple health'
+      lore: |-
+        &7
+        &f Everybody starts with
+        &f 30 hearts.
 
 selected:
   chest-default: '{prefix}&7Nobody voted for chests: they will be &eNormal&7.'
@@ -1072,13 +1219,7 @@ menus:
   kits:
     title: '&8&lS&7&lS&0 » Kits'
   abilities:
-    title: '&8&lS&7&lS&0 » Abilities I'
-    title-2: '&8&lS&7&lS&0 » Abilities II'
-    items:
-      next:
-        name: '&eAbilities II &b»'
-      prev:
-        name: '&b« &eAbilities I'
+    title: '&8&lS&7&lS&0 » Abilities'
   balloons:
     title: '&8&lS&7&lS&0 » Balloons'
     items:
@@ -1409,6 +1550,69 @@ trails:
       &f Your arrows leave
       &f drops of water.
       &7
+  crit:
+    name: '&aCritical'
+    lore: |-
+      &7
+      &f Your arrows leave
+      &f critical hits.
+      &7
+  magic-crit:
+    name: '&aMagic critical'
+    lore: |-
+      &7
+      &f Your arrows leave
+      &f magic critical hits.
+      &7
+  emerald:
+    name: '&aEmerald'
+    lore: |-
+      &7
+      &f Your arrows leave
+      &f green sparkles.
+      &7
+  storm:
+    name: '&aStorm cloud'
+    lore: |-
+      &7
+      &f Your arrows leave
+      &f angry clouds.
+      &7
+  snow:
+    name: '&aSnow'
+    lore: |-
+      &7
+      &f Your arrows leave
+      &f snowflakes.
+      &7
+  smoke:
+    name: '&aSmoke'
+    lore: |-
+      &7
+      &f Your arrows leave
+      &f a trail of smoke.
+      &7
+  void:
+    name: '&aVoid'
+    lore: |-
+      &7
+      &f Your arrows leave
+      &f void fog.
+      &7
+  swirl:
+    name: '&aSwirl'
+    lore: |-
+      &7
+      &f Your arrows leave
+      &f colorful swirls.
+      &7
+  party:
+    name: '&aParty'
+    lore: |-
+      &7
+      &f Your arrows leave random
+      &f sparks, hearts and notes.
+      &7
 
 # Kill sounds (killSounds.yml → icon).
 kill-sounds:
@@ -1721,6 +1925,36 @@ abilities:
       &f Improve your woodchopping skill to
       &f get more logs out of every one.
     levels-desc: '&f You have a &e%chance%% &fchance to get &e%value% &flogs.'
+  vampire:
+    name: '&aVampirism'
+    desc: |-
+      &f Heal with the melee
+      &f damage you deal.
+    levels-desc: |-
+      &f You have a &e%chance%% &fchance to heal
+      &e %value%% &fof the damage you deal.
+  blast-protection:
+    name: '&aBlast proof'
+    desc: '&f Take less damage from explosions.'
+    levels-desc: |-
+      &f Take &e%value%% &fless damage from explosions
+      &e %chance%% &fof the time.
+  golden-kill:
+    name: '&aGolden loot'
+    desc: |-
+      &f Get golden apples
+      &f when you kill.
+    levels-desc: |-
+      &f You have a &e%chance%% &fchance to get
+      &e %value% &fgolden apple(s) when you kill.
+  hunter:
+    name: '&aHunter'
+    desc: |-
+      &f Run faster after
+      &f every kill.
+    levels-desc: |-
+      &f You have a &e%chance%% &fchance to get
+      &f Speed II for &e%value% &fseconds when you kill.
 
 # Chest types (chests/*.yml).
 chests:
@@ -1768,27 +2002,75 @@ shop:
 # Admin commands and editors.
 admin:
   boxes:
-    wand:
-      name: '&6Box wand &7(Click)'
-      lore: |-
+    zone:
+      solo: '&b&lSOLO'
+      team: '&d&lTEAM'
+    # %s: cage
+    opened: '{prefix}&7Creating the cage &e%s&7.'
+    opened-edit: '{prefix}&7Editing the cage &e%s&7.'
+    guide: |-
+      &7
+      &f Build it in its two zones:
+      &b  SOLO &7- room for one player.
+      &d  TEAM &7- a 3x3 space for the team.
+      &7
+      &f The &agreen &fblocks below are where the players
+      &f stand: they need a floor on top and 2 free
+      &f blocks. The gray area is what gets saved.
+      &7
+      &e Compass&f: switch zone. &aEmerald&f: save.
+      &7 /boxes cancel &fto leave without saving.
+      &7
+    # %s: zone
+    zone-teleport: '{prefix}&7Zone %s&7.'
+    saved: '{prefix}&aCage &e%s &asaved! &7It is now in the cages menu.'
+    cancelled: '{prefix}&7The cage &e%s &7was discarded.'
+    error:
+      # %s: zone
+      empty: '{prefix}&cThe %s &czone is empty.'
+      no-floor: '{prefix}&cThe %s &czone needs a floor on top of the green blocks.'
+      no-space: '{prefix}&cThe players do not fit in the %s &czone: leave 2 free blocks above the green floor.'
+    tools:
+      switch:
+        name: '&eSwitch zone &7(Click)'
+        lore: |-
+          &7
+          &f Takes you to the other version
+          &f of the cage (SOLO or TEAM).
+          &7
+      save:
+        name: '&aSave the cage &7(Click)'
+        lore: |-
+          &7
+          &f Saves both versions and takes
+          &f you back where you were.
+          &7
+          &7 /boxes cancel &fto discard it.
+          &7
+    usage-create: '{prefix}&cUsage: &e/boxes create <name>'
+    usage-edit: '{prefix}&cUsage: &e/boxes edit <name>'
+    invalid-name: '{prefix}&cThe name can only have letters, numbers, - and _.'
+    # %s: cage
+    exists: '{prefix}&cThere is already a cage called &e%s&c.'
+    not-found: '{prefix}&cThere is no cage called &e%s&c.'
+    already-creating: '{prefix}&cYou are already working on the cage &e%s&c: save it or cancel it.'
+    # %s: player
+    busy: '{prefix}&e%s &cis using the cage creator.'
+    not-creating: '{prefix}&cYou are not creating any cage!'
+    unknown: '{prefix}&cThat subcommand does not exist. Use &e/boxes&c.'
+    # %s: cages
+    list: '{prefix}&7Cages: &e%s'
+    help:
+      header: |-
         &7
-        &f Left and right click on the
-        &f two corners of the box.
+        {prefix}&fHelp &7● &eCages
         &7
-    need-name: '{prefix}&cYou must give a name to the new box!'
-    save-hint: '{prefix}&7When you finish the box, use &e/boxes save&7.'
-    # %s: x, y, z
-    first-position: '{prefix}&7First corner: &e(%s, %s, %s)&7.'
-    second-position: '{prefix}&7Second corner: &e(%s, %s, %s)&7.'
-    help: |-
-      &7
-      {prefix}&fHelp &7● &eBoxes
-      &7
-      &7 /boxes menu - &eOpens the boxes menu.
-      &7 /boxes create [name] - &eCreates a new box.
-      &7 /boxes save - &eSaves the box you are creating.
-      &7 /boxes edit [name] - &eEdits a box.
-      &7
+      create: '&7 /boxes create <name> - &eCreates a new cage (SOLO and TEAM).'
+      edit: '&7 /boxes edit <name> - &eEdits a cage.'
+      zone: '&7 /boxes solo|team - &eTakes you to one of its two zones.'
+      save: '&7 /boxes save - &eSaves the cage you are making.'
+      cancel: '&7 /boxes cancel - &eLeaves without saving.'
+      list: '&7 /boxes list - &eShows the cages.'
   editor:
     # %s: arena (the title cannot be longer than 32 characters)
     title: '&8&lS&7&lS&0 » %s'
@@ -1797,12 +2079,6 @@ admin:
     no-spawns: '&cThere are no spawns registered!'
     no-balloon-spawns: '&cThere are no balloon spawns registered!'
     click-block: '{prefix}&cYou must click a block!'
-    not-editing: '{prefix}&cYou must be editing an arena!'
-    # %s: spawn number
-    spawn-added: '{prefix}&7Spawn &aadded &8(#%s)'
-    spectator-spawn: '{prefix}&aSpectator spawn set!'
-    balloon-added: '{prefix}&7Balloon spawn &aadded &8(#%s)'
-    balloon-removed: '{prefix}&7Balloon spawn &cremoved &8(#%s)'
     # %s: arena
     enabled: '{prefix}&e%s &awas reloaded and can be played now.'
     disabled: '{prefix}&e%s &7is disabled: you can edit it now.'
@@ -1818,20 +2094,6 @@ admin:
       actionbar: '&fCurrent: &r%s'
       # %s: arena, new name
       done: '{prefix}&7Display name of &e%s&7: &r%s'
-    spawn-tool:
-      name: '&aSpawn tool &7(Click)'
-      lore: |-
-        &7
-        &e Left click &fa block: add a spawn.
-        &e Right click &fa block: spectator spawn.
-        &7
-    balloon-tool:
-      name: '&aBalloon spawns &7(Click)'
-      lore: |-
-        &7
-        &e Left click &fto add.
-        &e Right click &fto remove.
-        &7
     # Editor buttons (/sw arena edit). In texts with several values: %1$s, %2$s...
     items:
       back:
@@ -1909,29 +2171,42 @@ admin:
           &7
           &e Left click to increase.
           &e Right click to decrease.
-      give-spawn-tool:
-        name: '&7» &bSpawn tool'
+      checklist:
+        name: '&7» &bWhat is missing'
         lore: |-
           &7
-          &f Gives you the tool to set
-          &f the player spawns.
+          &f To enable the arena everything
+          &f must be &a✔&f.
           &7
-          &e Click to get it.
-      wand:
-        name: '&7» &bSchematic tool'
+      spectators:
+        name: '&7» &bSpectator spawn'
         lore: |-
           &7
-          &f Creates the schematic to
-          &f save it in the folder.
+          &f Where spectators appear.
+          &f It is also the center of the map:
+          &f the cages face it.
           &7
-          &e Select the highest and the
-          &e lowest point to save it.
+          &f Status: %s
+          &7
+          &e Click to go there.
+      lobby:
+        name: '&7» &bWaiting lobby'
+        lore: |-
+          &7
+          &f Where players wait as they join.
+          &f With &e%2$s &fseconds left they go
+          &f to their cages. Required in TEAM.
+          &7
+          &f Status: %1$s
+          &7
+          &e Left click to go there.
+          &e Right click to remove it.
       spawns:
         name: '&7» &bSpawn points'
         lore: |-
           &7
-          &f Edit the spawn points
-          &f of the arena.
+          &f Each one is a team, with its
+          &f cage (3x3 in TEAM).
           &7
           &f Spawns: &e%s
           &7
@@ -1940,18 +2215,26 @@ admin:
         name: '&7» &bBalloon spawn points'
         lore: |-
           &7
-          &f Edit the spawn points
-          &f of the balloons.
+          &f Change the balloon
+          &f spawn points.
           &7
           &f Balloon spawns: &e%s
           &7
           &e Click to see them.
-      give-balloon-tool:
-        name: '&7» &bBalloon spawns'
+      tools:
+        name: '&7» &bTools'
         lore: |-
           &7
-          &f Gives you the tool to set
-          &f the balloon spawns.
+          &f Gives you the editor tools
+          &f in your hotbar again.
+          &7
+          &e Click to get them.
+      exit:
+        name: '&7» &cLeave the editor'
+        lore: |-
+          &7
+          &f Stop editing and get your
+          &f inventory back.
           &7
   select:
     title: '&8&lS&7&lS&0 » Arena Editor'
@@ -1976,41 +2259,130 @@ admin:
     map-loaded: '{prefix}&aYou loaded the map &e%s&a!'
   arena:
     exists: '{prefix}&cThat arena already exists.'
+    invalid-name: '{prefix}&cThe name can only have letters, numbers, - and _.'
     creating: '{prefix}&7Creating arena...'
+    world-created: '{prefix}&7There was no map with that name: an &eempty world &7was created.'
     # %s: error
-    create-error: '{prefix}&cSomething went wrong creating the arena: &e%s'
-    created: '{prefix}&aArena created! &7Use &e/sw arena edit [arena] &7to edit it.'
-    usage-create: '{prefix}&cUsage: &e/sw arena create [name]'
+    create-error: '{prefix}&cSomething went wrong while creating the arena: &e%s'
+    usage-create: '{prefix}&cUsage: &e/sw arena create <name>'
     not-found: '{prefix}&cThat arena does not exist!'
-    # %s: arena
-    stop-editing: '{prefix}&7You are no longer editing &e%s&7.'
-    opening-menus: '{prefix}&7Opening the editor...'
-    menu-error: '{prefix}&cSomething went wrong opening the editor: &e%s'
-    menu-error-plain: '{prefix}&cSomething went wrong opening the editor.'
-    world-exists: '{prefix}&cThat world already exists.'
-    creating-world: '{prefix}&7Creating world...'
-    world-create-error: '{prefix}&cSomething went wrong creating the world: &e%s'
-    usage-createworld: '{prefix}&cUsage: &e/sw arena createworld [name]'
-    world-not-found: '{prefix}&cThat world does not exist!'
-    saving-world: '{prefix}&7Saving world...'
-    world-save-error: '{prefix}&cSomething went wrong saving the world: &e%s'
-    usage-saveworld: '{prefix}&cUsage: &e/sw arena saveworld [name]'
     not-editing: '{prefix}&cYou are not editing any arena!'
-    usage-editor: '{prefix}&cUsage: &e/sw arena editor'
     # %s: arenas
     list: '{prefix}&7Available arenas: &e%s'
-    editing-actionbar: '&fYou are editing the arena &a&l%s'
     help:
       header: |-
         &7
         {prefix}&fHelp &7● &eArenas
         &7
-      create: '&7 /sw arena create [name] - &eCreates a new arena.'
-      edit: '&7 /sw arena edit <name> - &eEdits an arena (no name: maps and worlds).'
-      createworld: '&7 /sw arena createworld [name] - &eCreates a world for a new arena.'
-      saveworld: '&7 /sw arena saveworld [name] - &eSaves a world in the maps folder.'
-      editor: '&7 /sw arena editor - &eOpens the arena editor.'
+      create: '&7 /sw arena create <name> - &eCreates an arena (and an empty world if there is no map) and edits it.'
+      edit: '&7 /sw arena edit [name] - &eEdits an arena (no name: maps and worlds).'
+      editor: '&7 /sw arena editor - &eOpens the menu of the arena you are editing.'
+      tools: '&7 /sw arena tools - &eGives you the editor tools.'
+      check: '&7 /sw arena check - &eShows what it still needs to be played.'
+      save: '&7 /sw arena save - &eSaves the map to the maps folder.'
+      exit: '&7 /sw arena exit - &eStops editing.'
       list: '&7 /sw arena list - &eShows the available arenas.'
+  # Arena editor: tools, markers and the list of what is missing.
+  setup:
+    # %s: arena
+    started: '{prefix}&7Editing &e%s&7. The tools are in your hotbar.'
+    guide: |-
+      &7
+      &a Blaze rod&f: left on a block adds a spawn; right removes the nearest.
+      &b Eye of ender&f: the spectator spawn (and map center) where you stand.
+      &e Star&f: the waiting lobby where you stand (sneaking: remove it).
+      &d Lead&f: same as the rod, for balloons.
+      &f Glass&f: show or hide the cages on the spawns.
+      &7 Every point shows up with particles of its color.
+      &7
+    stopped: '{prefix}&7You are no longer editing &e%s&7.'
+    wrong-world: '{prefix}&cGo to the world of &e%s &cto use the tools.'
+    # %s: number
+    spawn-added: '{prefix}&7Spawn &aadded &8(#%s)'
+    spawn-removed: '{prefix}&7Spawn &cremoved &8(#%s)'
+    balloon-added: '{prefix}&7Balloon spawn &aadded &8(#%s)'
+    balloon-removed: '{prefix}&7Balloon spawn &cremoved &8(#%s)'
+    spawn-too-close: '{prefix}&eCareful: it is very close to another spawn and their cages may overlap.'
+    point-exists: '{prefix}&cThere is already a point there.'
+    nothing-near: '{prefix}&cThere is no point within 3 blocks.'
+    point-missing: '{prefix}&cThat point is not set yet.'
+    spectator-set: '{prefix}&aSpectator spawn set!'
+    # %s: seconds
+    lobby-set: '{prefix}&aWaiting lobby set! &7With &e%s &7seconds left players go to the cages.'
+    lobby-removed: '{prefix}&7Waiting lobby &cremoved&7: players will wait inside the cages.'
+    # %s: mode
+    preview-on: '{prefix}&e%s &7cages placed on the spawns. They are removed when saving.'
+    preview-off: '{prefix}&7Cages removed.'
+    # %s: arena, spawns, spectators, waiting lobby
+    actionbar: '&fEditing &a%s &8| &fSpawns: &e%s &8| &fSpectators: %s &8| &fLobby: %s'
+    state:
+      done: '&a✔'
+      missing: '&c✘'
+      optional: '&7-'
+    optional: '&8(optional)'
+    check:
+      # %s: spawns
+      spawns: '&fSpawns: &e%s &7(at least 2)'
+      spectators: '&fSpectator spawn'
+      lobby: '&fWaiting lobby'
+      # %s: minimum, maximum
+      min-players: '&fMinimum players: &e%s&7/&e%s'
+      balloons: '&fBalloon spawns: &e%s'
+    # %s: arena
+    check-header: '{prefix}&7What &e%s &7needs:'
+    check-ready: '{prefix}&aReady! &7Enable it from the menu (&e/sw arena editor&7).'
+    check-missing: '{prefix}&cIt still needs what is marked &c✘&c.'
+    cannot-enable: '{prefix}&cIt cannot be enabled yet. Missing:'
+    tools:
+      spawns:
+        name: '&aSpawns &7(Click)'
+        lore: |-
+          &7
+          &e Left click &fon a block: add a spawn.
+          &e Right click&f: remove the nearest.
+          &7
+      spectators:
+        name: '&bSpectator spawn &7(Click)'
+        lore: |-
+          &7
+          &f Sets it where you stand, facing
+          &f where you look.
+          &7
+      lobby:
+        name: '&eWaiting lobby &7(Click)'
+        lore: |-
+          &7
+          &f Sets it where you stand.
+          &e Sneaking&f: remove it.
+          &7
+      balloons:
+        name: '&dBalloon spawns &7(Click)'
+        lore: |-
+          &7
+          &e Left click &fon a block: add.
+          &e Right click&f: remove the nearest.
+          &7
+      preview:
+        name: '&fShow cages &7(Click)'
+        lore: |-
+          &7
+          &f Places or removes the default cage
+          &f on every spawn (the 3x3 one in TEAM).
+          &7
+      menu:
+        name: '&6Editor menu &7(Click)'
+        lore: |-
+          &7
+          &f Arena settings and what it
+          &f still needs to be played.
+          &7
+      exit:
+        name: '&cLeave the editor &7(Click)'
+        lore: |-
+          &7
+          &f Stop editing and get your
+          &f inventory back.
+          &7
   reload:
     # %s: what is reloaded (admin.reload.targets)
     start: '{prefix}&7Reloading %s...'
@@ -2041,6 +2413,7 @@ admin:
       chests: '&7 /sw reload chests - &eReloads the chests.'
       shops: '&7 /sw reload shops - &eReloads the shop and the abilities.'
       trails: '&7 /sw reload trails - &eReloads the trails.'
+      killsounds: '&7 /sw reload killsounds - &eReloads the kill sounds.'
       boxes: '&7 /sw reload boxes - &eReloads the boxes.'
       balloons: '&7 /sw reload balloons - &eReloads the balloons.'
       menus: '&7 /sw reload menus - &eReloads the menus.'

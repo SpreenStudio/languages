@@ -167,6 +167,8 @@ maintenance: '{prefix}&cEn desarrollo o en mantenimiento.'
 
 menus:
   not-exist: '{prefix}&c¡Ese menú no existe!'
+  confirm: '&a&l¡Confirmar!'
+  cancel: '&c&lCancelar'
 
 messages:
   alreadyConnected: '{prefix}&c¡Ya estás conectado a ese servidor!'
