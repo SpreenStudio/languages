@@ -504,7 +504,7 @@ items:
       lore: |-
         &7
         &f Haz clic para restablecer
-        &f tu rastro de flechas.
+        &f tu rastro de proyectiles.
         &7
     clear-win-effect:
       lore: |-
@@ -531,11 +531,11 @@ items:
     trail:
       name: '&7» &bRastro: &e<trail>'
     trails-menu:
-      name: '&7» &bRastros de flechas'
+      name: '&7» &bRastros de proyectiles'
       lore: |-
         &7
         &f Cambia la partícula que
-        &f dejan tus flechas.
+        &f dejan tus proyectiles.
         &7
     win-effect:
       name: '&7» &bEfecto: &e<winEffect>'
@@ -966,8 +966,8 @@ settings:
       lore: '&f Cambia el color del cristal en el que apareces.'
     trails:
       title: '&8&lS&7&lS&0 » Rastros'
-      name: '&7» &bRastro de flechas'
-      lore: '&f Cambia el rastro de tus flechas.'
+      name: '&7» &bRastro de proyectiles'
+      lore: '&f Cambia el rastro de tus proyectiles.'
   trails:
     default:
       name: '&bPor defecto'
@@ -1201,11 +1201,11 @@ menus:
           &f efecto al ganar.
           &7
       trails:
-        name: '&7» &bRastros de flechas'
+        name: '&7» &bRastros de proyectiles'
         lore: |-
           &7
           &f Haz clic para elegir la
-          &f partícula de tus flechas.
+          &f partícula de tus proyectiles.
           &7
       kill-sounds:
         name: '&7» &bSonidos de baja'
@@ -1468,156 +1468,156 @@ boxes:
       &f Caja con temática de tolvas.
       &7
 
-# Rastros de flecha (trails.yml → icon).
+# Rastros de proyectiles (trails.yml → icon).
 trails:
   cloud:
     name: '&aNube'
     lore: |-
       &7
-      &f Tus flechas dejan nubes.
+      &f Tus proyectiles dejan nubes.
       &7
   enchant:
     name: '&aEncantamiento'
     lore: |-
       &7
-      &f Tus flechas dejan runas
+      &f Tus proyectiles dejan runas
       &f de encantamiento.
       &7
   fireworks:
     name: '&aFuegos artificiales'
     lore: |-
       &7
-      &f Tus flechas dejan chispas
+      &f Tus proyectiles dejan chispas
       &f de fuegos artificiales.
       &7
   flame:
     name: '&aFuego'
     lore: |-
       &7
-      &f Tus flechas dejan llamas.
+      &f Tus proyectiles dejan llamas.
       &7
   heart:
     name: '&aCorazón'
     lore: |-
       &7
-      &f Tus flechas dejan corazones.
+      &f Tus proyectiles dejan corazones.
       &7
   lava:
     name: '&aLava'
     lore: |-
       &7
-      &f Tus flechas dejan gotas
+      &f Tus proyectiles dejan gotas
       &f de lava.
       &7
   magic:
     name: '&aMagia'
     lore: |-
       &7
-      &f Tus flechas dejan
+      &f Tus proyectiles dejan
       &f partículas mágicas.
       &7
   note:
     name: '&aNotas'
     lore: |-
       &7
-      &f Tus flechas dejan
+      &f Tus proyectiles dejan
       &f notas musicales.
       &7
   portal:
     name: '&aPortal'
     lore: |-
       &7
-      &f Tus flechas dejan
+      &f Tus proyectiles dejan
       &f partículas de portal.
       &7
   reddust:
     name: '&aRastro rojo'
     lore: |-
       &7
-      &f Tus flechas dejan un
+      &f Tus proyectiles dejan un
       &f rastro rojo.
       &7
   slime:
     name: '&aSlime'
     lore: |-
       &7
-      &f Tus flechas dejan slime.
+      &f Tus proyectiles dejan slime.
       &7
   spell:
     name: '&aPoción'
     lore: |-
       &7
-      &f Tus flechas dejan
+      &f Tus proyectiles dejan
       &f partículas de poción.
       &7
   water:
     name: '&aAgua'
     lore: |-
       &7
-      &f Tus flechas dejan gotas
+      &f Tus proyectiles dejan gotas
       &f de agua.
       &7
   crit:
     name: '&aCrítico'
     lore: |-
       &7
-      &f Tus flechas dejan
+      &f Tus proyectiles dejan
       &f golpes críticos.
       &7
   magic-crit:
     name: '&aCrítico mágico'
     lore: |-
       &7
-      &f Tus flechas dejan
+      &f Tus proyectiles dejan
       &f críticos mágicos.
       &7
   emerald:
     name: '&aEsmeralda'
     lore: |-
       &7
-      &f Tus flechas dejan
+      &f Tus proyectiles dejan
       &f destellos verdes.
       &7
   storm:
     name: '&aNube de tormenta'
     lore: |-
       &7
-      &f Tus flechas dejan
+      &f Tus proyectiles dejan
       &f nubes enfadadas.
       &7
   snow:
     name: '&aNieve'
     lore: |-
       &7
-      &f Tus flechas dejan
+      &f Tus proyectiles dejan
       &f copos de nieve.
       &7
   smoke:
     name: '&aHumo'
     lore: |-
       &7
-      &f Tus flechas dejan
+      &f Tus proyectiles dejan
       &f una estela de humo.
       &7
   void:
     name: '&aVacío'
     lore: |-
       &7
-      &f Tus flechas dejan
+      &f Tus proyectiles dejan
       &f niebla del vacío.
       &7
   swirl:
     name: '&aRemolino'
     lore: |-
       &7
-      &f Tus flechas dejan
+      &f Tus proyectiles dejan
       &f remolinos de colores.
       &7
   party:
     name: '&aFiesta'
     lore: |-
       &7
-      &f Tus flechas dejan chispas,
+      &f Tus proyectiles dejan chispas,
       &f corazones y notas al azar.
       &7
 
@@ -2424,8 +2424,9 @@ admin:
           &7
           &f Estado: %1$s
           &7
-          &e Clic izquierdo para ir.
-          &e Clic derecho para quitarla.
+          &e Clic izquierdo: ponerla donde estás.
+          &e Clic derecho: quitarla.
+          &e Shift + clic: ir a ella.
       spawns:
         name: '&7» &bPuntos de aparición'
         lore: |-
@@ -2523,10 +2524,11 @@ admin:
     guide: |-
       &7
       &a Vara de blaze&f: izq. en un bloque añade un spawn; der. quita el más cercano.
-      &b Ojo de ender&f: el spawn de espectadores (y el centro del mapa) donde estás.
-      &e Estrella&f: la sala de espera donde estás (agachado: quitarla).
       &d Rienda&f: igual que la vara, para los globos.
-      &f Cristal&f: ver u ocultar las jaulas en los spawns.
+      &b Ojo de ender&f: el spawn de espectadores (y el centro del mapa) donde estás.
+      &f Cristal&f: ver u ocultar las jaulas y los globos.
+      &f Pluma&f: sube 8 bloques y pone un cristal bajo tus pies (como //up 8).
+      &e Sala de espera&f: desde el menú (libro).
       &7 Cada punto se ve con partículas de su color.
       &7
     stopped: '{prefix}&7Ya no estás editando &e%s&7.'
@@ -2545,7 +2547,9 @@ admin:
     lobby-set: '{prefix}&a¡Sala de espera establecida! &7A falta de &e%s &7segundos pasarán a las jaulas.'
     lobby-removed: '{prefix}&7Sala de espera &cquitada&7: se esperará dentro de las jaulas.'
     # %s: modo
-    preview-on: '{prefix}&7Jaulas de &e%s &7puestas en los spawns. Se quitan solas al guardar.'
+    preview-on: '{prefix}&7Jaulas de &e%s &7en los spawns y globos en sus postes. Se quitan solos al guardar.'
+    # %s: bloques
+    up-blocked: '{prefix}&cNo hay sitio libre &e%s &cbloques más arriba.'
     preview-off: '{prefix}&7Jaulas quitadas.'
     # %s: arena, spawns, espectadores, sala de espera
     actionbar: '&fEditando &a%s &8| &fSpawns: &e%s &8| &fEspectadores: %s &8| &fSala: %s'
@@ -2582,13 +2586,6 @@ admin:
           &f Lo pone donde estás, mirando
           &f hacia donde miras.
           &7
-      lobby:
-        name: '&eSala de espera &7(Clic)'
-        lore: |-
-          &7
-          &f La pone donde estás.
-          &e Agachado&f: quitarla.
-          &7
       balloons:
         name: '&dSpawns de globos &7(Clic)'
         lore: |-
@@ -2597,11 +2594,21 @@ admin:
           &e Clic derecho&f: quitar el más cercano.
           &7
       preview:
-        name: '&fVer jaulas &7(Clic)'
+        name: '&fVer jaulas y globos &7(Clic)'
         lore: |-
           &7
           &f Pone o quita la jaula por defecto
-          &f en cada spawn (la de 3x3 en TEAM).
+          &f en cada spawn (la de 3x3 en TEAM)
+          &f y un globo en cada poste.
+          &7
+      up:
+        name: '&fSubir 8 bloques &7(Clic)'
+        lore: |-
+          &7
+          &f Como //up 8: te sube y pone un
+          &f cristal bajo tus pies, a la altura
+          &f de las cajas. Haz clic en él con
+          &f la vara para poner el spawn.
           &7
       menu:
         name: '&6Menú del editor &7(Clic)'

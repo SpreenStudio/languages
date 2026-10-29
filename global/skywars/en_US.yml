@@ -504,7 +504,7 @@ items:
       lore: |-
         &7
         &f Click to reset
-        &f your arrow trail.
+        &f your projectile trail.
         &7
     clear-win-effect:
       lore: |-
@@ -531,11 +531,11 @@ items:
     trail:
       name: '&7» &bTrail: &e<trail>'
     trails-menu:
-      name: '&7» &bArrow trails'
+      name: '&7» &bProjectile trails'
       lore: |-
         &7
         &f Change the particle
-        &f your arrows leave.
+        &f your projectiles leave.
         &7
     win-effect:
       name: '&7» &bEffect: &e<winEffect>'
@@ -966,8 +966,8 @@ settings:
       lore: '&f Change the color of the glass you spawn in.'
     trails:
       title: '&8&lS&7&lS&0 » Trails'
-      name: '&7» &bArrow trail'
-      lore: '&f Change the trail of your arrows.'
+      name: '&7» &bProjectile trail'
+      lore: '&f Change the trail of your projectiles.'
   trails:
     default:
       name: '&bDefault'
@@ -1201,11 +1201,11 @@ menus:
           &f effect when you win.
           &7
       trails:
-        name: '&7» &bArrow trails'
+        name: '&7» &bProjectile trails'
         lore: |-
           &7
           &f Click to choose the
-          &f particle of your arrows.
+          &f particle of your projectiles.
           &7
       kill-sounds:
         name: '&7» &bKill sounds'
@@ -1468,156 +1468,156 @@ boxes:
       &f A hopper themed box.
       &7
 
-# Arrow trails (trails.yml → icon).
+# Projectile trails (trails.yml → icon).
 trails:
   cloud:
     name: '&aCloud'
     lore: |-
       &7
-      &f Your arrows leave clouds.
+      &f Your projectiles leave clouds.
       &7
   enchant:
     name: '&aEnchantment'
     lore: |-
       &7
-      &f Your arrows leave
+      &f Your projectiles leave
       &f enchantment runes.
       &7
   fireworks:
     name: '&aFireworks'
     lore: |-
       &7
-      &f Your arrows leave
+      &f Your projectiles leave
       &f firework sparks.
       &7
   flame:
     name: '&aFire'
     lore: |-
       &7
-      &f Your arrows leave flames.
+      &f Your projectiles leave flames.
       &7
   heart:
     name: '&aHeart'
     lore: |-
       &7
-      &f Your arrows leave hearts.
+      &f Your projectiles leave hearts.
       &7
   lava:
     name: '&aLava'
     lore: |-
       &7
-      &f Your arrows leave
+      &f Your projectiles leave
       &f drops of lava.
       &7
   magic:
     name: '&aMagic'
     lore: |-
       &7
-      &f Your arrows leave
+      &f Your projectiles leave
       &f magic particles.
       &7
   note:
     name: '&aNotes'
     lore: |-
       &7
-      &f Your arrows leave
+      &f Your projectiles leave
       &f music notes.
       &7
   portal:
     name: '&aPortal'
     lore: |-
       &7
-      &f Your arrows leave
+      &f Your projectiles leave
       &f portal particles.
       &7
   reddust:
     name: '&aRed trail'
     lore: |-
       &7
-      &f Your arrows leave
+      &f Your projectiles leave
       &f a red trail.
       &7
   slime:
     name: '&aSlime'
     lore: |-
       &7
-      &f Your arrows leave slime.
+      &f Your projectiles leave slime.
       &7
   spell:
     name: '&aPotion'
     lore: |-
       &7
-      &f Your arrows leave
+      &f Your projectiles leave
       &f potion particles.
       &7
   water:
     name: '&aWater'
     lore: |-
       &7
-      &f Your arrows leave
+      &f Your projectiles leave
       &f drops of water.
       &7
   crit:
     name: '&aCritical'
     lore: |-
       &7
-      &f Your arrows leave
+      &f Your projectiles leave
       &f critical hits.
       &7
   magic-crit:
     name: '&aMagic critical'
     lore: |-
       &7
-      &f Your arrows leave
+      &f Your projectiles leave
       &f magic critical hits.
       &7
   emerald:
     name: '&aEmerald'
     lore: |-
       &7
-      &f Your arrows leave
+      &f Your projectiles leave
       &f green sparkles.
       &7
   storm:
     name: '&aStorm cloud'
     lore: |-
       &7
-      &f Your arrows leave
+      &f Your projectiles leave
       &f angry clouds.
       &7
   snow:
     name: '&aSnow'
     lore: |-
       &7
-      &f Your arrows leave
+      &f Your projectiles leave
       &f snowflakes.
       &7
   smoke:
     name: '&aSmoke'
     lore: |-
       &7
-      &f Your arrows leave
+      &f Your projectiles leave
       &f a trail of smoke.
       &7
   void:
     name: '&aVoid'
     lore: |-
       &7
-      &f Your arrows leave
+      &f Your projectiles leave
       &f void fog.
       &7
   swirl:
     name: '&aSwirl'
     lore: |-
       &7
-      &f Your arrows leave
+      &f Your projectiles leave
       &f colorful swirls.
       &7
   party:
     name: '&aParty'
     lore: |-
       &7
-      &f Your arrows leave random
+      &f Your projectiles leave random
       &f sparks, hearts and notes.
       &7
 
@@ -2420,8 +2420,9 @@ admin:
           &7
           &f Status: %1$s
           &7
-          &e Left click to go there.
-          &e Right click to remove it.
+          &e Left click: set it where you stand.
+          &e Right click: remove it.
+          &e Shift + click: go there.
       spawns:
         name: '&7» &bSpawn points'
         lore: |-
@@ -2519,10 +2520,11 @@ admin:
     guide: |-
       &7
       &a Blaze rod&f: left on a block adds a spawn; right removes the nearest.
-      &b Eye of ender&f: the spectator spawn (and map center) where you stand.
-      &e Star&f: the waiting lobby where you stand (sneaking: remove it).
       &d Lead&f: same as the rod, for balloons.
-      &f Glass&f: show or hide the cages on the spawns.
+      &b Eye of ender&f: the spectator spawn (and map center) where you stand.
+      &f Glass&f: show or hide the cages and balloons.
+      &f Feather&f: goes up 8 blocks and puts glass under your feet (like //up 8).
+      &e Waiting lobby&f: from the menu (book).
       &7 Every point shows up with particles of its color.
       &7
     stopped: '{prefix}&7You are no longer editing &e%s&7.'
@@ -2541,7 +2543,9 @@ admin:
     lobby-set: '{prefix}&aWaiting lobby set! &7With &e%s &7seconds left players go to the cages.'
     lobby-removed: '{prefix}&7Waiting lobby &cremoved&7: players will wait inside the cages.'
     # %s: mode
-    preview-on: '{prefix}&e%s &7cages placed on the spawns. They are removed when saving.'
+    preview-on: '{prefix}&e%s &7cages on the spawns and balloons on their posts. They are removed when saving.'
+    # %s: blocks
+    up-blocked: '{prefix}&cThere is no free space &e%s &cblocks above.'
     preview-off: '{prefix}&7Cages removed.'
     # %s: arena, spawns, spectators, waiting lobby
     actionbar: '&fEditing &a%s &8| &fSpawns: &e%s &8| &fSpectators: %s &8| &fLobby: %s'
@@ -2578,13 +2582,6 @@ admin:
           &f Sets it where you stand, facing
           &f where you look.
           &7
-      lobby:
-        name: '&eWaiting lobby &7(Click)'
-        lore: |-
-          &7
-          &f Sets it where you stand.
-          &e Sneaking&f: remove it.
-          &7
       balloons:
         name: '&dBalloon spawns &7(Click)'
         lore: |-
@@ -2593,11 +2590,21 @@ admin:
           &e Right click&f: remove the nearest.
           &7
       preview:
-        name: '&fShow cages &7(Click)'
+        name: '&fShow cages and balloons &7(Click)'
         lore: |-
           &7
           &f Places or removes the default cage
-          &f on every spawn (the 3x3 one in TEAM).
+          &f on every spawn (the 3x3 one in TEAM)
+          &f and a balloon on every post.
+          &7
+      up:
+        name: '&fGo up 8 blocks &7(Click)'
+        lore: |-
+          &7
+          &f Like //up 8: takes you up and puts
+          &f glass under your feet, at the height
+          &f of the cages. Click it with the rod
+          &f to place the spawn.
           &7
       menu:
         name: '&6Editor menu &7(Click)'
