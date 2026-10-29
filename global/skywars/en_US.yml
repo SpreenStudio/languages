@@ -26,6 +26,7 @@ commands:
     arena: 'game server'
     multi_arena: 'multi-arena'
   only-lobby: '{prefix}&cThis command can only be used in the lobby!'
+  unknown-mode: '{prefix}&cThat mode does not exist! Use &eSOLO &cor &eTEAM&c.'
   player-not-found: '{prefix}&cThe player &e%s &cis not online or does not exist.'
   forcestart:
     not-enough: '{prefix}&cYou need at least &e2 players &cfrom different teams to start.'
@@ -46,7 +47,7 @@ commands:
       &7 /sw coins add [amount] <player> - &eAdds coins.
       &7 /sw coins remove [amount] <player> - &eRemoves coins.
     forcestart: '&7 /sw forcestart - &eForces the game to start.'
-    games: '&7 /sw games - &eOpens the games menu.'
+    games: '&7 /sw games <SOLO|TEAM> - &eOpens the games menu (or the maps of that mode).'
     hologram: '&7 /sw hologram add|remove <#> | top [id] add|remove <#> - &eLobby holograms.'
     join: '&7 /sw join <arena> - &eJoins a game (or the best one available).'
     lobbyspawn: '&7 /sw lobbyspawn - &eSets the lobby spawn.'
@@ -1280,41 +1281,8 @@ menus:
           &7
   win-effects:
     title: '&8&lS&7&lS&0 » Win Effects'
-  game-modes:
-    title: '&8&lS&7&lS&0 » Game Modes'
-    # %mode% in the titles of the games and maps menus.
-    names:
-      solo: 'Solo'
-      team: 'Teams'
-    items:
-      solo:
-        name: '&b&lSkyWars Solo'
-        lore: |-
-          &8PvP
-          &f
-          &7Fight in the sky against others,
-          &7loot the chests and be the
-          &7last one standing to win.
-          &f
-          &fPlaying: &5<players>
-          &fWaiting: &5<wplayers>
-          &f
-          &e Click to see the games.
-      team:
-        name: '&d&lSkyWars Teams'
-        lore: |-
-          &8PvP
-          &f
-          &7Team up with your friends,
-          &7loot the chests and make your
-          &7team the last one standing.
-          &f
-          &fPlaying: &5<players>
-          &fWaiting: &5<wplayers>
-          &f
-          &e Click to see the games.
   games:
-    title: '&8&lS&7&lS&0 » SkyWars %mode%'
+    title: '&8&lS&7&lS&0 » SkyWars'
     items:
       solo:
         name: '&b&lSkyWars Solo'
@@ -1328,7 +1296,8 @@ menus:
           &fPlaying: &5<players>
           &fWaiting: &5<wplayers>
           &f
-          &e Click to join a game.
+          &e Left click to play.
+          &e Right click to see the maps.
       team:
         name: '&d&lSkyWars Teams'
         lore: |-
@@ -1341,19 +1310,14 @@ menus:
           &fPlaying: &5<players>
           &fWaiting: &5<wplayers>
           &f
-          &e Click to join a game.
-      mapSelector:
-        name: '&7» &bMap selector'
-        lore: |-
-          &7
-          &f Choose the map you
-          &f want to play on.
-          &7
-          &e Click to open it.
-      prev:
-        name: '&b« &eGame Modes'
+          &e Left click to play.
+          &e Right click to see the maps.
   game-selector:
     title: '&8&lS&7&lS&0 » Maps %mode%'
+    # %mode% of the title.
+    modes:
+      solo: 'Solo'
+      team: 'Teams'
     items:
       waiting:
         name: '&a%arena%'
@@ -1399,6 +1363,8 @@ menus:
           &f Click to join the best
           &f available game.
           &7
+      prev:
+        name: '&b« &eGame Modes'
 
 # Boxes (boxes.yml → icon).
 boxes:
