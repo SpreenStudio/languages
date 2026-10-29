@@ -1,0 +1,110 @@
+help: |-
+  &e&lFurryCore &7- &fAyuda
+  &7&m-------------------------
+  &e/{command} reload &7- &fRecarga la configuración.
+  &e/{command} servers &7- &fLista los servidores registrados.
+  &e/{command} aps &7- &fGestión de AntiPluginSteal.
+  &7&m-------------------------
+reloading: '{prefix}&eRecargando la configuración...'
+reloaded: '{prefix}&aConfiguración recargada.'
+servers: |-
+  &e&lFurryCore &7- &fServidores
+  &7&m-------------------------
+  &eServidores &7(&f{amount}&7): &f{servers}
+  &7&m-------------------------
+
+aps:
+  help: |-
+    &e&lAntiPluginSteal &7- &fAyuda
+    &7&m----------------------------------------
+    &e/{command} aps add <comando/regex> &7- &fAgrega un comando a la lista.
+    &e/{command} aps remove <comando/regex> &7- &fElimina un comando de la lista.
+    &e/{command} aps list &7- &fLista los comandos bloqueados.
+    &e/{command} aps toggle &7- &fHabilita o deshabilita el bloqueo.
+    &e/{command} aps reload &7- &fRecarga la configuración.
+    &7&m----------------------------------------
+  unavailable: '{prefix}&cEl módulo AntiPluginSteal no está disponible.'
+  added: '{prefix}&aComando/patrón &e{command} &aagregado a la lista de AntiPluginSteal.'
+  already-added: '{prefix}&cEl comando/patrón &e{command} &cya está en la lista.'
+  removed: '{prefix}&aComando/patrón &e{command} &aeliminado de la lista de AntiPluginSteal.'
+  not-found: '{prefix}&cEl comando/patrón &e{command} &cno se encontró en la lista.'
+  toggled: '{prefix}&eAntiPluginSteal ahora está {status}&e.'
+  reloaded: '{prefix}&aConfiguración de AntiPluginSteal recargada correctamente.'
+  list:
+    header: |-
+      &e&lAntiPluginSteal &7- &fComandos bloqueados (&e{amount}&7)
+      &7&m----------------------------------------
+    entry: ' &7- &e{command}'
+    empty: ' &7(No hay comandos bloqueados configurados)'
+    footer: |-
+      &7Estado: {status}
+      &7&m----------------------------------------
+
+maintenance:
+  help: |-
+    &6&lMantenimiento &7- &fAyuda
+    &7&m-------------------------
+    &e/{command} <on|off|toggle|get> [router] &7- &fGestiona el modo mantenimiento de un router.
+    &e/{command} whitelist <add|remove> <router> <jugador> &7- &fGestiona la whitelist de mantenimiento.
+    &7&m-------------------------
+  router-not-found: '{prefix}&cEl router &e{id} &cno existe.'
+  no-router: '{prefix}&cNo estás conectado a ningún router.'
+  specify-router: '{prefix}&cDebes indicar un router o ser un jugador conectado a uno.'
+  status: |-
+    {prefix}&eRouter: &f{id}
+    {prefix}&eModo mantenimiento: {status}
+  enabled: '{prefix}&aModo mantenimiento activado en &e{id}&a.'
+  disabled: '{prefix}&cModo mantenimiento desactivado en &e{id}&c.'
+  whitelist:
+    specify-player: '{prefix}&cDebes indicar un jugador.'
+    already-added: '{prefix}&cEl jugador &e{target} &cya está en la whitelist.'
+    added: '{prefix}&aJugador &e{target} &aañadido a la whitelist.'
+    not-found: '{prefix}&cEl jugador &e{target} &cno está en la whitelist.'
+    removed: '{prefix}&cJugador &e{target} &celiminado de la whitelist.'
+
+router:
+  help: |-
+    {router}&7Comandos disponibles:
+      &e→ &b/router list &7- &fListar los routers existentes.
+      &e→ &b/router create <nombre> <puerto> &7- &fCrear un router y registrar su servidor.
+      &e→ &b/router delete <router> &7- &fBorrar el router y su servidor.
+      &e→ &b/router modify <router> <opcion> <valor> &7- &fCambiar una opción.
+    &7Opciones: &b{options}
+  list:
+    header: '{router}&7Routers:'
+    entry: '&7- &b{id} &7({status}&7)'
+    active: '&aactivo'
+    inactive: '&cinactivo'
+    empty: '{router}&cNo hay routers definidos.'
+  invalid-name: '{router}&cNombre inválido. Usa solo letras, números, guion y guion bajo (máx. 32).'
+  reserved-name: '{router}&cEse nombre está reservado para la plantilla.'
+  create-failed: '{router}&cNo se pudo crear el archivo del router: {error}'
+  created: "{router}&aServidor &b{server} &abajo gestión de FurryCore.\n  &7Servidor: &b{address}"
+  reused: "  &7Router: &breutilizado &7(routers/{id}.yml, sin tocar)\n  &7Dominios: &b{domains}"
+  new: "  &7Router: &bcreado &7(routers/{id}.yml)\n  &7Dominio: &b{domain}"
+  adopted: '  &7Ya estaba registrado en el proxy: solo se añadió a server-manager.yml. &eQuítalo de velocity.toml.'
+  address-mismatch: "  &e⚠ Ya estaba registrado en el proxy con &cotra dirección&e.\n  &e  Se guardó &b{address}&e en server-manager.yml, pero el proxy sigue usando la vieja.\n  &e  Quítalo de velocity.toml y reinicia para aplicarlo."
+  not-found: '{router}&cEse router no existe.'
+  deleted: '{router}&7Router &b{id} &celiminado&7.'
+  deleted-server: '  &7También se quitó su servidor del proxy.'
+  invalid-value: '{router}&cEl valor &b{value} &cno es válido para &b{option}&c.'
+  modified: '{router}&7Opción &b{option} &7del router &e{id} &7cambiada a &b{value}&7.'
+
+chatfilter:
+  help: |-
+    &e&lFurryCore &7- &fChatFilter
+    &7&m-------------------------
+    &e/{command} reload &7- &fRecarga chatfilter.yml.
+    &e/{command} test <router|global> <mensaje> &7- &fPrueba un mensaje con los ajustes de un router.
+    &7&m-------------------------
+  reloaded: '{prefix}&aChatFilter recargado.'
+  router-not-found: '{prefix}&cEl router &e{id} &cno existe.'
+  test:
+    header: '&e&lChatFilter &7- &fPrueba &8(&7router: &e{id}&8)'
+    result: '&7Resultado: {result}'
+    checks: '&7Checks activados: &f{checks}'
+    no-checks: 'ninguno'
+    final: '&7Mensaje final: &f{message}'
+    blocked: '&cBLOQUEADO &7por &e{check}'
+    modified: '&eMODIFICADO'
+    allowed: '&aPERMITIDO'

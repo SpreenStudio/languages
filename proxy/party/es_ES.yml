@@ -1,0 +1,70 @@
+prefix: '&d&lParty&8 » &7'
+help: |-
+  &8&m------&r &d&lParty &8&m------
+  &d/party invite <jugador> &8- &7Invita a un jugador.
+  &d/party accept <jugador> &8- &7Acepta una invitación.
+  &d/party deny <jugador> &8- &7Rechaza una invitación.
+  &d/party join <jugador> &8- &7Únete a una party pública.
+  &d/party public &8- &7Abre tu party y la anuncia. &8(&7alias: open&8)
+  &d/party private &8- &7Solo se entra con invitación.
+  &d/party list &8- &7Muestra los miembros.
+  &d/party chat [mensaje] &8- &7Habla con tu party o activa el chat.
+  &d/party leave &8- &7Sal de la party.
+  &d/party warp &8- &7Trae a la party a tu servidor.
+  &d/party kick <jugador> &8- &7Expulsa a un miembro.
+  &d/party promote <jugador> &8- &7Cede el liderazgo.
+  &d/party disband &8- &7Disuelve la party.
+usage: '&cUso: /party {action} <jugador>'
+
+self: '&cNo puedes hacer eso contigo mismo.'
+player-not-found: '&cEl jugador &e{target} &cno está conectado.'
+not-in-party: '&cNo estás en ninguna party.'
+already-in-party: '&cYa estás en una party. Usa &e/party leave &cpara salir.'
+not-leader: '&cSolo el líder de la party puede hacer eso.'
+not-member: '&e{target} &cno está en tu party.'
+already-member: '&e{target} &cya forma parte de tu party.'
+target-in-party: '&e{target} &cya está en otra party.'
+full: '&cLa party está llena &8(&e{max}&8)&c.'
+already-invited: '&cYa has invitado a &e{target}&c.'
+created: '&aHas creado una party.'
+invite-sent: '&e{player} &7ha invitado a &e{target} &7a la party. Tiene &e{seconds}s &7para aceptar.'
+invite-received: '&e{player} &7te ha invitado a su party. '
+invite-accept: '&a&l[ACEPTAR]'
+invite-accept-hover: '&7Click para unirte a la party de &e{player}'
+invite-deny: '&c&l[RECHAZAR]'
+invite-deny-hover: '&7Click para rechazar la invitación'
+invite-expired: '&7La invitación a &e{target} &7ha expirado.'
+no-invite: '&cNo tienes ninguna invitación de &e{target}&c.'
+invite-denied: '&7Has rechazado la invitación de &e{target}&7.'
+invite-denied-party: '&e{player} &7ha rechazado la invitación.'
+joined: '&e{player} &ase ha unido a la party.'
+left: '&e{player} &7ha salido de la party.'
+you-left: '&7Has salido de la party.'
+kicked: '&e{target} &7ha sido expulsado de la party.'
+you-kicked: '&cHas sido expulsado de la party.'
+promoted: '&e{target} &aes ahora el líder de la party.'
+disbanded: '&cLa party ha sido disuelta.'
+offline-warning: '&e{player} &7se ha desconectado. Saldrá de la party en &e{seconds}s &7si no vuelve.'
+offline-removed: '&e{player} &7ha salido de la party por estar desconectado.'
+reconnected: '&e{player} &ase ha reconectado.'
+warp: '&aEl líder ha llevado a la party a &e{server}&a.'
+only-leader-games: '&cSolo el líder de la party puede unirse a partidas.'
+target-no-party: '&e{target} &cno está en ninguna party.'
+not-public: '&cLa party de &e{target} &ces privada. Necesitas una invitación.'
+already-public: '&cTu party ya es pública.'
+already-private: '&cTu party ya es privada.'
+now-public: '&aLa party ahora es pública. Cualquiera puede unirse con &e/party join {leader}&a.'
+now-private: '&7La party ahora es &cprivada&7. Solo se puede entrar con invitación.'
+public-announce: '&e{player} &7ha abierto una party pública. '
+public-join: '&a&l[UNIRSE]'
+public-join-hover: '&7Click para unirte a la party de &e{player}'
+announce-cooldown: '&7No se ha anunciado en el servidor: espera &e{seconds}s &7para volver a anunciar tu party.'
+chat-toggle-on: '&7Chat de party &aactivado&7. Todo lo que escribas irá a tu party.'
+chat-toggle-off: '&7Chat de party &cdesactivado&7.'
+chat-format: '&d&lParty &8» &7{player}&8: &f{message}'
+info:
+  header: '&8&m------&r &d&lParty de {leader} &8(&7{size}&8/&7{max}&8) &8&m------'
+  member: ' &8• {status}&f{name}{tag}'
+  online: '&a● '
+  offline: '&c● '
+  leader-tag: ' &6★'

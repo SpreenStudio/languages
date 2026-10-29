@@ -1099,6 +1099,9 @@ hologram:
     wins: '&e&lTOP WINS'
     kills: '&c&lTOP KILLS'
     refresh: '&7Updates every 5 minutes'
+  chest:
+    empty: '&c&lEmpty chest'
+    refill: '&eRefill'
 
 signs:
   # The signs are shown in the default language of FurryCore.
@@ -2183,31 +2186,31 @@ chests:
     name: '&e&lBasic chests'
     description: |-
       &7
-      &f The chest will have:
-      &7 - Weak armor
-      &7 - Not very strong swords
-      &7 - Basic food
-      &7 - And other things
+      &f Every island gets the same:
+      &7 - Wooden sword or stone axe
+      &7 - Full light armor
+      &7 - Food, blocks and extras
+      &f The middle has some iron.
       &7
   normal:
     name: '&6&lNormal chests'
     description: |-
       &7
-      &f The chest will have:
-      &7 - Random armor
-      &7 - Any sword
-      &7 - Food and some golden apples
-      &7 - And other things
+      &f Every island gets the same:
+      &7 - Stone sword or iron axe
+      &7 - Full armor with some iron
+      &7 - Food, blocks and extras
+      &f The middle has diamond.
       &7
   overpowered:
     name: '&4&lOverpowered chests'
     description: |-
       &7
-      &f The chest will have:
-      &7 - Brutal armor
-      &7 - Dominant swords
-      &7 - Loads of golden apples
-      &7 - And other things
+      &f Every island gets the same:
+      &7 - Weapon with Sharpness I
+      &7 - Iron and diamond armor with Protection I
+      &7 - Golden apples, food, blocks and extras
+      &f The middle has enchanted diamond.
       &7
 
 # Lobby shop item (shop.yml → item).
@@ -2524,6 +2527,7 @@ admin:
       &b Eye of ender&f: the spectator spawn (and map center) where you stand.
       &f Glass&f: show or hide the cages and balloons.
       &f Feather&f: goes up 8 blocks and puts glass under your feet (like //up 8).
+      &6 Chest&f: while held, shows which island each chest belongs to (green) and the middle ones (orange).
       &e Waiting lobby&f: from the menu (book).
       &7 Every point shows up with particles of its color.
       &7
@@ -2547,6 +2551,18 @@ admin:
     # %s: blocks
     up-blocked: '{prefix}&cThere is no free space &e%s &cblocks above.'
     preview-off: '{prefix}&7Cages removed.'
+    chest-middle: '{prefix}&7Chest moved to the &6middle&7.'
+    chest-island: '{prefix}&7The chest belongs to the &anearest island &7again.'
+    chests:
+      # %s: blocks
+      header: '{prefix}&7Chests of each island (within &e%s &7blocks of its spawn):'
+      # %s: island, chests
+      island: '&f Island #%s: &e%s chests'
+      # %s: island
+      island-empty: '&f Island #%s: &cno chests &7(it gets no loot set)'
+      # %s: chests
+      middle: '&f Middle: &e%s chests'
+      radius: '&7 Change the distance in &egames/<map>.yml → chests.island-radius&7.'
     # %s: arena, spawns, spectators, waiting lobby
     actionbar: '&fEditing &a%s &8| &fSpawns: &e%s &8| &fSpectators: %s &8| &fLobby: %s'
     state:
@@ -2562,6 +2578,8 @@ admin:
       # %s: minimum, maximum
       min-players: '&fMinimum players: &e%s&7/&e%s'
       balloons: '&fBalloon spawns: &e%s'
+      # %s: islands with chests, islands
+      chests: '&fIslands with chests: &e%s&7/&e%s'
     # %s: arena
     check-header: '{prefix}&7What &e%s &7needs:'
     check-ready: '{prefix}&aReady! &7Enable it from the menu (&e/sw arena editor&7).'
@@ -2605,6 +2623,16 @@ admin:
           &f glass under your feet, at the height
           &f of the cages. Click it with the rod
           &f to place the spawn.
+          &7
+      chests:
+        name: '&6Chests &7(Click)'
+        lore: |-
+          &7
+          &f While held, marks every chest:
+          &a green &ffor islands, &6orange &ffor the middle.
+          &e Click a chest&f: move it to the middle
+          &f or back to its island.
+          &e Click the air&f: chests per island.
           &7
       menu:
         name: '&6Editor menu &7(Click)'

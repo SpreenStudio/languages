@@ -1,0 +1,20 @@
+helpop:
+  format: '&8[&dHelpOp&8] &e{player} &8(&7{server}&8)&7: &f{message}'
+  sent: '&aTu solicitud de ayuda ha sido enviada al staff de este servidor.'
+  cooldown: '&cDebes esperar &e{time}s &cantes de volver a enviar otro HelpOp.'
+  usage: '&cUso correcto: /{command} <mensaje>'
+  disabled: '{prefix}&cEl sistema de HelpOp se encuentra desactivado.'
+
+report:
+  format: |-
+    &8&m----------------------------------------
+    &c&l¡NUEVO REPORTE! &8[&e{router}&8]
+    &7Acusado: &c{target} &8(&7Servidor: &e{target_server}&8)
+    &7Por: &e{reporter} &8(&7Servidor: &e{reporter_server}&8)
+    &7Razón: &f{reason}
+    &8&m----------------------------------------
+  sent: '{prefix}&aTu reporte contra &e{target} &apor &f"{reason}" &aha sido enviado al staff.'
+  self: '{prefix}&cNo puedes reportarte a ti mismo.'
+  cooldown: '{prefix}&cDebes esperar &e{time}s &cantes de volver a enviar otro reporte.'
+  usage: '{prefix}&cUso correcto: /{command} <jugador> <motivo>'
+  disabled: '{prefix}&cEl sistema de reportes se encuentra desactivado.'

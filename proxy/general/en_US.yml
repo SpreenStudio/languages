@@ -1,0 +1,109 @@
+placeholders:
+  alert: '&c&lAlert&8 » &7'
+  queues: '&b&lQueues&8 » &7'
+  online: '&a&lPlayers'
+  max: '&c&lMaximum'
+  server: '&e&lServer'
+  group: '&d&lGroup'
+  position: '&6&lPosition'
+  time: '&9&lTime'
+  motd: '&5&lMOTD'
+  version: '&3&lVersion'
+  router: '&b&lRouter&8 »&7 '
+
+only-players: '{prefix}&cThis command can only be used by players.'
+no-permission: '{prefix}&cYou do not have permission to use this command.'
+player-offline: '{prefix}&cThe player &e{target} &cis not online.'
+player-not-in-router: '{prefix}&cThe player &e{target} &cis not online on this server.'
+not-connected: '{prefix}&cYou are not connected to any server.'
+balancer-disabled: '{prefix}&cThe server balancer is disabled.'
+connection-failed: '{router}&cThe connection could not be completed.'
+unknown-server: 'Unknown'
+
+status:
+  enabled: '&aEnabled'
+  disabled: '&cDisabled'
+
+hub:
+  already-connected: '{prefix}&cYou are already connected to the hub.'
+  blacklisted: '{prefix}&cYou cannot go to the hub from this server.'
+  no-server: '{prefix}&cNo lobby server was found.'
+  no-permission: '{prefix}&cYou do not have permission to connect to the lobby.'
+  already-in-lobby: '{prefix}&cYou are already connected to the lobby server.'
+  connecting: '{prefix}&7Connecting to the lobby server...'
+
+lobby:
+  blacklisted: '{prefix}&cYou cannot go to the lobby from this server.'
+  already-connected: '{prefix}&cYou are already connected to the lobby.'
+  no-server: '{prefix}&cNo lobby server was found.'
+  connecting: '{prefix}&7Connecting you to the lobby...'
+
+groups:
+  help: |-
+    {prefix}Available commands:
+      &e→ &b/groups list &7- &fList all available groups.
+      &e→ &b/groups info <group> &7- &fShow information about a group.
+      &e→ &b/groups connect <group> &7- &fConnect to a group.
+  list:
+    header: '{prefix}Available groups:'
+    entry: '  &e→ &b{group} &7(&8{display}&7)'
+    footer: '{prefix}There are &b{amount}&7 groups in total.'
+    empty: '{prefix}&cThere are no groups available.'
+  info:
+    header: '{prefix}Information about the group: &b{group}&7 (&8{display}&7)'
+    parent: '    &e→ &7Parent: &b{group}&7 (&d{display}&7)'
+    players: '    &e→ &7Players online: &b{amount}'
+    servers: '    &e→ &7Servers:'
+    server: "        &7● &b{server}\n          &7Status: {status}"
+    server-players: '          &7Online: &b({online}/{max})'
+    footer: '{prefix}Use &b/{command} connect {group} &7to connect to this section.'
+    status:
+      online: '&aOnline'
+      full: '&6Full'
+      offline: '&cOffline'
+  not-found: '{prefix}&cThat group does not exist.'
+  no-servers: '{prefix}&cThere are no servers available in that group.'
+  already-connected: '{prefix}&cYou are already connected to that group.'
+  connecting: '{prefix}&aConnecting to &b{group}&a...'
+
+proxytp:
+  usage: '{prefix}&e/{command} <server> [player]'
+  list:
+    header: '{prefix}&eAvailable servers:'
+    server: '&7 - &b{server}'
+    group: ' &7- &e{group} &b(group)'
+  not-found: '{prefix}&cThe server or server group &e{server} &cdoes not exist.'
+  no-servers: '{prefix}&cThere are no servers available in &e{server}&c.'
+  teleported: '{prefix}&aYou have been sent to the server &e{server}&a.'
+  teleporting: '{prefix}&aSending &e{target} &ato the server &e{server}&a...'
+  teleporting-many: '{prefix}&aSending &e{amount} &aplayers to the server &e{server}&a...'
+  already-connected: '{prefix}&cYou are already connected to this server.'
+
+ping:
+  self: '{prefix}&7Your ping is: {ping}'
+  other: '{prefix}&7The ping of &e{target} &7is: {ping}'
+  calculating: '&7Calculating...'
+  console-usage: '{prefix}&cUsage from console: /{command} <player>'
+  no-permission-others: '{prefix}&cYou do not have permission to see the ping of other players.'
+
+games:
+  no-game: '{prefix}&cThere are no games available right now. Try again in a few seconds.'
+  party-too-big: '{prefix}&cThere is no game with enough room for your whole party.'
+
+kick:
+  no-router: '{router}&cNo router is configured for your connection.'
+  external-ip: '{router}&cYou cannot join the server using an external IP.'
+  router-disabled: '{router}&cThe router is not enabled.'
+  join-disabled: '{router}&cYou cannot join the server right now.'
+  no-group: '{router}&cNo server group is assigned.'
+  no-server: '{router}&cNo valid server was found for the assigned group.'
+  no-server-for: '{router}&cNo available server was found for {target}.'
+  connection-denied: '{router}&cThe connection to the assigned server was denied.'
+  connection-error: '{router}&cAn error occurred while connecting to the assigned server.'
+  disconnected: '&cDisconnected.'
+  no-fallback: '&cCould not connect to any fallback server.'
+  maintenance: '&cThe server is under maintenance! &fWe will be back soon.'
+  server-full: '{router}&cThe server is full. Please try again later.'
+  version-not-allowed: |-
+    &cYour Minecraft version (&f%version%&c) is not allowed.
+    &7Please use one of the allowed versions.

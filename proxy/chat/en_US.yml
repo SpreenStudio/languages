@@ -1,0 +1,33 @@
+msg:
+  format:
+    send: '&8[&6You &8-> &e{target}&8] &f{message}'
+    receive: '&8[&e{sender} &8-> &6You&8] &f{message}'
+    spy: '&8[&cSPY&8] &7[{router}&7] &e{sender} &8-> &e{target}&8: &f{message}'
+  self: '{prefix}&cYou cannot send private messages to yourself.'
+  target-disabled: '{prefix}&cThe player &e{target} &chas private messages disabled.'
+  toggled-on: '{prefix}&7Private messages &aenabled&7.'
+  toggled-off: '{prefix}&7Private messages &cdisabled&7.'
+  spy-on: '{prefix}&7SocialSpy &aenabled&7.'
+  spy-off: '{prefix}&7SocialSpy &cdisabled&7.'
+  no-reply: '{prefix}&cYou have nobody to reply to.'
+  reply-offline: '{prefix}&cThe player you were talking to is no longer online on this server.'
+  usage: '{prefix}&cCorrect usage: /{command} <player> <message>'
+  usage-reply: '{prefix}&cCorrect usage: /{command} <message>'
+  disabled: '{prefix}&cThe private messaging system is disabled.'
+
+staffchat:
+  format: '&b&lSC&8 &8(&7{server}&8) &7{player}&8 » &f{message}'
+  toggled-on: '{prefix}&7StaffChat &aenabled&7.'
+  toggled-off: '{prefix}&7StaffChat &cdisabled&7.'
+
+filter:
+  flood: '{prefix}&cYou are typing too fast, wait &e{time}s&c.'
+  repeat: '{prefix}&cDo not repeat the same message.'
+  advertising: '{prefix}&cSending IPs or links is not allowed.'
+  caps: '{prefix}&7Please do not abuse capital letters.'
+  notify:
+    format: '&8[&cFilter&8] &7[{router}&7] &e{player} &8(&7{server}&8) &7{action} by &c{check}&8: &f{message}'
+    blocked: '&cblocked'
+    modified: '&emodified'
+
+aps-blocked: '&cUnknown command (/{command}).'

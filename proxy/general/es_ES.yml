@@ -1,0 +1,109 @@
+placeholders:
+  alert: '&c&lAviso&8 » &7'
+  queues: '&b&lColas&8 » &7'
+  online: '&a&lJugadores'
+  max: '&c&lMáximo'
+  server: '&e&lServidor'
+  group: '&d&lGrupo'
+  position: '&6&lPosición'
+  time: '&9&lTiempo'
+  motd: '&5&lMOTD'
+  version: '&3&lVersión'
+  router: '&b&lRouter&8 »&7 '
+
+only-players: '{prefix}&cEste comando solo puede ser ejecutado por jugadores.'
+no-permission: '{prefix}&cNo tienes permisos para usar este comando.'
+player-offline: '{prefix}&cEl jugador &e{target} &cno está conectado.'
+player-not-in-router: '{prefix}&cEl jugador &e{target} &cno está conectado en este servidor.'
+not-connected: '{prefix}&cNo estás conectado a ningún servidor.'
+balancer-disabled: '{prefix}&cEl balanceador de servidores está desactivado.'
+connection-failed: '{router}&cNo se pudo completar la conexión.'
+unknown-server: 'Desconocido'
+
+status:
+  enabled: '&aHabilitado'
+  disabled: '&cDeshabilitado'
+
+hub:
+  already-connected: '{prefix}&cYa estás conectado al hub.'
+  blacklisted: '{prefix}&cNo puedes ir al hub desde este servidor.'
+  no-server: '{prefix}&cNo se encontró ningún servidor de lobby.'
+  no-permission: '{prefix}&cNo tienes permiso para conectarte al lobby.'
+  already-in-lobby: '{prefix}&cYa estás conectado al servidor de lobby.'
+  connecting: '{prefix}&7Conectando al servidor de lobby...'
+
+lobby:
+  blacklisted: '{prefix}&cNo puedes ir al lobby desde este servidor.'
+  already-connected: '{prefix}&cYa estás conectado al lobby.'
+  no-server: '{prefix}&cNo se encontró ningún servidor de lobby.'
+  connecting: '{prefix}&7Conectándote al lobby...'
+
+groups:
+  help: |-
+    {prefix}Comandos disponibles:
+      &e→ &b/groups list &7- &fListar todos los grupos disponibles.
+      &e→ &b/groups info <grupo> &7- &fObtener información acerca de un grupo.
+      &e→ &b/groups connect <grupo> &7- &fConectarte a un grupo.
+  list:
+    header: '{prefix}Grupos disponibles:'
+    entry: '  &e→ &b{group} &7(&8{display}&7)'
+    footer: '{prefix}Hay un total de &b{amount}&7 grupos.'
+    empty: '{prefix}&cNo hay grupos disponibles.'
+  info:
+    header: '{prefix}Información acerca del grupo: &b{group}&7 (&8{display}&7)'
+    parent: '    &e→ &7Parentesco: &b{group}&7 (&d{display}&7)'
+    players: '    &e→ &7Jugadores conectados: &b{amount}'
+    servers: '    &e→ &7Servidores:'
+    server: "        &7● &b{server}\n          &7Estado: {status}"
+    server-players: '          &7Conectados: &b({online}/{max})'
+    footer: '{prefix}Usa &b/{command} connect {group} &7para conectarte a esta sección.'
+    status:
+      online: '&aEn línea'
+      full: '&6Lleno'
+      offline: '&cDesconectado'
+  not-found: '{prefix}&cNo existe ese grupo.'
+  no-servers: '{prefix}&cNo hay servidores disponibles en ese grupo.'
+  already-connected: '{prefix}&cYa estás conectado a ese grupo.'
+  connecting: '{prefix}&aConectando a &b{group}&a...'
+
+proxytp:
+  usage: '{prefix}&e/{command} <servidor> [jugador]'
+  list:
+    header: '{prefix}&eServidores disponibles:'
+    server: '&7 - &b{server}'
+    group: ' &7- &e{group} &b(grupo)'
+  not-found: '{prefix}&cEl servidor o grupo de servidores &e{server} &cno existe.'
+  no-servers: '{prefix}&cNo hay servidores disponibles en &e{server}&c.'
+  teleported: '{prefix}&aHas sido teletransportado al servidor &e{server}&a.'
+  teleporting: '{prefix}&aTeletransportando a &e{target} &aal servidor &e{server}&a...'
+  teleporting-many: '{prefix}&aTeletransportando a &e{amount} &ajugadores al servidor &e{server}&a...'
+  already-connected: '{prefix}&cYa estás conectado a este servidor.'
+
+ping:
+  self: '{prefix}&7Tu ping es de: {ping}'
+  other: '{prefix}&7El ping de &e{target} &7es de: {ping}'
+  calculating: '&7Calculando...'
+  console-usage: '{prefix}&cUso desde consola: /{command} <jugador>'
+  no-permission-others: '{prefix}&cNo tienes permiso para ver el ping de otros jugadores.'
+
+games:
+  no-game: '{prefix}&cNo hay partidas disponibles en este momento. Inténtalo en unos segundos.'
+  party-too-big: '{prefix}&cNo hay ninguna partida con espacio para toda tu party.'
+
+kick:
+  no-router: '{router}&cNo se encontró un router configurado para tu conexión.'
+  external-ip: '{router}&cNo puedes ingresar al servidor usando una IP ajena.'
+  router-disabled: '{router}&cEl router no está habilitado.'
+  join-disabled: '{router}&cNo puedes ingresar al servidor en estos momentos.'
+  no-group: '{router}&cNo se encontró un grupo de servidores asignado.'
+  no-server: '{router}&cNo se encontró un servidor válido para el grupo asignado.'
+  no-server-for: '{router}&cNo se encontró un servidor disponible para {target}.'
+  connection-denied: '{router}&cConexión denegada al servidor asignado.'
+  connection-error: '{router}&cOcurrió un error al conectar al servidor asignado.'
+  disconnected: '&cDesconectado.'
+  no-fallback: '&cNo se pudo conectar a ningún servidor de respaldo.'
+  maintenance: '&c¡El servidor está en mantenimiento! &fVolveremos pronto.'
+  server-full: '{router}&cEl servidor está lleno. Por favor, inténtalo más tarde.'
+  version-not-allowed: |-
+    &cTu versión de Minecraft (&f%version%&c) no está permitida.
+    &7Por favor, usa una versión de la lista permitida.

@@ -1,0 +1,37 @@
+joined: '{queues}&7You have joined the queue for &b{target}&7. Position: &e#{pos}&7/&e{total}&7.'
+left: '{queues}&cYou have left the queue.'
+not-in-queue: '{queues}&cYou are not in any queue.'
+already-in-queue: '{queues}&cYou are already in the queue for &b{target}&7.'
+bypassed: '{queues}&aYou have skipped the queue thanks to your rank.'
+connecting: '{queues}&aConnecting you to &b{target}&a...'
+target-offline: '{queues}&cThe target server &b{target}&c is not available right now.'
+server-busy: '{queues}&cThe target server &b{target}&c cannot accept connections right now. You will keep your place in the queue.'
+peace-time: '{queues}&eThe target server &b{target}&e is not responding after several attempts. The queue will wait &c{time}s&e before trying again.'
+periodic-reminder: '{queues}&7You are still in the queue for &b{target}&7. Position: &e#{pos}&7/&e{total}&7.'
+paused: '{queues}&eThe queue for &b{target}&e has been paused.'
+resumed: '{queues}&aThe queue for &b{target}&a has been resumed.'
+status: '{queues}&7You are in the queue for &b{target}&7. Position: &e#{pos}&7/&e{total}&7.'
+disabled: '{prefix}&cThe queue system is disabled.'
+not-found: '{prefix}&cNo queue was found for &b{target}&c.'
+reloaded: '{prefix}&aQueue configuration reloaded successfully.'
+
+list:
+  header: '{prefix}&b&lQueue status:'
+  entry: ' &8» &b{target}&7: &e{amount} players {status}'
+  paused: '&c[PAUSED]'
+  active: '&a[ACTIVE]'
+  empty: '{prefix}&7There are no active queues right now.'
+
+reason:
+  busy: 'Server busy'
+  unavailable: 'Server unavailable'
+
+actionbar: '{queues}&7Position: &e#{pos}&7/&e{total}'
+
+title:
+  join:
+    title: '&b&lWaiting Queue'
+    subtitle: '&7You are in position &e#{pos} &7of &e{total}'
+  connecting:
+    title: '&a&lIt''s your turn!'
+    subtitle: '&7Connecting you to &b{target}&7...'

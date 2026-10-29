@@ -1,0 +1,37 @@
+joined: '{queues}&7Te has unido a la cola para &b{target}&7. Posición: &e#{pos}&7/&e{total}&7.'
+left: '{queues}&cHas salido de la cola.'
+not-in-queue: '{queues}&cNo estás en ninguna cola.'
+already-in-queue: '{queues}&cYa estás en la cola para &b{target}&7.'
+bypassed: '{queues}&aHas omitido la cola gracias a tu rango.'
+connecting: '{queues}&aConectándote a &b{target}&a...'
+target-offline: '{queues}&cEl servidor de destino &b{target}&c no está disponible en este momento.'
+server-busy: '{queues}&cEl servidor de destino &b{target}&c no puede recibir conexiones ahora. Mantendrás tu lugar en la cola.'
+peace-time: '{queues}&eEl servidor de destino &b{target}&e no responde tras varios intentos. La cola esperará &c{time}s&e antes de reintentar.'
+periodic-reminder: '{queues}&7Sigues en la cola para &b{target}&7. Posición: &e#{pos}&7/&e{total}&7.'
+paused: '{queues}&eLa cola para &b{target}&e ha sido pausada.'
+resumed: '{queues}&aLa cola para &b{target}&a ha sido reanudada.'
+status: '{queues}&7Estás en la cola para &b{target}&7. Posición: &e#{pos}&7/&e{total}&7.'
+disabled: '{prefix}&cEl sistema de colas está deshabilitado.'
+not-found: '{prefix}&cNo se encontró una cola para &b{target}&c.'
+reloaded: '{prefix}&aConfiguración de colas recargada correctamente.'
+
+list:
+  header: '{prefix}&b&lEstado de las Colas:'
+  entry: ' &8» &b{target}&7: &e{amount} jugadores {status}'
+  paused: '&c[PAUSADA]'
+  active: '&a[ACTIVA]'
+  empty: '{prefix}&7No hay colas activas en este momento.'
+
+reason:
+  busy: 'Servidor ocupado'
+  unavailable: 'Servidor no disponible'
+
+actionbar: '{queues}&7Posición: &e#{pos}&7/&e{total}'
+
+title:
+  join:
+    title: '&b&lCola de Espera'
+    subtitle: '&7Estás en la posición &e#{pos} &7de &e{total}'
+  connecting:
+    title: '&a&l¡Es tu turno!'
+    subtitle: '&7Conectándote a &b{target}&7...'

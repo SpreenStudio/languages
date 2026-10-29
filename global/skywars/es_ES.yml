@@ -1099,6 +1099,9 @@ hologram:
     wins: '&e&lTOP VICTORIAS'
     kills: '&c&lTOP BAJAS'
     refresh: '&7Se actualiza cada 5 minutos'
+  chest:
+    empty: '&c&lCofre vacío'
+    refill: '&eRelleno'
 
 signs:
   # Los carteles se ven en el idioma por defecto de FurryCore.
@@ -2187,31 +2190,31 @@ chests:
     name: '&e&lCofres básicos'
     description: |-
       &7
-      &f El cofre tendrá:
-      &7 - Armadura débil
-      &7 - Espadas poco potentes
-      &7 - Comida básica
-      &7 - Y otras cosas
+      &f Cada isla recibe lo mismo:
+      &7 - Espada de madera o hacha de piedra
+      &7 - Armadura completa ligera
+      &7 - Comida, bloques y extras
+      &f El centro tiene algo de hierro.
       &7
   normal:
     name: '&6&lCofres normales'
     description: |-
       &7
-      &f El cofre tendrá:
-      &7 - Armadura al azar
-      &7 - Cualquier espada
-      &7 - Comida y algunas manzanas de oro
-      &7 - Y otras cosas
+      &f Cada isla recibe lo mismo:
+      &7 - Espada de piedra o hacha de hierro
+      &7 - Armadura completa con algo de hierro
+      &7 - Comida, bloques y extras
+      &f El centro tiene diamante.
       &7
   overpowered:
     name: '&4&lCofres sobrecargados'
     description: |-
       &7
-      &f El cofre tendrá:
-      &7 - Armadura brutal
-      &7 - Espadas dominantes
-      &7 - Montones de manzanas de oro
-      &7 - Y otras cosas
+      &f Cada isla recibe lo mismo:
+      &7 - Arma con Filo I
+      &7 - Armadura de hierro y diamante con Protección I
+      &7 - Manzanas de oro, comida, bloques y extras
+      &f El centro tiene diamante encantado.
       &7
 
 # Ítem de la tienda del lobby (shop.yml → item).
@@ -2528,6 +2531,7 @@ admin:
       &b Ojo de ender&f: el spawn de espectadores (y el centro del mapa) donde estás.
       &f Cristal&f: ver u ocultar las jaulas y los globos.
       &f Pluma&f: sube 8 bloques y pone un cristal bajo tus pies (como //up 8).
+      &6 Cofre&f: en la mano marca de qué isla es cada cofre (verde) y cuáles son del centro (naranja).
       &e Sala de espera&f: desde el menú (libro).
       &7 Cada punto se ve con partículas de su color.
       &7
@@ -2551,6 +2555,18 @@ admin:
     # %s: bloques
     up-blocked: '{prefix}&cNo hay sitio libre &e%s &cbloques más arriba.'
     preview-off: '{prefix}&7Jaulas quitadas.'
+    chest-middle: '{prefix}&7Cofre pasado al &6centro&7.'
+    chest-island: '{prefix}&7El cofre vuelve a ser de la &aisla más cercana&7.'
+    chests:
+      # %s: bloques
+      header: '{prefix}&7Cofres de cada isla (a menos de &e%s &7bloques de su spawn):'
+      # %s: isla, cofres
+      island: '&f Isla #%s: &e%s cofres'
+      # %s: isla
+      island-empty: '&f Isla #%s: &csin cofres &7(se queda sin su lote)'
+      # %s: cofres
+      middle: '&f Centro: &e%s cofres'
+      radius: '&7 La distancia se cambia en &egames/<mapa>.yml → chests.island-radius&7.'
     # %s: arena, spawns, espectadores, sala de espera
     actionbar: '&fEditando &a%s &8| &fSpawns: &e%s &8| &fEspectadores: %s &8| &fSala: %s'
     state:
@@ -2566,6 +2582,8 @@ admin:
       # %s: mínimo, máximo
       min-players: '&fMínimo de jugadores: &e%s&7/&e%s'
       balloons: '&fSpawns de globos: &e%s'
+      # %s: islas con cofres, islas
+      chests: '&fIslas con cofres: &e%s&7/&e%s'
     # %s: arena
     check-header: '{prefix}&7Lo que necesita &e%s&7:'
     check-ready: '{prefix}&a¡Lista! &7Actívala desde el menú (&e/sw arena editor&7).'
@@ -2609,6 +2627,16 @@ admin:
           &f cristal bajo tus pies, a la altura
           &f de las cajas. Haz clic en él con
           &f la vara para poner el spawn.
+          &7
+      chests:
+        name: '&6Cofres &7(Clic)'
+        lore: |-
+          &7
+          &f En la mano, marca cada cofre:
+          &a verde &fde isla, &6naranja &fdel centro.
+          &e Clic en un cofre&f: pasarlo al centro
+          &f o devolverlo a su isla.
+          &e Clic al aire&f: cofres de cada isla.
           &7
       menu:
         name: '&6Menú del editor &7(Clic)'
