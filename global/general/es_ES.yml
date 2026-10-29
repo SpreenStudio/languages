@@ -150,6 +150,7 @@ economy:
 
 language:
   changed: '{prefix}&fTu idioma ha cambiado a &e%s&f.'
+  cooldown: '{prefix}&c¡Espera &e%s &csegundos para volver a cambiar de idioma!'
 
 items:
   cooldown: '{prefix}&c¡Debes esperar <time> segundos!'
