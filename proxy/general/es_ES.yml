@@ -94,6 +94,33 @@ games:
   no-game: '{prefix}&cNo hay partidas disponibles en este momento. Inténtalo en unos segundos.'
   party-too-big: '{prefix}&cNo hay ninguna partida con espacio para toda tu party.'
 
+duel:
+  usage: '{prefix}&cUso: &e/{command} <jugador> <modo> [rondas]&c, &e/{command} accept|deny <jugador> &co &e/{command} toggle&c.'
+  modes: '{prefix}&7Modos: &e{modes}&7.'
+  unknown-mode: '{prefix}&cNo existe el modo &e{mode}&c. &7Modos: &e{modes}&7.'
+  blacklisted: '{prefix}&cNo puedes usar los duelos desde este servidor.'
+  invite: |-
+    &8&m-------------------------------
+    {prefix}&e{player} &7te reta a &e{mode} &8(al mejor de {rounds})
+  accept-button: '&a&l[ACEPTAR]'
+  accept-hover: '&7Acepta el duelo.'
+  deny-button: '&c&l[RECHAZAR]'
+  deny-hover: '&7Rechaza el duelo.'
+  replies:
+    sent: '{prefix}&7Reto enviado a &e{target}&7.'
+    offline: '{prefix}&cEl jugador &e{target} &cno está conectado.'
+    self: '{prefix}&c¡No puedes retarte a ti mismo!'
+    disabled: '{prefix}&e{target} &cno acepta duelos.'
+    unavailable: '{prefix}&e{target} &cno puede entrar a un duelo ahora.'
+    expired: '{prefix}&cEse reto ya no existe o ha caducado.'
+    denied: '{prefix}&e{target} &cha rechazado tu reto.'
+    denied-self: '{prefix}&7Has rechazado el reto de &e{target}&7.'
+    accepted: '{prefix}&e{target} &aha aceptado tu reto&7.'
+    accepted-self: '{prefix}&aDuelo aceptado&7.'
+    no-game: '{prefix}&cNo hay arenas libres de &e{mode} &cahora mismo.'
+    enabled: '{prefix}&7Duelos &aactivados&7.'
+    toggled-off: '{prefix}&7Duelos &cdesactivados&7.'
+
 maintenance:
   moved: '{prefix}&cEl servidor en el que estabas entró en mantenimiento. &7Te enviamos al lobby.'
   denied: '{prefix}&cEl servidor &e{server} &cestá en mantenimiento.'

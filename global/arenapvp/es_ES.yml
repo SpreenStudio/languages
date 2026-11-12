@@ -1030,7 +1030,7 @@ replies:
     offline: '{prefix}&cEl jugador &e%s &cno está conectado.'
     self: '{prefix}&c¡No puedes retarte a ti mismo!'
     disabled: '{prefix}&e%s &cno acepta duelos.'
-    unavailable: '{prefix}&e%s &cno puede recibir duelos ahora (no está en un lobby de ArenaPvP).'
+    unavailable: '{prefix}&e%s &cno puede entrar a un duelo ahora.'
     expired: '{prefix}&cEse reto ya no existe o ha caducado.'
     denied: '{prefix}&e%s &cha rechazado tu reto.'
     denied-self: '{prefix}&7Has rechazado el reto de &e%s&7.'

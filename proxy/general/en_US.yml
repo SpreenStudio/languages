@@ -94,6 +94,33 @@ games:
   no-game: '{prefix}&cThere are no games available right now. Try again in a few seconds.'
   party-too-big: '{prefix}&cThere is no game with enough room for your whole party.'
 
+duel:
+  usage: '{prefix}&cUsage: &e/{command} <player> <mode> [rounds]&c, &e/{command} accept|deny <player> &cor &e/{command} toggle&c.'
+  modes: '{prefix}&7Modes: &e{modes}&7.'
+  unknown-mode: '{prefix}&cThe mode &e{mode} &cdoes not exist. &7Modes: &e{modes}&7.'
+  blacklisted: '{prefix}&cYou cannot use duels from this server.'
+  invite: |-
+    &8&m-------------------------------
+    {prefix}&e{player} &7challenges you to &e{mode} &8(best of {rounds})
+  accept-button: '&a&l[ACCEPT]'
+  accept-hover: '&7Accept the duel.'
+  deny-button: '&c&l[DENY]'
+  deny-hover: '&7Deny the duel.'
+  replies:
+    sent: '{prefix}&7Challenge sent to &e{target}&7.'
+    offline: '{prefix}&cThe player &e{target} &cis not online.'
+    self: '{prefix}&cYou cannot challenge yourself!'
+    disabled: '{prefix}&e{target} &cdoes not accept duels.'
+    unavailable: '{prefix}&e{target} &ccannot join a duel right now.'
+    expired: '{prefix}&cThat challenge no longer exists or has expired.'
+    denied: '{prefix}&e{target} &chas denied your challenge.'
+    denied-self: '{prefix}&7You denied the challenge from &e{target}&7.'
+    accepted: '{prefix}&e{target} &ahas accepted your challenge&7.'
+    accepted-self: '{prefix}&aDuel accepted&7.'
+    no-game: '{prefix}&cThere are no free &e{mode} &carenas right now.'
+    enabled: '{prefix}&7Duels &aenabled&7.'
+    toggled-off: '{prefix}&7Duels &cdisabled&7.'
+
 maintenance:
   moved: '{prefix}&cThe server you were on went under maintenance. &7You were sent to the lobby.'
   denied: '{prefix}&cThe server &e{server} &cis under maintenance.'

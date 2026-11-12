@@ -1027,7 +1027,7 @@ replies:
     offline: '{prefix}&cThe player &e%s &cis not online.'
     self: '{prefix}&cYou cannot challenge yourself!'
     disabled: '{prefix}&e%s &cdoes not accept duels.'
-    unavailable: '{prefix}&e%s &ccannot get duels right now (not in an ArenaPvP lobby).'
+    unavailable: '{prefix}&e%s &ccannot join a duel right now.'
     expired: '{prefix}&cThat challenge does not exist or has expired.'
     denied: '{prefix}&e%s &cdenied your challenge.'
     denied-self: '{prefix}&7You denied the challenge from &e%s&7.'
