@@ -436,6 +436,40 @@ menus:
         name: '&b« &eUser Profile'
       next:
         name: '&cGame Modes &b»'
+  duel:
+    title: '&8&lS&7&lS&0 » Duel'
+    items:
+      prevPage:
+        name: '&7Previous Page &f({actualPage}/{maxPages})'
+        lore: |-
+          &7
+          &f Go to the previous page of
+          &f the duel modes.
+          &7
+      nextPage:
+        name: '&7Next Page &f({actualPage}/{maxPages})'
+        lore: |-
+          &7
+          &f Go to the next page of
+          &f the duel modes.
+          &7
+      mode:
+        name: '&e{modeName}'
+        lore: |-
+          &7
+          &f Challenge &e{target} &fto this mode.
+          &7
+          &e Left click: best of 1.
+          &e Right click: best of 3.
+          &e Shift + click: best of 5.
+          &7
+      empty:
+        name: '&cNo modes'
+        lore: |-
+          &7
+          &f There is no mode available
+          &f for a duel right now.
+          &7
   languages:
     title: '&8&lS&7&lS&0 » Languages'
     items:

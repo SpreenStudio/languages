@@ -1,0 +1,177 @@
+prefix: ' &8» '
+
+items:
+  # Barra del espectador, la misma en todos los minijuegos.
+  spectator:
+    tracker:
+      name: '&eRastreador &7(Clic derecho)'
+      lore: |-
+        &7
+        &f Abre y selecciona a un jugador
+        &f para observar su partida.
+        &7
+    settings:
+      name: '&6Ajustes &7(Clic derecho)'
+      lore: |-
+        &7
+        &f Abre y selecciona tus ajustes
+        &f del modo espectador.
+        &7
+    leave:
+      name: '&cSalir &7(Clic derecho)'
+      lore: |-
+        &7
+        &f Haz clic para volver
+        &f al lobby.
+        &7
+
+spectator:
+  first-person-exit: '&fPulsa &eshift &fpara salir de la primera persona.'
+
+menus:
+  general-items:
+    close:
+      name: '&cCerrar'
+      lore: |-
+        &f
+        &f Cierra el menú actual.
+        &f
+    prevPage:
+      name: '&7Página anterior &f({actualPage}/{maxPages})'
+      lore: |-
+        &7
+        &f Ve a la página anterior.
+        &7
+    nextPage:
+      name: '&7Página siguiente &f({actualPage}/{maxPages})'
+      lore: |-
+        &7
+        &f Ve a la página siguiente.
+        &7
+  tracker:
+    title: '&8Rastreador'
+    items:
+      player:
+        lore: |-
+          &7
+          &f Salud: &c%player_health_rounded%%
+          &f Comida: &6%player_food_level%
+          &7
+          &e Clic izquierdo para observar.
+          &e Clic derecho para ver su inventario.
+          &7
+      party-title:
+        name: '&dMiembros de tu party'
+        # <count>: miembros sin contarte a ti
+        lore: |-
+          &7
+          &f Los miembros de tu party
+          &f aparecen aquí debajo.
+          &7
+          &f Miembros: &e<count>
+          &7
+      no-party:
+        name: '&cNo estás en una party'
+        lore: |-
+          &7
+          &f Aquí verás a los miembros
+          &f de tu party cuando tengas una.
+          &7
+      # %player%: nombre del miembro
+      party-spectating:
+        name: '&7%player%'
+        lore: |-
+          &7
+          &f Estado: &7Espectando
+          &7
+      party-away:
+        name: '&8%player%'
+        lore: |-
+          &7
+          &f Estado: &cFuera de esta partida
+          &7
+  inventory:
+    # %s: jugador (el título no puede pasar de 32 caracteres)
+    title: '&8Inventario » %s'
+    info:
+      # %1$s: vida, %2$s: vida máxima, %3$s: comida, %4$s: nivel
+      lore: |-
+        &7
+        &f Salud: &c%1$s&7/&c%2$s ❤
+        &f Comida: &6%3$s
+        &f Nivel: &a%4$s
+        &7
+    first-person:
+      name: '&aVer en primera persona'
+      lore: |-
+        &7
+        &f Mira la partida desde los
+        &f ojos de este jugador.
+        &7
+        &e Haz clic para observar.
+        &7
+  spectator-settings:
+    title: '&8Ajustes de espectador'
+    # <speed> de la velocidad normal; las demás son I, II, III y IV.
+    speed-normal: 'Normal'
+    # <state> de cada ítem.
+    state:
+      selected: '&aSeleccionada'
+      select: '&eHaz clic para seleccionar'
+      enabled: '&aActivado'
+      disabled: '&cDesactivado'
+    items:
+      speed:
+        name: '&bVelocidad de vuelo &e<speed>'
+        lore: |-
+          &7
+          &f Cambia lo rápido que vuelas
+          &f mientras eres espectador.
+          &7
+          &7 <state>
+          &7
+      night-vision:
+        name: '&bVisión nocturna'
+        lore: |-
+          &7
+          &f Ve con claridad en los
+          &f lugares oscuros del mapa.
+          &7
+          &f Estado: <state>
+          &7
+          &e Haz clic para cambiar.
+          &7
+      always-fly:
+        name: '&bVuelo permanente'
+        lore: |-
+          &7
+          &f No dejas de volar aunque
+          &f toques el suelo.
+          &7
+          &f Estado: <state>
+          &7
+          &e Haz clic para cambiar.
+          &7
+      first-person:
+        name: '&bPrimera persona'
+        lore: |-
+          &7
+          &f El rastreador te pone en los
+          &f ojos del jugador que elijas
+          &f en vez de llevarte encima de él.
+          &7
+          &f Estado: <state>
+          &7
+          &e Haz clic para cambiar.
+          &7
+      show-spectators:
+        name: '&bVer espectadores'
+        lore: |-
+          &7
+          &f Muestra a los demás
+          &f espectadores de la partida.
+          &7
+          &f Estado: <state>
+          &7
+          &e Haz clic para cambiar.
+          &7

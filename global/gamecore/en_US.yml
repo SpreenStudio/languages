@@ -1,0 +1,177 @@
+prefix: ' &8» '
+
+items:
+  # Spectator hotbar, the same in every minigame.
+  spectator:
+    tracker:
+      name: '&eTracker &7(Right click)'
+      lore: |-
+        &7
+        &f Open it and pick a player
+        &f to watch their game.
+        &7
+    settings:
+      name: '&6Settings &7(Right click)'
+      lore: |-
+        &7
+        &f Open and choose your
+        &f spectator settings.
+        &7
+    leave:
+      name: '&cLeave &7(Right click)'
+      lore: |-
+        &7
+        &f Click to go back to
+        &f the lobby.
+        &7
+
+spectator:
+  first-person-exit: '&fPress &eshift &fto leave first person.'
+
+menus:
+  general-items:
+    close:
+      name: '&cClose'
+      lore: |-
+        &f
+        &f Closes the current menu.
+        &f
+    prevPage:
+      name: '&7Previous Page &f({actualPage}/{maxPages})'
+      lore: |-
+        &7
+        &f Go to the previous page.
+        &7
+    nextPage:
+      name: '&7Next Page &f({actualPage}/{maxPages})'
+      lore: |-
+        &7
+        &f Go to the next page.
+        &7
+  tracker:
+    title: '&8Tracker'
+    items:
+      player:
+        lore: |-
+          &7
+          &f Health: &c%player_health_rounded%%
+          &f Food: &6%player_food_level%
+          &7
+          &e Left click to spectate.
+          &e Right click to see their inventory.
+          &7
+      party-title:
+        name: '&dYour party members'
+        # <count>: members, not counting you
+        lore: |-
+          &7
+          &f The members of your party
+          &f are shown right below.
+          &7
+          &f Members: &e<count>
+          &7
+      no-party:
+        name: '&cYou are not in a party'
+        lore: |-
+          &7
+          &f The members of your party will
+          &f show up here once you have one.
+          &7
+      # %player%: name of the member
+      party-spectating:
+        name: '&7%player%'
+        lore: |-
+          &7
+          &f Status: &7Spectating
+          &7
+      party-away:
+        name: '&8%player%'
+        lore: |-
+          &7
+          &f Status: &cNot in this game
+          &7
+  inventory:
+    # %s: player (the title cannot be longer than 32 characters)
+    title: '&8Inventory » %s'
+    info:
+      # %1$s: health, %2$s: max health, %3$s: food, %4$s: level
+      lore: |-
+        &7
+        &f Health: &c%1$s&7/&c%2$s ❤
+        &f Food: &6%3$s
+        &f Level: &a%4$s
+        &7
+    first-person:
+      name: '&aWatch in first person'
+      lore: |-
+        &7
+        &f Watch the game through
+        &f the eyes of this player.
+        &7
+        &e Click to spectate.
+        &7
+  spectator-settings:
+    title: '&8Spectator settings'
+    # <speed> of the normal speed; the others are I, II, III and IV.
+    speed-normal: 'Normal'
+    # <state> of each item.
+    state:
+      selected: '&aSelected'
+      select: '&eClick to select'
+      enabled: '&aEnabled'
+      disabled: '&cDisabled'
+    items:
+      speed:
+        name: '&bFlight speed &e<speed>'
+        lore: |-
+          &7
+          &f Changes how fast you fly
+          &f while you are a spectator.
+          &7
+          &7 <state>
+          &7
+      night-vision:
+        name: '&bNight vision'
+        lore: |-
+          &7
+          &f See clearly in the dark
+          &f places of the map.
+          &7
+          &f Status: <state>
+          &7
+          &e Click to change.
+          &7
+      always-fly:
+        name: '&bAlways flying'
+        lore: |-
+          &7
+          &f You keep flying even when
+          &f you touch the ground.
+          &7
+          &f Status: <state>
+          &7
+          &e Click to change.
+          &7
+      first-person:
+        name: '&bFirst person'
+        lore: |-
+          &7
+          &f The tracker puts you in the
+          &f eyes of the player you pick
+          &f instead of taking you above them.
+          &7
+          &f Status: <state>
+          &7
+          &e Click to change.
+          &7
+      show-spectators:
+        name: '&bShow spectators'
+        lore: |-
+          &7
+          &f Shows the other spectators
+          &f of the game.
+          &7
+          &f Status: <state>
+          &7
+          &e Click to change.
+          &7

@@ -437,6 +437,40 @@ menus:
         name: '&b« &ePerfil de usuario'
       next:
         name: '&cModalidades &b»'
+  duel:
+    title: '&8&lS&7&lS&0 » Duelo'
+    items:
+      prevPage:
+        name: '&7Página anterior &f({actualPage}/{maxPages})'
+        lore: |-
+          &7
+          &f Ve a la anterior página de
+          &f los modos de duelo.
+          &7
+      nextPage:
+        name: '&7Página siguiente &f({actualPage}/{maxPages})'
+        lore: |-
+          &7
+          &f Ve a la siguiente página de
+          &f los modos de duelo.
+          &7
+      mode:
+        name: '&e{modeName}'
+        lore: |-
+          &7
+          &f Reta a &e{target} &fa este modo.
+          &7
+          &e Clic izquierdo: al mejor de 1.
+          &e Clic derecho: al mejor de 3.
+          &e Shift + clic: al mejor de 5.
+          &7
+      empty:
+        name: '&cNo hay modos'
+        lore: |-
+          &7
+          &f Ahora mismo no hay ningún modo
+          &f disponible para un duelo.
+          &7
   languages:
     title: '&8&lS&7&lS&0 » Idiomas'
     items:
