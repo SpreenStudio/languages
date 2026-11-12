@@ -94,7 +94,12 @@ games:
   no-game: '{prefix}&cThere are no games available right now. Try again in a few seconds.'
   party-too-big: '{prefix}&cThere is no game with enough room for your whole party.'
 
+maintenance:
+  moved: '{prefix}&cThe server you were on went under maintenance. &7You were sent to the lobby.'
+  denied: '{prefix}&cThe server &e{server} &cis under maintenance.'
+
 kick:
+  server-maintenance: '&cThe server is under maintenance! &fPlease try again later.'
   no-router: '{router}&cNo router is configured for your connection.'
   external-ip: '{router}&cYou cannot join the server using an external IP.'
   router-disabled: '{router}&cThe router is not enabled.'

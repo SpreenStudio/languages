@@ -46,6 +46,9 @@ maintenance:
     &7&m-------------------------
     &e/{command} <on|off|toggle|get> [router] &7- &fGestiona el modo mantenimiento de un router.
     &e/{command} whitelist <add|remove> <router> <jugador> &7- &fGestiona la whitelist de mantenimiento.
+    &e/{command} server <on|off|toggle|get> <servidor> &7- &fGestiona el mantenimiento de un servidor.
+    &e/{command} group <on|off|toggle|get> <grupo> &7- &fGestiona el mantenimiento de un grupo.
+    &e/{command} list &7- &fLista los servidores y grupos en mantenimiento.
     &7&m-------------------------
   router-not-found: '{prefix}&cEl router &e{id} &cno existe.'
   no-router: '{prefix}&cNo estás conectado a ningún router.'
@@ -61,6 +64,30 @@ maintenance:
     added: '{prefix}&aJugador &e{target} &aañadido a la whitelist.'
     not-found: '{prefix}&cEl jugador &e{target} &cno está en la whitelist.'
     removed: '{prefix}&cJugador &e{target} &celiminado de la whitelist.'
+  server:
+    not-found: '{prefix}&cEl servidor &e{target} &cno existe.'
+    status: |-
+      {prefix}&eServidor: &f{target}
+      {prefix}&eModo mantenimiento: {status}
+    enabled: '{prefix}&aModo mantenimiento activado en el servidor &e{target}&a. Jugadores retirados: &e{amount}&a.'
+    disabled: '{prefix}&cModo mantenimiento desactivado en el servidor &e{target}&c.'
+    already-enabled: '{prefix}&cEl servidor &e{target} &cya está en mantenimiento.'
+    already-disabled: '{prefix}&cEl servidor &e{target} &cno está en mantenimiento.'
+  group:
+    not-found: '{prefix}&cEl grupo &e{target} &cno existe.'
+    status: |-
+      {prefix}&eGrupo: &f{target}
+      {prefix}&eModo mantenimiento: {status}
+    enabled: '{prefix}&aModo mantenimiento activado en el grupo &e{target}&a. Jugadores retirados: &e{amount}&a.'
+    disabled: '{prefix}&cModo mantenimiento desactivado en el grupo &e{target}&c.'
+    already-enabled: '{prefix}&cEl grupo &e{target} &cya está en mantenimiento.'
+    already-disabled: '{prefix}&cEl grupo &e{target} &cno está en mantenimiento.'
+  list:
+    entries: |-
+      {prefix}&eServidores en mantenimiento: &e{servers}
+      {prefix}&eGrupos en mantenimiento: &e{groups}
+    none: '&7ninguno'
+    empty: '{prefix}&cNo hay servidores ni grupos en mantenimiento.'
 
 router:
   help: |-

@@ -94,7 +94,12 @@ games:
   no-game: '{prefix}&cNo hay partidas disponibles en este momento. Inténtalo en unos segundos.'
   party-too-big: '{prefix}&cNo hay ninguna partida con espacio para toda tu party.'
 
+maintenance:
+  moved: '{prefix}&cEl servidor en el que estabas entró en mantenimiento. &7Te enviamos al lobby.'
+  denied: '{prefix}&cEl servidor &e{server} &cestá en mantenimiento.'
+
 kick:
+  server-maintenance: '&c¡El servidor está en mantenimiento! &fVuelve a intentarlo más tarde.'
   no-router: '{router}&cNo se encontró un router configurado para tu conexión.'
   external-ip: '{router}&cNo puedes ingresar al servidor usando una IP ajena.'
   router-disabled: '{router}&cEl router no está habilitado.'

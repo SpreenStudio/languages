@@ -46,6 +46,9 @@ maintenance:
     &7&m-------------------------
     &e/{command} <on|off|toggle|get> [router] &7- &fManage the maintenance mode of a router.
     &e/{command} whitelist <add|remove> <router> <player> &7- &fManage the maintenance whitelist.
+    &e/{command} server <on|off|toggle|get> <server> &7- &fManage the maintenance mode of a server.
+    &e/{command} group <on|off|toggle|get> <group> &7- &fManage the maintenance mode of a group.
+    &e/{command} list &7- &fList the servers and groups under maintenance.
     &7&m-------------------------
   router-not-found: '{prefix}&cThe router &e{id} &cdoes not exist.'
   no-router: '{prefix}&cYou are not connected to a router.'
@@ -61,6 +64,30 @@ maintenance:
     added: '{prefix}&aPlayer &e{target} &aadded to the whitelist.'
     not-found: '{prefix}&cThe player &e{target} &cis not in the whitelist.'
     removed: '{prefix}&cPlayer &e{target} &cremoved from the whitelist.'
+  server:
+    not-found: '{prefix}&cThe server &e{target} &cdoes not exist.'
+    status: |-
+      {prefix}&eServer: &f{target}
+      {prefix}&eMaintenance mode: {status}
+    enabled: '{prefix}&aMaintenance mode enabled on the server &e{target}&a. Players moved out: &e{amount}&a.'
+    disabled: '{prefix}&cMaintenance mode disabled on the server &e{target}&c.'
+    already-enabled: '{prefix}&cThe server &e{target} &cis already under maintenance.'
+    already-disabled: '{prefix}&cThe server &e{target} &cis not under maintenance.'
+  group:
+    not-found: '{prefix}&cThe group &e{target} &cdoes not exist.'
+    status: |-
+      {prefix}&eGroup: &f{target}
+      {prefix}&eMaintenance mode: {status}
+    enabled: '{prefix}&aMaintenance mode enabled on the group &e{target}&a. Players moved out: &e{amount}&a.'
+    disabled: '{prefix}&cMaintenance mode disabled on the group &e{target}&c.'
+    already-enabled: '{prefix}&cThe group &e{target} &cis already under maintenance.'
+    already-disabled: '{prefix}&cThe group &e{target} &cis not under maintenance.'
+  list:
+    entries: |-
+      {prefix}&eServers under maintenance: &e{servers}
+      {prefix}&eGroups under maintenance: &e{groups}
+    none: '&7none'
+    empty: '{prefix}&cThere are no servers or groups under maintenance.'
 
 router:
   help: |-
