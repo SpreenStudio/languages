@@ -1,0 +1,774 @@
+prefix: '&6&lUHC &8» '
+
+general:
+  loading: '&cTus datos todavía se están cargando, vuelve a entrar en unos segundos.'
+
+# Los usa GameCore al llevar a los jugadores de un sitio a otro.
+player:
+  teleport:
+    lobby: '{prefix}&7Volviendo al &elobby&7...'
+
+game:
+  no-games: '{prefix}&c¡No hay ninguna partida libre ahora mismo! Prueba en unos segundos.'
+  # %s: partida
+  sending: '{prefix}&7Enviándote a &e%s&7...'
+  queued: '{prefix}&7No hay partidas libres: &eentrarás en cuanto quede una&7.'
+  loading: '{prefix}&cEsa partida todavía está preparando su mundo. Prueba en unos segundos.'
+  in-progress: '{prefix}&c¡Esa partida ya ha empezado!'
+  full: '{prefix}&c¡Esa partida está llena!'
+  whitelisted: '{prefix}&cEsa partida tiene whitelist y no estás en ella.'
+  spectate-unavailable: '{prefix}&cEse jugador ya no está jugando.'
+  # %1$s: jugador, %2$s: jugadores, %3$s: máximo
+  join: '{prefix}&e%1$s &7ha entrado &8(&a%2$s&8/&a%3$s&8)'
+  quit: '{prefix}&e%1$s &7ha salido &8(&c%2$s&8/&c%3$s&8)'
+  you-left: '{prefix}&7Has salido de la partida.'
+  now-spectating: '{prefix}&7Ahora eres &eespectador&7. Usa la brújula para seguir a alguien.'
+  # %s: jugador
+  revived: '{prefix}&e%s &7ha vuelto a la partida.'
+  start:
+    # %s: tiempo
+    countdown: '{prefix}&7La partida empieza en &e%s&7.'
+    cancelled: '{prefix}&cFaltan jugadores: se cancela la cuenta atrás.'
+  scatter:
+    start: '{prefix}&7Repartiendo a los jugadores por el mapa... &e¡No te muevas!'
+  started: '{prefix}&a¡La partida ha empezado! &7Mucha suerte.'
+  heal:
+    # %s: tiempo
+    countdown: '{prefix}&7Final heal en &e%s&7.'
+    done: '{prefix}&a¡Final heal! &7Todos tienen la vida al máximo. Ya no hay más curas.'
+  pvp:
+    # %s: tiempo
+    countdown: '{prefix}&7El PvP se activa en &c%s&7.'
+    enabled: '{prefix}&c¡El PvP está activado!'
+    disabled: '{prefix}&aEl PvP se ha desactivado.'
+  border:
+    # %1$s: radio, %2$s: tiempo
+    countdown: '{prefix}&7El borde se reduce a &c%1$s &7en &c%2$s&7.'
+    # %s: radio
+    shrunk: '{prefix}&c¡El borde se ha reducido a %s bloques!'
+  nether:
+    closed: '{prefix}&cEl Nether se ha cerrado. &7Quien estaba dentro ha vuelto a la superficie.'
+    disabled: '{prefix}&cEl Nether está cerrado en esta partida.'
+  end:
+    draw: '{prefix}&7La partida ha terminado &esin ganador&7.'
+    # %1$s: ganador, %2$s: bajas
+    solo: '{prefix}&6&l¡%1$s &6&lha ganado la partida! &7(%2$s bajas)'
+    # %1$s: equipo, %2$s: jugadores, %3$s: bajas del equipo
+    team: '{prefix}&6&l¡El equipo %1$s &6&lha ganado! &7%2$s &8(&7%3$s bajas&8)'
+
+time:
+  # %s: cantidad
+  minutes: '%s min'
+  seconds: '%s s'
+
+death:
+  # %1$s: muerto, %2$s: sus bajas, %3$s: asesino, %4$s: sus bajas
+  slain: '%1$s&7[&f%2$s&7] &eha muerto a manos de %3$s&7[&f%4$s&7]&e.'
+  # %1$s: muerto, %2$s: sus bajas
+  died: '%1$s&7[&f%2$s&7] &eha muerto.'
+  left: '%1$s&7[&f%2$s&7] &eha abandonado la partida.'
+  logger-slain: '%1$s&7[&f%2$s&7] &8(desconectado) &eha muerto a manos de %3$s&7[&f%4$s&7]&e.'
+  logger-died: '%1$s&7[&f%2$s&7] &8(desconectado) &eha muerto.'
+  logger-expired: '%1$s&7[&f%2$s&7] &eno ha vuelto a tiempo y queda eliminado.'
+
+logger:
+  # %1$s: jugador, %2$s: minutos
+  spawned: '{prefix}&e%1$s &7se ha desconectado: tiene &e%2$s min &7para volver.'
+  # %s: jugador
+  returned: '{prefix}&e%s &7ha vuelto a la partida.'
+
+team:
+  # %s: equipo
+  joined: '{prefix}&7Estás en el equipo %s&7.'
+  eliminated: '{prefix}&cEl equipo %s &cha sido eliminado.'
+  no-team: '{prefix}&cEsta partida no es por equipos.'
+  chat-on: '{prefix}&7Chat de equipo &aactivado&7: lo que escribas solo lo verá tu equipo.'
+  chat-off: '{prefix}&7Chat de equipo &cdesactivado&7.'
+  # %1$s: equipo, %2$s: jugador, %3$s: mensaje
+  chat: '&8[%1$s&8] &f%2$s&8: &a%3$s'
+  # %1$s: equipo, %2$s: jugador, %3$s %4$s %5$s: x y z, %6$s: dimensión
+  coords: '&8[%1$s&8] &f%2$s &7está en &ex: %3$s&7, &ey: %4$s&7, &ez: %5$s &8(%6$s)'
+
+host:
+  # %s: jugador
+  claimed: '{prefix}&e%s &7es ahora el &6host &7de esta partida: él pone las reglas y la empieza.'
+  info: '{prefix}&7Esta partida la lleva &6%s&7. Mira sus reglas con &e/scenarios&7.'
+  released: '{prefix}&7La partida vuelve a ser &eautomática&7.'
+  starting: '{prefix}&6%s &7ha arrancado la partida.'
+  not-host: '{prefix}&c¡No llevas esta partida!'
+  too-late: '{prefix}&cLa partida ya ha empezado.'
+  claim-first: '{prefix}&cEsta partida es automática. Tómala antes con &e/uhc host&c.'
+  whitelist:
+    enabled: '{prefix}&7La whitelist está &aactivada&7.'
+    disabled: '{prefix}&7La whitelist está &cdesactivada&7.'
+    # %s: jugador
+    added: '{prefix}&e%s &7añadido a la whitelist.'
+    removed: '{prefix}&e%s &7quitado de la whitelist.'
+    # %s: jugadores
+    list: '{prefix}&7Whitelist: &e%s'
+
+scenarios:
+  header: '{prefix}&7Escenarios de esta partida:'
+  # %1$s: escenario, %2$s: descripción
+  line: ' &8● &e%1$s &8- &7%2$s'
+  none: '{prefix}&7Esta partida no tiene escenarios.'
+  voting-open: '{prefix}&7Los escenarios se están votando. Abre la votación con &e/uhc vote&7.'
+  # %s: escenario
+  enabled: '{prefix}&7Escenario &e%s &aactivado&7.'
+  disabled: '{prefix}&7Escenario &e%s &cdesactivado&7.'
+  # %s: escenarios que existen
+  unknown: '{prefix}&cEse escenario no existe. &7Hay: &e%s'
+  vote:
+    # %s: escenario
+    added: '{prefix}&7Has votado por &e%s&7.'
+    removed: '{prefix}&7Has quitado tu voto a &e%s&7.'
+    limit: '{prefix}&c¡Ya has usado todos tus votos! &7Quita uno para votar otro.'
+  noclean:
+    # %s: segundos
+    start: '{prefix}&aNoClean: &7estás protegido del PvP durante &e%s s&7.'
+    end: '{prefix}&cNoClean: &7tu protección se ha acabado.'
+    # %s: jugador
+    protected: '{prefix}&e%s &7está protegido por &aNoClean&7.'
+    lost: '{prefix}&cNoClean: &7has atacado y pierdes la protección.'
+  backpacks:
+    # %s: equipo (el título no puede pasar de 32 caracteres)
+    title: '&8Mochila del equipo %s'
+    unavailable: '{prefix}&cLa mochila solo está en las partidas con &eBackpacks &cy mientras sigas vivo.'
+  # Nombre y descripción de cada escenario (menús y /scenarios).
+  list:
+    cutclean:
+      name: 'CutClean'
+      description:
+        - '&7El hierro y el oro salen ya fundidos'
+        - '&7y la comida, cocinada.'
+    doubleores:
+      name: 'DoubleOres'
+      description:
+        - '&7Cada mineral suelta el doble.'
+    tripleores:
+      name: 'TripleOres'
+      description:
+        - '&7Cada mineral suelta el triple.'
+    timebomb:
+      name: 'TimeBomb'
+      description:
+        - '&7Las cosas de quien muere van a un cofre'
+        - '&7que explota a los pocos segundos.'
+    noclean:
+      name: 'NoClean'
+      description:
+        - '&7Tras una baja quedas protegido del PvP'
+        - '&7unos segundos (hasta que ataques).'
+    hasteyboys:
+      name: 'HasteyBoys'
+      description:
+        - '&7Las herramientas salen con'
+        - '&7Eficiencia III e Irrompibilidad I.'
+    timber:
+      name: 'Timber'
+      description:
+        - '&7Al romper un tronco cae el árbol entero.'
+    bowless:
+      name: 'Bowless'
+      description:
+        - '&7No hay arcos.'
+    rodless:
+      name: 'Rodless'
+      description:
+        - '&7No hay cañas de pescar.'
+    swordless:
+      name: 'Swordless'
+      description:
+        - '&7No se pueden fabricar espadas.'
+    fireless:
+      name: 'Fireless'
+      description:
+        - '&7El fuego y la lava no hacen daño.'
+    nofall:
+      name: 'NoFall'
+      description:
+        - '&7Las caídas no hacen daño.'
+    blooddiamonds:
+      name: 'BloodDiamonds'
+      description:
+        - '&7Cada diamante que picas te cuesta'
+        - '&7medio corazón.'
+    bloodenchant:
+      name: 'BloodEnchant'
+      description:
+        - '&7Cada encantamiento te cuesta'
+        - '&7medio corazón.'
+    absorptionless:
+      name: 'Absorptionless'
+      description:
+        - '&7Las manzanas doradas no dan'
+        - '&7corazones de absorción.'
+    luckyleaves:
+      name: 'LuckyLeaves'
+      description:
+        - '&7Las hojas pueden soltar'
+        - '&7manzanas doradas.'
+    switcheroo:
+      name: 'Switcheroo'
+      description:
+        - '&7Si aciertas a alguien con una flecha,'
+        - '&7cambiáis de sitio.'
+    webcage:
+      name: 'WebCage'
+      description:
+        - '&7Donde muere alguien aparece'
+        - '&7una esfera de telarañas.'
+    triplexp:
+      name: 'TripleXP'
+      description:
+        - '&7La experiencia vale el triple.'
+    backpacks:
+      name: 'Backpacks'
+      description:
+        - '&7Cada equipo comparte una mochila:'
+        - '&e/uhc backpack'
+    barebones:
+      name: 'Barebones'
+      description:
+        - '&7Solo se puede picar hierro, no hay'
+        - '&7encantamientos ni manzanas doradas, y cada'
+        - '&7muerte deja diamante, manzana, flechas e hilo.'
+    coldweapons:
+      name: 'ColdWeapons'
+      description:
+        - '&7Sin Aspecto Ígneo ni Fuego.'
+
+practice:
+  disabled: '{prefix}&cLa práctica está desactivada.'
+  closed: '{prefix}&cLa práctica está cerrada: la partida va a empezar.'
+  full: '{prefix}&c¡La práctica está llena!'
+  joined: '{prefix}&7Estás en la &epráctica&7. Sal con &e/practice&7.'
+  left: '{prefix}&7Has salido de la práctica.'
+  # %s: jugador
+  killed: '{prefix}&7Has matado a &e%s&7.'
+  killed-by: '{prefix}&7Te ha matado &e%s&7.'
+  died: '{prefix}&7Has muerto.'
+
+assign:
+  enabled: '{prefix}&7Las &epeleas asignadas &7están &aactivadas&7.'
+  disabled: '{prefix}&7Las &epeleas asignadas &7están &cdesactivadas&7.'
+  # %1$s: un lado, %2$s: el otro
+  announce: |-
+    &7&m---------------------------------
+    &6&lPelea asignada
+    %1$s &7vs. %2$s
+    &7&m---------------------------------
+  # %s: rivales
+  you: '{prefix}&eTe ha tocado pelear contra&7: %s'
+  no-interrupt: '{prefix}&c¡No puedes meterte en una pelea asignada!'
+  must-fight: '{prefix}&cTienes que pelear contra&7: %s'
+  not-enabled: '{prefix}&cActiva antes las peleas asignadas con &e/assign on&c.'
+  not-alive: '{prefix}&cLos dos tienen que estar vivos en la partida.'
+  same-side: '{prefix}&c¡Son del mismo equipo!'
+  already: '{prefix}&cAlguno de los dos ya tiene una pelea asignada.'
+  not-enough: '{prefix}&cNo quedan dos equipos libres para emparejar.'
+
+commands:
+  unknown: '{prefix}&c¡Ese comando no existe! Usa &e/uhc help&c.'
+  only-players: '{prefix}&c¡Esta opción es solo para jugadores!'
+  no-permission: '{prefix}&c¡No tienes permiso para hacer eso!'
+  error: '{prefix}&cOcurrió un error al ejecutar el comando, revisa la consola.'
+  not-in-game: '{prefix}&c¡No estás en ninguna partida!'
+  already-playing: '{prefix}&c¡Ya estás jugando una partida!'
+  # %s: partida
+  unknown-game: '{prefix}&cNo hay ninguna partida llamada &e%s&c.'
+  # %s: jugador
+  player-not-found: '{prefix}&cEl jugador &e%s &cno está conectado.'
+  which-arena: '{prefix}&cHay varias arenas: di cuál al final del comando.'
+  not-playing: '{prefix}&cEsa arena no está en plena partida.'
+  # %s: jugador
+  cannot-revive: '{prefix}&cNo se puede revivir a &e%s&c: no ha muerto en una partida en marcha.'
+  usage:
+    assign: '{prefix}&cUso: &e/assign on|off&c, &e/assign random &co &e/assign [jugador] [jugador]'
+    border: '{prefix}&cUso: &e/uhc border [radio] <arena> &7(entre 5 y el radio del mapa)'
+    pvp: '{prefix}&cUso: &e/uhc pvp on|off <arena>'
+    whitelist: '{prefix}&cUso: &e/uhc whitelist on|off|list &co &e/uhc whitelist add|remove [jugador]'
+  help:
+    # %s: versión
+    header: |-
+      &7
+      {prefix}&fAyuda &7● &e<opcional> / [requerido] &8(v%s)
+      &7
+    footer: '&7'
+    join: '&7 /uhc join <partida> - &eEntra a una partida.'
+    leave: '&7 /uhc leave - &eSal de la partida.'
+    games: '&7 /uhc games - &eAbre el menú de partidas.'
+    vote: '&7 /uhc vote - &eVota los escenarios de la partida.'
+    scenarios: '&7 /uhc scenarios - &eEscenarios de la partida.'
+    stats: '&7 /uhc stats <jugador> - &eEstadísticas.'
+    top: '&7 /uhc top <estadística> - &eLos diez mejores.'
+    backpack: '&7 /uhc backpack - &eLa mochila de tu equipo (Backpacks).'
+    practice: '&7 /uhc practice - &eEntra o sal de la práctica mientras esperas.'
+    host: '&7 /uhc host <release> - &eToma la partida como host (o suéltala) y abre su panel.'
+    start: '&7 /uhc start - &eArranca la partida que llevas.'
+    scenario: '&7 /uhc scenario [escenario] - &eActiva o quita un escenario.'
+    whitelist: '&7 /uhc whitelist on|off|add|remove|list - &eWhitelist de tu partida.'
+    border: '&7 /uhc border [radio] <arena> - &eReduce el borde ya.'
+    heal: '&7 /uhc heal <arena> - &eCura a todos.'
+    pvp: '&7 /uhc pvp on|off <arena> - &eActiva o desactiva el PvP.'
+    respawn: '&7 /uhc respawn [jugador] - &eDevuelve a un muerto a la partida.'
+    end: '&7 /uhc end <arena> - &eTermina la partida sin ganador.'
+    world: '&7 /uhc world - &eMundos template: generar, listar y borrar.'
+    setlobby: '&7 /uhc setlobby - &eEstablece el spawn del lobby.'
+    reload: '&7 /uhc reload - &eRecarga los archivos.'
+    debug: '&7 /uhc debug - &eEstado de las arenas y del pool de mundos.'
+
+admin:
+  lobby-set: '{prefix}&7Spawn del lobby &aestablecido &7donde estás.'
+  reloaded: '{prefix}&aArchivos recargados. &7Las arenas usan las reglas nuevas al reiniciarse.'
+
+# Mundos template (/uhc world).
+world:
+  help:
+    - '&7'
+    - '{prefix}&fAyuda &7● &eMundos template'
+    - '&7'
+    - '&7 /uhc world generate <nombre|cantidad> <radio> - &eGenera mundos para el pool.'
+    - '&7 /uhc world list - &eLos mundos del pool.'
+    - '&7 /uhc world delete [nombre] - &eBorra un mundo del pool.'
+    - '&7 /uhc world status - &eLo que se está generando.'
+    - '&7'
+  not-here: '{prefix}&cUn servidor en modo LOBBY no tiene mundos de partida.'
+  invalid-name: '{prefix}&cEl nombre solo puede tener letras, números, - y _.'
+  # %s: mundo
+  exists: '{prefix}&cYa hay un mundo llamado &e%s&c.'
+  unknown: '{prefix}&cNo hay ningún mundo llamado &e%s&c.'
+  deleted: '{prefix}&7Mundo &e%s &cborrado&7.'
+  in-use: '{prefix}&c¡El mundo &e%s &cse está jugando ahora! Espera a que la arena cambie de mundo.'
+  idle: '{prefix}&7No se está generando ningún mundo.'
+  # %1$s: mundo y porcentaje, %2$s: en cola
+  status: '{prefix}&7Generando &e%1$s &8(&7%2$s más en cola&8)'
+  generate:
+    # %s: cuántos
+    queued: '{prefix}&7En cola &e%s &7mundo(s). El servidor irá más lento mientras se generan.'
+    # %1$s: mundo, %2$s: radio
+    start: '{prefix}&7Generando el mundo &e%1$s &7(radio %2$s)...'
+    # %1$s: mundo, %2$s: porcentaje
+    progress: '{prefix}&7Mundo &e%1$s&7: &a%2$s%%'
+    # %s: mundo
+    done: '{prefix}&aMundo &e%s &alisto y guardado en el pool.'
+    failed: '{prefix}&cNo se pudo generar el mundo &e%s&c, revisa la consola.'
+  list:
+    # %s: cuántos
+    header: '{prefix}&7Mundos del pool: &e%s'
+    # %1$s: mundo, %2$s: radio, %3$s: con o sin Nether
+    line: ' &8● &e%1$s &7radio &f%2$s &8- %3$s'
+    with-nether: '&acon Nether'
+    without-nether: '&csin Nether'
+
+stats:
+  # %1$s: jugador, %2$s: victorias, %3$s: partidas, %4$s: bajas, %5$s: muertes, %6$s: KDR,
+  # %7$s: diamantes, %8$s: oro, %9$s: hierro
+  lines:
+    - '&7'
+    - '{prefix}&fEstadísticas de &e%1$s'
+    - '&7'
+    - '&f Victorias: &a%2$s &8/ &fPartidas: &e%3$s'
+    - '&f Bajas: &a%4$s &8/ &fMuertes: &c%5$s &8/ &fKDR: &e%6$s'
+    - '&f Diamantes: &b%7$s &8/ &fOro: &6%8$s &8/ &fHierro: &7%9$s'
+    - '&7'
+  # %s: estadísticas que existen
+  unknown: '{prefix}&cEsa estadística no existe. &7Hay: &e%s'
+  names:
+    kills: 'Bajas'
+    deaths: 'Muertes'
+    wins: 'Victorias'
+    played: 'Partidas'
+    diamonds: 'Diamantes'
+    gold: 'Oro'
+    iron: 'Hierro'
+  top:
+    # %s: estadística
+    header: '{prefix}&fTop 10 &7● &e%s'
+    # %1$s: puesto, %2$s: jugador, %3$s: valor
+    line: ' &e#%1$s &f%2$s &8- &a%3$s'
+
+modes:
+  solo: 'Solitario'
+  teams: 'Equipos'
+  # %s: tamaño del equipo
+  teams-of: 'Equipos de %s'
+  automatic: 'Automática'
+  hosted: 'Con host'
+
+states:
+  waiting: '&aEsperando'
+  starting: '&eEmpezando'
+  ingame: '&cEn juego'
+  ending: '&7Terminando'
+
+titles:
+  join:
+    title: '&6&lUHC'
+    # %s: mapa
+    subtitle: '&7Mapa: &e%s'
+  # %s: segundos
+  countdown: '&e%s'
+  start:
+    title: '&a&l¡A JUGAR!'
+    subtitle: '&7Mucha suerte'
+  pvp:
+    title: '&c&lPvP ACTIVADO'
+    subtitle: '&7¡Cuidado con los demás!'
+  win:
+    title: '&6&l¡VICTORIA!'
+    # %s: ganadores
+    subtitle: '&7Has ganado la partida'
+  lose:
+    title: '&c&lFIN DE LA PARTIDA'
+    # %s: ganadores
+    subtitle: '&7Ha ganado %s'
+  draw:
+    title: '&e&lFIN DE LA PARTIDA'
+    subtitle: '&7Sin ganador'
+
+# Ítems de la barra (lobby y espera).
+items:
+  play:
+    name: '&aJugar &7(Clic derecho)'
+    lore: |-
+      &7
+      &f Entra a la mejor partida disponible.
+      &7
+      &e Haz clic para jugar.
+      &f
+  games:
+    name: '&ePartidas &7(Clic derecho)'
+    lore: |-
+      &7
+      &f Mira las partidas que hay
+      &f y elige a cuál entrar.
+      &7
+      &e Haz clic para abrir.
+      &f
+  vote:
+    name: '&bVotar escenarios &7(Clic derecho)'
+    lore: |-
+      &7
+      &f Elige con qué escenarios
+      &f se juega esta partida.
+      &7
+      &e Haz clic para votar.
+      &f
+  scenarios:
+    name: '&dEscenarios &7(Clic derecho)'
+    lore: |-
+      &7
+      &f Los escenarios de esta partida.
+      &7
+      &e Haz clic para verlos.
+      &f
+  practice:
+    name: '&cPráctica &7(Clic derecho)'
+    lore: |-
+      &7
+      &f Pelea contra los demás
+      &f mientras empieza la partida.
+      &7
+      &e Haz clic para entrar.
+      &f
+  host:
+    name: '&6Panel del host &7(Clic derecho)'
+    lore: |-
+      &7
+      &f Las reglas de tu partida.
+      &7
+      &e Haz clic para abrir.
+      &f
+  leave:
+    name: '&cSalir &7(Clic derecho)'
+    lore: |-
+      &7
+      &f Haz clic para salir
+      &f de la partida.
+      &7
+
+menus:
+  unavailable: '{prefix}&cEse menú no está disponible ahora.'
+  # %s: escenario
+  scenario-name: '&e%s'
+  general-items:
+    close:
+      name: '&cCerrar'
+      lore: |-
+        &7
+        &e Haz clic para cerrar.
+        &f
+    back:
+      name: '&cVolver'
+      lore: |-
+        &7
+        &e Haz clic para volver.
+        &f
+    prevPage:
+      name: '&aPágina anterior &7({actualPage}/{maxPages})'
+      lore: |-
+        &7
+        &e Haz clic para ir atrás.
+        &f
+    nextPage:
+      name: '&aPágina siguiente &7({actualPage}/{maxPages})'
+      lore: |-
+        &7
+        &e Haz clic para ir adelante.
+        &f
+  games:
+    title: '&8Partidas de UHC'
+    empty:
+      name: '&cNo hay partidas'
+      lore: |-
+        &7
+        &f Ahora mismo no hay ninguna
+        &f partida disponible.
+        &7
+    game:
+      # %s: mapa
+      name: '&e%s'
+      # %1$s: estado, %2$s: jugadores, %3$s: máximo, %4$s: modo, %5$s: automática o con host
+      lore:
+        - '&7'
+        - '&f Estado: %1$s'
+        - '&f Jugadores: &e%2$s&7/&e%3$s'
+        - '&f Modo: &e%4$s'
+        - '&f Tipo: &e%5$s'
+        - '&7'
+        - '&e Haz clic para entrar.'
+        - '&f'
+  vote:
+    title: '&8Votar escenarios'
+    empty:
+      name: '&cNo hay escenarios'
+      lore: |-
+        &7
+        &f No hay ningún escenario
+        &f que se pueda votar.
+        &7
+    # %s: votos
+    lore:
+      - '&7'
+      - '&f Votos: &e%s'
+      - '&7'
+      - '&e Haz clic para votar.'
+      - '&f'
+    lore-voted:
+      - '&7'
+      - '&f Votos: &e%s'
+      - '&a Has votado por este.'
+      - '&7'
+      - '&e Haz clic para quitar tu voto.'
+      - '&f'
+  scenarios:
+    title: '&8Escenarios'
+    empty:
+      name: '&cSin escenarios'
+      lore: |-
+        &7
+        &f Esta partida todavía no
+        &f tiene escenarios.
+        &7
+  host-scenarios:
+    title: '&8Escenarios de tu partida'
+    empty:
+      name: '&cNo hay escenarios'
+      lore: |-
+        &7
+        &f No hay ningún escenario
+        &f activado en scenarios.yml.
+        &7
+    lore-enabled:
+      - '&7'
+      - '&f Estado: &aActivado'
+      - '&7'
+      - '&e Haz clic para quitarlo.'
+      - '&f'
+    lore-disabled:
+      - '&7'
+      - '&f Estado: &cDesactivado'
+      - '&7'
+      - '&e Haz clic para activarlo.'
+      - '&f'
+  host:
+    title: '&8Panel del host'
+    enabled: '&aActivado'
+    disabled: '&cDesactivado'
+    # En todos, %s es el valor actual.
+    items:
+      team-size:
+        name: '&eTamaño de equipo'
+        lore:
+          - '&7'
+          - '&f Jugadores por equipo: &e%s'
+          - '&7 (1 = solitario)'
+          - '&7'
+          - '&e Clic izquierdo: +1 &8| &eClic derecho: -1'
+          - '&f'
+      max-players:
+        name: '&eJugadores máximos'
+        lore:
+          - '&7'
+          - '&f Máximo: &e%s'
+          - '&7'
+          - '&e Clic izquierdo: +5 &8| &eClic derecho: -5'
+          - '&f'
+      heal-time:
+        name: '&dFinal heal'
+        lore:
+          - '&7'
+          - '&f A los: &e%s'
+          - '&7'
+          - '&e Clic izquierdo: +1 min &8| &eClic derecho: -1 min'
+          - '&f'
+      pvp-time:
+        name: '&cPvP'
+        lore:
+          - '&7'
+          - '&f Se activa a los: &e%s'
+          - '&7'
+          - '&e Clic izquierdo: +1 min &8| &eClic derecho: -1 min'
+          - '&f'
+      border-time:
+        name: '&bPrimera reducción del borde'
+        lore:
+          - '&7'
+          - '&f A los: &e%s'
+          - '&7'
+          - '&e Clic izquierdo: +5 min &8| &eClic derecho: -5 min'
+          - '&f'
+      border-interval:
+        name: '&bEntre reducciones'
+        lore:
+          - '&7'
+          - '&f Cada: &e%s'
+          - '&7'
+          - '&e Clic izquierdo: +1 min &8| &eClic derecho: -1 min'
+          - '&f'
+      nether:
+        name: '&4Nether'
+        lore:
+          - '&7'
+          - '&f Estado: %s'
+          - '&7'
+          - '&e Haz clic para cambiarlo.'
+          - '&f'
+      friendly-fire:
+        name: '&eFuego amigo'
+        lore:
+          - '&7'
+          - '&f Estado: %s'
+          - '&7'
+          - '&e Haz clic para cambiarlo.'
+          - '&f'
+      whitelist:
+        name: '&fWhitelist'
+        lore:
+          - '&7'
+          - '&f Estado: %s'
+          - '&7 /uhc whitelist add [jugador]'
+          - '&7'
+          - '&e Haz clic para cambiarla.'
+          - '&f'
+      scenarios:
+        name: '&dEscenarios'
+        lore:
+          - '&7'
+          - '&f Activos: &e%s'
+          - '&7'
+          - '&e Haz clic para elegirlos.'
+          - '&f'
+      start:
+        name: '&a&lEmpezar la partida'
+        lore:
+          - '&7'
+          - '&f Jugadores: &e%s'
+          - '&7'
+          - '&e Haz clic para arrancarla.'
+          - '&f'
+      release:
+        name: '&cDejar de ser host'
+        lore:
+          - '&7'
+          - '&f Host: &6%s'
+          - '&7 La partida vuelve a ser automática.'
+          - '&7'
+          - '&e Haz clic para soltarla.'
+          - '&f'
+
+scoreboard:
+  title: '&6&lUHC'
+  pvp-on: '&aActivado'
+  done: '&aHecho'
+  lobby:
+    - '&7%date%'
+    - '&7'
+    - '&f Conectados: &e%online%'
+    - '&f'
+    - '&f Victorias: &a%wins%'
+    - '&f Bajas: &e%total_kills%'
+    - '&f KDR: &e%kdr%'
+    - '&e'
+    - '&7spreen.studio'
+  waiting:
+    - '&7%date%'
+    - '&7'
+    - '&f Mapa: &e%map%'
+    - '&f Modo: &e%mode%'
+    - '&f Host: &6%host%'
+    - '&f'
+    - '&f Jugadores: &e%players%&7/&e%max%'
+    - '&f Mínimo: &e%min%'
+    - '&e'
+    - '&7spreen.studio'
+  starting:
+    - '&7%date%'
+    - '&7'
+    - '&f Mapa: &e%map%'
+    - '&f Modo: &e%mode%'
+    - '&f'
+    - '&f Jugadores: &e%players%&7/&e%max%'
+    - '&f Empieza en: &a%countdown%s'
+    - '&e'
+    - '&7spreen.studio'
+  scatter:
+    - '&7%date%'
+    - '&7'
+    - '&f Repartiendo jugadores...'
+    - '&f Jugadores: &e%alive%'
+    - '&e'
+    - '&7spreen.studio'
+  game:
+    - '&7%date%'
+    - '&7'
+    - '&f Tiempo: &e%time%'
+    - '&f Vivos: &e%alive% &8(&7%teams_alive% eq.&8)'
+    - '&f Bajas: &e%kills%'
+    - '&f'
+    - '&f Borde: &c%border%'
+    - '&f Siguiente: &c%next_border% &7(%border_time%)'
+    - '&f PvP: &e%pvp%'
+    - '&f Final heal: &e%heal%'
+    - '&e'
+    - '&7spreen.studio'
+  spectator:
+    - '&7%date%'
+    - '&7'
+    - '&f Tiempo: &e%time%'
+    - '&f Vivos: &e%alive% &8(&7%teams_alive% eq.&8)'
+    - '&f Espectadores: &e%spectators%'
+    - '&f'
+    - '&f Borde: &c%border%'
+    - '&f Siguiente: &c%next_border% &7(%border_time%)'
+    - '&e'
+    - '&7spreen.studio'
+  ending:
+    - '&7%date%'
+    - '&7'
+    - '&f Ganador: %winner%'
+    - '&f Tiempo: &e%time%'
+    - '&f Tus bajas: &e%kills%'
+    - '&e'
+    - '&7spreen.studio'

@@ -1,0 +1,774 @@
+prefix: '&6&lUHC &8» '
+
+general:
+  loading: '&cYour data is still loading, join again in a few seconds.'
+
+# Used by GameCore when moving players around.
+player:
+  teleport:
+    lobby: '{prefix}&7Going back to the &elobby&7...'
+
+game:
+  no-games: '{prefix}&cThere is no free game right now! Try again in a few seconds.'
+  # %s: game
+  sending: '{prefix}&7Sending you to &e%s&7...'
+  queued: '{prefix}&7No free games: &eyou will join as soon as there is one&7.'
+  loading: '{prefix}&cThat game is still preparing its world. Try again in a few seconds.'
+  in-progress: '{prefix}&cThat game has already started!'
+  full: '{prefix}&cThat game is full!'
+  whitelisted: '{prefix}&cThat game is whitelisted and you are not on the list.'
+  spectate-unavailable: '{prefix}&cThat player is no longer playing.'
+  # %1$s: player, %2$s: players, %3$s: maximum
+  join: '{prefix}&e%1$s &7joined &8(&a%2$s&8/&a%3$s&8)'
+  quit: '{prefix}&e%1$s &7left &8(&c%2$s&8/&c%3$s&8)'
+  you-left: '{prefix}&7You left the game.'
+  now-spectating: '{prefix}&7You are now a &espectator&7. Use the compass to follow someone.'
+  # %s: player
+  revived: '{prefix}&e%s &7is back in the game.'
+  start:
+    # %s: time
+    countdown: '{prefix}&7The game starts in &e%s&7.'
+    cancelled: '{prefix}&cNot enough players: countdown cancelled.'
+  scatter:
+    start: '{prefix}&7Scattering players across the map... &eStay still!'
+  started: '{prefix}&aThe game has started! &7Good luck.'
+  heal:
+    # %s: time
+    countdown: '{prefix}&7Final heal in &e%s&7.'
+    done: '{prefix}&aFinal heal! &7Everyone is at full health. No more heals.'
+  pvp:
+    # %s: time
+    countdown: '{prefix}&7PvP will be enabled in &c%s&7.'
+    enabled: '{prefix}&cPvP is now enabled!'
+    disabled: '{prefix}&aPvP has been disabled.'
+  border:
+    # %1$s: radius, %2$s: time
+    countdown: '{prefix}&7The border shrinks to &c%1$s &7in &c%2$s&7.'
+    # %s: radius
+    shrunk: '{prefix}&cThe border has shrunk to %s blocks!'
+  nether:
+    closed: '{prefix}&cThe Nether is now closed. &7Everyone inside was sent back to the surface.'
+    disabled: '{prefix}&cThe Nether is closed in this game.'
+  end:
+    draw: '{prefix}&7The game ended &ewith no winner&7.'
+    # %1$s: winner, %2$s: kills
+    solo: '{prefix}&6&l%1$s &6&lwon the game! &7(%2$s kills)'
+    # %1$s: team, %2$s: players, %3$s: team kills
+    team: '{prefix}&6&lTeam %1$s &6&lwon! &7%2$s &8(&7%3$s kills&8)'
+
+time:
+  # %s: amount
+  minutes: '%s min'
+  seconds: '%s s'
+
+death:
+  # %1$s: victim, %2$s: their kills, %3$s: killer, %4$s: their kills
+  slain: '%1$s&7[&f%2$s&7] &ewas slain by %3$s&7[&f%4$s&7]&e.'
+  # %1$s: victim, %2$s: their kills
+  died: '%1$s&7[&f%2$s&7] &edied.'
+  left: '%1$s&7[&f%2$s&7] &eleft the game.'
+  logger-slain: '%1$s&7[&f%2$s&7] &8(offline) &ewas slain by %3$s&7[&f%4$s&7]&e.'
+  logger-died: '%1$s&7[&f%2$s&7] &8(offline) &edied.'
+  logger-expired: '%1$s&7[&f%2$s&7] &edid not come back in time and is out.'
+
+logger:
+  # %1$s: player, %2$s: minutes
+  spawned: '{prefix}&e%1$s &7disconnected: they have &e%2$s min &7to come back.'
+  # %s: player
+  returned: '{prefix}&e%s &7is back in the game.'
+
+team:
+  # %s: team
+  joined: '{prefix}&7You are in team %s&7.'
+  eliminated: '{prefix}&cTeam %s &chas been eliminated.'
+  no-team: '{prefix}&cThis is not a team game.'
+  chat-on: '{prefix}&7Team chat &aenabled&7: only your team will see what you write.'
+  chat-off: '{prefix}&7Team chat &cdisabled&7.'
+  # %1$s: team, %2$s: player, %3$s: message
+  chat: '&8[%1$s&8] &f%2$s&8: &a%3$s'
+  # %1$s: team, %2$s: player, %3$s %4$s %5$s: x y z, %6$s: dimension
+  coords: '&8[%1$s&8] &f%2$s &7is at &ex: %3$s&7, &ey: %4$s&7, &ez: %5$s &8(%6$s)'
+
+host:
+  # %s: player
+  claimed: '{prefix}&e%s &7is now the &6host &7of this game: they set the rules and start it.'
+  info: '{prefix}&7This game is hosted by &6%s&7. Check its rules with &e/scenarios&7.'
+  released: '{prefix}&7The game is &eautomatic &7again.'
+  starting: '{prefix}&6%s &7started the game.'
+  not-host: '{prefix}&cYou are not hosting this game!'
+  too-late: '{prefix}&cThe game has already started.'
+  claim-first: '{prefix}&cThis game is automatic. Claim it first with &e/uhc host&c.'
+  whitelist:
+    enabled: '{prefix}&7The whitelist is &aenabled&7.'
+    disabled: '{prefix}&7The whitelist is &cdisabled&7.'
+    # %s: player
+    added: '{prefix}&e%s &7added to the whitelist.'
+    removed: '{prefix}&e%s &7removed from the whitelist.'
+    # %s: players
+    list: '{prefix}&7Whitelist: &e%s'
+
+scenarios:
+  header: '{prefix}&7Scenarios of this game:'
+  # %1$s: scenario, %2$s: description
+  line: ' &8● &e%1$s &8- &7%2$s'
+  none: '{prefix}&7This game has no scenarios.'
+  voting-open: '{prefix}&7Scenarios are being voted. Open the vote with &e/uhc vote&7.'
+  # %s: scenario
+  enabled: '{prefix}&7Scenario &e%s &aenabled&7.'
+  disabled: '{prefix}&7Scenario &e%s &cdisabled&7.'
+  # %s: existing scenarios
+  unknown: '{prefix}&cThat scenario does not exist. &7Available: &e%s'
+  vote:
+    # %s: scenario
+    added: '{prefix}&7You voted for &e%s&7.'
+    removed: '{prefix}&7You removed your vote for &e%s&7.'
+    limit: '{prefix}&cYou have used all your votes! &7Remove one to vote for another.'
+  noclean:
+    # %s: seconds
+    start: '{prefix}&aNoClean: &7you are protected from PvP for &e%s s&7.'
+    end: '{prefix}&cNoClean: &7your protection has ended.'
+    # %s: player
+    protected: '{prefix}&e%s &7is protected by &aNoClean&7.'
+    lost: '{prefix}&cNoClean: &7you attacked and lost your protection.'
+  backpacks:
+    # %s: team (the title cannot be longer than 32 characters)
+    title: '&8Backpack of team %s'
+    unavailable: '{prefix}&cThe backpack is only available in &eBackpacks &cgames while you are alive.'
+  # Name and description of each scenario (menus and /scenarios).
+  list:
+    cutclean:
+      name: 'CutClean'
+      description:
+        - '&7Iron and gold drop already smelted'
+        - '&7and food drops cooked.'
+    doubleores:
+      name: 'DoubleOres'
+      description:
+        - '&7Every ore drops twice as much.'
+    tripleores:
+      name: 'TripleOres'
+      description:
+        - '&7Every ore drops three times as much.'
+    timebomb:
+      name: 'TimeBomb'
+      description:
+        - '&7The items of a dead player go into a chest'
+        - '&7that explodes a few seconds later.'
+    noclean:
+      name: 'NoClean'
+      description:
+        - '&7After a kill you are protected from PvP'
+        - '&7for a few seconds (until you attack).'
+    hasteyboys:
+      name: 'HasteyBoys'
+      description:
+        - '&7Tools are crafted with'
+        - '&7Efficiency III and Unbreaking I.'
+    timber:
+      name: 'Timber'
+      description:
+        - '&7Breaking a log fells the whole tree.'
+    bowless:
+      name: 'Bowless'
+      description:
+        - '&7No bows.'
+    rodless:
+      name: 'Rodless'
+      description:
+        - '&7No fishing rods.'
+    swordless:
+      name: 'Swordless'
+      description:
+        - '&7Swords cannot be crafted.'
+    fireless:
+      name: 'Fireless'
+      description:
+        - '&7Fire and lava deal no damage.'
+    nofall:
+      name: 'NoFall'
+      description:
+        - '&7No fall damage.'
+    blooddiamonds:
+      name: 'BloodDiamonds'
+      description:
+        - '&7Every diamond you mine costs you'
+        - '&7half a heart.'
+    bloodenchant:
+      name: 'BloodEnchant'
+      description:
+        - '&7Every enchantment costs you'
+        - '&7half a heart.'
+    absorptionless:
+      name: 'Absorptionless'
+      description:
+        - '&7Golden apples give no'
+        - '&7absorption hearts.'
+    luckyleaves:
+      name: 'LuckyLeaves'
+      description:
+        - '&7Leaves may drop'
+        - '&7golden apples.'
+    switcheroo:
+      name: 'Switcheroo'
+      description:
+        - '&7If you hit someone with an arrow,'
+        - '&7you swap places.'
+    webcage:
+      name: 'WebCage'
+      description:
+        - '&7Where someone dies,'
+        - '&7a sphere of cobwebs appears.'
+    triplexp:
+      name: 'TripleXP'
+      description:
+        - '&7Experience is worth three times as much.'
+    backpacks:
+      name: 'Backpacks'
+      description:
+        - '&7Each team shares a backpack:'
+        - '&e/uhc backpack'
+    barebones:
+      name: 'Barebones'
+      description:
+        - '&7Only iron can be mined, there are no'
+        - '&7enchantments or golden apples, and each'
+        - '&7death drops a diamond, an apple, arrows and string.'
+    coldweapons:
+      name: 'ColdWeapons'
+      description:
+        - '&7No Fire Aspect or Flame.'
+
+practice:
+  disabled: '{prefix}&cPractice is disabled.'
+  closed: '{prefix}&cPractice is closed: the game is about to start.'
+  full: '{prefix}&cPractice is full!'
+  joined: '{prefix}&7You are in &epractice&7. Leave with &e/practice&7.'
+  left: '{prefix}&7You left practice.'
+  # %s: player
+  killed: '{prefix}&7You killed &e%s&7.'
+  killed-by: '{prefix}&7You were killed by &e%s&7.'
+  died: '{prefix}&7You died.'
+
+assign:
+  enabled: '{prefix}&7Assigned &efights &7are &aenabled&7.'
+  disabled: '{prefix}&7Assigned &efights &7are &cdisabled&7.'
+  # %1$s: one side, %2$s: the other
+  announce: |-
+    &7&m---------------------------------
+    &6&lAssigned Fight
+    %1$s &7vs. %2$s
+    &7&m---------------------------------
+  # %s: opponents
+  you: '{prefix}&eYou have been assigned against&7: %s'
+  no-interrupt: '{prefix}&cYou are not allowed to interrupt an assigned fight!'
+  must-fight: '{prefix}&cYou must fight against&7: %s'
+  not-enabled: '{prefix}&cEnable assigned fights first with &e/assign on&c.'
+  not-alive: '{prefix}&cBoth must be alive in the game.'
+  same-side: '{prefix}&cThey are on the same team!'
+  already: '{prefix}&cOne of them already has an assigned fight.'
+  not-enough: '{prefix}&cThere are not two free teams left to pair.'
+
+commands:
+  unknown: '{prefix}&cThat command does not exist! Use &e/uhc help&c.'
+  only-players: '{prefix}&cThis option is for players only!'
+  no-permission: '{prefix}&cYou do not have permission to do that!'
+  error: '{prefix}&cAn error occurred while running the command, check the console.'
+  not-in-game: '{prefix}&cYou are not in a game!'
+  already-playing: '{prefix}&cYou are already playing a game!'
+  # %s: game
+  unknown-game: '{prefix}&cThere is no game called &e%s&c.'
+  # %s: player
+  player-not-found: '{prefix}&cPlayer &e%s &cis not online.'
+  which-arena: '{prefix}&cThere are several arenas: name one at the end of the command.'
+  not-playing: '{prefix}&cThat arena is not in the middle of a game.'
+  # %s: player
+  cannot-revive: '{prefix}&cCannot revive &e%s&c: they did not die in a running game.'
+  usage:
+    assign: '{prefix}&cUsage: &e/assign on|off&c, &e/assign random &cor &e/assign [player] [player]'
+    border: '{prefix}&cUsage: &e/uhc border [radius] <arena> &7(between 5 and the map radius)'
+    pvp: '{prefix}&cUsage: &e/uhc pvp on|off <arena>'
+    whitelist: '{prefix}&cUsage: &e/uhc whitelist on|off|list &cor &e/uhc whitelist add|remove [player]'
+  help:
+    # %s: version
+    header: |-
+      &7
+      {prefix}&fHelp &7● &e<optional> / [required] &8(v%s)
+      &7
+    footer: '&7'
+    join: '&7 /uhc join <game> - &eJoin a game.'
+    leave: '&7 /uhc leave - &eLeave the game.'
+    games: '&7 /uhc games - &eOpen the games menu.'
+    vote: '&7 /uhc vote - &eVote for the scenarios of the game.'
+    scenarios: '&7 /uhc scenarios - &eScenarios of the game.'
+    stats: '&7 /uhc stats <player> - &eStatistics.'
+    top: '&7 /uhc top <stat> - &eTop ten.'
+    backpack: '&7 /uhc backpack - &eThe backpack of your team (Backpacks).'
+    practice: '&7 /uhc practice - &eJoin or leave practice while you wait.'
+    host: '&7 /uhc host <release> - &eClaim the game as host (or release it) and open its panel.'
+    start: '&7 /uhc start - &eStart the game you host.'
+    scenario: '&7 /uhc scenario [scenario] - &eToggle a scenario.'
+    whitelist: '&7 /uhc whitelist on|off|add|remove|list - &eWhitelist of your game.'
+    border: '&7 /uhc border [radius] <arena> - &eShrink the border now.'
+    heal: '&7 /uhc heal <arena> - &eHeal everyone.'
+    pvp: '&7 /uhc pvp on|off <arena> - &eEnable or disable PvP.'
+    respawn: '&7 /uhc respawn [player] - &ePut a dead player back in the game.'
+    end: '&7 /uhc end <arena> - &eEnd the game with no winner.'
+    world: '&7 /uhc world - &eTemplate worlds: generate, list and delete.'
+    setlobby: '&7 /uhc setlobby - &eSet the lobby spawn.'
+    reload: '&7 /uhc reload - &eReload the files.'
+    debug: '&7 /uhc debug - &eState of the arenas and the world pool.'
+
+admin:
+  lobby-set: '{prefix}&7Lobby spawn &aset &7where you are standing.'
+  reloaded: '{prefix}&aFiles reloaded. &7Arenas use the new rules after they restart.'
+
+# Template worlds (/uhc world).
+world:
+  help:
+    - '&7'
+    - '{prefix}&fHelp &7● &eTemplate worlds'
+    - '&7'
+    - '&7 /uhc world generate <name|amount> <radius> - &eGenerate worlds for the pool.'
+    - '&7 /uhc world list - &eThe worlds in the pool.'
+    - '&7 /uhc world delete [name] - &eDelete a world from the pool.'
+    - '&7 /uhc world status - &eWhat is being generated.'
+    - '&7'
+  not-here: '{prefix}&cA server in LOBBY mode has no game worlds.'
+  invalid-name: '{prefix}&cThe name may only contain letters, numbers, - and _.'
+  # %s: world
+  exists: '{prefix}&cThere is already a world called &e%s&c.'
+  unknown: '{prefix}&cThere is no world called &e%s&c.'
+  deleted: '{prefix}&7World &e%s &cdeleted&7.'
+  in-use: '{prefix}&cWorld &e%s &cis being played right now! Wait until the arena switches worlds.'
+  idle: '{prefix}&7No world is being generated.'
+  # %1$s: world and percentage, %2$s: queued
+  status: '{prefix}&7Generating &e%1$s &8(&7%2$s more queued&8)'
+  generate:
+    # %s: how many
+    queued: '{prefix}&7Queued &e%s &7world(s). The server will be slower while they are generated.'
+    # %1$s: world, %2$s: radius
+    start: '{prefix}&7Generating world &e%1$s &7(radius %2$s)...'
+    # %1$s: world, %2$s: percentage
+    progress: '{prefix}&7World &e%1$s&7: &a%2$s%%'
+    # %s: world
+    done: '{prefix}&aWorld &e%s &ais ready and stored in the pool.'
+    failed: '{prefix}&cCould not generate world &e%s&c, check the console.'
+  list:
+    # %s: how many
+    header: '{prefix}&7Worlds in the pool: &e%s'
+    # %1$s: world, %2$s: radius, %3$s: with or without Nether
+    line: ' &8● &e%1$s &7radius &f%2$s &8- %3$s'
+    with-nether: '&awith Nether'
+    without-nether: '&cno Nether'
+
+stats:
+  # %1$s: player, %2$s: wins, %3$s: games, %4$s: kills, %5$s: deaths, %6$s: KDR,
+  # %7$s: diamonds, %8$s: gold, %9$s: iron
+  lines:
+    - '&7'
+    - '{prefix}&fStatistics of &e%1$s'
+    - '&7'
+    - '&f Wins: &a%2$s &8/ &fGames: &e%3$s'
+    - '&f Kills: &a%4$s &8/ &fDeaths: &c%5$s &8/ &fKDR: &e%6$s'
+    - '&f Diamonds: &b%7$s &8/ &fGold: &6%8$s &8/ &fIron: &7%9$s'
+    - '&7'
+  # %s: existing stats
+  unknown: '{prefix}&cThat stat does not exist. &7Available: &e%s'
+  names:
+    kills: 'Kills'
+    deaths: 'Deaths'
+    wins: 'Wins'
+    played: 'Games'
+    diamonds: 'Diamonds'
+    gold: 'Gold'
+    iron: 'Iron'
+  top:
+    # %s: stat
+    header: '{prefix}&fTop 10 &7● &e%s'
+    # %1$s: position, %2$s: player, %3$s: value
+    line: ' &e#%1$s &f%2$s &8- &a%3$s'
+
+modes:
+  solo: 'Solo'
+  teams: 'Teams'
+  # %s: team size
+  teams-of: 'Teams of %s'
+  automatic: 'Automatic'
+  hosted: 'Hosted'
+
+states:
+  waiting: '&aWaiting'
+  starting: '&eStarting'
+  ingame: '&cIn game'
+  ending: '&7Ending'
+
+titles:
+  join:
+    title: '&6&lUHC'
+    # %s: map
+    subtitle: '&7Map: &e%s'
+  # %s: seconds
+  countdown: '&e%s'
+  start:
+    title: '&a&lGO!'
+    subtitle: '&7Good luck'
+  pvp:
+    title: '&c&lPvP ENABLED'
+    subtitle: '&7Watch out for the others!'
+  win:
+    title: '&6&lVICTORY!'
+    # %s: winners
+    subtitle: '&7You won the game'
+  lose:
+    title: '&c&lGAME OVER'
+    # %s: winners
+    subtitle: '&7Winner: %s'
+  draw:
+    title: '&e&lGAME OVER'
+    subtitle: '&7No winner'
+
+# Hotbar items (lobby and waiting room).
+items:
+  play:
+    name: '&aPlay &7(Right click)'
+    lore: |-
+      &7
+      &f Join the best available game.
+      &7
+      &e Click to play.
+      &f
+  games:
+    name: '&eGames &7(Right click)'
+    lore: |-
+      &7
+      &f Browse the games
+      &f and pick one to join.
+      &7
+      &e Click to open.
+      &f
+  vote:
+    name: '&bVote scenarios &7(Right click)'
+    lore: |-
+      &7
+      &f Choose which scenarios
+      &f this game is played with.
+      &7
+      &e Click to vote.
+      &f
+  scenarios:
+    name: '&dScenarios &7(Right click)'
+    lore: |-
+      &7
+      &f The scenarios of this game.
+      &7
+      &e Click to see them.
+      &f
+  practice:
+    name: '&cPractice &7(Right click)'
+    lore: |-
+      &7
+      &f Fight the others
+      &f while the game starts.
+      &7
+      &e Click to join.
+      &f
+  host:
+    name: '&6Host panel &7(Right click)'
+    lore: |-
+      &7
+      &f The rules of your game.
+      &7
+      &e Click to open.
+      &f
+  leave:
+    name: '&cLeave &7(Right click)'
+    lore: |-
+      &7
+      &f Click to leave
+      &f the game.
+      &7
+
+menus:
+  unavailable: '{prefix}&cThat menu is not available right now.'
+  # %s: scenario
+  scenario-name: '&e%s'
+  general-items:
+    close:
+      name: '&cClose'
+      lore: |-
+        &7
+        &e Click to close.
+        &f
+    back:
+      name: '&cBack'
+      lore: |-
+        &7
+        &e Click to go back.
+        &f
+    prevPage:
+      name: '&aPrevious page &7({actualPage}/{maxPages})'
+      lore: |-
+        &7
+        &e Click to go back.
+        &f
+    nextPage:
+      name: '&aNext page &7({actualPage}/{maxPages})'
+      lore: |-
+        &7
+        &e Click to go forward.
+        &f
+  games:
+    title: '&8UHC games'
+    empty:
+      name: '&cNo games'
+      lore: |-
+        &7
+        &f There is no game
+        &f available right now.
+        &7
+    game:
+      # %s: map
+      name: '&e%s'
+      # %1$s: state, %2$s: players, %3$s: maximum, %4$s: mode, %5$s: automatic or hosted
+      lore:
+        - '&7'
+        - '&f State: %1$s'
+        - '&f Players: &e%2$s&7/&e%3$s'
+        - '&f Mode: &e%4$s'
+        - '&f Type: &e%5$s'
+        - '&7'
+        - '&e Click to join.'
+        - '&f'
+  vote:
+    title: '&8Vote scenarios'
+    empty:
+      name: '&cNo scenarios'
+      lore: |-
+        &7
+        &f There is no scenario
+        &f that can be voted.
+        &7
+    # %s: votes
+    lore:
+      - '&7'
+      - '&f Votes: &e%s'
+      - '&7'
+      - '&e Click to vote.'
+      - '&f'
+    lore-voted:
+      - '&7'
+      - '&f Votes: &e%s'
+      - '&a You voted for this one.'
+      - '&7'
+      - '&e Click to remove your vote.'
+      - '&f'
+  scenarios:
+    title: '&8Scenarios'
+    empty:
+      name: '&cNo scenarios'
+      lore: |-
+        &7
+        &f This game has no
+        &f scenarios yet.
+        &7
+  host-scenarios:
+    title: '&8Scenarios of your game'
+    empty:
+      name: '&cNo scenarios'
+      lore: |-
+        &7
+        &f There is no scenario
+        &f enabled in scenarios.yml.
+        &7
+    lore-enabled:
+      - '&7'
+      - '&f State: &aEnabled'
+      - '&7'
+      - '&e Click to remove it.'
+      - '&f'
+    lore-disabled:
+      - '&7'
+      - '&f State: &cDisabled'
+      - '&7'
+      - '&e Click to enable it.'
+      - '&f'
+  host:
+    title: '&8Host panel'
+    enabled: '&aEnabled'
+    disabled: '&cDisabled'
+    # In all of them, %s is the current value.
+    items:
+      team-size:
+        name: '&eTeam size'
+        lore:
+          - '&7'
+          - '&f Players per team: &e%s'
+          - '&7 (1 = solo)'
+          - '&7'
+          - '&e Left click: +1 &8| &eRight click: -1'
+          - '&f'
+      max-players:
+        name: '&eMaximum players'
+        lore:
+          - '&7'
+          - '&f Maximum: &e%s'
+          - '&7'
+          - '&e Left click: +5 &8| &eRight click: -5'
+          - '&f'
+      heal-time:
+        name: '&dFinal heal'
+        lore:
+          - '&7'
+          - '&f At: &e%s'
+          - '&7'
+          - '&e Left click: +1 min &8| &eRight click: -1 min'
+          - '&f'
+      pvp-time:
+        name: '&cPvP'
+        lore:
+          - '&7'
+          - '&f Enabled at: &e%s'
+          - '&7'
+          - '&e Left click: +1 min &8| &eRight click: -1 min'
+          - '&f'
+      border-time:
+        name: '&bFirst border shrink'
+        lore:
+          - '&7'
+          - '&f At: &e%s'
+          - '&7'
+          - '&e Left click: +5 min &8| &eRight click: -5 min'
+          - '&f'
+      border-interval:
+        name: '&bBetween shrinks'
+        lore:
+          - '&7'
+          - '&f Every: &e%s'
+          - '&7'
+          - '&e Left click: +1 min &8| &eRight click: -1 min'
+          - '&f'
+      nether:
+        name: '&4Nether'
+        lore:
+          - '&7'
+          - '&f State: %s'
+          - '&7'
+          - '&e Click to toggle.'
+          - '&f'
+      friendly-fire:
+        name: '&eFriendly fire'
+        lore:
+          - '&7'
+          - '&f State: %s'
+          - '&7'
+          - '&e Click to toggle.'
+          - '&f'
+      whitelist:
+        name: '&fWhitelist'
+        lore:
+          - '&7'
+          - '&f State: %s'
+          - '&7 /uhc whitelist add [player]'
+          - '&7'
+          - '&e Click to toggle.'
+          - '&f'
+      scenarios:
+        name: '&dScenarios'
+        lore:
+          - '&7'
+          - '&f Active: &e%s'
+          - '&7'
+          - '&e Click to choose them.'
+          - '&f'
+      start:
+        name: '&a&lStart the game'
+        lore:
+          - '&7'
+          - '&f Players: &e%s'
+          - '&7'
+          - '&e Click to start it.'
+          - '&f'
+      release:
+        name: '&cStop hosting'
+        lore:
+          - '&7'
+          - '&f Host: &6%s'
+          - '&7 The game becomes automatic again.'
+          - '&7'
+          - '&e Click to release it.'
+          - '&f'
+
+scoreboard:
+  title: '&6&lUHC'
+  pvp-on: '&aEnabled'
+  done: '&aDone'
+  lobby:
+    - '&7%date%'
+    - '&7'
+    - '&f Online: &e%online%'
+    - '&f'
+    - '&f Wins: &a%wins%'
+    - '&f Kills: &e%total_kills%'
+    - '&f KDR: &e%kdr%'
+    - '&e'
+    - '&7spreen.studio'
+  waiting:
+    - '&7%date%'
+    - '&7'
+    - '&f Map: &e%map%'
+    - '&f Mode: &e%mode%'
+    - '&f Host: &6%host%'
+    - '&f'
+    - '&f Players: &e%players%&7/&e%max%'
+    - '&f Minimum: &e%min%'
+    - '&e'
+    - '&7spreen.studio'
+  starting:
+    - '&7%date%'
+    - '&7'
+    - '&f Map: &e%map%'
+    - '&f Mode: &e%mode%'
+    - '&f'
+    - '&f Players: &e%players%&7/&e%max%'
+    - '&f Starts in: &a%countdown%s'
+    - '&e'
+    - '&7spreen.studio'
+  scatter:
+    - '&7%date%'
+    - '&7'
+    - '&f Scattering players...'
+    - '&f Players: &e%alive%'
+    - '&e'
+    - '&7spreen.studio'
+  game:
+    - '&7%date%'
+    - '&7'
+    - '&f Time: &e%time%'
+    - '&f Alive: &e%alive% &8(&7%teams_alive% teams&8)'
+    - '&f Kills: &e%kills%'
+    - '&f'
+    - '&f Border: &c%border%'
+    - '&f Next: &c%next_border% &7(%border_time%)'
+    - '&f PvP: &e%pvp%'
+    - '&f Final heal: &e%heal%'
+    - '&e'
+    - '&7spreen.studio'
+  spectator:
+    - '&7%date%'
+    - '&7'
+    - '&f Time: &e%time%'
+    - '&f Alive: &e%alive% &8(&7%teams_alive% teams&8)'
+    - '&f Spectators: &e%spectators%'
+    - '&f'
+    - '&f Border: &c%border%'
+    - '&f Next: &c%next_border% &7(%border_time%)'
+    - '&e'
+    - '&7spreen.studio'
+  ending:
+    - '&7%date%'
+    - '&7'
+    - '&f Winner: %winner%'
+    - '&f Time: &e%time%'
+    - '&f Your kills: &e%kills%'
+    - '&e'
+    - '&7spreen.studio'

@@ -1,0 +1,168 @@
+# Staff (modulo de FurryCore, antes StaffMode): textos en espanol de la seccion 'staff'.
+# Variables entre llaves ({player}, {time}...). Los YAML de los items y del menu usan las claves como
+# [lang=staff]<clave>.
+
+prefix: '&b&lSTAFF &8» '
+# La linea que se ve encima del nombre de quien esta en modo staff.
+tag: '&7[Staff Mode]'
+general:
+  'yes': '&aSí'
+  'no': '&cNo'
+
+commands:
+  toggle:
+    help: '&7 /staff - &eEntra o sale del modo staff.'
+  vanish:
+    help: '&7 /staff vanish - &eActiva o desactiva tu invisibilidad.'
+  freeze:
+    help: '&7 /staff freeze <jugador> - &eCongela o descongela a un jugador (sin jugador, abre el selector).'
+    usage: '{prefix}&cUso: &e/staff freeze [jugador]'
+  tp:
+    help: '&7 /staff tp <jugador> - &eTe lleva a un jugador (sin jugador, a uno al azar).'
+  invsee:
+    help: '&7 /staff invsee <jugador> - &eAbre el inventario de un jugador (sin jugador, abre el selector).'
+  see:
+    help: '&7 /staff see [jugador] - &eEntra en modo staff y te lleva a un jugador de este servidor.'
+    usage: '{prefix}&cUso: &e/staff see [jugador]'
+  reload:
+    help: '&7 /staff reload - &eRecarga los ajustes, los items y el menú.'
+
+messages:
+  reload: '{prefix}&a¡Los ajustes, los items y el menú han sido recargados!'
+  player-not-found: '{prefix}&cEl jugador &e{player} &cno está conectado en este servidor.'
+  target-is-staff: '{prefix}&e{player} &cestá en modo staff.'
+  cooldown: '{prefix}&cDebes esperar &e{time}s &cpara usar eso de nuevo.'
+  staff-mode:
+    enabled: '{prefix}&fHas &aactivado &fel modo staff.'
+    disabled: '{prefix}&fHas &cdesactivado &fel modo staff.'
+    locked: '{prefix}&cAhora mismo no puedes salir del modo staff.'
+  vanish:
+    enabled: '{prefix}&fHas &aactivado &ftu invisibilidad.'
+    disabled: '{prefix}&fHas &cdesactivado &ftu invisibilidad.'
+  freeze:
+    frozen: '{prefix}&bCongelaste a &e{player}&b.'
+    unfrozen: '{prefix}&aDescongelaste a &e{player}&a.'
+    you-frozen: |-
+      &7
+      {center}&c&l¡HAS SIDO CONGELADO!
+      {center}&fUn miembro del staff te atenderá de inmediato.
+      {center}&7No te desconectes.
+      &7
+    you-unfrozen: '{prefix}&aHas sido descongelado.'
+    quit: '{prefix}&e{player} &cse ha desconectado estando congelado.'
+  teleport:
+    success: '{prefix}&fTe moviste hacia &e{player}&f.'
+    no-players: '{prefix}&cNo hay jugadores a los que ir.'
+  see:
+    watching: '{prefix}&fAhora observas a &e{player}&f.'
+  inventory:
+    opening: '{prefix}&fAbriendo el inventario de &e{player}&f.'
+
+items:
+  random-tp:
+    name: '&eTeleport aleatorio'
+    lore: |-
+      &7
+      &f Clic derecho para ir a un
+      &f jugador aleatorio.
+      &7
+      &f Clic izquierdo para seleccionar
+      &f un jugador e ir donde él.
+      &7
+  freeze:
+    name: '&bCongelar jugador'
+    lore: |-
+      &7
+      &f Clic derecho en un jugador para
+      &f congelarlo o descongelarlo.
+      &7
+      &f Clic izquierdo para seleccionar
+      &f jugador.
+      &7
+  vanish-on:
+    name: '&fInvisibilidad: &a&lACTIVADA'
+    lore: |-
+      &7
+      &f Clic para desactivar
+      &f tu invisibilidad.
+      &7
+  vanish-off:
+    name: '&fInvisibilidad: &c&lDESACTIVADA'
+    lore: |-
+      &7
+      &f Clic para activar
+      &f tu invisibilidad.
+      &7
+  gamemode:
+    name: '&7(Izquierdo) &bCreativo &7| &bEspectador &7(Derecho)'
+    lore: |-
+      &7
+      &f Clic izquierdo para ponerte
+      &f en modo creativo.
+      &7
+      &f Clic derecho para ponerte
+      &f en modo espectador.
+      &7
+  inventory:
+    name: '&eVer inventario'
+    lore: |-
+      &7
+      &f Clic derecho en un jugador para
+      &f abrir su inventario.
+      &7
+      &f Clic derecho en un contenedor para
+      &f ver su contenido sin abrirlo.
+      &7
+      &f Clic izquierdo para seleccionar
+      &f jugador.
+      &7
+  compass:
+    name: '&eBrújula'
+    lore: |-
+      &7
+      &f Clic izquierdo para saltar a donde
+      &f miras; derecho para atravesar.
+      &7
+
+menus:
+  general-items:
+    close:
+      name: '&cCerrar'
+      lore: |-
+        &7
+        &f Cierra el menú actual.
+        &7
+    prevPage:
+      name: '&7Página anterior &f({actualPage}/{maxPages})'
+      lore: |-
+        &7
+        &f Vuelve a la página anterior.
+        &7
+    nextPage:
+      name: '&7Página siguiente &f({actualPage}/{maxPages})'
+      lore: |-
+        &7
+        &f Pasa a la página siguiente.
+        &7
+  players:
+    title:
+      teleport: '&8Ir a un jugador'
+      freeze: '&8Congelar a un jugador'
+      inventory: '&8Ver un inventario'
+    items:
+      player:
+        name: '&e{player}'
+        lore: |-
+          &7
+          &f Mundo: &e{world}
+          &f Congelado: {frozen}
+          &7
+          &a ¡Clic para seleccionar!
+          &7
+      empty:
+        name: '&cNo hay jugadores'
+        lore: |-
+          &7
+          &f No hay jugadores en este
+          &f servidor para seleccionar.
+          &7

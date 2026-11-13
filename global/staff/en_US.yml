@@ -1,0 +1,168 @@
+# Staff (FurryCore module, formerly StaffMode): English texts of the 'staff' section.
+# Variables go between braces ({player}, {time}...). The YAML of the items and the menu use the keys as
+# [lang=staff]<key>.
+
+prefix: '&b&lSTAFF &8» '
+# The line shown above the name of whoever is in staff mode.
+tag: '&7[Staff Mode]'
+general:
+  'yes': '&aYes'
+  'no': '&cNo'
+
+commands:
+  toggle:
+    help: '&7 /staff - &eEnters or leaves staff mode.'
+  vanish:
+    help: '&7 /staff vanish - &eToggles your invisibility.'
+  freeze:
+    help: '&7 /staff freeze <player> - &eFreezes or unfreezes a player (without a player, opens the selector).'
+    usage: '{prefix}&cUsage: &e/staff freeze [player]'
+  tp:
+    help: '&7 /staff tp <player> - &eTakes you to a player (without a player, to a random one).'
+  invsee:
+    help: '&7 /staff invsee <player> - &eOpens the inventory of a player (without a player, opens the selector).'
+  see:
+    help: '&7 /staff see [player] - &eEnters staff mode and takes you to a player of this server.'
+    usage: '{prefix}&cUsage: &e/staff see [player]'
+  reload:
+    help: '&7 /staff reload - &eReloads the settings, the items and the menu.'
+
+messages:
+  reload: '{prefix}&aThe settings, the items and the menu have been reloaded!'
+  player-not-found: '{prefix}&cThe player &e{player} &cis not online on this server.'
+  target-is-staff: '{prefix}&e{player} &cis in staff mode.'
+  cooldown: '{prefix}&cYou must wait &e{time}s &cto use that again.'
+  staff-mode:
+    enabled: '{prefix}&fYou have &aenabled &fstaff mode.'
+    disabled: '{prefix}&fYou have &cdisabled &fstaff mode.'
+    locked: '{prefix}&cYou cannot leave staff mode right now.'
+  vanish:
+    enabled: '{prefix}&fYou have &aenabled &fyour invisibility.'
+    disabled: '{prefix}&fYou have &cdisabled &fyour invisibility.'
+  freeze:
+    frozen: '{prefix}&bYou froze &e{player}&b.'
+    unfrozen: '{prefix}&aYou unfroze &e{player}&a.'
+    you-frozen: |-
+      &7
+      {center}&c&lYOU HAVE BEEN FROZEN!
+      {center}&fA staff member will be with you right away.
+      {center}&7Do not disconnect.
+      &7
+    you-unfrozen: '{prefix}&aYou have been unfrozen.'
+    quit: '{prefix}&e{player} &cdisconnected while frozen.'
+  teleport:
+    success: '{prefix}&fYou moved to &e{player}&f.'
+    no-players: '{prefix}&cThere are no players to go to.'
+  see:
+    watching: '{prefix}&fYou are now watching &e{player}&f.'
+  inventory:
+    opening: '{prefix}&fOpening the inventory of &e{player}&f.'
+
+items:
+  random-tp:
+    name: '&eRandom teleport'
+    lore: |-
+      &7
+      &f Right click to go to a
+      &f random player.
+      &7
+      &f Left click to select a
+      &f player and go to them.
+      &7
+  freeze:
+    name: '&bFreeze player'
+    lore: |-
+      &7
+      &f Right click a player to
+      &f freeze or unfreeze them.
+      &7
+      &f Left click to select a
+      &f player.
+      &7
+  vanish-on:
+    name: '&fInvisibility: &a&lENABLED'
+    lore: |-
+      &7
+      &f Click to disable
+      &f your invisibility.
+      &7
+  vanish-off:
+    name: '&fInvisibility: &c&lDISABLED'
+    lore: |-
+      &7
+      &f Click to enable
+      &f your invisibility.
+      &7
+  gamemode:
+    name: '&7(Left) &bCreative &7| &bSpectator &7(Right)'
+    lore: |-
+      &7
+      &f Left click to switch to
+      &f creative mode.
+      &7
+      &f Right click to switch to
+      &f spectator mode.
+      &7
+  inventory:
+    name: '&eView inventory'
+    lore: |-
+      &7
+      &f Right click a player to
+      &f open their inventory.
+      &7
+      &f Right click a container to
+      &f see its contents without opening it.
+      &7
+      &f Left click to select a
+      &f player.
+      &7
+  compass:
+    name: '&eCompass'
+    lore: |-
+      &7
+      &f Left click to jump to where you
+      &f look; right click to pass through.
+      &7
+
+menus:
+  general-items:
+    close:
+      name: '&cClose'
+      lore: |-
+        &7
+        &f Closes the current menu.
+        &7
+    prevPage:
+      name: '&7Previous page &f({actualPage}/{maxPages})'
+      lore: |-
+        &7
+        &f Goes back to the previous page.
+        &7
+    nextPage:
+      name: '&7Next page &f({actualPage}/{maxPages})'
+      lore: |-
+        &7
+        &f Goes to the next page.
+        &7
+  players:
+    title:
+      teleport: '&8Go to a player'
+      freeze: '&8Freeze a player'
+      inventory: '&8View an inventory'
+    items:
+      player:
+        name: '&e{player}'
+        lore: |-
+          &7
+          &f World: &e{world}
+          &f Frozen: {frozen}
+          &7
+          &a Click to select!
+          &7
+      empty:
+        name: '&cNo players'
+        lore: |-
+          &7
+          &f There are no players on this
+          &f server to select.
+          &7

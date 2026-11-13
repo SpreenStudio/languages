@@ -13,8 +13,15 @@ report:
     &7Por: &e{reporter} &8(&7Servidor: &e{reporter_server}&8)
     &7Razón: &f{reason}
     &8&m----------------------------------------
+  hover: '&eClic para observar al acusado &7({command})'
   sent: '{prefix}&aTu reporte contra &e{target} &apor &f"{reason}" &aha sido enviado al staff.'
   self: '{prefix}&cNo puedes reportarte a ti mismo.'
   cooldown: '{prefix}&cDebes esperar &e{time}s &cantes de volver a enviar otro reporte.'
   usage: '{prefix}&cUso correcto: /{command} <jugador> <motivo>'
   disabled: '{prefix}&cEl sistema de reportes se encuentra desactivado.'
+
+see:
+  usage: '{prefix}&cUso correcto: /{command} <jugador>'
+  self: '{prefix}&cNo puedes observarte a ti mismo.'
+  connecting: '{prefix}&7Conectando a &e{server} &7para observar a &e{target}&7...'
+  failed: '{prefix}&cNo se pudo conectar a &e{server} &cpara observar a &e{target}&c.'
